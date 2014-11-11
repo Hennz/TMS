@@ -13,53 +13,53 @@ namespace TMS
 {
     public partial class MainForm : Form
     {
-        RouterMapForm routerMapForm;
-        public MainForm()
-        {
-            while(LogIn())
-            {
+        MasterController _masterController;
+        TrackingController _trackingController;
 
-            }
+        public MainForm(MasterController c)
+        {
             InitializeComponent();
+
+            _masterController = c;
+            _trackingController = new TrackingController(this, picMinePlan);
         }
 
-        private bool LogIn()
+
+        private void MainForm_FormClosed(object sender, FormClosedEventArgs e)
         {
-
-            return false;
+            Application.Exit();
+        }
+        
+        private void MainForm_LocationChanged(object sender, EventArgs e)
+        {
+            if (_trackingController != null)
+                _trackingController.HideRouterForm();
         }
 
+        private void MainForm_Resize(object sender, EventArgs e)
+        {
+            if (_trackingController != null)
+                _trackingController.HideRouterForm();
+            
+        }
 
+        private void miExit_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
+        }
+        
         private void miLoadMap_Click(object sender, EventArgs e)
         {
-            Stream imageStream = null;
-            OpenFileDialog openImageFileDialog = new OpenFileDialog();
-
-            openImageFileDialog.InitialDirectory = System.IO.Directory.GetCurrentDirectory();
-            openImageFileDialog.Filter = "Image Files (*.bmp, *.jpg, *.jpeg)|*.bmp;*.jpg;*.jpeg";
-            openImageFileDialog.FilterIndex = 1;
-            openImageFileDialog.RestoreDirectory = true;
-
-            if (openImageFileDialog.ShowDialog() == DialogResult.OK)
-            {
-                try
-                {
-                    if ((imageStream = openImageFileDialog.OpenFile()) != null)
-                    {
-                        using (imageStream)
-                        {
-                            Image image = Image.FromStream(imageStream);
-                            picMinePlan.Image = image;
-                        }
-                    }
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show("Error: Could not read file from disk. Original error: " + ex.Message);
-                }
-            }
+            _masterController.LoadMap(picMinePlan);
         }
 
+        private void msMain_Click(object sender, EventArgs e)
+        {
+            if (_trackingController != null)
+                _trackingController.HideRouterForm();
+            
+        }
+        
         private void picMinePlan_Paint(object sender, PaintEventArgs e)
         {
             
@@ -67,38 +67,7 @@ namespace TMS
 
         private void picMinePlan_Click(object sender, EventArgs e)
         {
-            if (routerMapForm == null)
-                routerMapForm = new RouterMapForm();
-
-            // Calculates the form's x and y so it stays in the tracking window
-            int x = (MousePosition.X - (this.DesktopLocation.X + this.PointToClient(picMinePlan.Parent.PointToScreen(picMinePlan.Location)).X)) >= routerMapForm.Width ? MousePosition.X - routerMapForm.Width : MousePosition.X;
-            int y = (MousePosition.Y - this.DesktopLocation.Y) >= routerMapForm.Height ? MousePosition.Y - routerMapForm.Height : MousePosition.Y;
-
-            routerMapForm.Show();
-            routerMapForm.SetDesktopLocation(x, y);
-        }
-
-        private void MainForm_LocationChanged(object sender, EventArgs e)
-        {
-            if (routerMapForm != null)
-                routerMapForm.Hide();
-        }
-
-        private void MainForm_Resize(object sender, EventArgs e)
-        {
-            if (routerMapForm != null)
-                routerMapForm.Hide();
-        }
-
-        private void msMain_Click(object sender, EventArgs e)
-        {
-            if (routerMapForm != null)
-                routerMapForm.Hide();
-        }
-
-        private void miExit_Click(object sender, EventArgs e)
-        {
-            Application.Exit();
+            _trackingController.ShowMinerPosition(MousePosition.X, MousePosition.Y);
         }
 
     }

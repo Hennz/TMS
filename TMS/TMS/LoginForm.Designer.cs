@@ -33,7 +33,7 @@
             this.txtPassword = new System.Windows.Forms.TextBox();
             this.lblUsername = new System.Windows.Forms.Label();
             this.lblPassword = new System.Windows.Forms.Label();
-            this.checkBox1 = new System.Windows.Forms.CheckBox();
+            this.chkRemember = new System.Windows.Forms.CheckBox();
             this.btnLogin = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
@@ -48,6 +48,7 @@
             // 
             this.txtPassword.Location = new System.Drawing.Point(162, 62);
             this.txtPassword.Name = "txtPassword";
+            this.txtPassword.PasswordChar = '*';
             this.txtPassword.Size = new System.Drawing.Size(100, 22);
             this.txtPassword.TabIndex = 1;
             // 
@@ -69,15 +70,15 @@
             this.lblPassword.TabIndex = 3;
             this.lblPassword.Text = "Password:";
             // 
-            // checkBox1
+            // chkRemember
             // 
-            this.checkBox1.AutoSize = true;
-            this.checkBox1.Location = new System.Drawing.Point(53, 92);
-            this.checkBox1.Name = "checkBox1";
-            this.checkBox1.Size = new System.Drawing.Size(122, 21);
-            this.checkBox1.TabIndex = 4;
-            this.checkBox1.Text = "Remember Me";
-            this.checkBox1.UseVisualStyleBackColor = true;
+            this.chkRemember.AutoSize = true;
+            this.chkRemember.Location = new System.Drawing.Point(53, 92);
+            this.chkRemember.Name = "chkRemember";
+            this.chkRemember.Size = new System.Drawing.Size(122, 21);
+            this.chkRemember.TabIndex = 4;
+            this.chkRemember.Text = "Remember Me";
+            this.chkRemember.UseVisualStyleBackColor = true;
             // 
             // btnLogin
             // 
@@ -87,6 +88,7 @@
             this.btnLogin.TabIndex = 5;
             this.btnLogin.Text = "Login";
             this.btnLogin.UseVisualStyleBackColor = true;
+            this.btnLogin.Click += new System.EventHandler(this.btnLogin_Click);
             // 
             // LoginForm
             // 
@@ -94,7 +96,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(302, 163);
             this.Controls.Add(this.btnLogin);
-            this.Controls.Add(this.checkBox1);
+            this.Controls.Add(this.chkRemember);
             this.Controls.Add(this.lblPassword);
             this.Controls.Add(this.lblUsername);
             this.Controls.Add(this.txtPassword);
@@ -106,6 +108,7 @@
             this.Name = "LoginForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Login";
+            this.TopMost = true;
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -117,7 +120,7 @@
         private System.Windows.Forms.TextBox txtPassword;
         private System.Windows.Forms.Label lblUsername;
         private System.Windows.Forms.Label lblPassword;
-        private System.Windows.Forms.CheckBox checkBox1;
+        private System.Windows.Forms.CheckBox chkRemember;
         private System.Windows.Forms.Button btnLogin;
     }
 }

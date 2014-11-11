@@ -31,6 +31,12 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
             this.splitMain = new System.Windows.Forms.SplitContainer();
             this.pnlLegend = new System.Windows.Forms.Panel();
+            this.picMiner = new System.Windows.Forms.PictureBox();
+            this.lblActiveMiner = new System.Windows.Forms.Label();
+            this.picRouterBlocked = new System.Windows.Forms.PictureBox();
+            this.picRouter = new System.Windows.Forms.PictureBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.lblLegendRouter = new System.Windows.Forms.Label();
             this.picMinePlan = new System.Windows.Forms.PictureBox();
             this.statusMain = new System.Windows.Forms.StatusStrip();
             this.statusTextConnected = new System.Windows.Forms.ToolStripStatusLabel();
@@ -48,22 +54,21 @@
             this.miMessaging = new System.Windows.Forms.ToolStripMenuItem();
             this.miReports = new System.Windows.Forms.ToolStripMenuItem();
             this.miAttendance = new System.Windows.Forms.ToolStripMenuItem();
-            this.lblLegendRouter = new System.Windows.Forms.Label();
-            this.label1 = new System.Windows.Forms.Label();
-            this.picRouter = new System.Windows.Forms.PictureBox();
-            this.picRouterBlocked = new System.Windows.Forms.PictureBox();
-            this.picMiner = new System.Windows.Forms.PictureBox();
-            this.lblActiveMiner = new System.Windows.Forms.Label();
+            this.miSendText = new System.Windows.Forms.ToolStripMenuItem();
+            this.miDaily = new System.Windows.Forms.ToolStripMenuItem();
+            this.miMonthly = new System.Windows.Forms.ToolStripMenuItem();
+            this.miYearly = new System.Windows.Forms.ToolStripMenuItem();
+            this.miVehicleOp = new System.Windows.Forms.ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.splitMain)).BeginInit();
             this.splitMain.Panel2.SuspendLayout();
             this.splitMain.SuspendLayout();
             this.pnlLegend.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.picMiner)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.picRouterBlocked)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.picRouter)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.picMinePlan)).BeginInit();
             this.statusMain.SuspendLayout();
             this.msMain.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.picRouter)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.picRouterBlocked)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.picMiner)).BeginInit();
             this.SuspendLayout();
             // 
             // splitMain
@@ -100,6 +105,57 @@
             this.pnlLegend.Name = "pnlLegend";
             this.pnlLegend.Size = new System.Drawing.Size(800, 40);
             this.pnlLegend.TabIndex = 1;
+            // 
+            // picMiner
+            // 
+            this.picMiner.Location = new System.Drawing.Point(603, 3);
+            this.picMiner.Name = "picMiner";
+            this.picMiner.Size = new System.Drawing.Size(25, 25);
+            this.picMiner.TabIndex = 5;
+            this.picMiner.TabStop = false;
+            // 
+            // lblActiveMiner
+            // 
+            this.lblActiveMiner.AutoSize = true;
+            this.lblActiveMiner.Location = new System.Drawing.Point(634, 10);
+            this.lblActiveMiner.Name = "lblActiveMiner";
+            this.lblActiveMiner.Size = new System.Drawing.Size(85, 17);
+            this.lblActiveMiner.TabIndex = 4;
+            this.lblActiveMiner.Text = "Active Miner";
+            // 
+            // picRouterBlocked
+            // 
+            this.picRouterBlocked.Location = new System.Drawing.Point(342, 3);
+            this.picRouterBlocked.Name = "picRouterBlocked";
+            this.picRouterBlocked.Size = new System.Drawing.Size(25, 25);
+            this.picRouterBlocked.TabIndex = 3;
+            this.picRouterBlocked.TabStop = false;
+            // 
+            // picRouter
+            // 
+            this.picRouter.Location = new System.Drawing.Point(98, 3);
+            this.picRouter.Name = "picRouter";
+            this.picRouter.Size = new System.Drawing.Size(25, 25);
+            this.picRouter.TabIndex = 2;
+            this.picRouter.TabStop = false;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(373, 10);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(105, 17);
+            this.label1.TabIndex = 1;
+            this.label1.Text = "Blocked Router";
+            // 
+            // lblLegendRouter
+            // 
+            this.lblLegendRouter.AutoSize = true;
+            this.lblLegendRouter.Location = new System.Drawing.Point(129, 10);
+            this.lblLegendRouter.Name = "lblLegendRouter";
+            this.lblLegendRouter.Size = new System.Drawing.Size(51, 17);
+            this.lblLegendRouter.TabIndex = 0;
+            this.lblLegendRouter.Text = "Router";
             // 
             // picMinePlan
             // 
@@ -221,6 +277,8 @@
             // 
             // miMessaging
             // 
+            this.miMessaging.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.miSendText});
             this.miMessaging.Name = "miMessaging";
             this.miMessaging.Size = new System.Drawing.Size(92, 24);
             this.miMessaging.Text = "Messaging";
@@ -233,60 +291,44 @@
             // 
             // miAttendance
             // 
+            this.miAttendance.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.miDaily,
+            this.miMonthly,
+            this.miYearly,
+            this.miVehicleOp});
             this.miAttendance.Name = "miAttendance";
             this.miAttendance.Size = new System.Drawing.Size(97, 24);
             this.miAttendance.Text = "Attendance";
             // 
-            // lblLegendRouter
+            // miSendText
             // 
-            this.lblLegendRouter.AutoSize = true;
-            this.lblLegendRouter.Location = new System.Drawing.Point(129, 10);
-            this.lblLegendRouter.Name = "lblLegendRouter";
-            this.lblLegendRouter.Size = new System.Drawing.Size(51, 17);
-            this.lblLegendRouter.TabIndex = 0;
-            this.lblLegendRouter.Text = "Router";
+            this.miSendText.Name = "miSendText";
+            this.miSendText.Size = new System.Drawing.Size(175, 24);
+            this.miSendText.Text = "Send Text";
             // 
-            // label1
+            // miDaily
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(373, 10);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(105, 17);
-            this.label1.TabIndex = 1;
-            this.label1.Text = "Blocked Router";
+            this.miDaily.Name = "miDaily";
+            this.miDaily.Size = new System.Drawing.Size(197, 24);
+            this.miDaily.Text = "Daily";
             // 
-            // picRouter
+            // miMonthly
             // 
-            this.picRouter.Location = new System.Drawing.Point(98, 3);
-            this.picRouter.Name = "picRouter";
-            this.picRouter.Size = new System.Drawing.Size(25, 25);
-            this.picRouter.TabIndex = 2;
-            this.picRouter.TabStop = false;
+            this.miMonthly.Name = "miMonthly";
+            this.miMonthly.Size = new System.Drawing.Size(197, 24);
+            this.miMonthly.Text = "Monthly";
             // 
-            // picRouterBlocked
+            // miYearly
             // 
-            this.picRouterBlocked.Location = new System.Drawing.Point(342, 3);
-            this.picRouterBlocked.Name = "picRouterBlocked";
-            this.picRouterBlocked.Size = new System.Drawing.Size(25, 25);
-            this.picRouterBlocked.TabIndex = 3;
-            this.picRouterBlocked.TabStop = false;
+            this.miYearly.Name = "miYearly";
+            this.miYearly.Size = new System.Drawing.Size(197, 24);
+            this.miYearly.Text = "Yearly";
             // 
-            // picMiner
+            // miVehicleOp
             // 
-            this.picMiner.Location = new System.Drawing.Point(603, 3);
-            this.picMiner.Name = "picMiner";
-            this.picMiner.Size = new System.Drawing.Size(25, 25);
-            this.picMiner.TabIndex = 5;
-            this.picMiner.TabStop = false;
-            // 
-            // lblActiveMiner
-            // 
-            this.lblActiveMiner.AutoSize = true;
-            this.lblActiveMiner.Location = new System.Drawing.Point(634, 10);
-            this.lblActiveMiner.Name = "lblActiveMiner";
-            this.lblActiveMiner.Size = new System.Drawing.Size(85, 17);
-            this.lblActiveMiner.TabIndex = 4;
-            this.lblActiveMiner.Text = "Active Miner";
+            this.miVehicleOp.Name = "miVehicleOp";
+            this.miVehicleOp.Size = new System.Drawing.Size(197, 24);
+            this.miVehicleOp.Text = "Vehicle Operation";
             // 
             // MainForm
             // 
@@ -297,9 +339,12 @@
             this.Controls.Add(this.msMain);
             this.Controls.Add(this.splitMain);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.MaximizeBox = false;
             this.MinimumSize = new System.Drawing.Size(1095, 850);
             this.Name = "MainForm";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Tracking & Monitoring Software";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.MainForm_FormClosed);
             this.LocationChanged += new System.EventHandler(this.MainForm_LocationChanged);
             this.Resize += new System.EventHandler(this.MainForm_Resize);
             this.splitMain.Panel2.ResumeLayout(false);
@@ -307,14 +352,14 @@
             this.splitMain.ResumeLayout(false);
             this.pnlLegend.ResumeLayout(false);
             this.pnlLegend.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.picMiner)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.picRouterBlocked)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.picRouter)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.picMinePlan)).EndInit();
             this.statusMain.ResumeLayout(false);
             this.statusMain.PerformLayout();
             this.msMain.ResumeLayout(false);
             this.msMain.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.picRouter)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.picRouterBlocked)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.picMiner)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -347,6 +392,11 @@
         private System.Windows.Forms.PictureBox picRouter;
         private System.Windows.Forms.PictureBox picMiner;
         private System.Windows.Forms.Label lblActiveMiner;
+        private System.Windows.Forms.ToolStripMenuItem miSendText;
+        private System.Windows.Forms.ToolStripMenuItem miDaily;
+        private System.Windows.Forms.ToolStripMenuItem miMonthly;
+        private System.Windows.Forms.ToolStripMenuItem miYearly;
+        private System.Windows.Forms.ToolStripMenuItem miVehicleOp;
     }
 }
 
