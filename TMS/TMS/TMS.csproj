@@ -47,7 +47,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup>
-    <ApplicationIcon>TMS-Logo_2.ico</ApplicationIcon>
+    <ApplicationIcon>Resources\TMS-Logo_2.ico</ApplicationIcon>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
@@ -132,7 +132,10 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="TMS-Logo_2.ico" />
+    <Content Include="Resources\active-miner.png" />
+    <Content Include="Resources\router-active.png" />
+    <Content Include="Resources\router-blocked.png" />
+    <Content Include="Resources\TMS-Logo_2.ico" />
     <Content Include="TMS_Database.mdf">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>

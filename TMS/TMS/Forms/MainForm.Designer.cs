@@ -52,9 +52,9 @@
             this.miExit = new System.Windows.Forms.ToolStripMenuItem();
             this.miTrack = new System.Windows.Forms.ToolStripMenuItem();
             this.miMessaging = new System.Windows.Forms.ToolStripMenuItem();
+            this.miSendText = new System.Windows.Forms.ToolStripMenuItem();
             this.miReports = new System.Windows.Forms.ToolStripMenuItem();
             this.miAttendance = new System.Windows.Forms.ToolStripMenuItem();
-            this.miSendText = new System.Windows.Forms.ToolStripMenuItem();
             this.miDaily = new System.Windows.Forms.ToolStripMenuItem();
             this.miMonthly = new System.Windows.Forms.ToolStripMenuItem();
             this.miYearly = new System.Windows.Forms.ToolStripMenuItem();
@@ -108,9 +108,11 @@
             // 
             // picMiner
             // 
+            this.picMiner.Image = ((System.Drawing.Image)(resources.GetObject("picMiner.Image")));
             this.picMiner.Location = new System.Drawing.Point(603, 3);
             this.picMiner.Name = "picMiner";
-            this.picMiner.Size = new System.Drawing.Size(25, 25);
+            this.picMiner.Size = new System.Drawing.Size(30, 30);
+            this.picMiner.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.picMiner.TabIndex = 5;
             this.picMiner.TabStop = false;
             // 
@@ -125,17 +127,23 @@
             // 
             // picRouterBlocked
             // 
+            this.picRouterBlocked.Image = ((System.Drawing.Image)(resources.GetObject("picRouterBlocked.Image")));
             this.picRouterBlocked.Location = new System.Drawing.Point(342, 3);
             this.picRouterBlocked.Name = "picRouterBlocked";
-            this.picRouterBlocked.Size = new System.Drawing.Size(25, 25);
+            this.picRouterBlocked.Size = new System.Drawing.Size(30, 30);
+            this.picRouterBlocked.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.picRouterBlocked.TabIndex = 3;
             this.picRouterBlocked.TabStop = false;
             // 
             // picRouter
             // 
+            this.picRouter.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.picRouter.Image = ((System.Drawing.Image)(resources.GetObject("picRouter.Image")));
+            this.picRouter.ImageLocation = "";
             this.picRouter.Location = new System.Drawing.Point(98, 3);
             this.picRouter.Name = "picRouter";
-            this.picRouter.Size = new System.Drawing.Size(25, 25);
+            this.picRouter.Size = new System.Drawing.Size(30, 30);
+            this.picRouter.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.picRouter.TabIndex = 2;
             this.picRouter.TabStop = false;
             // 
@@ -283,6 +291,12 @@
             this.miMessaging.Size = new System.Drawing.Size(92, 24);
             this.miMessaging.Text = "Messaging";
             // 
+            // miSendText
+            // 
+            this.miSendText.Name = "miSendText";
+            this.miSendText.Size = new System.Drawing.Size(143, 24);
+            this.miSendText.Text = "Send Text";
+            // 
             // miReports
             // 
             this.miReports.Name = "miReports";
@@ -299,12 +313,6 @@
             this.miAttendance.Name = "miAttendance";
             this.miAttendance.Size = new System.Drawing.Size(97, 24);
             this.miAttendance.Text = "Attendance";
-            // 
-            // miSendText
-            // 
-            this.miSendText.Name = "miSendText";
-            this.miSendText.Size = new System.Drawing.Size(175, 24);
-            this.miSendText.Text = "Send Text";
             // 
             // miDaily
             // 
