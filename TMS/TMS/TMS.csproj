@@ -78,6 +78,7 @@
     <Compile Include="Models\Member.cs" />
     <Compile Include="Models\Router.cs" />
     <Compile Include="Models\Site.cs" />
+    <Compile Include="Models\User.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Forms\RouterMapForm.cs">

@@ -8,25 +8,25 @@ namespace TMS.Models
 {
     class Member
     {
-        String memberId { public get; private set; }
-        String fName { public get; private set; }
-        String mName { public get; private set; }
-        String lName { public get; private set; }
+        public String memberId { get; private set; }
+        public String fName { get; private set; }
+        public String mName { get; private set; }
+        public String lName { get; private set; }
 
-        String address { public get; private set;}
-        String province { public get; private set; }
-        String city { public get; private set; }
+        public String address { get; private set; }
+        public String province { get; private set; }
+        public String city { get; private set; }
 
-        int pinNo { public get; private set; }
+        public int pinNo { get; private set; }
 
-        String phoneNo { public get; private set; }
-        String mobileNo { public get; private set; }
+        public String phoneNo { get; private set; }
+        public String mobileNo { get; private set; }
 
-        bool isVehicle { public get; private set; }
+        public bool isVehicle { get; private set; }
 
-        String tagId { public get; private set; }
+        public String tagId { get; private set; }
 
-        LinkedList<Router> path { public get; private set; }
+        public LinkedList<Router> path { get; private set; }
 
         public Member(String mId, String f, String m, String l, 
             String addr, String prov, String cit, 

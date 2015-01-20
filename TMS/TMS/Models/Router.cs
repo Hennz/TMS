@@ -8,7 +8,9 @@ namespace TMS.Models
 {
     class Router
     {
-        String routerId, address, location;
+        public String routerId { get; private set; } 
+        public  String address { get; private set; }
+        public String location { get; private set; }
 
         int posX, posY;
 

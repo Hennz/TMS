@@ -10,9 +10,9 @@ namespace TMS.Models
     {
         private static Site _instance;
 
-        String siteName { public get; private set; }
-        String localMapFileAddr { public get; private set; }
-        float mapScale { public get; private set; }
+        public String siteName { get; private set; }
+        public String localMapFileAddr { get; private set; }
+        public float mapScale { get; private set; }
 
         public static Site GetInstance() {
             if (_instance == null)  {
