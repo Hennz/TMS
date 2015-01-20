@@ -20,6 +20,11 @@ namespace TMS
             _loginForm = lf;
         }
 
+        public void AssignShift()
+        {
+
+        }
+
         /// <summary>
         /// Opens a dialog to load a jpg, jpeg, or bmp image of map data
         /// </summary>
