@@ -75,9 +75,15 @@
       <DependentUpon>MainForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Controllers\MasterController.cs" />
+    <Compile Include="Forms\RouterAddEditForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\RouterAddEditForm.Designer.cs">
+      <DependentUpon>RouterAddEditForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Models\Member.cs" />
     <Compile Include="Models\Router.cs" />
-    <Compile Include="Models\Site.cs" />
+    <Compile Include="Models\MineSite.cs" />
     <Compile Include="Models\User.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -98,6 +104,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\RouterAddEditForm.resx">
+      <DependentUpon>RouterAddEditForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

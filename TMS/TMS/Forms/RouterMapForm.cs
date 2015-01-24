@@ -16,5 +16,10 @@ namespace TMS
         {
             InitializeComponent();
         }
+
+        private void RouterMapForm_Deactivate(object sender, EventArgs e)
+        {
+            Hide();
+        }
     }
 }

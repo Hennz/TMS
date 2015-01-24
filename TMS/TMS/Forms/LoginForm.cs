@@ -33,7 +33,6 @@ namespace TMS
 
         private void btnLogin_Click(object sender, EventArgs e)
         {
-
             if (txtUsername.Text != "" &&
                 txtPassword.Text != "")   {
                 int error = _controller.Authenticate(txtUsername.Text, txtPassword.Text);

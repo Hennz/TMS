@@ -4,17 +4,18 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace TMS.Models
+namespace TMS
 {
-    class Router
+    public class Router
     {
         public String routerId { get; private set; } 
         public  String address { get; private set; }
         public String location { get; private set; }
 
-        int posX, posY;
+        public int posX { get; private set; }
+        public int posY { get; private set; }
 
-        bool isBlocked;
+        public bool isBlocked { get; private set; }
 
         public Router(String rId, String addr, String loc, int x, int y, bool iB)
         {
@@ -26,6 +27,11 @@ namespace TMS.Models
             posY = y;
 
             isBlocked = iB;
+        }
+
+        public override string ToString()
+        {
+            return routerId;
         }
 
         public void Update(String rId, String addr, String loc, int x, int y, bool iB)

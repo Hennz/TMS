@@ -26,8 +26,9 @@ namespace TMS.Properties {
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
-        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=(LocalDB)\\v11.0;AttachDbFilename=|DataDirectory|\\TMS_Database.mdf;Int" +
-            "egrated Security=True")]
+        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=(LocalDB)\\v11.0;AttachDbFilename=C:\\Users\\Philip\\Documents\\##School##" +
+            "\\Year 4\\Semester 2\\SE 4450 - Software Design II\\TMS\\TMS\\TMS\\TMS_Database.mdf;Int" +
+            "egrated Security=True;Connect Timeout=30;Initial Catalog=InstanceDB;")]
         public string TMS_DatabaseConnectionString {
             get {
                 return ((string)(this["TMS_DatabaseConnectionString"]));

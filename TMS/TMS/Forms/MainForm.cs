@@ -22,6 +22,16 @@ namespace TMS
 
             _masterController = c;
             _trackingController = new TrackingController(this, picMinePlan);
+
+            lblSiteInfo.Text = MineSite.GetInstance().siteName;
+        }
+
+
+        public void AddToLeftPanel(Form form)
+        {
+            form.TopLevel = false;
+            splitMain.Panel1.Controls.Add(form);
+            form.Show();
         }
 
 
@@ -55,19 +65,44 @@ namespace TMS
 
         private void msMain_Click(object sender, EventArgs e)
         {
-            if (_trackingController != null)
-                _trackingController.HideRouterForm();
-            
+
         }
         
         private void picMinePlan_Paint(object sender, PaintEventArgs e)
         {
-            
+            // Draw grid over the image
+            Graphics g = e.Graphics;
+            int cellSize = 50;
+            int numOfCells = picMinePlan.Width / cellSize;
+            Pen p = new Pen(Color.Black);
+            p.Width = 0.1f;
+
+            // Horizontal lines
+            for (int i = 1; i < numOfCells; i++)
+            {
+                g.DrawLine(p, 0, i * cellSize, numOfCells * cellSize, i * cellSize);
+            }
+
+            // Vertical lines
+            for (int i = 1; i < numOfCells; i++)
+            {
+                g.DrawLine(p, i * cellSize, 0, i * cellSize, numOfCells * cellSize);
+            }
         }
 
         private void picMinePlan_Click(object sender, EventArgs e)
         {
             _trackingController.ShowMinerPosition(MousePosition.X, MousePosition.Y);
+        }
+
+        private void btnRouters_Click(object sender, EventArgs e)
+        {
+            _masterController.OpenRouters();
+        }
+
+        private void btnLoadMap_Click(object sender, EventArgs e)
+        {
+            _masterController.LoadMap(picMinePlan);
         }
 
     }

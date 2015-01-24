@@ -28,13 +28,13 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.TreeNode treeNode1 = new System.Windows.Forms.TreeNode("ED0001");
-            System.Windows.Forms.TreeNode treeNode2 = new System.Windows.Forms.TreeNode("ED0002");
-            System.Windows.Forms.TreeNode treeNode3 = new System.Windows.Forms.TreeNode("ED0002");
-            System.Windows.Forms.TreeNode treeNode4 = new System.Windows.Forms.TreeNode("End Devices", new System.Windows.Forms.TreeNode[] {
-            treeNode1,
-            treeNode2,
-            treeNode3});
+            System.Windows.Forms.TreeNode treeNode9 = new System.Windows.Forms.TreeNode("ED0001");
+            System.Windows.Forms.TreeNode treeNode10 = new System.Windows.Forms.TreeNode("ED0002");
+            System.Windows.Forms.TreeNode treeNode11 = new System.Windows.Forms.TreeNode("ED0002");
+            System.Windows.Forms.TreeNode treeNode12 = new System.Windows.Forms.TreeNode("End Devices", new System.Windows.Forms.TreeNode[] {
+            treeNode9,
+            treeNode10,
+            treeNode11});
             this.lblRouterInfo = new System.Windows.Forms.Label();
             this.tvEndDevices = new System.Windows.Forms.TreeView();
             this.lblTitle = new System.Windows.Forms.Label();
@@ -55,16 +55,16 @@
             this.tvEndDevices.Font = new System.Drawing.Font("Segoe UI", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tvEndDevices.Location = new System.Drawing.Point(22, 105);
             this.tvEndDevices.Name = "tvEndDevices";
-            treeNode1.Name = "Node1";
-            treeNode1.Text = "ED0001";
-            treeNode2.Name = "Node2";
-            treeNode2.Text = "ED0002";
-            treeNode3.Name = "Node3";
-            treeNode3.Text = "ED0002";
-            treeNode4.Name = "End Devices";
-            treeNode4.Text = "End Devices";
+            treeNode9.Name = "Node1";
+            treeNode9.Text = "ED0001";
+            treeNode10.Name = "Node2";
+            treeNode10.Text = "ED0002";
+            treeNode11.Name = "Node3";
+            treeNode11.Text = "ED0002";
+            treeNode12.Name = "End Devices";
+            treeNode12.Text = "End Devices";
             this.tvEndDevices.Nodes.AddRange(new System.Windows.Forms.TreeNode[] {
-            treeNode4});
+            treeNode12});
             this.tvEndDevices.Size = new System.Drawing.Size(178, 97);
             this.tvEndDevices.TabIndex = 1;
             // 
@@ -92,6 +92,7 @@
             this.Name = "RouterMapForm";
             this.ShowInTaskbar = false;
             this.TopMost = true;
+            this.Deactivate += new System.EventHandler(this.RouterMapForm_Deactivate);
             this.ResumeLayout(false);
             this.PerformLayout();
 

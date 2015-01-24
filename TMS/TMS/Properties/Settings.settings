@@ -5,10 +5,10 @@
     <Setting Name="TMS_DatabaseConnectionString" Type="(Connection string)" Scope="Application">
       <DesignTimeValue Profile="(Default)">&lt;?xml version="1.0" encoding="utf-16"?&gt;
 &lt;SerializableConnectionString xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"&gt;
-  &lt;ConnectionString&gt;Data Source=(LocalDB)\v11.0;AttachDbFilename=|DataDirectory|\TMS_Database.mdf;Integrated Security=True&lt;/ConnectionString&gt;
+  &lt;ConnectionString&gt;Data Source=(LocalDB)\v11.0;AttachDbFilename=C:\Users\Philip\Documents\##School##\Year 4\Semester 2\SE 4450 - Software Design II\TMS\TMS\TMS\TMS_Database.mdf;Integrated Security=True;Connect Timeout=30;Initial Catalog=InstanceDB;&lt;/ConnectionString&gt;
   &lt;ProviderName&gt;System.Data.SqlClient&lt;/ProviderName&gt;
 &lt;/SerializableConnectionString&gt;</DesignTimeValue>
-      <Value Profile="(Default)">Data Source=(LocalDB)\v11.0;AttachDbFilename=|DataDirectory|\TMS_Database.mdf;Integrated Security=True</Value>
+      <Value Profile="(Default)">Data Source=(LocalDB)\v11.0;AttachDbFilename=C:\Users\Philip\Documents\##School##\Year 4\Semester 2\SE 4450 - Software Design II\TMS\TMS\TMS\TMS_Database.mdf;Integrated Security=True;Connect Timeout=30;Initial Catalog=InstanceDB;</Value>
     </Setting>
     <Setting Name="ShouldRemember" Type="System.Boolean" Scope="User">
       <Value Profile="(Default)">False</Value>

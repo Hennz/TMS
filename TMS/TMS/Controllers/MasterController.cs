@@ -18,9 +18,59 @@ namespace TMS
         LoginForm _loginForm;
         MainForm _mainForm;
 
+        RouterAddEditForm _routerForm;
+
+        bool isEnteringRouter = false;
+
         public MasterController(LoginForm lf)
         {
             _loginForm = lf;
+
+            // Load site info
+            int siteId = 0;
+            string siteName = "", mapAddr = "";
+            float mapScale = 0;
+            List<Router> routers = new List<Router>();
+
+            using (SqlConnection sqlCon = new SqlConnection(Properties.Settings.Default.TMS_DatabaseConnectionString))
+            {
+                string cmdString = "SELECT * FROM Site";
+                SqlCommand oCmd = new SqlCommand(cmdString, sqlCon);
+
+                sqlCon.Open();
+                using (SqlDataReader oReader = oCmd.ExecuteReader())
+                {
+                    while (oReader.Read())
+                    {
+                        siteId = Int32.Parse(oReader["Id"].ToString());
+                        siteName = oReader["siteName"].ToString();
+                        mapAddr = oReader["localMapFileAddr"].ToString();
+                        mapScale = float.Parse(oReader["mapScale"].ToString());
+                    }
+                }
+
+                cmdString = "SELECT * FROM Routers WHERE siteId = @siteId";
+                oCmd = new SqlCommand(cmdString, sqlCon);
+                oCmd.Parameters.AddWithValue("@siteId", siteId);
+
+                using (SqlDataReader oReader = oCmd.ExecuteReader())
+                {
+                    while (oReader.Read())
+                    {
+                        routers.Add(
+                            new Router(oReader["Id"].ToString(),
+                            oReader["address"].ToString(),
+                            oReader["location"].ToString(),
+                            Int32.Parse(oReader["x"].ToString()),
+                            Int32.Parse(oReader["x"].ToString()),
+                            bool.Parse(oReader["isBlocked"].ToString()))
+                            );
+                    }
+                }
+            }
+
+            MineSite.GetInstance().Init(siteId, siteName, mapAddr, mapScale, routers);
+
         }
 
         public void AssignShift()
@@ -64,12 +114,10 @@ namespace TMS
                         salt = oReader["salt"].ToString();
                         passHash = oReader["password"].ToString();
                     }
-
-                    sqlCon.Close();
                 }
             }
 
-            // TODO: Do hashing and checking 
+            // Hashes and checks password 
             byte[] passBytes = Encoding.UTF8.GetBytes(salt + password);
 
             SHA256 hasherSHA256 = SHA256Managed.Create();
@@ -89,6 +137,12 @@ namespace TMS
             return 0;
         }
 
+        public void ClosedRouterForm()
+        {
+            isEnteringRouter = false;
+            _routerForm.Dispose();
+        }
+
         /// <summary>
         /// TODO Create an admin user if there are none
         /// </summary>
@@ -100,7 +154,7 @@ namespace TMS
         /// <summary>
         /// TODO Create a new user and adds it to the database
         /// </summary>
-        private void CreateUser()
+        public void CreateUser()
         {
 
         }
@@ -143,7 +197,7 @@ namespace TMS
         /// <summary>
         /// TODO Open assign shift form
         /// </summary>
-        private void OpenAssignShift()
+        public void OpenAssignShift()
         {
 
         }
@@ -151,7 +205,7 @@ namespace TMS
         /// <summary>
         /// TODO Open member form
         /// </summary>
-        private void OpenCreateMember()
+        public void OpenCreateMember()
         {
 
         }
@@ -159,7 +213,7 @@ namespace TMS
         /// <summary>
         /// TODO Open tag form
         /// </summary>
-        private void OpenCreateTag()
+        public void OpenCreateTag()
         {
 
         }
@@ -167,7 +221,7 @@ namespace TMS
         /// <summary>
         /// TODO Open user form
         /// </summary>
-        private void OpenCreateUser()
+        public void OpenCreateUser()
         {
 
         }
@@ -183,7 +237,99 @@ namespace TMS
             _mainForm.Show();
         }
 
+        public void OpenRouters()
+        {
+            if (!isEnteringRouter) 
+            {
+                _routerForm = new RouterAddEditForm(this);
+                _mainForm.AddToLeftPanel(_routerForm);
+
+                isEnteringRouter = true;
+            }
+            
+        }
+
         #endregion
 
+        /// <summary>
+        /// 
+        /// </summary>
+        public int RouterCreate(string rId, string addr, string loc, int x, int y, bool isBlocked)
+        {
+            using (SqlConnection sqlCon = new SqlConnection(Properties.Settings.Default.TMS_DatabaseConnectionString))
+            {
+                string cmdString = "INSERT INTO Routers(Id, address, location, x, y, isBlocked, siteId) VALUES(@Id, @address, @location, @x, @y, @isBlocked, @siteId)";
+
+                sqlCon.Open();
+                SqlCommand oCmd = new SqlCommand(cmdString, sqlCon);
+                oCmd.Parameters.AddWithValue("@Id", rId);
+                oCmd.Parameters.AddWithValue("@address", addr);
+                oCmd.Parameters.AddWithValue("@location", loc);
+                oCmd.Parameters.AddWithValue("@x", x);
+                oCmd.Parameters.AddWithValue("@y", y);
+                oCmd.Parameters.AddWithValue("@isBlocked", isBlocked ? 1 : 0);
+                oCmd.Parameters.AddWithValue("@siteId", MineSite.GetInstance().siteId);
+
+                try
+                {
+                    int rows = oCmd.ExecuteNonQuery();
+                    MineSite.GetInstance().siteRouters.Add(new Router(rId, addr, loc, x, y, isBlocked));
+
+                    cmdString = "SELECT * FROM Routers";
+                    oCmd = new SqlCommand(cmdString, sqlCon);
+
+                    using (SqlDataReader oReader = oCmd.ExecuteReader())
+                    {
+                        while (oReader.Read())
+                        {
+                            Console.WriteLine(oReader["Id"].ToString());
+                        }
+                    }
+
+                    return 0;
+                }
+                catch (SqlException e)
+                {
+                    MessageBox.Show("Error", e.Message, MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+                    return 1;
+                }
+
+            }
+        }
+
+        /// <summary>
+        /// Composes an update statement for Routers table
+        /// </summary>
+        public int RouterUpdate(Router router, string rId, string addr, string loc, int x, int y, bool isBlocked)
+        {
+            using (SqlConnection sqlCon = new SqlConnection(Properties.Settings.Default.TMS_DatabaseConnectionString))
+            {
+                string cmdString = "UPDATE Routers SET address=@address, location=@location, x=@x, y=@y, isBlocked=@isBlocked WHERE Id=@Id";
+
+                SqlCommand oCmd = new SqlCommand(cmdString, sqlCon);
+                oCmd.Parameters.AddWithValue("@Id", rId);
+                oCmd.Parameters.AddWithValue("@address", addr);
+                oCmd.Parameters.AddWithValue("@location", loc);
+                oCmd.Parameters.AddWithValue("@x", x);
+                oCmd.Parameters.AddWithValue("@y", y);
+                oCmd.Parameters.AddWithValue("@isBlocked", isBlocked ? 1 : 0);
+
+                sqlCon.Open();
+
+                try
+                {
+                    int rows = oCmd.ExecuteNonQuery();
+                    router.Update(rId, addr, loc, x, y, isBlocked);
+                    return 0;
+                }
+                catch (SqlException e)
+                {
+                    MessageBox.Show("Error", e.Message, MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+                    return 1;
+                }
+            }
+        }
     }
 }
