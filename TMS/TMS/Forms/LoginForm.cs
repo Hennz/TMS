@@ -23,6 +23,7 @@ namespace TMS
             {
                 chkRemember.CheckState = CheckState.Checked;
                 txtUsername.Text = Properties.Settings.Default.Username;
+
             }        
         }
         public void SetController(MasterController c)
@@ -56,6 +57,16 @@ namespace TMS
                     MessageBox.Show("Invalid password", "Login Failed", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
 
+            }
+        }
+
+        private void txtPassword_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == (char)Keys.Return)
+            {
+                btnLogin_Click(sender, e);
+
+                e.Handled = true;
             }
         }
 

@@ -22,7 +22,24 @@ namespace TMS
             _mainForm = m;
             _picMinePlan = pm;
 
-            routerMapForm = new RouterMapForm();
+        }
+
+        public void AddAllRoutersToMap()
+        {
+            foreach (Router router in MineSite.GetInstance().siteRouters)
+            {
+                PictureBox picRouter = new PictureBox();
+                picRouter.BackColor = Color.Transparent;
+                picRouter.Image = router.isBlocked ? TMS.Properties.Resources.router_blocked_map : TMS.Properties.Resources.router_active_map;
+                picRouter.Size = new Size(picRouter.Image.Width, picRouter.Image.Height);
+                _picMinePlan.Controls.Add(picRouter);
+
+                picRouter.Location = new Point((int)(router.posX * MineSite.GetInstance().mapScale), (int)(router.posY * MineSite.GetInstance().mapScale));
+                
+                picRouter.MouseDown += (sender,e) => {
+                    ShowMinerPosition(sender, e, router);
+                };
+            }
         }
 
         public void HideRouterForm()
@@ -31,17 +48,29 @@ namespace TMS
                 routerMapForm.Hide();
         }
 
-        public void ShowMinerPosition(int mouseX, int mouseY)
+        public void ShowMinerPosition(object sender, MouseEventArgs e, Router router)
         {
             if (routerMapForm == null)
+            {
                 routerMapForm = new RouterMapForm();
+                routerMapForm.TopLevel = false;
+                _picMinePlan.Controls.Add(routerMapForm);
+            }
+
+            // Center of the router
+            int mouseX = (int)(router.posX * MineSite.GetInstance().mapScale) + 
+                TMS.Properties.Resources.router_active_map.Width / 2;
+            // Under the router
+            int mouseY = (int)(router.posY * MineSite.GetInstance().mapScale) + 
+                TMS.Properties.Resources.router_active_map.Height;
 
             // Calculates the form's x and y so it stays in the tracking window
-            int x = (mouseX - (_mainForm.DesktopLocation.X + _mainForm.PointToClient(_picMinePlan.Parent.PointToScreen(_picMinePlan.Location)).X)) >= routerMapForm.Width ? mouseX - routerMapForm.Width : mouseX;
-            int y = (mouseY - _mainForm.DesktopLocation.Y) >= routerMapForm.Height ? mouseY - routerMapForm.Height : mouseY;
+            int x = _picMinePlan.Width - mouseX >= routerMapForm.Width ? mouseX : mouseX - routerMapForm.Width;
+            int y = _picMinePlan.Height - mouseY >= routerMapForm.Height ? mouseY : mouseY - routerMapForm.Height;
 
-            routerMapForm.Show();
-            routerMapForm.SetDesktopLocation(x, y);
+            routerMapForm.Show(router);
+            routerMapForm.Location = new Point(x, y);
+            routerMapForm.BringToFront();
         }
     }
 }

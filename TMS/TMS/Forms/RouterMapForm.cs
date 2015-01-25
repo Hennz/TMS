@@ -12,6 +12,8 @@ namespace TMS
 {
     public partial class RouterMapForm : Form
     {
+        Router router;
+
         public RouterMapForm()
         {
             InitializeComponent();
@@ -20,6 +22,18 @@ namespace TMS
         private void RouterMapForm_Deactivate(object sender, EventArgs e)
         {
             Hide();
+        }
+
+        public void Show(Router r)
+        {
+            router = r;
+
+            lblTitle.Text = "Router: " + router.routerId;
+            lblRouterInfo.Text =    "Address : " + router.address + 
+                                    "\nLocation: " + router.location + 
+                                    "\nPosition: " + router.posX + ", " + router.posY;
+
+            Show();
         }
     }
 }

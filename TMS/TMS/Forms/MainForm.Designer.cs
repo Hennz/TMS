@@ -30,9 +30,9 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
             this.splitMain = new System.Windows.Forms.SplitContainer();
-            this.lblUsername = new System.Windows.Forms.Label();
             this.lblSiteInfo = new System.Windows.Forms.Label();
             this.picMinePlan = new System.Windows.Forms.PictureBox();
+            this.lblUsername = new System.Windows.Forms.Label();
             this.pnlLegend = new System.Windows.Forms.Panel();
             this.picMiner = new System.Windows.Forms.PictureBox();
             this.lblActiveMiner = new System.Windows.Forms.Label();
@@ -85,18 +85,6 @@
             this.splitMain.SplitterDistance = 213;
             this.splitMain.TabIndex = 1;
             // 
-            // lblUsername
-            // 
-            this.lblUsername.AutoSize = true;
-            this.lblUsername.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.lblUsername.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblUsername.Location = new System.Drawing.Point(1055, 9);
-            this.lblUsername.Name = "lblUsername";
-            this.lblUsername.Size = new System.Drawing.Size(87, 23);
-            this.lblUsername.TabIndex = 1;
-            this.lblUsername.Text = "Username";
-            this.lblUsername.TextAlign = System.Drawing.ContentAlignment.TopRight;
-            // 
             // lblSiteInfo
             // 
             this.lblSiteInfo.AutoSize = true;
@@ -120,6 +108,18 @@
             this.picMinePlan.TabStop = false;
             this.picMinePlan.Click += new System.EventHandler(this.picMinePlan_Click);
             this.picMinePlan.Paint += new System.Windows.Forms.PaintEventHandler(this.picMinePlan_Paint);
+            // 
+            // lblUsername
+            // 
+            this.lblUsername.AutoSize = true;
+            this.lblUsername.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.lblUsername.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblUsername.Location = new System.Drawing.Point(1055, 9);
+            this.lblUsername.Name = "lblUsername";
+            this.lblUsername.Size = new System.Drawing.Size(87, 23);
+            this.lblUsername.TabIndex = 1;
+            this.lblUsername.Text = "Username";
+            this.lblUsername.TextAlign = System.Drawing.ContentAlignment.TopRight;
             // 
             // pnlLegend
             // 
@@ -281,7 +281,7 @@
             this.tabAttendance.Location = new System.Drawing.Point(4, 32);
             this.tabAttendance.Name = "tabAttendance";
             this.tabAttendance.Padding = new System.Windows.Forms.Padding(3);
-            this.tabAttendance.Size = new System.Drawing.Size(1069, 66);
+            this.tabAttendance.Size = new System.Drawing.Size(708, 66);
             this.tabAttendance.TabIndex = 3;
             this.tabAttendance.Text = "Attendance";
             this.tabAttendance.UseVisualStyleBackColor = true;
@@ -291,7 +291,7 @@
             this.tabReports.Location = new System.Drawing.Point(4, 32);
             this.tabReports.Name = "tabReports";
             this.tabReports.Padding = new System.Windows.Forms.Padding(3);
-            this.tabReports.Size = new System.Drawing.Size(1069, 66);
+            this.tabReports.Size = new System.Drawing.Size(708, 66);
             this.tabReports.TabIndex = 1;
             this.tabReports.Text = "Reports";
             this.tabReports.UseVisualStyleBackColor = true;

@@ -45,6 +45,7 @@
             this.lblLoc = new System.Windows.Forms.Label();
             this.txtLocation = new System.Windows.Forms.TextBox();
             this.chkBlocked = new System.Windows.Forms.CheckBox();
+            this.btnDelete = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.epRID)).BeginInit();
             this.SuspendLayout();
             // 
@@ -82,14 +83,14 @@
             this.lstRouters.ItemHeight = 23;
             this.lstRouters.Location = new System.Drawing.Point(13, 47);
             this.lstRouters.Name = "lstRouters";
-            this.lstRouters.Size = new System.Drawing.Size(178, 255);
+            this.lstRouters.Size = new System.Drawing.Size(190, 255);
             this.lstRouters.TabIndex = 2;
             this.lstRouters.SelectedIndexChanged += new System.EventHandler(this.lstRouters_SelectedIndexChanged);
             // 
             // txtId
             // 
             this.txtId.Font = new System.Drawing.Font("Segoe UI", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtId.Location = new System.Drawing.Point(79, 320);
+            this.txtId.Location = new System.Drawing.Point(92, 320);
             this.txtId.Name = "txtId";
             this.txtId.Size = new System.Drawing.Size(111, 25);
             this.txtId.TabIndex = 3;
@@ -98,7 +99,7 @@
             // txtAddr
             // 
             this.txtAddr.Font = new System.Drawing.Font("Segoe UI", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtAddr.Location = new System.Drawing.Point(79, 349);
+            this.txtAddr.Location = new System.Drawing.Point(92, 349);
             this.txtAddr.Multiline = true;
             this.txtAddr.Name = "txtAddr";
             this.txtAddr.Size = new System.Drawing.Size(111, 56);
@@ -137,7 +138,7 @@
             // mtxtX
             // 
             this.mtxtX.Font = new System.Drawing.Font("Segoe UI", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.mtxtX.Location = new System.Drawing.Point(79, 442);
+            this.mtxtX.Location = new System.Drawing.Point(92, 442);
             this.mtxtX.Mask = "000";
             this.mtxtX.Name = "mtxtX";
             this.mtxtX.Size = new System.Drawing.Size(50, 25);
@@ -147,7 +148,7 @@
             // mtxtY
             // 
             this.mtxtY.Font = new System.Drawing.Font("Segoe UI", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.mtxtY.Location = new System.Drawing.Point(140, 442);
+            this.mtxtY.Location = new System.Drawing.Point(153, 442);
             this.mtxtY.Mask = "000";
             this.mtxtY.Name = "mtxtY";
             this.mtxtY.Size = new System.Drawing.Size(50, 25);
@@ -158,7 +159,7 @@
             // 
             this.btnEnter.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnEnter.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnEnter.Location = new System.Drawing.Point(106, 500);
+            this.btnEnter.Location = new System.Drawing.Point(118, 500);
             this.btnEnter.Name = "btnEnter";
             this.btnEnter.Size = new System.Drawing.Size(85, 37);
             this.btnEnter.TabIndex = 12;
@@ -169,7 +170,7 @@
             // 
             this.btnClose.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnClose.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnClose.Location = new System.Drawing.Point(107, 543);
+            this.btnClose.Location = new System.Drawing.Point(118, 543);
             this.btnClose.Name = "btnClose";
             this.btnClose.Size = new System.Drawing.Size(85, 37);
             this.btnClose.TabIndex = 13;
@@ -194,7 +195,7 @@
             // txtLocation
             // 
             this.txtLocation.Font = new System.Drawing.Font("Segoe UI", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtLocation.Location = new System.Drawing.Point(79, 411);
+            this.txtLocation.Location = new System.Drawing.Point(92, 411);
             this.txtLocation.Name = "txtLocation";
             this.txtLocation.Size = new System.Drawing.Size(111, 25);
             this.txtLocation.TabIndex = 5;
@@ -202,12 +203,27 @@
             // chkBlocked
             // 
             this.chkBlocked.AutoSize = true;
-            this.chkBlocked.Location = new System.Drawing.Point(112, 473);
+            this.chkBlocked.Location = new System.Drawing.Point(123, 473);
             this.chkBlocked.Name = "chkBlocked";
             this.chkBlocked.Size = new System.Drawing.Size(80, 21);
             this.chkBlocked.TabIndex = 8;
             this.chkBlocked.Text = "Blocked";
             this.chkBlocked.UseVisualStyleBackColor = true;
+            // 
+            // btnDelete
+            // 
+            this.btnDelete.Enabled = false;
+            this.btnDelete.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnDelete.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnDelete.Location = new System.Drawing.Point(210, 47);
+            this.btnDelete.Name = "btnDelete";
+            this.btnDelete.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.btnDelete.Size = new System.Drawing.Size(40, 40);
+            this.btnDelete.TabIndex = 16;
+            this.btnDelete.Text = "X";
+            this.btnDelete.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.btnDelete.UseVisualStyleBackColor = true;
+            this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
             // 
             // RouterAddEditForm
             // 
@@ -218,6 +234,7 @@
             this.BackColor = System.Drawing.SystemColors.ControlLightLight;
             this.ClientSize = new System.Drawing.Size(278, 853);
             this.ControlBox = false;
+            this.Controls.Add(this.btnDelete);
             this.Controls.Add(this.chkBlocked);
             this.Controls.Add(this.lblLoc);
             this.Controls.Add(this.txtLocation);
@@ -264,5 +281,6 @@
         private System.Windows.Forms.Label lblLoc;
         private System.Windows.Forms.TextBox txtLocation;
         private System.Windows.Forms.CheckBox chkBlocked;
+        private System.Windows.Forms.Button btnDelete;
     }
 }

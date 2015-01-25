@@ -90,12 +90,13 @@ namespace TMS
         public int Authenticate(string username, string password)
         {
             // Get salt from database
+            string fName = "", lName = "";
             string salt = "";
             string passHash = "";
 
             using (SqlConnection sqlCon = new SqlConnection(Properties.Settings.Default.TMS_DatabaseConnectionString))
             {
-                string cmdString = "SELECT password, salt FROM Users WHERE username=@username";
+                string cmdString = "SELECT * FROM Users WHERE username=@username";
 
                 SqlCommand oCmd = new SqlCommand(cmdString, sqlCon);
                 oCmd.Parameters.AddWithValue("@username", username);
@@ -111,6 +112,9 @@ namespace TMS
 
                     while (oReader.Read())
                     {
+                        fName = oReader["fName"].ToString();
+                        lName = oReader["lName"].ToString();
+
                         salt = oReader["salt"].ToString();
                         passHash = oReader["password"].ToString();
                     }
@@ -133,6 +137,9 @@ namespace TMS
             {
                 return 2;
             }
+
+            // Initialize user 
+            User.GetInstance().Init(username, fName, lName);
 
             return 0;
         }

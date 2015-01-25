@@ -63,6 +63,12 @@ namespace TMS
 
         private void NewRouter(object sender, EventArgs e)
         {
+            if (txtId.Text == "" || mtxtX.Text == "" || mtxtY.Text == "")   
+            {
+                MessageBox.Show("Please enter all the required fields.", "Required Fields", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
             int errorCode = _controller.RouterCreate(   txtId.Text,
                                                         txtAddr.Text, txtLocation.Text,
                                                         Int32.Parse(mtxtX.Text), Int32.Parse(mtxtY.Text),
@@ -113,6 +119,7 @@ namespace TMS
             if (rbUpdate.Checked)
             {
                 txtId.Enabled = false;
+                btnDelete.Enabled = true;
                 btnEnter.Click -= NewRouter;
                 btnEnter.Click += UpdateRouter;
             }
@@ -123,6 +130,7 @@ namespace TMS
             if (rbNew.Checked)
             {
                 txtId.Enabled = true;
+                btnDelete.Enabled = false;
                 btnEnter.Click -= UpdateRouter;
                 btnEnter.Click += NewRouter;
             }
@@ -139,6 +147,11 @@ namespace TMS
             chkBlocked.Checked = router.isBlocked;
 
             rbUpdate.Checked = true;
+        }
+
+        private void btnDelete_Click(object sender, EventArgs e)
+        {
+
         }
 
     }

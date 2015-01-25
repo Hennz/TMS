@@ -28,13 +28,13 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.TreeNode treeNode9 = new System.Windows.Forms.TreeNode("ED0001");
-            System.Windows.Forms.TreeNode treeNode10 = new System.Windows.Forms.TreeNode("ED0002");
-            System.Windows.Forms.TreeNode treeNode11 = new System.Windows.Forms.TreeNode("ED0002");
-            System.Windows.Forms.TreeNode treeNode12 = new System.Windows.Forms.TreeNode("End Devices", new System.Windows.Forms.TreeNode[] {
-            treeNode9,
-            treeNode10,
-            treeNode11});
+            System.Windows.Forms.TreeNode treeNode5 = new System.Windows.Forms.TreeNode("ED0001");
+            System.Windows.Forms.TreeNode treeNode6 = new System.Windows.Forms.TreeNode("ED0002");
+            System.Windows.Forms.TreeNode treeNode7 = new System.Windows.Forms.TreeNode("ED0002");
+            System.Windows.Forms.TreeNode treeNode8 = new System.Windows.Forms.TreeNode("End Devices", new System.Windows.Forms.TreeNode[] {
+            treeNode5,
+            treeNode6,
+            treeNode7});
             this.lblRouterInfo = new System.Windows.Forms.Label();
             this.tvEndDevices = new System.Windows.Forms.TreeView();
             this.lblTitle = new System.Windows.Forms.Label();
@@ -53,18 +53,18 @@
             // tvEndDevices
             // 
             this.tvEndDevices.Font = new System.Drawing.Font("Segoe UI", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tvEndDevices.Location = new System.Drawing.Point(22, 105);
+            this.tvEndDevices.Location = new System.Drawing.Point(22, 136);
             this.tvEndDevices.Name = "tvEndDevices";
-            treeNode9.Name = "Node1";
-            treeNode9.Text = "ED0001";
-            treeNode10.Name = "Node2";
-            treeNode10.Text = "ED0002";
-            treeNode11.Name = "Node3";
-            treeNode11.Text = "ED0002";
-            treeNode12.Name = "End Devices";
-            treeNode12.Text = "End Devices";
+            treeNode5.Name = "Node1";
+            treeNode5.Text = "ED0001";
+            treeNode6.Name = "Node2";
+            treeNode6.Text = "ED0002";
+            treeNode7.Name = "Node3";
+            treeNode7.Text = "ED0002";
+            treeNode8.Name = "End Devices";
+            treeNode8.Text = "End Devices";
             this.tvEndDevices.Nodes.AddRange(new System.Windows.Forms.TreeNode[] {
-            treeNode12});
+            treeNode8});
             this.tvEndDevices.Size = new System.Drawing.Size(178, 97);
             this.tvEndDevices.TabIndex = 1;
             // 
@@ -74,16 +74,16 @@
             this.lblTitle.Font = new System.Drawing.Font("Segoe UI", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblTitle.Location = new System.Drawing.Point(16, 13);
             this.lblTitle.Name = "lblTitle";
-            this.lblTitle.Size = new System.Drawing.Size(179, 32);
+            this.lblTitle.Size = new System.Drawing.Size(205, 32);
             this.lblTitle.TabIndex = 2;
-            this.lblTitle.Text = "Router: R0001";
+            this.lblTitle.Text = "Router: routerID";
             // 
             // RouterMapForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ControlLightLight;
-            this.ClientSize = new System.Drawing.Size(212, 215);
+            this.ClientSize = new System.Drawing.Size(212, 245);
             this.ControlBox = false;
             this.Controls.Add(this.lblTitle);
             this.Controls.Add(this.tvEndDevices);

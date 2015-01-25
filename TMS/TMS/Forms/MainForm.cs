@@ -24,6 +24,9 @@ namespace TMS
             _trackingController = new TrackingController(this, picMinePlan);
 
             lblSiteInfo.Text = MineSite.GetInstance().siteName;
+            lblUsername.Text = User.GetInstance().username;
+
+            _trackingController.AddAllRoutersToMap();
         }
 
 
@@ -90,11 +93,6 @@ namespace TMS
             }
         }
 
-        private void picMinePlan_Click(object sender, EventArgs e)
-        {
-            _trackingController.ShowMinerPosition(MousePosition.X, MousePosition.Y);
-        }
-
         private void btnRouters_Click(object sender, EventArgs e)
         {
             _masterController.OpenRouters();
@@ -103,6 +101,11 @@ namespace TMS
         private void btnLoadMap_Click(object sender, EventArgs e)
         {
             _masterController.LoadMap(picMinePlan);
+        }
+
+        private void picMinePlan_Click(object sender, EventArgs e)
+        {
+            _trackingController.HideRouterForm();
         }
 
     }

@@ -116,6 +116,7 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
     <EmbeddedResource Include="Forms\RouterMapForm.resx">
       <DependentUpon>RouterMapForm.cs</DependentUpon>
@@ -146,8 +147,13 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Resources\active-miner.png" />
+    <Content Include="Resources\add-router.png" />
+    <Content Include="Resources\load-map.png" />
+    <Content Include="Resources\router-active-map.png" />
     <Content Include="Resources\router-active.png" />
+    <Content Include="Resources\router-blocked-map.png" />
     <Content Include="Resources\router-blocked.png" />
+    <Content Include="Resources\settings-user.png" />
     <Content Include="Resources\TMS-Logo_2.ico" />
     <Content Include="TMS_Database.mdf">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
