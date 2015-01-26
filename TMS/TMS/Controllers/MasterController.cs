@@ -93,6 +93,7 @@ namespace TMS
             string fName = "", lName = "";
             string salt = "";
             string passHash = "";
+            bool isAdmin = false;
 
             using (SqlConnection sqlCon = new SqlConnection(Properties.Settings.Default.TMS_DatabaseConnectionString))
             {
@@ -114,6 +115,7 @@ namespace TMS
                     {
                         fName = oReader["fName"].ToString();
                         lName = oReader["lName"].ToString();
+                        isAdmin = oReader["isAdmin"].ToString().Equals("True") ? true : false;
 
                         salt = oReader["salt"].ToString();
                         passHash = oReader["password"].ToString();
@@ -139,7 +141,7 @@ namespace TMS
             }
 
             // Initialize user 
-            User.GetInstance().Init(username, fName, lName);
+            User.GetInstance().Init(username, fName, lName, isAdmin);
 
             return 0;
         }

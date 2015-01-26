@@ -24,7 +24,9 @@ namespace TMS
             _trackingController = new TrackingController(this, picMinePlan);
 
             lblSiteInfo.Text = MineSite.GetInstance().siteName;
-            lblUsername.Text = User.GetInstance().username;
+
+            llblUsername.Text = User.GetInstance().username;
+            lblUserType.Text = User.GetInstance().isAdmin ? "Administrator" : "Regular User";
 
             _trackingController.AddAllRoutersToMap();
         }
@@ -106,6 +108,16 @@ namespace TMS
         private void picMinePlan_Click(object sender, EventArgs e)
         {
             _trackingController.HideRouterForm();
+        }
+
+        /// <summary>
+        /// TODO Open a user account form
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void llblUsername_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+
         }
 
     }

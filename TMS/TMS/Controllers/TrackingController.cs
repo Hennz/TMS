@@ -66,7 +66,7 @@ namespace TMS
 
             // Calculates the form's x and y so it stays in the tracking window
             int x = _picMinePlan.Width - mouseX >= routerMapForm.Width ? mouseX : mouseX - routerMapForm.Width;
-            int y = _picMinePlan.Height - mouseY >= routerMapForm.Height ? mouseY : mouseY - routerMapForm.Height;
+            int y = _picMinePlan.Height - mouseY >= routerMapForm.Height ? mouseY : mouseY - routerMapForm.Height - TMS.Properties.Resources.router_active_map.Height;
 
             routerMapForm.Show(router);
             routerMapForm.Location = new Point(x, y);

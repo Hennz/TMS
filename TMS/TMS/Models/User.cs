@@ -14,11 +14,14 @@ namespace TMS
         public String fName { get; private set; }
         public String lName { get; private set; }
 
-        public void Init(string uName, string f, string l)
+        public bool isAdmin { get; private set; }
+
+        public void Init(string uName, string f, string l, bool isA)
         {
             username = uName;
             fName = f;
             lName = l;
+            isAdmin = isA;
         }
         public static User GetInstance()
         {
