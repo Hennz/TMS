@@ -86,8 +86,6 @@ namespace TMS
         {
             mtxtX.Text = "" + x;
             mtxtY.Text = "" + y;
-
-            Console.WriteLine("Set " + x + " " + y);
         }
 
         private void UpdateRouter(object sender, EventArgs e)   
@@ -107,7 +105,7 @@ namespace TMS
 
         private void txtId_Leave(object sender, EventArgs e)
         {
-            if (MineSite.GetInstance().ContainsRouter(txtId.Text))
+            if (MineSite.GetInstance().ContainsRouter(txtId.Text) != null)
             {
                 epRID.SetError(txtId, "This ID already exists.");
             }

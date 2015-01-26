@@ -16,18 +16,19 @@ namespace TMS
         public float mapScale { get; private set; }
 
         public List<Router> siteRouters { get; private set; }
+        public List<Member> siteMembers { get; private set; }
 
-        public bool ContainsRouter(string rId) 
+        public Router ContainsRouter(string rId) 
         {
             foreach (Router r in siteRouters)
             {
                 if (rId.Equals(r.routerId))
                 {
-                    return true;
+                    return r;
                 }
             }
 
-            return false;
+            return null;
         }
 
         public static MineSite GetInstance() {
@@ -38,7 +39,7 @@ namespace TMS
             return _instance;
         }
 
-        public void Init(int id, string siteN, string mapPath, float scale, List<Router> routers)
+        public void Init(int id, string siteN, string mapPath, float scale, List<Router> routers, List<Member> members)
         {
             siteId = id;
             siteName = siteN;
@@ -46,6 +47,7 @@ namespace TMS
             mapScale = scale;
 
             siteRouters = routers;
+            siteMembers = members;
         }
 
     }

@@ -18,7 +18,9 @@ namespace TMS
         LoginForm _loginForm;
         MainForm _mainForm;
 
+        MinerAddEditForm _minerForm;
         RouterAddEditForm _routerForm;
+        UserAddEditForm _userForm;
 
         public PictureBox _picMinePlan { private get;  set; }
 
@@ -33,6 +35,7 @@ namespace TMS
             string siteName = "", mapAddr = "";
             float mapScale = 0;
             List<Router> routers = new List<Router>();
+            List<Member> members = new List<Member>();
 
             using (SqlConnection sqlCon = new SqlConnection(Properties.Settings.Default.TMS_DatabaseConnectionString))
             {
@@ -69,10 +72,32 @@ namespace TMS
                             );
                     }
                 }
+
+                cmdString = "SELECT * FROM Members WHERE siteId = @siteId";
+                oCmd = new SqlCommand(cmdString, sqlCon);
+                oCmd.Parameters.AddWithValue("@siteId", siteId);
+
+                using (SqlDataReader oReader = oCmd.ExecuteReader())
+                {
+                    while (oReader.Read())
+                    {
+                        members.Add(new Member(oReader["memberNo"].ToString(),
+                            oReader["fName"].ToString(),
+                            oReader["mName"].ToString(),
+                            oReader["lName"].ToString(),
+                            oReader["address"].ToString(),
+                            oReader["province"].ToString(),
+                            oReader["city"].ToString(),
+                            Int32.Parse(oReader["pinNo"].ToString()),
+                            oReader["phoneNo"].ToString(),
+                            oReader["mobileNo"].ToString(),
+                            oReader["isVehicle"].ToString() == "1" ? true : false,
+                            oReader["tagId"].ToString()));
+                    }
+                }
             }
 
-            MineSite.GetInstance().Init(siteId, siteName, mapAddr, mapScale, routers);
-
+            MineSite.GetInstance().Init(siteId, siteName, mapAddr, mapScale, routers, members);
         }
 
         public void AssignShift()
@@ -197,7 +222,7 @@ namespace TMS
                 }
                 catch (Exception ex)
                 {
-                    MessageBox.Show("Error: Could not read file from disk. \nOriginal error: " + ex.Message);
+                    MessageBox.Show("Error: Could not open file. \n", ex.Message, MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
         }
@@ -207,17 +232,21 @@ namespace TMS
         /// <summary>
         /// TODO Open assign shift form
         /// </summary>
-        public void OpenAssignShift()
+        public void OpenAssignShift(Member member)
         {
 
         }
 
         /// <summary>
-        /// TODO Open member form
+        /// Open member form
         /// </summary>
         public void OpenCreateMember()
         {
-
+            if (_minerForm == null || _minerForm.Visible == false)
+            {
+                _minerForm = new MinerAddEditForm(this);
+                _minerForm.Show();
+            }
         }
 
         /// <summary>
@@ -258,7 +287,142 @@ namespace TMS
             
         }
 
+        /// <summary>
+        /// Opens the form for creating / editing users
+        /// </summary>
+        public void OpenUsers()
+        {
+            if (_userForm == null || _userForm.Visible == false)
+            {
+                _userForm = new UserAddEditForm(this);
+                _userForm.Show();
+            }
+        }
+
         #endregion
+
+        /// <summary>
+        /// Creates a member object in the database and adds it to MineSite
+        /// </summary>
+        public int MemberCreate(string memberNo, 
+            string fName, string mName, string lName,
+            string addr, string prov, string city, int pinNo, 
+            string phoneNo, string mobileNo, bool isVehicle, 
+            string tagId)
+        {
+            using (SqlConnection sqlCon = new SqlConnection(Properties.Settings.Default.TMS_DatabaseConnectionString))
+            {
+                string cmdString = 
+                    "INSERT INTO Members(memberNo, fName, mName, lName, address, province, city, pinNo, phoneNo, mobileNo, isVehicle,  tagId, siteId) " + 
+                                 "VALUES(@memberNo, @fName, @mName, @lName, @address, @province, @city, @pinNo, @phoneNo, @mobileNo, @isVehicle,  @tagId, @siteId)";
+
+                sqlCon.Open();
+                SqlCommand oCmd = new SqlCommand(cmdString, sqlCon);
+                oCmd.Parameters.AddWithValue("@memberNo", memberNo);
+                oCmd.Parameters.AddWithValue("@fName", fName);
+                oCmd.Parameters.AddWithValue("@mName", mName);
+                oCmd.Parameters.AddWithValue("@lName", lName);
+                oCmd.Parameters.AddWithValue("@address", addr);
+                oCmd.Parameters.AddWithValue("@province", prov);
+                oCmd.Parameters.AddWithValue("@city", city);
+                oCmd.Parameters.AddWithValue("@pinNo", pinNo);
+                oCmd.Parameters.AddWithValue("@phoneNo", phoneNo);
+                oCmd.Parameters.AddWithValue("@mobileNo", mobileNo);
+                oCmd.Parameters.AddWithValue("@isVehicle", isVehicle ? 1 : 0);
+                oCmd.Parameters.AddWithValue("@tagId", tagId);
+                oCmd.Parameters.AddWithValue("@siteId", MineSite.GetInstance().siteId);
+
+                try
+                {
+                    int rows = oCmd.ExecuteNonQuery();
+                    
+                    return 0;
+                }
+                catch (SqlException e)
+                {
+                    MessageBox.Show("Error", e.Message, MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+                    return 1;
+                }
+
+            }
+        }
+
+        /// <summary>
+        /// Composes an update statement for Routers table
+        /// </summary>
+        public int MemberUpdate(Member member, string memberNo,
+            string fName, string mName, string lName,
+            string addr, string province, string city, int pinNo,
+            string phoneNo, string mobileNo, bool isVehicle,
+            string tagId)
+        {
+            using (SqlConnection sqlCon = new SqlConnection(Properties.Settings.Default.TMS_DatabaseConnectionString))
+            {
+                string cmdString = "UPDATE Members SET fName=@fName, mName=@mName, lName=@lName, address=@address, province=@province, city=@city, pinNo=@pinNo, phoneNo=@phoneNo, mobileNo=@mobileNo, isVehicle=@isVehicle, tagId=@tagId WHERE memberNo=@memberNo";
+
+                sqlCon.Open();
+                SqlCommand oCmd = new SqlCommand(cmdString, sqlCon);
+                oCmd.Parameters.AddWithValue("@memberNo", memberNo);
+                oCmd.Parameters.AddWithValue("@fName", fName);
+                oCmd.Parameters.AddWithValue("@mName", mName);
+                oCmd.Parameters.AddWithValue("@lName", lName);
+                oCmd.Parameters.AddWithValue("@address", addr);
+                oCmd.Parameters.AddWithValue("@province", province);
+                oCmd.Parameters.AddWithValue("@city", city);
+                oCmd.Parameters.AddWithValue("@pinNo", pinNo);
+                oCmd.Parameters.AddWithValue("@phoneNo", phoneNo);
+                oCmd.Parameters.AddWithValue("@mobileNo", mobileNo);
+                oCmd.Parameters.AddWithValue("@isVehicle", isVehicle ? 1 : 0);
+                oCmd.Parameters.AddWithValue("@tagId", tagId);
+                
+                try
+                {
+                    int rows = oCmd.ExecuteNonQuery();
+
+                    member.Update(  memberNo,
+                                    fName, mName, lName,
+                                    addr, province, city, pinNo,
+                                    phoneNo, mobileNo, isVehicle,
+                                    tagId);
+
+                    return 0;
+                }
+                catch (SqlException e)
+                {
+                    MessageBox.Show("Error", e.Message, MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+                    return 1;
+                }
+            }
+        }
+
+        /// <summary>
+        /// Queries the database for a list of all the tags
+        /// </summary>
+        /// <returns></returns>
+        public List<string> RetrieveTagIDList()
+        {
+            List<string> tags = new List<string>();
+
+            using (SqlConnection sqlCon = new SqlConnection(Properties.Settings.Default.TMS_DatabaseConnectionString))
+            {
+                string cmdString = "SELECT * FROM Tags";
+
+                SqlCommand oCmd = new SqlCommand(cmdString, sqlCon);
+
+                sqlCon.Open();
+                using (SqlDataReader oReader = oCmd.ExecuteReader())
+                {
+                    while (oReader.Read())
+                    {
+                        tags.Add(oReader["Id"].ToString());
+                    }
+                }
+            }
+
+            return tags;
+        }
 
         /// <summary>
         /// 
@@ -283,17 +447,6 @@ namespace TMS
                 {
                     int rows = oCmd.ExecuteNonQuery();
                     MineSite.GetInstance().siteRouters.Add(new Router(rId, addr, loc, x, y, isBlocked));
-
-                    cmdString = "SELECT * FROM Routers";
-                    oCmd = new SqlCommand(cmdString, sqlCon);
-
-                    using (SqlDataReader oReader = oCmd.ExecuteReader())
-                    {
-                        while (oReader.Read())
-                        {
-                            Console.WriteLine(oReader["Id"].ToString());
-                        }
-                    }
 
                     return 0;
                 }

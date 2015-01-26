@@ -17,6 +17,8 @@ namespace TMS
 
         public bool isBlocked { get; private set; }
 
+        public LinkedList<Member> hasConnectedMember { get; private set; }
+
         public delegate void OnUpdatedDelegate(int new_x, int new_y, bool new_blocked);
 
         public event OnUpdatedDelegate OnUpdated;
@@ -32,6 +34,7 @@ namespace TMS
 
             isBlocked = iB;
 
+            hasConnectedMember = new LinkedList<Member>();
             
         }
 

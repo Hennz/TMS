@@ -30,6 +30,20 @@ namespace TMS
             llblUsername.Text = User.GetInstance().username;
             lblUserType.Text = User.GetInstance().isAdmin ? "Administrator" : "Regular User";
 
+            // Load routers into treeview
+            tvAllRouters.BeginUpdate();
+
+            foreach (Router router in MineSite.GetInstance().siteRouters)
+            {
+                TreeNode routerNode = new TreeNode(router.ToString());
+                tvAllRouters.Nodes[0].Nodes.Add(routerNode);
+
+            }
+            tvAllRouters.Nodes[0].ExpandAll();
+            tvAllRouters.Nodes[0].Text = MineSite.GetInstance().siteName;
+
+            tvAllRouters.EndUpdate();
+
             _trackingController.AddAllRoutersToMap();
         }
 
@@ -123,13 +137,23 @@ namespace TMS
         }
 
         /// <summary>
-        /// TODO Open form to enter miner details
+        /// Open form to enter miner details
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
         private void btnMember_Click(object sender, EventArgs e)
         {
+            _masterController.OpenCreateMember();
+        }
 
+        private void tvAllRouters_AfterSelect(object sender, TreeViewEventArgs e)
+        {
+            Router router = MineSite.GetInstance().ContainsRouter(e.Node.Text.Split(',')[0]);
+
+            if (router != null)
+            {
+                _trackingController.ShowMinerPosition(sender, null, router);
+            }
         }
 
     }

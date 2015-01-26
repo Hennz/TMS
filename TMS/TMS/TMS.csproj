@@ -87,6 +87,12 @@
     <Compile Include="Forms\RouterAddEditForm.Designer.cs">
       <DependentUpon>RouterAddEditForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\UserAddEditForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\UserAddEditForm.Designer.cs">
+      <DependentUpon>UserAddEditForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Models\Member.cs" />
     <Compile Include="Models\Router.cs" />
     <Compile Include="Models\MineSite.cs" />
@@ -116,6 +122,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\RouterAddEditForm.resx">
       <DependentUpon>RouterAddEditForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\UserAddEditForm.resx">
+      <DependentUpon>UserAddEditForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -155,6 +164,7 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Resources\active-miner-map.png" />
     <Content Include="Resources\active-miner.png" />
     <Content Include="Resources\load-map.png" />
     <Content Include="Resources\router-active-map.png" />

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace TMS
 {
-    class Member
+    public class Member
     {
         public String memberId { get; private set; }
         public String fName { get; private set; }
@@ -70,6 +70,11 @@ namespace TMS
             return path;
         }
 
+        public override string ToString()
+        {
+            return tagId + " " + lName + ", " + fName + (path.First == null ? "" : " - " + path.First.Value.location);
+        }
+
         public void Update(String mId, String f, String m, String l,
             String addr, String prov, String cit,
             int pNo,
@@ -95,8 +100,6 @@ namespace TMS
             isVehicle = isV;
 
             tagId = tId;
-
-            // TODO: Put in SQL update logic for Members
 
         }
 

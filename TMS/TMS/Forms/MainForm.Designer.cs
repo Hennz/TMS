@@ -30,8 +30,8 @@
         {
             System.Windows.Forms.TreeNode treeNode1 = new System.Windows.Forms.TreeNode("Mine Site Name");
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
             this.splitMain = new System.Windows.Forms.SplitContainer();
             this.lstActiveMiners = new System.Windows.Forms.ListBox();
             this.tabRouters = new System.Windows.Forms.TabControl();
@@ -39,13 +39,16 @@
             this.tvAllRouters = new System.Windows.Forms.TreeView();
             this.tabJustRouters = new System.Windows.Forms.TabPage();
             this.dataRouters = new System.Windows.Forms.DataGridView();
+            this.dgRouter = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dgAddress = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dgLocation = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.picMinePlan = new System.Windows.Forms.PictureBox();
             this.pnlLegend = new System.Windows.Forms.Panel();
             this.picMiner = new System.Windows.Forms.PictureBox();
             this.lblActiveMiner = new System.Windows.Forms.Label();
             this.picRouterBlocked = new System.Windows.Forms.PictureBox();
             this.picRouter = new System.Windows.Forms.PictureBox();
-            this.label1 = new System.Windows.Forms.Label();
+            this.lblBRouter = new System.Windows.Forms.Label();
             this.lblLegendRouter = new System.Windows.Forms.Label();
             this.lblSiteInfo = new System.Windows.Forms.Label();
             this.statusMain = new System.Windows.Forms.StatusStrip();
@@ -66,9 +69,6 @@
             this.tabAttendance = new System.Windows.Forms.TabPage();
             this.llblUsername = new System.Windows.Forms.LinkLabel();
             this.lblUserType = new System.Windows.Forms.Label();
-            this.dgRouter = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dgAddress = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dgLocation = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.splitMain)).BeginInit();
             this.splitMain.Panel1.SuspendLayout();
             this.splitMain.Panel2.SuspendLayout();
@@ -166,6 +166,7 @@
             treeNode1});
             this.tvAllRouters.Size = new System.Drawing.Size(252, 436);
             this.tvAllRouters.TabIndex = 0;
+            this.tvAllRouters.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.tvAllRouters_AfterSelect);
             // 
             // tabJustRouters
             // 
@@ -196,6 +197,25 @@
             this.dataRouters.Size = new System.Drawing.Size(251, 435);
             this.dataRouters.TabIndex = 0;
             // 
+            // dgRouter
+            // 
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Segoe UI", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dgRouter.DefaultCellStyle = dataGridViewCellStyle2;
+            this.dgRouter.HeaderText = "Router";
+            this.dgRouter.Name = "dgRouter";
+            this.dgRouter.ReadOnly = true;
+            // 
+            // dgAddress
+            // 
+            this.dgAddress.HeaderText = "Addr";
+            this.dgAddress.Name = "dgAddress";
+            // 
+            // dgLocation
+            // 
+            this.dgLocation.HeaderText = "Loc";
+            this.dgLocation.Name = "dgLocation";
+            this.dgLocation.ReadOnly = true;
+            // 
             // picMinePlan
             // 
             this.picMinePlan.BackColor = System.Drawing.SystemColors.ControlLightLight;
@@ -218,7 +238,7 @@
             this.pnlLegend.Controls.Add(this.lblActiveMiner);
             this.pnlLegend.Controls.Add(this.picRouterBlocked);
             this.pnlLegend.Controls.Add(this.picRouter);
-            this.pnlLegend.Controls.Add(this.label1);
+            this.pnlLegend.Controls.Add(this.lblBRouter);
             this.pnlLegend.Controls.Add(this.lblLegendRouter);
             this.pnlLegend.Location = new System.Drawing.Point(810, 7);
             this.pnlLegend.Name = "pnlLegend";
@@ -228,7 +248,7 @@
             // picMiner
             // 
             this.picMiner.Image = ((System.Drawing.Image)(resources.GetObject("picMiner.Image")));
-            this.picMiner.Location = new System.Drawing.Point(3, 174);
+            this.picMiner.Location = new System.Drawing.Point(23, 174);
             this.picMiner.Name = "picMiner";
             this.picMiner.Size = new System.Drawing.Size(30, 30);
             this.picMiner.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -238,16 +258,19 @@
             // lblActiveMiner
             // 
             this.lblActiveMiner.AutoSize = true;
-            this.lblActiveMiner.Location = new System.Drawing.Point(4, 207);
+            this.lblActiveMiner.Font = new System.Drawing.Font("Segoe UI Semibold", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblActiveMiner.Location = new System.Drawing.Point(13, 207);
+            this.lblActiveMiner.MaximumSize = new System.Drawing.Size(60, 60);
             this.lblActiveMiner.Name = "lblActiveMiner";
-            this.lblActiveMiner.Size = new System.Drawing.Size(50, 38);
+            this.lblActiveMiner.Size = new System.Drawing.Size(48, 38);
             this.lblActiveMiner.TabIndex = 4;
-            this.lblActiveMiner.Text = "Active \r\nMiner";
+            this.lblActiveMiner.Text = "Active Miner";
+            this.lblActiveMiner.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             // 
             // picRouterBlocked
             // 
             this.picRouterBlocked.Image = ((System.Drawing.Image)(resources.GetObject("picRouterBlocked.Image")));
-            this.picRouterBlocked.Location = new System.Drawing.Point(3, 85);
+            this.picRouterBlocked.Location = new System.Drawing.Point(23, 85);
             this.picRouterBlocked.Name = "picRouterBlocked";
             this.picRouterBlocked.Size = new System.Drawing.Size(30, 30);
             this.picRouterBlocked.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -259,30 +282,36 @@
             this.picRouter.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.picRouter.Image = ((System.Drawing.Image)(resources.GetObject("picRouter.Image")));
             this.picRouter.ImageLocation = "";
-            this.picRouter.Location = new System.Drawing.Point(3, 3);
+            this.picRouter.Location = new System.Drawing.Point(23, 3);
             this.picRouter.Name = "picRouter";
             this.picRouter.Size = new System.Drawing.Size(30, 30);
             this.picRouter.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.picRouter.TabIndex = 2;
             this.picRouter.TabStop = false;
             // 
-            // label1
+            // lblBRouter
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(3, 118);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(60, 38);
-            this.label1.TabIndex = 1;
-            this.label1.Text = "Blocked \r\nRouter";
+            this.lblBRouter.AutoSize = true;
+            this.lblBRouter.Font = new System.Drawing.Font("Segoe UI Semibold", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblBRouter.Location = new System.Drawing.Point(9, 118);
+            this.lblBRouter.MaximumSize = new System.Drawing.Size(60, 60);
+            this.lblBRouter.Name = "lblBRouter";
+            this.lblBRouter.Size = new System.Drawing.Size(58, 38);
+            this.lblBRouter.TabIndex = 1;
+            this.lblBRouter.Text = "Blocked Router";
+            this.lblBRouter.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             // 
             // lblLegendRouter
             // 
             this.lblLegendRouter.AutoSize = true;
-            this.lblLegendRouter.Location = new System.Drawing.Point(3, 36);
+            this.lblLegendRouter.Font = new System.Drawing.Font("Segoe UI Semibold", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblLegendRouter.Location = new System.Drawing.Point(13, 36);
+            this.lblLegendRouter.MaximumSize = new System.Drawing.Size(60, 60);
             this.lblLegendRouter.Name = "lblLegendRouter";
-            this.lblLegendRouter.Size = new System.Drawing.Size(50, 38);
+            this.lblLegendRouter.Size = new System.Drawing.Size(51, 38);
             this.lblLegendRouter.TabIndex = 0;
-            this.lblLegendRouter.Text = "Active\r\nRouter";
+            this.lblLegendRouter.Text = "Active Router";
+            this.lblLegendRouter.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             // 
             // lblSiteInfo
             // 
@@ -326,7 +355,7 @@
             this.tmMain.Location = new System.Drawing.Point(2, 2);
             this.tmMain.Name = "tmMain";
             this.tmMain.SelectedIndex = 0;
-            this.tmMain.Size = new System.Drawing.Size(720, 100);
+            this.tmMain.Size = new System.Drawing.Size(720, 103);
             this.tmMain.TabIndex = 4;
             // 
             // tabMaster
@@ -338,7 +367,7 @@
             this.tabMaster.Location = new System.Drawing.Point(4, 32);
             this.tabMaster.Name = "tabMaster";
             this.tabMaster.Padding = new System.Windows.Forms.Padding(3);
-            this.tabMaster.Size = new System.Drawing.Size(712, 64);
+            this.tabMaster.Size = new System.Drawing.Size(712, 67);
             this.tabMaster.TabIndex = 0;
             this.tabMaster.Text = "Master";
             this.tabMaster.UseVisualStyleBackColor = true;
@@ -520,25 +549,6 @@
             this.lblUserType.Text = "Regular User";
             this.lblUserType.TextAlign = System.Drawing.ContentAlignment.TopRight;
             // 
-            // dgRouter
-            // 
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Segoe UI", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dgRouter.DefaultCellStyle = dataGridViewCellStyle2;
-            this.dgRouter.HeaderText = "Router";
-            this.dgRouter.Name = "dgRouter";
-            this.dgRouter.ReadOnly = true;
-            // 
-            // dgAddress
-            // 
-            this.dgAddress.HeaderText = "Addr";
-            this.dgAddress.Name = "dgAddress";
-            // 
-            // dgLocation
-            // 
-            this.dgLocation.HeaderText = "Loc";
-            this.dgLocation.Name = "dgLocation";
-            this.dgLocation.ReadOnly = true;
-            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -590,7 +600,7 @@
         private System.Windows.Forms.ToolStripStatusLabel statusTextConnected;
         private System.Windows.Forms.PictureBox picMinePlan;
         private System.Windows.Forms.Panel pnlLegend;
-        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label lblBRouter;
         private System.Windows.Forms.Label lblLegendRouter;
         private System.Windows.Forms.PictureBox picRouterBlocked;
         private System.Windows.Forms.PictureBox picRouter;

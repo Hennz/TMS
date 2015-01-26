@@ -29,13 +29,15 @@ namespace TMS
             foreach (Router router in MineSite.GetInstance().siteRouters)
             {
                 PictureBox picRouter = new PictureBox();
+
+                _picMinePlan.Controls.Add(picRouter);
+
                 picRouter.BackColor = Color.Transparent;
                 picRouter.Image = router.isBlocked ? TMS.Properties.Resources.router_blocked_map : TMS.Properties.Resources.router_active_map;
                 picRouter.Size = new Size(picRouter.Image.Width, picRouter.Image.Height);
-                _picMinePlan.Controls.Add(picRouter);
-
                 picRouter.Location = new Point((int)(router.posX * MineSite.GetInstance().mapScale), (int)(router.posY * MineSite.GetInstance().mapScale));
                 
+                // Set up events for the router
                 picRouter.MouseDown += (sender,e) => 
                 {
                     ShowMinerPosition(sender, e, router);
