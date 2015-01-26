@@ -82,6 +82,14 @@ namespace TMS
             }
         }
 
+        public void SetRouterPosFromMap(int x, int y)
+        {
+            mtxtX.Text = "" + x;
+            mtxtY.Text = "" + y;
+
+            Console.WriteLine("Set " + x + " " + y);
+        }
+
         private void UpdateRouter(object sender, EventArgs e)   
         {
             int errorCode = _controller.RouterUpdate(   router,
@@ -152,6 +160,11 @@ namespace TMS
         private void btnDelete_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void btnSelPos_Click(object sender, EventArgs e)
+        {
+            _controller.SetRouterPositionSetable();
         }
 
     }

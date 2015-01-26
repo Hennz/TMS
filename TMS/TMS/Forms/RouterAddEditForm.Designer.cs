@@ -46,6 +46,7 @@
             this.txtLocation = new System.Windows.Forms.TextBox();
             this.chkBlocked = new System.Windows.Forms.CheckBox();
             this.btnDelete = new System.Windows.Forms.Button();
+            this.btnSelPos = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.epRID)).BeginInit();
             this.SuspendLayout();
             // 
@@ -225,6 +226,19 @@
             this.btnDelete.UseVisualStyleBackColor = true;
             this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
             // 
+            // btnSelPos
+            // 
+            this.btnSelPos.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnSelPos.Font = new System.Drawing.Font("Segoe UI", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnSelPos.Location = new System.Drawing.Point(210, 439);
+            this.btnSelPos.Name = "btnSelPos";
+            this.btnSelPos.Size = new System.Drawing.Size(40, 33);
+            this.btnSelPos.TabIndex = 17;
+            this.btnSelPos.Text = ">";
+            this.btnSelPos.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.btnSelPos.UseVisualStyleBackColor = true;
+            this.btnSelPos.Click += new System.EventHandler(this.btnSelPos_Click);
+            // 
             // RouterAddEditForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -234,6 +248,7 @@
             this.BackColor = System.Drawing.SystemColors.ControlLightLight;
             this.ClientSize = new System.Drawing.Size(278, 853);
             this.ControlBox = false;
+            this.Controls.Add(this.btnSelPos);
             this.Controls.Add(this.btnDelete);
             this.Controls.Add(this.chkBlocked);
             this.Controls.Add(this.lblLoc);
@@ -282,5 +297,6 @@
         private System.Windows.Forms.TextBox txtLocation;
         private System.Windows.Forms.CheckBox chkBlocked;
         private System.Windows.Forms.Button btnDelete;
+        private System.Windows.Forms.Button btnSelPos;
     }
 }

@@ -17,6 +17,10 @@ namespace TMS
 
         public bool isBlocked { get; private set; }
 
+        public delegate void OnUpdatedDelegate(int new_x, int new_y, bool new_blocked);
+
+        public event OnUpdatedDelegate OnUpdated;
+
         public Router(String rId, String addr, String loc, int x, int y, bool iB)
         {
             routerId = rId;
@@ -27,6 +31,8 @@ namespace TMS
             posY = y;
 
             isBlocked = iB;
+
+            
         }
 
         public override string ToString()
@@ -45,7 +51,7 @@ namespace TMS
 
             isBlocked = iB;
 
-            // TODO: Put in SQL update logic for Routers
+            OnUpdated(posX, posY, isBlocked);
         }
     }
 }

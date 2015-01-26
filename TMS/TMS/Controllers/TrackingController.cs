@@ -36,8 +36,15 @@ namespace TMS
 
                 picRouter.Location = new Point((int)(router.posX * MineSite.GetInstance().mapScale), (int)(router.posY * MineSite.GetInstance().mapScale));
                 
-                picRouter.MouseDown += (sender,e) => {
+                picRouter.MouseDown += (sender,e) => 
+                {
                     ShowMinerPosition(sender, e, router);
+                };
+
+                router.OnUpdated += (x, y, isBlocked) =>
+                {
+                    picRouter.Location = new Point((int)(router.posX * MineSite.GetInstance().mapScale), (int)(router.posY * MineSite.GetInstance().mapScale));
+                    picRouter.Image = router.isBlocked ? TMS.Properties.Resources.router_blocked_map : TMS.Properties.Resources.router_active_map;
                 };
             }
         }

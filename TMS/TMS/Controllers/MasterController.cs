@@ -20,7 +20,9 @@ namespace TMS
 
         RouterAddEditForm _routerForm;
 
-        bool isEnteringRouter = false;
+        public PictureBox _picMinePlan { private get;  set; }
+
+        bool isSelectingPos = false;
 
         public MasterController(LoginForm lf)
         {
@@ -62,7 +64,7 @@ namespace TMS
                             oReader["address"].ToString(),
                             oReader["location"].ToString(),
                             Int32.Parse(oReader["x"].ToString()),
-                            Int32.Parse(oReader["x"].ToString()),
+                            Int32.Parse(oReader["y"].ToString()),
                             bool.Parse(oReader["isBlocked"].ToString()))
                             );
                     }
@@ -148,7 +150,6 @@ namespace TMS
 
         public void ClosedRouterForm()
         {
-            isEnteringRouter = false;
             _routerForm.Dispose();
         }
 
@@ -248,12 +249,11 @@ namespace TMS
 
         public void OpenRouters()
         {
-            if (!isEnteringRouter) 
+            if (_routerForm == null) 
             {
                 _routerForm = new RouterAddEditForm(this);
                 _mainForm.AddToLeftPanel(_routerForm);
 
-                isEnteringRouter = true;
             }
             
         }
@@ -339,6 +339,43 @@ namespace TMS
                     return 1;
                 }
             }
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public void SetRouterPositionSetable()
+        {
+            if (!isSelectingPos)
+            {
+                foreach (Control c in _picMinePlan.Controls)
+                {
+                    c.Visible = false;
+                }
+
+                _picMinePlan.MouseDown += SelectRouterPosClick;
+                isSelectingPos = true;
+            }
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        public void SelectRouterPosClick(object sender, MouseEventArgs e)
+        {
+            Console.WriteLine("Down");
+
+            _routerForm.SetRouterPosFromMap(e.X, e.Y);
+
+            foreach (Control c in _picMinePlan.Controls)
+            {
+                c.Visible = true;
+            }
+
+            _picMinePlan.MouseDown -= SelectRouterPosClick;
+            isSelectingPos = false;
         }
     }
 }

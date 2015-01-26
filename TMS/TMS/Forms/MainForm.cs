@@ -21,6 +21,8 @@ namespace TMS
             InitializeComponent();
 
             _masterController = c;
+            c._picMinePlan = picMinePlan;
+
             _trackingController = new TrackingController(this, picMinePlan);
 
             lblSiteInfo.Text = MineSite.GetInstance().siteName;
@@ -116,6 +118,16 @@ namespace TMS
         /// <param name="sender"></param>
         /// <param name="e"></param>
         private void llblUsername_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+
+        }
+
+        /// <summary>
+        /// TODO Open form to enter miner details
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void btnMember_Click(object sender, EventArgs e)
         {
 
         }
