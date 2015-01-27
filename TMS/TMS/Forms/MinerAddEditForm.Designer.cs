@@ -362,6 +362,7 @@
             // btnShift
             // 
             this.btnShift.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnShift.Enabled = false;
             this.btnShift.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnShift.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnShift.Location = new System.Drawing.Point(212, 384);

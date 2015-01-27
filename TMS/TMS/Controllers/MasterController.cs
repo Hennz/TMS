@@ -20,6 +20,7 @@ namespace TMS
 
         MinerAddEditForm _minerForm;
         RouterAddEditForm _routerForm;
+        ShiftAddEditForm _shiftForm;
         UserAddEditForm _userForm;
 
         public PictureBox _picMinePlan { private get;  set; }
@@ -37,6 +38,7 @@ namespace TMS
             List<Router> routers = new List<Router>();
             List<Member> members = new List<Member>();
 
+            // Load routers and members
             using (SqlConnection sqlCon = new SqlConnection(Properties.Settings.Default.TMS_DatabaseConnectionString))
             {
                 string cmdString = "SELECT * FROM Site";
@@ -100,9 +102,40 @@ namespace TMS
             MineSite.GetInstance().Init(siteId, siteName, mapAddr, mapScale, routers, members);
         }
 
-        public void AssignShift()
+        public int AssignShift(Member member, Shift[] shift)
         {
+            using (SqlConnection sqlCon = new SqlConnection(Properties.Settings.Default.TMS_DatabaseConnectionString))
+            {
+                string cmdString = "INSERT INTO Shifts VALUES(@start, @end, @memberNo)";
 
+                sqlCon.Open();
+
+                SqlCommand[] oCmd = new SqlCommand[shift.Length];
+
+                for (int i = 0; i < shift.Length; i++)
+                {
+                    oCmd[i] = new SqlCommand(cmdString, sqlCon);
+                    oCmd[i].Parameters.AddWithValue("@start", shift[i].startTime.ToString("HH:mm:00"));
+                    oCmd[i].Parameters.AddWithValue("@end", shift[i].endTime.ToString("HH:mm:00"));
+                    oCmd[i].Parameters.AddWithValue("@memberNo", member.memberId);
+                }
+
+                try
+                {
+                    for (int i = 0; i < shift.Length; i++)
+                    {
+                        int rows = oCmd[i].ExecuteNonQuery();
+                    }
+
+                    return 0;
+                }
+                catch (SqlException e)
+                {
+                    MessageBox.Show(e.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+                    return 1;
+                }
+            }
         }
 
         /// <summary>
@@ -230,11 +263,15 @@ namespace TMS
         #region Open Object Creation Forms
 
         /// <summary>
-        /// TODO Open assign shift form
+        /// Open assign shift form
         /// </summary>
         public void OpenAssignShift(Member member)
         {
-
+            if (_shiftForm == null || _shiftForm.Visible == false)
+            {
+                _shiftForm = new ShiftAddEditForm(this, member);
+                _shiftForm.Show();
+            }
         }
 
         /// <summary>

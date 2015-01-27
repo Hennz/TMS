@@ -133,6 +133,8 @@ namespace TMS
 
                 btnEnter.Click -= EnterUpdate;
                 btnEnter.Click += EnterCreate;
+
+                btnShift.Enabled = false;
             }
         }
 
@@ -161,6 +163,8 @@ namespace TMS
 
                 btnEnter.Click -= EnterCreate;
                 btnEnter.Click += EnterUpdate;
+
+                btnShift.Enabled = true;
             }
         }
 

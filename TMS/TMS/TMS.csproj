@@ -87,6 +87,12 @@
     <Compile Include="Forms\RouterAddEditForm.Designer.cs">
       <DependentUpon>RouterAddEditForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\ShiftAddEditForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\ShiftAddEditForm.Designer.cs">
+      <DependentUpon>ShiftAddEditForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\UserAddEditForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -96,6 +102,7 @@
     <Compile Include="Models\Member.cs" />
     <Compile Include="Models\Router.cs" />
     <Compile Include="Models\MineSite.cs" />
+    <Compile Include="Models\Shift.cs" />
     <Compile Include="Models\User.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -122,6 +129,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\RouterAddEditForm.resx">
       <DependentUpon>RouterAddEditForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\ShiftAddEditForm.resx">
+      <DependentUpon>ShiftAddEditForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\UserAddEditForm.resx">
       <DependentUpon>UserAddEditForm.cs</DependentUpon>
