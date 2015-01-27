@@ -69,6 +69,10 @@
             this.tabAttendance = new System.Windows.Forms.TabPage();
             this.llblUsername = new System.Windows.Forms.LinkLabel();
             this.lblUserType = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.splitMain)).BeginInit();
             this.splitMain.Panel1.SuspendLayout();
             this.splitMain.Panel2.SuspendLayout();
@@ -360,10 +364,14 @@
             // 
             // tabMaster
             // 
-            this.tabMaster.Controls.Add(this.btnMember);
             this.tabMaster.Controls.Add(this.btnSensor);
             this.tabMaster.Controls.Add(this.btnLoadMap);
             this.tabMaster.Controls.Add(this.btnRouters);
+            this.tabMaster.Controls.Add(this.btnMember);
+            this.tabMaster.Controls.Add(this.label5);
+            this.tabMaster.Controls.Add(this.label4);
+            this.tabMaster.Controls.Add(this.label3);
+            this.tabMaster.Controls.Add(this.label1);
             this.tabMaster.Location = new System.Drawing.Point(4, 32);
             this.tabMaster.Name = "tabMaster";
             this.tabMaster.Padding = new System.Windows.Forms.Padding(3);
@@ -378,9 +386,10 @@
             this.btnMember.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.btnMember.FlatAppearance.BorderSize = 0;
             this.btnMember.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnMember.Location = new System.Drawing.Point(190, 7);
+            this.btnMember.Font = new System.Drawing.Font("Segoe UI", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnMember.Location = new System.Drawing.Point(219, 4);
             this.btnMember.Name = "btnMember";
-            this.btnMember.Size = new System.Drawing.Size(55, 55);
+            this.btnMember.Size = new System.Drawing.Size(45, 45);
             this.btnMember.TabIndex = 3;
             this.btnMember.UseVisualStyleBackColor = true;
             this.btnMember.Click += new System.EventHandler(this.btnMember_Click);
@@ -391,9 +400,9 @@
             this.btnSensor.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.btnSensor.FlatAppearance.BorderSize = 0;
             this.btnSensor.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnSensor.Location = new System.Drawing.Point(128, 6);
+            this.btnSensor.Location = new System.Drawing.Point(144, 3);
             this.btnSensor.Name = "btnSensor";
-            this.btnSensor.Size = new System.Drawing.Size(55, 55);
+            this.btnSensor.Size = new System.Drawing.Size(45, 45);
             this.btnSensor.TabIndex = 2;
             this.btnSensor.UseVisualStyleBackColor = true;
             // 
@@ -403,9 +412,9 @@
             this.btnLoadMap.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.btnLoadMap.FlatAppearance.BorderSize = 0;
             this.btnLoadMap.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnLoadMap.Location = new System.Drawing.Point(6, 6);
+            this.btnLoadMap.Location = new System.Drawing.Point(14, 1);
             this.btnLoadMap.Name = "btnLoadMap";
-            this.btnLoadMap.Size = new System.Drawing.Size(55, 55);
+            this.btnLoadMap.Size = new System.Drawing.Size(45, 45);
             this.btnLoadMap.TabIndex = 0;
             this.btnLoadMap.UseVisualStyleBackColor = true;
             this.btnLoadMap.Click += new System.EventHandler(this.btnLoadMap_Click);
@@ -416,9 +425,9 @@
             this.btnRouters.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.btnRouters.FlatAppearance.BorderSize = 0;
             this.btnRouters.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnRouters.Location = new System.Drawing.Point(67, 6);
+            this.btnRouters.Location = new System.Drawing.Point(82, 3);
             this.btnRouters.Name = "btnRouters";
-            this.btnRouters.Size = new System.Drawing.Size(55, 55);
+            this.btnRouters.Size = new System.Drawing.Size(45, 45);
             this.btnRouters.TabIndex = 1;
             this.btnRouters.UseVisualStyleBackColor = true;
             this.btnRouters.Click += new System.EventHandler(this.btnRouters_Click);
@@ -465,7 +474,7 @@
             0,
             0});
             this.nudMapScale.Name = "nudMapScale";
-            this.nudMapScale.Size = new System.Drawing.Size(65, 30);
+            this.nudMapScale.Size = new System.Drawing.Size(79, 30);
             this.nudMapScale.TabIndex = 7;
             this.nudMapScale.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.nudMapScale.Value = new decimal(new int[] {
@@ -504,16 +513,16 @@
             this.lblScale1.AutoSize = true;
             this.lblScale1.Location = new System.Drawing.Point(327, 33);
             this.lblScale1.Name = "lblScale1";
-            this.lblScale1.Size = new System.Drawing.Size(149, 23);
+            this.lblScale1.Size = new System.Drawing.Size(159, 23);
             this.lblScale1.TabIndex = 2;
-            this.lblScale1.Text = "1cm =               m";
+            this.lblScale1.Text = "1cm =                 m";
             // 
             // tabReports
             // 
             this.tabReports.Location = new System.Drawing.Point(4, 32);
             this.tabReports.Name = "tabReports";
             this.tabReports.Padding = new System.Windows.Forms.Padding(3);
-            this.tabReports.Size = new System.Drawing.Size(712, 67);
+            this.tabReports.Size = new System.Drawing.Size(1032, 67);
             this.tabReports.TabIndex = 1;
             this.tabReports.Text = "Reports";
             this.tabReports.UseVisualStyleBackColor = true;
@@ -523,7 +532,7 @@
             this.tabAttendance.Location = new System.Drawing.Point(4, 32);
             this.tabAttendance.Name = "tabAttendance";
             this.tabAttendance.Padding = new System.Windows.Forms.Padding(3);
-            this.tabAttendance.Size = new System.Drawing.Size(712, 67);
+            this.tabAttendance.Size = new System.Drawing.Size(1032, 67);
             this.tabAttendance.TabIndex = 3;
             this.tabAttendance.Text = "Attendance";
             this.tabAttendance.UseVisualStyleBackColor = true;
@@ -559,6 +568,46 @@
             this.lblUserType.TabIndex = 6;
             this.lblUserType.Text = "Regular User";
             this.lblUserType.TextAlign = System.Drawing.ContentAlignment.TopRight;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Segoe UI", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(1, 45);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(71, 19);
+            this.label1.TabIndex = 4;
+            this.label1.Text = "Load Map";
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Segoe UI", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.Location = new System.Drawing.Point(78, 45);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(56, 19);
+            this.label3.TabIndex = 5;
+            this.label3.Text = "Routers";
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("Segoe UI", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.Location = new System.Drawing.Point(140, 45);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(56, 19);
+            this.label4.TabIndex = 6;
+            this.label4.Text = "Sensors";
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Font = new System.Drawing.Font("Segoe UI", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label5.Location = new System.Drawing.Point(207, 45);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(67, 19);
+            this.label5.TabIndex = 7;
+            this.label5.Text = "Members";
             // 
             // MainForm
             // 
@@ -596,6 +645,7 @@
             this.statusMain.PerformLayout();
             this.tmMain.ResumeLayout(false);
             this.tabMaster.ResumeLayout(false);
+            this.tabMaster.PerformLayout();
             this.tabTracking.ResumeLayout(false);
             this.tabTracking.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nudMapScale)).EndInit();
@@ -643,6 +693,10 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn dgRouter;
         private System.Windows.Forms.DataGridViewTextBoxColumn dgAddress;
         private System.Windows.Forms.DataGridViewTextBoxColumn dgLocation;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label label1;
     }
 }
 

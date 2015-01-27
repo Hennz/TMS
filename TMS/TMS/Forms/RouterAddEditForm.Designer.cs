@@ -140,21 +140,21 @@
             // 
             this.mtxtX.Font = new System.Drawing.Font("Segoe UI", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.mtxtX.Location = new System.Drawing.Point(92, 442);
-            this.mtxtX.Mask = "000";
+            this.mtxtX.Mask = "00000";
             this.mtxtX.Name = "mtxtX";
             this.mtxtX.Size = new System.Drawing.Size(50, 25);
             this.mtxtX.TabIndex = 6;
-            this.mtxtX.Text = "000";
+            this.mtxtX.Text = "00000";
             // 
             // mtxtY
             // 
             this.mtxtY.Font = new System.Drawing.Font("Segoe UI", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.mtxtY.Location = new System.Drawing.Point(153, 442);
-            this.mtxtY.Mask = "000";
+            this.mtxtY.Mask = "00000";
             this.mtxtY.Name = "mtxtY";
             this.mtxtY.Size = new System.Drawing.Size(50, 25);
             this.mtxtY.TabIndex = 7;
-            this.mtxtY.Text = "000";
+            this.mtxtY.Text = "00000";
             // 
             // btnEnter
             // 

@@ -31,94 +31,6 @@ namespace TMS
         {
             _loginForm = lf;
 
-            // Load site info
-            int siteId = 0;
-            string siteName = "", mapAddr = "";
-            float mapScale = 0;
-            List<Router> routers = new List<Router>();
-            List<Member> members = new List<Member>();
-
-            // Load routers and members
-            using (SqlConnection sqlCon = new SqlConnection(Properties.Settings.Default.TMS_DatabaseConnectionString))
-            {
-                string cmdString = "SELECT * FROM Site";
-                SqlCommand oCmd = new SqlCommand(cmdString, sqlCon);
-
-                sqlCon.Open();
-                using (SqlDataReader oReader = oCmd.ExecuteReader())
-                {
-                    while (oReader.Read())
-                    {
-                        siteId = Int32.Parse(oReader["Id"].ToString());
-                        siteName = oReader["siteName"].ToString();
-                        mapAddr = oReader["localMapFileAddr"].ToString();
-                        mapScale = float.Parse(oReader["mapScale"].ToString());
-                    }
-                }
-
-                cmdString = "SELECT * FROM Routers WHERE siteId = @siteId";
-                oCmd = new SqlCommand(cmdString, sqlCon);
-                oCmd.Parameters.AddWithValue("@siteId", siteId);
-
-                using (SqlDataReader oReader = oCmd.ExecuteReader())
-                {
-                    while (oReader.Read())
-                    {
-                        routers.Add(
-                            new Router(oReader["Id"].ToString(),
-                            oReader["address"].ToString(),
-                            oReader["location"].ToString(),
-                            Int32.Parse(oReader["x"].ToString()),
-                            Int32.Parse(oReader["y"].ToString()),
-                            bool.Parse(oReader["isBlocked"].ToString()))
-                            );
-                    }
-                }
-
-                cmdString = "SELECT * FROM Members m, Shifts s WHERE siteId = @siteId AND m.memberNo=s.memberNo";
-                oCmd = new SqlCommand(cmdString, sqlCon);
-                oCmd.Parameters.AddWithValue("@siteId", siteId);
-
-                using (SqlDataReader oReader = oCmd.ExecuteReader())
-                {
-                    string lastId = "";
-                    Member member = null;
-                    while (oReader.Read())
-                    {
-                        if (lastId.Equals(oReader["memberNo"].ToString()))
-                        {
-                            member.assignedShifts.Add(new Shift(
-                                DateTime.Parse(oReader["start"].ToString()),
-                                DateTime.Parse(oReader["end"].ToString())));
-                        }
-                        else
-                        {
-                            lastId = oReader["memberNo"].ToString();
-
-                            member = new Member(oReader["memberNo"].ToString(),
-                                oReader["fName"].ToString(),
-                                oReader["mName"].ToString(),
-                                oReader["lName"].ToString(),
-                                oReader["address"].ToString(),
-                                oReader["province"].ToString(),
-                                oReader["city"].ToString(),
-                                Int32.Parse(oReader["pinNo"].ToString()),
-                                oReader["phoneNo"].ToString(),
-                                oReader["mobileNo"].ToString(),
-                                oReader["isVehicle"].ToString() == "1" ? true : false,
-                                oReader["tagId"].ToString());
-
-                            member.assignedShifts.Add(new Shift(
-                                DateTime.Parse(oReader["start"].ToString()),
-                                DateTime.Parse(oReader["end"].ToString())));
-
-                            members.Add(member);
-                        }
-                    }
-                }
-            }
-
-            MineSite.GetInstance().Init(siteId, siteName, mapAddr, mapScale, routers, members);
         }
 
         public int AssignShift(Member member, Shift[] shift)
@@ -251,6 +163,103 @@ namespace TMS
         }
 
         /// <summary>
+        /// Loads all info int MineSite
+        /// </summary>
+        private void LoadAllSiteInfo()   
+        {
+            // Load site info
+            int siteId = 0;
+            string siteName = "", mapAddr = "";
+            float mapScale = 0;
+            List<Router> routers = new List<Router>();
+            List<Member> members = new List<Member>();
+
+            // Load routers and members
+            using (SqlConnection sqlCon = new SqlConnection(Properties.Settings.Default.TMS_DatabaseConnectionString))
+            {
+                string cmdString = "SELECT * FROM Site";
+                SqlCommand oCmd = new SqlCommand(cmdString, sqlCon);
+
+                sqlCon.Open();
+                using (SqlDataReader oReader = oCmd.ExecuteReader())
+                {
+                    while (oReader.Read())
+                    {
+                        siteId = Int32.Parse(oReader["Id"].ToString());
+                        siteName = oReader["siteName"].ToString();
+                        mapAddr = oReader["localMapFileAddr"].ToString();
+                        mapScale = float.Parse(oReader["mapScale"].ToString());
+                    }
+                }
+
+                // Load all routers
+                cmdString = "SELECT * FROM Routers WHERE siteId = @siteId";
+                oCmd = new SqlCommand(cmdString, sqlCon);
+                oCmd.Parameters.AddWithValue("@siteId", siteId);
+
+                using (SqlDataReader oReader = oCmd.ExecuteReader())
+                {
+                    while (oReader.Read())
+                    {
+                        routers.Add(
+                            new Router(oReader["Id"].ToString(),
+                            oReader["address"].ToString(),
+                            oReader["location"].ToString(),
+                            Int32.Parse(oReader["x"].ToString()),
+                            Int32.Parse(oReader["y"].ToString()),
+                            bool.Parse(oReader["isBlocked"].ToString()))
+                            );
+                    }
+                }
+
+                // Load all members and shifts
+                cmdString = "SELECT * FROM Members m, Shifts s WHERE siteId = @siteId AND m.memberNo=s.memberNo";
+                oCmd = new SqlCommand(cmdString, sqlCon);
+                oCmd.Parameters.AddWithValue("@siteId", siteId);
+
+                using (SqlDataReader oReader = oCmd.ExecuteReader())
+                {
+                    string lastId = "";
+                    Member member = null;
+                    while (oReader.Read())
+                    {
+                        if (lastId.Equals(oReader["memberNo"].ToString()))
+                        {
+                            member.assignedShifts.Add(new Shift(
+                                DateTime.Parse(oReader["start"].ToString()),
+                                DateTime.Parse(oReader["end"].ToString())));
+                        }
+                        else
+                        {
+                            lastId = oReader["memberNo"].ToString();
+
+                            member = new Member(oReader["memberNo"].ToString(),
+                                oReader["fName"].ToString(),
+                                oReader["mName"].ToString(),
+                                oReader["lName"].ToString(),
+                                oReader["address"].ToString(),
+                                oReader["province"].ToString(),
+                                oReader["city"].ToString(),
+                                Int32.Parse(oReader["pinNo"].ToString()),
+                                oReader["phoneNo"].ToString(),
+                                oReader["mobileNo"].ToString(),
+                                oReader["isVehicle"].ToString() == "1" ? true : false,
+                                oReader["tagId"].ToString());
+
+                            member.assignedShifts.Add(new Shift(
+                                DateTime.Parse(oReader["start"].ToString()),
+                                DateTime.Parse(oReader["end"].ToString())));
+
+                            members.Add(member);
+                        }
+                    }
+                }
+            }
+
+            MineSite.GetInstance().Init(siteId, siteName, mapAddr, mapScale, routers, members);
+        }
+
+        /// <summary>
         /// Opens a dialog to load a jpg, jpeg, or bmp image of map data
         /// </summary>
         public void LoadMap(PictureBox picMinePlan)
@@ -332,13 +341,15 @@ namespace TMS
         {
             _loginForm.Hide();
 
+            LoadAllSiteInfo();
+
             _mainForm = new MainForm(this);
             _mainForm.Show();
         }
 
         public void OpenRouters()
         {
-            if (_routerForm == null) 
+            if (_routerForm == null || _routerForm.Visible == false) 
             {
                 _routerForm = new RouterAddEditForm(this);
                 _mainForm.AddToLeftPanel(_routerForm);
@@ -578,9 +589,7 @@ namespace TMS
         /// <param name="e"></param>
         public void SelectRouterPosClick(object sender, MouseEventArgs e)
         {
-            Console.WriteLine("Down");
-
-            _routerForm.SetRouterPosFromMap(e.X, e.Y);
+            _routerForm.SetRouterPosFromMap((int)(e.X / MineSite.GetInstance().mapScale), (int)(e.Y / MineSite.GetInstance().mapScale));
 
             foreach (Control c in _picMinePlan.Controls)
             {

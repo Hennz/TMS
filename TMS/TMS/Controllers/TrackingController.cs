@@ -39,7 +39,7 @@ namespace TMS
                 picRouter.BackColor = Color.Transparent;
                 picRouter.Image = router.isBlocked ? TMS.Properties.Resources.router_blocked_map : TMS.Properties.Resources.router_active_map;
                 picRouter.Size = new Size(picRouter.Image.Width, picRouter.Image.Height);
-                picRouter.Location = new Point((int)(router.posX / MineSite.GetInstance().mapScale), (int)(router.posY / MineSite.GetInstance().mapScale));
+                picRouter.Location = new Point((int)(router.posX * MineSite.GetInstance().mapScale), (int)(router.posY * MineSite.GetInstance().mapScale));
                 
                 // Set up events for the router
                 picRouter.MouseDown += (sender,e) => 
@@ -49,12 +49,12 @@ namespace TMS
 
                 router.OnUpdated += (x, y, isBlocked) =>
                 {
-                    picRouter.Location = new Point((int)(router.posX / MineSite.GetInstance().mapScale), (int)(router.posY / MineSite.GetInstance().mapScale));
+                    picRouter.Location = new Point((int)(router.posX * MineSite.GetInstance().mapScale), (int)(router.posY * MineSite.GetInstance().mapScale));
                     picRouter.Image = router.isBlocked ? TMS.Properties.Resources.router_blocked_map : TMS.Properties.Resources.router_active_map;
                 };
                 MineSite.GetInstance().OnUpdated += (scale) =>
                 {
-                    picRouter.Location = new Point((int)(router.posX / MineSite.GetInstance().mapScale), (int)(router.posY / MineSite.GetInstance().mapScale));
+                    picRouter.Location = new Point((int)(router.posX * MineSite.GetInstance().mapScale), (int)(router.posY * MineSite.GetInstance().mapScale));
                     picRouter.Image = router.isBlocked ? TMS.Properties.Resources.router_blocked_map : TMS.Properties.Resources.router_active_map;
                 };
             }
@@ -65,6 +65,11 @@ namespace TMS
             if (graphics == null)
             {
                 _picMinePlan.Refresh();
+            }
+
+            if (MineSite.GetInstance().mapScale == 1)
+            {
+                return;
             }
 
             // Draw grid over the image
