@@ -135,6 +135,7 @@ namespace TMS
                 btnEnter.Click += EnterCreate;
 
                 btnShift.Enabled = false;
+                btnShift.Text = "Assign Shifts";
             }
         }
 
@@ -165,6 +166,7 @@ namespace TMS
                 btnEnter.Click += EnterUpdate;
 
                 btnShift.Enabled = true;
+                btnShift.Text = "Edit Shifts";
             }
         }
 

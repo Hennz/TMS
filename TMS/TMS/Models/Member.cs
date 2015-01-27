@@ -28,6 +28,8 @@ namespace TMS
 
         public LinkedList<Router> path { get; private set; }
 
+        public List<Shift> assignedShifts { get; private set; }
+
         public Member(String mId, String f, String m, String l, 
             String addr, String prov, String cit, 
             int pNo,
@@ -55,6 +57,7 @@ namespace TMS
             tagId = tId;
 
             path = new LinkedList<Router>();
+            assignedShifts = new List<Shift>();
         }
 
         public void AppendRouter(Router router)

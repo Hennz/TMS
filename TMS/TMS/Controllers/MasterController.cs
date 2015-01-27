@@ -75,26 +75,45 @@ namespace TMS
                     }
                 }
 
-                cmdString = "SELECT * FROM Members WHERE siteId = @siteId";
+                cmdString = "SELECT * FROM Members m, Shifts s WHERE siteId = @siteId AND m.memberNo=s.memberNo";
                 oCmd = new SqlCommand(cmdString, sqlCon);
                 oCmd.Parameters.AddWithValue("@siteId", siteId);
 
                 using (SqlDataReader oReader = oCmd.ExecuteReader())
                 {
+                    string lastId = "";
+                    Member member = null;
                     while (oReader.Read())
                     {
-                        members.Add(new Member(oReader["memberNo"].ToString(),
-                            oReader["fName"].ToString(),
-                            oReader["mName"].ToString(),
-                            oReader["lName"].ToString(),
-                            oReader["address"].ToString(),
-                            oReader["province"].ToString(),
-                            oReader["city"].ToString(),
-                            Int32.Parse(oReader["pinNo"].ToString()),
-                            oReader["phoneNo"].ToString(),
-                            oReader["mobileNo"].ToString(),
-                            oReader["isVehicle"].ToString() == "1" ? true : false,
-                            oReader["tagId"].ToString()));
+                        if (lastId.Equals(oReader["memberNo"].ToString()))
+                        {
+                            member.assignedShifts.Add(new Shift(
+                                DateTime.Parse(oReader["start"].ToString()),
+                                DateTime.Parse(oReader["end"].ToString())));
+                        }
+                        else
+                        {
+                            lastId = oReader["memberNo"].ToString();
+
+                            member = new Member(oReader["memberNo"].ToString(),
+                                oReader["fName"].ToString(),
+                                oReader["mName"].ToString(),
+                                oReader["lName"].ToString(),
+                                oReader["address"].ToString(),
+                                oReader["province"].ToString(),
+                                oReader["city"].ToString(),
+                                Int32.Parse(oReader["pinNo"].ToString()),
+                                oReader["phoneNo"].ToString(),
+                                oReader["mobileNo"].ToString(),
+                                oReader["isVehicle"].ToString() == "1" ? true : false,
+                                oReader["tagId"].ToString());
+
+                            member.assignedShifts.Add(new Shift(
+                                DateTime.Parse(oReader["start"].ToString()),
+                                DateTime.Parse(oReader["end"].ToString())));
+
+                            members.Add(member);
+                        }
                     }
                 }
             }
@@ -106,13 +125,17 @@ namespace TMS
         {
             using (SqlConnection sqlCon = new SqlConnection(Properties.Settings.Default.TMS_DatabaseConnectionString))
             {
+                string cmdDelete = "DELETE FROM Shifts WHERE memberNo=@memberNo";
                 string cmdString = "INSERT INTO Shifts VALUES(@start, @end, @memberNo)";
 
                 sqlCon.Open();
 
-                SqlCommand[] oCmd = new SqlCommand[shift.Length];
+                SqlCommand[] oCmd = new SqlCommand[shift.Length + 1];
 
-                for (int i = 0; i < shift.Length; i++)
+                oCmd[0] = new SqlCommand(cmdDelete, sqlCon);
+                oCmd[0].Parameters.AddWithValue("@memberNo", member.memberId);
+
+                for (int i = 1; i < shift.Length; i++)
                 {
                     oCmd[i] = new SqlCommand(cmdString, sqlCon);
                     oCmd[i].Parameters.AddWithValue("@start", shift[i].startTime.ToString("HH:mm:00"));

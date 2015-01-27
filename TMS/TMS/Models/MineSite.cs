@@ -18,6 +18,10 @@ namespace TMS
         public List<Router> siteRouters { get; private set; }
         public List<Member> siteMembers { get; private set; }
 
+        public delegate void OnUpdatedDelegate(float new_scale);
+
+        public event OnUpdatedDelegate OnUpdated;
+
         public Router ContainsRouter(string rId) 
         {
             foreach (Router r in siteRouters)
@@ -48,6 +52,12 @@ namespace TMS
 
             siteRouters = routers;
             siteMembers = members;
+        }
+
+        public void UpdateScale(float new_scale)
+        {
+            mapScale = new_scale;
+            OnUpdated(new_scale);
         }
 
     }

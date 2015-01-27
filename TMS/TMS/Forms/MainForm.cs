@@ -45,6 +45,8 @@ namespace TMS
             tvAllRouters.EndUpdate();
 
             _trackingController.AddAllRoutersToMap();
+
+            nudMapScale.Value = (decimal) (MineSite.GetInstance().mapScale);
         }
 
 
@@ -91,24 +93,7 @@ namespace TMS
         
         private void picMinePlan_Paint(object sender, PaintEventArgs e)
         {
-            // Draw grid over the image
-            Graphics g = e.Graphics;
-            int cellSize = 50;
-            int numOfCells = picMinePlan.Width / cellSize;
-            Pen p = new Pen(Color.Black);
-            p.Width = 0.1f;
-
-            // Horizontal lines
-            for (int i = 1; i < numOfCells; i++)
-            {
-                g.DrawLine(p, 0, i * cellSize, numOfCells * cellSize, i * cellSize);
-            }
-
-            // Vertical lines
-            for (int i = 1; i < numOfCells; i++)
-            {
-                g.DrawLine(p, i * cellSize, 0, i * cellSize, numOfCells * cellSize);
-            }
+            _trackingController.DrawGridLines(e.Graphics);
         }
 
         private void btnRouters_Click(object sender, EventArgs e)
@@ -154,6 +139,11 @@ namespace TMS
             {
                 _trackingController.ShowMinerPosition(sender, null, router);
             }
+        }
+
+        private void nudMapScale_ValueChanged(object sender, EventArgs e)
+        {
+            MineSite.GetInstance().UpdateScale((float)(nudMapScale.Value));
         }
 
     }

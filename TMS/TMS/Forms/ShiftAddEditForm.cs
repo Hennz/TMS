@@ -24,6 +24,18 @@ namespace TMS
             member = m;
 
             Text = "Shift for " + (member.lName + ", " + member.fName);
+
+            if (member.assignedShifts.Count == 3)
+            {
+                dtpStart1.Value = member.assignedShifts[0].startTime;
+                dtpEnd1.Value = member.assignedShifts[0].endTime;
+
+                dtpStart2.Value = member.assignedShifts[1].startTime;
+                dtpEnd2.Value = member.assignedShifts[1].endTime;
+
+                dtpStart3.Value = member.assignedShifts[2].startTime;
+                dtpEnd3.Value = member.assignedShifts[2].endTime;
+            }
         }
 
         private void btnSave_Click(object sender, EventArgs e)
@@ -40,6 +52,13 @@ namespace TMS
 
                 if (errorCode == 0)
                 {
+                    member.assignedShifts.Clear();
+
+                    foreach (Shift shift in shifts)
+                    {
+                        member.assignedShifts.Add(shift);
+                    }
+
                     Dispose();
                 }
             }

@@ -22,6 +22,10 @@ namespace TMS
             _mainForm = m;
             _picMinePlan = pm;
 
+            MineSite.GetInstance().OnUpdated += (new_scale) =>
+            {
+                DrawGridLines();
+            };
         }
 
         public void AddAllRoutersToMap()
@@ -35,7 +39,7 @@ namespace TMS
                 picRouter.BackColor = Color.Transparent;
                 picRouter.Image = router.isBlocked ? TMS.Properties.Resources.router_blocked_map : TMS.Properties.Resources.router_active_map;
                 picRouter.Size = new Size(picRouter.Image.Width, picRouter.Image.Height);
-                picRouter.Location = new Point((int)(router.posX * MineSite.GetInstance().mapScale), (int)(router.posY * MineSite.GetInstance().mapScale));
+                picRouter.Location = new Point((int)(router.posX / MineSite.GetInstance().mapScale), (int)(router.posY / MineSite.GetInstance().mapScale));
                 
                 // Set up events for the router
                 picRouter.MouseDown += (sender,e) => 
@@ -45,12 +49,44 @@ namespace TMS
 
                 router.OnUpdated += (x, y, isBlocked) =>
                 {
-                    picRouter.Location = new Point((int)(router.posX * MineSite.GetInstance().mapScale), (int)(router.posY * MineSite.GetInstance().mapScale));
+                    picRouter.Location = new Point((int)(router.posX / MineSite.GetInstance().mapScale), (int)(router.posY / MineSite.GetInstance().mapScale));
+                    picRouter.Image = router.isBlocked ? TMS.Properties.Resources.router_blocked_map : TMS.Properties.Resources.router_active_map;
+                };
+                MineSite.GetInstance().OnUpdated += (scale) =>
+                {
+                    picRouter.Location = new Point((int)(router.posX / MineSite.GetInstance().mapScale), (int)(router.posY / MineSite.GetInstance().mapScale));
                     picRouter.Image = router.isBlocked ? TMS.Properties.Resources.router_blocked_map : TMS.Properties.Resources.router_active_map;
                 };
             }
         }
 
+        public void DrawGridLines(Graphics graphics = null)
+        {
+            if (graphics == null)
+            {
+                _picMinePlan.Refresh();
+            }
+
+            // Draw grid over the image
+            Graphics g = graphics == null ? _picMinePlan.CreateGraphics() : graphics;
+
+            float cellSize = MineSite.GetInstance().mapScale;
+            int numOfCells = (int)(_picMinePlan.Width / cellSize);
+            Pen p = new Pen(Color.Black);
+            p.Width = 0.1f;
+
+            // Horizontal lines
+            for (int i = 1; i < numOfCells; i++)
+            {
+                g.DrawLine(p, 0, i * cellSize, numOfCells * cellSize, i * cellSize);
+            }
+
+            // Vertical lines
+            for (int i = 1; i < numOfCells; i++)
+            {
+                g.DrawLine(p, i * cellSize, 0, i * cellSize, numOfCells * cellSize);
+            }
+        }
         public void HideRouterForm()
         {
             if (routerMapForm != null)

@@ -28,9 +28,9 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.TreeNode treeNode1 = new System.Windows.Forms.TreeNode("Mine Site Name");
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.TreeNode treeNode3 = new System.Windows.Forms.TreeNode("Mine Site Name");
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
             this.splitMain = new System.Windows.Forms.SplitContainer();
             this.lstActiveMiners = new System.Windows.Forms.ListBox();
@@ -160,10 +160,10 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.tvAllRouters.Location = new System.Drawing.Point(6, 6);
             this.tvAllRouters.Name = "tvAllRouters";
-            treeNode1.Name = "MineSite";
-            treeNode1.Text = "Mine Site Name";
+            treeNode3.Name = "MineSite";
+            treeNode3.Text = "Mine Site Name";
             this.tvAllRouters.Nodes.AddRange(new System.Windows.Forms.TreeNode[] {
-            treeNode1});
+            treeNode3});
             this.tvAllRouters.Size = new System.Drawing.Size(252, 436);
             this.tvAllRouters.TabIndex = 0;
             this.tvAllRouters.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.tvAllRouters_AfterSelect);
@@ -181,8 +181,8 @@
             // 
             // dataRouters
             // 
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Segoe UI", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dataRouters.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle5.Font = new System.Drawing.Font("Segoe UI", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dataRouters.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle5;
             this.dataRouters.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left)));
             this.dataRouters.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
@@ -199,8 +199,8 @@
             // 
             // dgRouter
             // 
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Segoe UI", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dgRouter.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle6.Font = new System.Drawing.Font("Segoe UI", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dgRouter.DefaultCellStyle = dataGridViewCellStyle6;
             this.dgRouter.HeaderText = "Router";
             this.dgRouter.Name = "dgRouter";
             this.dgRouter.ReadOnly = true;
@@ -294,7 +294,7 @@
             this.lblBRouter.AutoSize = true;
             this.lblBRouter.Font = new System.Drawing.Font("Segoe UI Semibold", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblBRouter.Location = new System.Drawing.Point(9, 118);
-            this.lblBRouter.MaximumSize = new System.Drawing.Size(60, 60);
+            this.lblBRouter.MaximumSize = new System.Drawing.Size(65, 60);
             this.lblBRouter.Name = "lblBRouter";
             this.lblBRouter.Size = new System.Drawing.Size(58, 38);
             this.lblBRouter.TabIndex = 1;
@@ -355,7 +355,7 @@
             this.tmMain.Location = new System.Drawing.Point(2, 2);
             this.tmMain.Name = "tmMain";
             this.tmMain.SelectedIndex = 0;
-            this.tmMain.Size = new System.Drawing.Size(720, 103);
+            this.tmMain.Size = new System.Drawing.Size(1040, 103);
             this.tmMain.TabIndex = 4;
             // 
             // tabMaster
@@ -367,7 +367,7 @@
             this.tabMaster.Location = new System.Drawing.Point(4, 32);
             this.tabMaster.Name = "tabMaster";
             this.tabMaster.Padding = new System.Windows.Forms.Padding(3);
-            this.tabMaster.Size = new System.Drawing.Size(712, 67);
+            this.tabMaster.Size = new System.Drawing.Size(1032, 67);
             this.tabMaster.TabIndex = 0;
             this.tabMaster.Text = "Master";
             this.tabMaster.UseVisualStyleBackColor = true;
@@ -434,7 +434,7 @@
             this.tabTracking.Location = new System.Drawing.Point(4, 32);
             this.tabTracking.Name = "tabTracking";
             this.tabTracking.Padding = new System.Windows.Forms.Padding(3);
-            this.tabTracking.Size = new System.Drawing.Size(712, 64);
+            this.tabTracking.Size = new System.Drawing.Size(1032, 67);
             this.tabTracking.TabIndex = 4;
             this.tabTracking.Text = "Tracking";
             this.tabTracking.UseVisualStyleBackColor = true;
@@ -454,6 +454,16 @@
             // 
             this.nudMapScale.DecimalPlaces = 2;
             this.nudMapScale.Location = new System.Drawing.Point(385, 31);
+            this.nudMapScale.Maximum = new decimal(new int[] {
+            700,
+            0,
+            0,
+            0});
+            this.nudMapScale.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
             this.nudMapScale.Name = "nudMapScale";
             this.nudMapScale.Size = new System.Drawing.Size(65, 30);
             this.nudMapScale.TabIndex = 7;
@@ -463,6 +473,7 @@
             0,
             0,
             0});
+            this.nudMapScale.ValueChanged += new System.EventHandler(this.nudMapScale_ValueChanged);
             // 
             // lblAllActiveMiners
             // 
@@ -470,7 +481,7 @@
             this.lblAllActiveMiners.AutoSize = true;
             this.lblAllActiveMiners.Font = new System.Drawing.Font("Segoe UI Semibold", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblAllActiveMiners.ForeColor = System.Drawing.SystemColors.InactiveCaption;
-            this.lblAllActiveMiners.Location = new System.Drawing.Point(530, 31);
+            this.lblAllActiveMiners.Location = new System.Drawing.Point(850, 31);
             this.lblAllActiveMiners.Name = "lblAllActiveMiners";
             this.lblAllActiveMiners.Size = new System.Drawing.Size(162, 25);
             this.lblAllActiveMiners.TabIndex = 5;
@@ -482,7 +493,7 @@
             this.lblRouterCount.AutoSize = true;
             this.lblRouterCount.Font = new System.Drawing.Font("Segoe UI Semibold", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblRouterCount.ForeColor = System.Drawing.SystemColors.InactiveCaption;
-            this.lblRouterCount.Location = new System.Drawing.Point(530, 3);
+            this.lblRouterCount.Location = new System.Drawing.Point(850, 3);
             this.lblRouterCount.Name = "lblRouterCount";
             this.lblRouterCount.Size = new System.Drawing.Size(176, 25);
             this.lblRouterCount.TabIndex = 4;
@@ -502,7 +513,7 @@
             this.tabReports.Location = new System.Drawing.Point(4, 32);
             this.tabReports.Name = "tabReports";
             this.tabReports.Padding = new System.Windows.Forms.Padding(3);
-            this.tabReports.Size = new System.Drawing.Size(712, 64);
+            this.tabReports.Size = new System.Drawing.Size(712, 67);
             this.tabReports.TabIndex = 1;
             this.tabReports.Text = "Reports";
             this.tabReports.UseVisualStyleBackColor = true;
@@ -512,7 +523,7 @@
             this.tabAttendance.Location = new System.Drawing.Point(4, 32);
             this.tabAttendance.Name = "tabAttendance";
             this.tabAttendance.Padding = new System.Windows.Forms.Padding(3);
-            this.tabAttendance.Size = new System.Drawing.Size(712, 64);
+            this.tabAttendance.Size = new System.Drawing.Size(712, 67);
             this.tabAttendance.TabIndex = 3;
             this.tabAttendance.Text = "Attendance";
             this.tabAttendance.UseVisualStyleBackColor = true;
