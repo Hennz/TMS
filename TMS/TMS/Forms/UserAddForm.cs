@@ -10,11 +10,11 @@ using System.Windows.Forms;
 
 namespace TMS
 {
-    public partial class UserAddEditForm : Form
+    public partial class UserAddForm : Form
     {
         MasterController _controller;
 
-        public UserAddEditForm(MasterController c)
+        public UserAddForm(MasterController c)
         {
             InitializeComponent();
 

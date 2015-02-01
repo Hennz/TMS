@@ -22,7 +22,8 @@ namespace TMS
         RouterAddEditForm _routerForm;
         SensorAddEditForm _sensorForm;
         ShiftAddEditForm _shiftForm;
-        UserAddEditForm _userForm;
+        UserEditForm _userEditForm;
+        UserAddForm _userAddForm;
 
         public PictureBox _picMinePlan { private get;  set; }
 
@@ -119,17 +120,7 @@ namespace TMS
                 }
             }
 
-            // Hashes and checks password 
-            byte[] passBytes = Encoding.UTF8.GetBytes(salt + password);
-
-            SHA256 hasherSHA256 = SHA256Managed.Create();
-            byte[] hashValue = hasherSHA256.ComputeHash(passBytes);
-
-            string hashedPass = "";
-            foreach (byte x in hashValue)
-            {
-                hashedPass += String.Format("{0:x2}", x);
-            }
+            string hashedPass = HashPassword(salt, password);
 
             if (!hashedPass.Equals(passHash))
             {
@@ -155,12 +146,43 @@ namespace TMS
 
         }
 
-        /// <summary>
-        /// TODO Creates a new user and adds it to the database
-        /// </summary>
-        public void CreateUser()
+        private string GenerateSalt()
         {
+            string salt = "";
 
+            Random random = new Random(unchecked((int)DateTime.Now.Ticks));
+            if (random != null)
+            {
+                byte[] saltBytes = new byte[16];
+                new RNGCryptoServiceProvider().GetBytes(saltBytes);
+
+                //salt = Encoding.UTF8.GetString(saltBytes);
+                salt = Convert.ToBase64String(saltBytes);
+            }
+            
+            return salt;
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="salt"></param>
+        /// <param name="password"></param>
+        /// <returns></returns>
+        private string HashPassword(string salt, string password)
+        {
+            byte[] passBytes = Encoding.UTF8.GetBytes(salt + password);
+
+            SHA256 hasherSHA256 = SHA256Managed.Create();
+            byte[] hashValue = hasherSHA256.ComputeHash(passBytes);
+
+            string hashedPass = "";
+            foreach (byte x in hashValue)
+            {
+                hashedPass += String.Format("{0:x2}", x);
+            }
+
+            return hashedPass;
         }
 
         /// <summary>
@@ -341,11 +363,16 @@ namespace TMS
         }
 
         /// <summary>
-        /// TODO Open user form
+        /// Opens user creation form
         /// </summary>
         public void OpenCreateUser()
         {
+            if (_userAddForm == null || _userAddForm.Visible == false)
+            {
+                _userAddForm = new UserAddForm(this);
+                _userAddForm.Show();
 
+            }
         }
 
         /// <summary>
@@ -387,10 +414,10 @@ namespace TMS
         /// </summary>
         public void OpenUsers()
         {
-            if (_userForm == null || _userForm.Visible == false)
+            if (_userEditForm == null || _userEditForm.Visible == false)
             {
-                _userForm = new UserAddEditForm(this);
-                _userForm.Show();
+                _userEditForm = new UserEditForm(this);
+                _userEditForm.Show();
             }
         }
 
@@ -677,6 +704,110 @@ namespace TMS
 
             _picMinePlan.MouseDown -= SelectRouterPosClick;
             isSelectingPos = false;
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="username"></param>
+        /// <param name="password"></param>
+        /// <param name="fName"></param>
+        /// <param name="lName"></param>
+        public bool UserCreate(string username, string password, string fName, string lName)
+        {
+            string salt = GenerateSalt();
+
+            string hashedPass = HashPassword(salt, password);
+
+            using (SqlConnection sqlCon = new SqlConnection(Properties.Settings.Default.TMS_DatabaseConnectionString))
+            {
+                string cmdString = "INSERT INTO Users(username, password, salt, fName, lName, isAdmin) VALUES(@username, @password, @salt, @fName, @lName, @isAdmin)";
+
+                sqlCon.Open();
+                SqlCommand oCmd = new SqlCommand(cmdString, sqlCon);
+                oCmd.Parameters.AddWithValue("@username", username);
+                oCmd.Parameters.AddWithValue("@password", hashedPass);
+                oCmd.Parameters.AddWithValue("@salt", salt);
+                oCmd.Parameters.AddWithValue("@fName", fName);
+                oCmd.Parameters.AddWithValue("@lName", lName);
+                oCmd.Parameters.AddWithValue("@isAdmin", false);
+
+                try
+                {
+                    int rows = oCmd.ExecuteNonQuery();
+                }
+                catch (SqlException e)
+                {
+                    MessageBox.Show(e.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+                    return false;
+                }
+            }
+
+            return true;
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="fName"></param>
+        /// <param name="lName"></param>
+        public bool UserUpdate(string fName, string lName)
+        {
+            using (SqlConnection sqlCon = new SqlConnection(Properties.Settings.Default.TMS_DatabaseConnectionString))
+            {
+                string cmdString = "UPDATE Users SET fName=@fName, lName=@lName";
+
+                sqlCon.Open();
+                SqlCommand oCmd = new SqlCommand(cmdString, sqlCon);
+                oCmd.Parameters.AddWithValue("@fName", fName);
+                oCmd.Parameters.AddWithValue("@lName", lName);
+
+                try
+                {
+                    int rows = oCmd.ExecuteNonQuery();
+
+                    User.GetInstance().Init(User.GetInstance().username, fName, lName, User.GetInstance().isAdmin);
+                }
+                catch (SqlException e)
+                {
+                    MessageBox.Show(e.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+                    return false;
+                }
+            }
+
+            return true;
+        }
+
+        public bool UserPasswordUpdate(string password)  
+        {
+            string salt = GenerateSalt();
+
+            string hashedPass = HashPassword(salt, password);
+
+            using (SqlConnection sqlCon = new SqlConnection(Properties.Settings.Default.TMS_DatabaseConnectionString))
+            {
+                string cmdString = "UPDATE Users SET password=@password, salt=@salt";
+
+                sqlCon.Open();
+                SqlCommand oCmd = new SqlCommand(cmdString, sqlCon);
+                oCmd.Parameters.AddWithValue("@password", hashedPass);
+                oCmd.Parameters.AddWithValue("@salt", salt);
+
+                try
+                {
+                    int rows = oCmd.ExecuteNonQuery();
+                }
+                catch (SqlException e)
+                {
+                    MessageBox.Show(e.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+                    return false;
+                }
+            }
+
+            return true;
         }
     }
 }

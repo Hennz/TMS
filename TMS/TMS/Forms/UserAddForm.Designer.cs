@@ -1,6 +1,6 @@
 ﻿namespace TMS
 {
-    partial class UserAddEditForm
+    partial class UserAddForm
     {
         /// <summary>
         /// Required designer variable.
@@ -28,21 +28,22 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(UserAddEditForm));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(UserAddForm));
             this.SuspendLayout();
             // 
-            // UserAddEditForm
+            // UserAddForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ControlLightLight;
-            this.ClientSize = new System.Drawing.Size(532, 373);
+            this.ClientSize = new System.Drawing.Size(396, 351);
             this.Font = new System.Drawing.Font("Segoe UI", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.MinimizeBox = false;
-            this.Name = "UserAddEditForm";
-            this.Text = "UserAddEditForm";
+            this.Name = "UserAddForm";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.Text = "New User";
             this.ResumeLayout(false);
 
         }

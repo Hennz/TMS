@@ -122,7 +122,7 @@ namespace TMS
         /// <param name="e"></param>
         private void llblUsername_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-
+            _masterController.OpenUsers();
         }
 
         /// <summary>
