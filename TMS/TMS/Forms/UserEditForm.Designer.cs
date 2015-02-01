@@ -62,6 +62,7 @@
             this.lblUsername.Size = new System.Drawing.Size(338, 76);
             this.lblUsername.TabIndex = 0;
             this.lblUsername.Text = "USERNAME USERNAME - REGULAR USER";
+            this.lblUsername.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // lblFName
             // 
@@ -230,7 +231,7 @@
             this.chkPW.UseVisualStyleBackColor = true;
             this.chkPW.CheckedChanged += new System.EventHandler(this.chkPW_CheckedChanged);
             // 
-            // UserAddEditForm
+            // UserEditForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -250,7 +251,7 @@
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.MinimumSize = new System.Drawing.Size(465, 500);
-            this.Name = "UserAddEditForm";
+            this.Name = "UserEditForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Manage User Account";
             this.pnlNewPW.ResumeLayout(false);

@@ -139,12 +139,46 @@ namespace TMS
         }
 
         /// <summary>
+        /// 
+        /// </summary>
+        public void ClosedUserAddForm()
+        {
+            _userAddForm.Dispose();
+            _userEditForm.Show();
+        }
+
+        /// <summary>
         /// TODO Create an admin user if there are none
         /// </summary>
         private void CreateAdmin()
         {
 
         }
+
+        public List<string> GetAllUsernames()
+        {
+            List<string> usernames = new List<string>();
+
+            using (SqlConnection sqlCon = new SqlConnection(Properties.Settings.Default.TMS_DatabaseConnectionString))
+            {
+                string cmdString = "SELECT username FROM Users";
+
+                SqlCommand oCmd = new SqlCommand(cmdString, sqlCon);
+
+                sqlCon.Open();
+                using (SqlDataReader oReader = oCmd.ExecuteReader())
+                {
+                    while (oReader.Read())
+                    {
+                        usernames.Add(oReader["username"].ToString());
+                    }
+                }
+            }
+
+            return usernames;
+        }
+
+        #region Password Hashing
 
         private string GenerateSalt()
         {
@@ -184,6 +218,8 @@ namespace TMS
 
             return hashedPass;
         }
+
+        #endregion
 
         /// <summary>
         /// Loads all info into MineSite
@@ -371,6 +407,8 @@ namespace TMS
             {
                 _userAddForm = new UserAddForm(this);
                 _userAddForm.Show();
+
+                _userEditForm.Hide();
 
             }
         }

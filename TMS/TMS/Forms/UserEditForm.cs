@@ -33,7 +33,7 @@ namespace TMS
             }
             else
             {
-                MessageBox.Show("Access Warning", "Only Administrators are able to add new user accounts.", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                MessageBox.Show("Only Administrators are able to add new user accounts.", "Access Warning", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
             }
         }
 
