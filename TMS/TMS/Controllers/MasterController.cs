@@ -20,6 +20,7 @@ namespace TMS
 
         MinerAddEditForm _minerForm;
         RouterAddEditForm _routerForm;
+        SensorAddEditForm _sensorForm;
         ShiftAddEditForm _shiftForm;
         UserAddEditForm _userForm;
 
@@ -155,7 +156,7 @@ namespace TMS
         }
 
         /// <summary>
-        /// TODO Create a new user and adds it to the database
+        /// TODO Creates a new user and adds it to the database
         /// </summary>
         public void CreateUser()
         {
@@ -163,7 +164,7 @@ namespace TMS
         }
 
         /// <summary>
-        /// Loads all info int MineSite
+        /// Loads all info into MineSite
         /// </summary>
         private void LoadAllSiteInfo()   
         {
@@ -173,6 +174,7 @@ namespace TMS
             float mapScale = 0;
             List<Router> routers = new List<Router>();
             List<Member> members = new List<Member>();
+            List<string> sensors = new List<string>();
 
             // Load routers and members
             using (SqlConnection sqlCon = new SqlConnection(Properties.Settings.Default.TMS_DatabaseConnectionString))
@@ -254,9 +256,21 @@ namespace TMS
                         }
                     }
                 }
+
+                // Load all sensors
+                cmdString = "SELECT * FROM Sensors";
+                oCmd = new SqlCommand(cmdString, sqlCon);
+
+                using (SqlDataReader oReader = oCmd.ExecuteReader())
+                {
+                    while (oReader.Read())
+                    {
+                        sensors.Add(oReader["Id"].ToString());
+                    }
+                }
             }
 
-            MineSite.GetInstance().Init(siteId, siteName, mapAddr, mapScale, routers, members);
+            MineSite.GetInstance().Init(siteId, siteName, mapAddr, mapScale, routers, members, sensors);
         }
 
         /// <summary>
@@ -349,13 +363,23 @@ namespace TMS
 
         public void OpenRouters()
         {
-            if (_routerForm == null || _routerForm.Visible == false) 
+            if (_routerForm == null || _routerForm.Visible == false)
             {
                 _routerForm = new RouterAddEditForm(this);
                 _mainForm.AddToLeftPanel(_routerForm);
 
             }
-            
+
+        }
+
+        public void OpenSensors()
+        {
+            if (_sensorForm == null || _sensorForm.Visible == false)
+            {
+                _sensorForm = new SensorAddEditForm(this);
+                _sensorForm.Show();
+            }
+
         }
 
         /// <summary>
@@ -411,7 +435,7 @@ namespace TMS
                 }
                 catch (SqlException e)
                 {
-                    MessageBox.Show("Error", e.Message, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show(e.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
 
                     return 1;
                 }
@@ -461,7 +485,7 @@ namespace TMS
                 }
                 catch (SqlException e)
                 {
-                    MessageBox.Show("Error", e.Message, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show(e.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
 
                     return 1;
                 }
@@ -517,7 +541,10 @@ namespace TMS
                 try
                 {
                     int rows = oCmd.ExecuteNonQuery();
-                    MineSite.GetInstance().siteRouters.Add(new Router(rId, addr, loc, x, y, isBlocked));
+                    Router router = new Router(rId, addr, loc, x, y, isBlocked);
+                    MineSite.GetInstance().siteRouters.Add(router);
+
+                    _mainForm.AddNewCreatedRouter(router);
 
                     return 0;
                 }
@@ -563,6 +590,58 @@ namespace TMS
                     return 1;
                 }
             }
+        }
+
+        public bool SensorCreate(string sensorId)
+        {
+            using (SqlConnection sqlCon = new SqlConnection(Properties.Settings.Default.TMS_DatabaseConnectionString))
+            {
+                string cmdString = "INSERT INTO Sensors(Id) VALUES(@Id)";
+
+                sqlCon.Open();
+                SqlCommand oCmd = new SqlCommand(cmdString, sqlCon);
+                oCmd.Parameters.AddWithValue("@Id", sensorId);
+
+                try
+                {
+                    int rows = oCmd.ExecuteNonQuery();
+                    MineSite.GetInstance().siteSensors.Add(sensorId);
+                }
+                catch (SqlException e)
+                {
+                    MessageBox.Show(e.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+                    return false;
+                }
+            }
+
+            return true;
+        }
+
+        public bool SensorDelete(string sensorId)
+        {
+            using (SqlConnection sqlCon = new SqlConnection(Properties.Settings.Default.TMS_DatabaseConnectionString))
+            {
+                string cmdString = "DELETE FROM Sensors WHERE Id=@Id";
+
+                sqlCon.Open();
+                SqlCommand oCmd = new SqlCommand(cmdString, sqlCon);
+                oCmd.Parameters.AddWithValue("@Id", sensorId);
+
+                try
+                {
+                    int rows = oCmd.ExecuteNonQuery();
+                    MineSite.GetInstance().siteSensors.Remove(sensorId);
+                }
+                catch (SqlException e)
+                {
+                    MessageBox.Show(e.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+                    return false;
+                }
+            }
+
+            return true;
         }
 
         /// <summary>

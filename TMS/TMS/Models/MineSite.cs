@@ -17,12 +17,13 @@ namespace TMS
 
         public List<Router> siteRouters { get; private set; }
         public List<Member> siteMembers { get; private set; }
+        public List<string> siteSensors { get; private set; }
 
         public delegate void OnUpdatedDelegate(float new_scale);
 
         public event OnUpdatedDelegate OnUpdated;
 
-        public Router ContainsRouter(string rId) 
+        public Router ContainsRouter(string rId)
         {
             foreach (Router r in siteRouters)
             {
@@ -43,7 +44,8 @@ namespace TMS
             return _instance;
         }
 
-        public void Init(int id, string siteN, string mapPath, float scale, List<Router> routers, List<Member> members)
+        public void Init(int id, string siteN, string mapPath, float scale, 
+            List<Router> routers, List<Member> members, List<string> sensors)
         {
             siteId = id;
             siteName = siteN;
@@ -52,6 +54,7 @@ namespace TMS
 
             siteRouters = routers;
             siteMembers = members;
+            siteSensors = sensors;
         }
 
         public void UpdateScale(float new_scale)

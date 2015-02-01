@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(RouterAddEditForm));
             this.rbNew = new System.Windows.Forms.RadioButton();
             this.rbUpdate = new System.Windows.Forms.RadioButton();
             this.lstRouters = new System.Windows.Forms.ListBox();
@@ -47,6 +48,7 @@
             this.chkBlocked = new System.Windows.Forms.CheckBox();
             this.btnDelete = new System.Windows.Forms.Button();
             this.btnSelPos = new System.Windows.Forms.Button();
+            this.lblRDetails = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.epRID)).BeginInit();
             this.SuspendLayout();
             // 
@@ -91,7 +93,7 @@
             // txtId
             // 
             this.txtId.Font = new System.Drawing.Font("Segoe UI", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtId.Location = new System.Drawing.Point(92, 320);
+            this.txtId.Location = new System.Drawing.Point(88, 393);
             this.txtId.Name = "txtId";
             this.txtId.Size = new System.Drawing.Size(111, 25);
             this.txtId.TabIndex = 3;
@@ -100,7 +102,7 @@
             // txtAddr
             // 
             this.txtAddr.Font = new System.Drawing.Font("Segoe UI", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtAddr.Location = new System.Drawing.Point(92, 349);
+            this.txtAddr.Location = new System.Drawing.Point(88, 422);
             this.txtAddr.Multiline = true;
             this.txtAddr.Name = "txtAddr";
             this.txtAddr.Size = new System.Drawing.Size(111, 56);
@@ -110,7 +112,7 @@
             // 
             this.lblId.AutoSize = true;
             this.lblId.Font = new System.Drawing.Font("Segoe UI", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblId.Location = new System.Drawing.Point(9, 323);
+            this.lblId.Location = new System.Drawing.Point(5, 396);
             this.lblId.Name = "lblId";
             this.lblId.Size = new System.Drawing.Size(26, 19);
             this.lblId.TabIndex = 7;
@@ -120,7 +122,7 @@
             // 
             this.lblAddr.AutoSize = true;
             this.lblAddr.Font = new System.Drawing.Font("Segoe UI", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblAddr.Location = new System.Drawing.Point(9, 352);
+            this.lblAddr.Location = new System.Drawing.Point(5, 425);
             this.lblAddr.Name = "lblAddr";
             this.lblAddr.Size = new System.Drawing.Size(61, 19);
             this.lblAddr.TabIndex = 8;
@@ -130,7 +132,7 @@
             // 
             this.lblPos.AutoSize = true;
             this.lblPos.Font = new System.Drawing.Font("Segoe UI", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblPos.Location = new System.Drawing.Point(9, 442);
+            this.lblPos.Location = new System.Drawing.Point(5, 515);
             this.lblPos.Name = "lblPos";
             this.lblPos.Size = new System.Drawing.Size(61, 19);
             this.lblPos.TabIndex = 9;
@@ -139,7 +141,7 @@
             // mtxtX
             // 
             this.mtxtX.Font = new System.Drawing.Font("Segoe UI", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.mtxtX.Location = new System.Drawing.Point(92, 442);
+            this.mtxtX.Location = new System.Drawing.Point(88, 515);
             this.mtxtX.Mask = "00000";
             this.mtxtX.Name = "mtxtX";
             this.mtxtX.Size = new System.Drawing.Size(50, 25);
@@ -149,7 +151,7 @@
             // mtxtY
             // 
             this.mtxtY.Font = new System.Drawing.Font("Segoe UI", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.mtxtY.Location = new System.Drawing.Point(153, 442);
+            this.mtxtY.Location = new System.Drawing.Point(149, 515);
             this.mtxtY.Mask = "00000";
             this.mtxtY.Name = "mtxtY";
             this.mtxtY.Size = new System.Drawing.Size(50, 25);
@@ -160,7 +162,7 @@
             // 
             this.btnEnter.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnEnter.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnEnter.Location = new System.Drawing.Point(118, 500);
+            this.btnEnter.Location = new System.Drawing.Point(114, 573);
             this.btnEnter.Name = "btnEnter";
             this.btnEnter.Size = new System.Drawing.Size(85, 37);
             this.btnEnter.TabIndex = 12;
@@ -171,7 +173,7 @@
             // 
             this.btnClose.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnClose.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnClose.Location = new System.Drawing.Point(118, 543);
+            this.btnClose.Location = new System.Drawing.Point(114, 616);
             this.btnClose.Name = "btnClose";
             this.btnClose.Size = new System.Drawing.Size(85, 37);
             this.btnClose.TabIndex = 13;
@@ -187,7 +189,7 @@
             // 
             this.lblLoc.AutoSize = true;
             this.lblLoc.Font = new System.Drawing.Font("Segoe UI", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblLoc.Location = new System.Drawing.Point(9, 414);
+            this.lblLoc.Location = new System.Drawing.Point(5, 487);
             this.lblLoc.Name = "lblLoc";
             this.lblLoc.Size = new System.Drawing.Size(64, 19);
             this.lblLoc.TabIndex = 15;
@@ -196,7 +198,7 @@
             // txtLocation
             // 
             this.txtLocation.Font = new System.Drawing.Font("Segoe UI", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtLocation.Location = new System.Drawing.Point(92, 411);
+            this.txtLocation.Location = new System.Drawing.Point(88, 484);
             this.txtLocation.Name = "txtLocation";
             this.txtLocation.Size = new System.Drawing.Size(111, 25);
             this.txtLocation.TabIndex = 5;
@@ -204,7 +206,7 @@
             // chkBlocked
             // 
             this.chkBlocked.AutoSize = true;
-            this.chkBlocked.Location = new System.Drawing.Point(123, 473);
+            this.chkBlocked.Location = new System.Drawing.Point(119, 546);
             this.chkBlocked.Name = "chkBlocked";
             this.chkBlocked.Size = new System.Drawing.Size(80, 21);
             this.chkBlocked.TabIndex = 8;
@@ -215,29 +217,43 @@
             // 
             this.btnDelete.Enabled = false;
             this.btnDelete.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnDelete.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnDelete.Location = new System.Drawing.Point(210, 47);
+            this.btnDelete.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnDelete.Location = new System.Drawing.Point(13, 308);
             this.btnDelete.Name = "btnDelete";
             this.btnDelete.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.btnDelete.Size = new System.Drawing.Size(40, 40);
+            this.btnDelete.Size = new System.Drawing.Size(190, 30);
             this.btnDelete.TabIndex = 16;
-            this.btnDelete.Text = "X";
+            this.btnDelete.Text = "Delete Router";
             this.btnDelete.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             this.btnDelete.UseVisualStyleBackColor = true;
             this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
             // 
             // btnSelPos
             // 
+            this.btnSelPos.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnSelPos.BackgroundImage")));
+            this.btnSelPos.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnSelPos.FlatAppearance.BorderSize = 0;
             this.btnSelPos.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnSelPos.Font = new System.Drawing.Font("Segoe UI", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnSelPos.Location = new System.Drawing.Point(210, 439);
+            this.btnSelPos.Location = new System.Drawing.Point(206, 515);
             this.btnSelPos.Name = "btnSelPos";
-            this.btnSelPos.Size = new System.Drawing.Size(40, 33);
+            this.btnSelPos.Size = new System.Drawing.Size(40, 25);
             this.btnSelPos.TabIndex = 17;
-            this.btnSelPos.Text = ">";
             this.btnSelPos.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             this.btnSelPos.UseVisualStyleBackColor = true;
             this.btnSelPos.Click += new System.EventHandler(this.btnSelPos_Click);
+            // 
+            // lblRDetails
+            // 
+            this.lblRDetails.AutoSize = true;
+            this.lblRDetails.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.lblRDetails.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblRDetails.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.lblRDetails.Location = new System.Drawing.Point(8, 359);
+            this.lblRDetails.Name = "lblRDetails";
+            this.lblRDetails.Size = new System.Drawing.Size(135, 28);
+            this.lblRDetails.TabIndex = 18;
+            this.lblRDetails.Text = "Router Details";
             // 
             // RouterAddEditForm
             // 
@@ -246,8 +262,9 @@
             this.AutoSize = true;
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.BackColor = System.Drawing.SystemColors.ControlLightLight;
-            this.ClientSize = new System.Drawing.Size(278, 853);
+            this.ClientSize = new System.Drawing.Size(248, 853);
             this.ControlBox = false;
+            this.Controls.Add(this.lblRDetails);
             this.Controls.Add(this.btnSelPos);
             this.Controls.Add(this.btnDelete);
             this.Controls.Add(this.chkBlocked);
@@ -298,5 +315,6 @@
         private System.Windows.Forms.CheckBox chkBlocked;
         private System.Windows.Forms.Button btnDelete;
         private System.Windows.Forms.Button btnSelPos;
+        private System.Windows.Forms.Label lblRDetails;
     }
 }

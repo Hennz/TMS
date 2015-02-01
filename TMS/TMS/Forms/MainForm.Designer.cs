@@ -28,9 +28,9 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.TreeNode treeNode3 = new System.Windows.Forms.TreeNode("Mine Site Name");
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.TreeNode treeNode1 = new System.Windows.Forms.TreeNode("Mine Site Name");
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
             this.splitMain = new System.Windows.Forms.SplitContainer();
             this.lstActiveMiners = new System.Windows.Forms.ListBox();
@@ -55,10 +55,14 @@
             this.statusTextConnected = new System.Windows.Forms.ToolStripStatusLabel();
             this.tmMain = new System.Windows.Forms.TabControl();
             this.tabMaster = new System.Windows.Forms.TabPage();
-            this.btnMember = new System.Windows.Forms.Button();
             this.btnSensor = new System.Windows.Forms.Button();
             this.btnLoadMap = new System.Windows.Forms.Button();
             this.btnRouters = new System.Windows.Forms.Button();
+            this.btnMember = new System.Windows.Forms.Button();
+            this.label5 = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
             this.tabTracking = new System.Windows.Forms.TabPage();
             this.label2 = new System.Windows.Forms.Label();
             this.nudMapScale = new System.Windows.Forms.NumericUpDown();
@@ -69,10 +73,6 @@
             this.tabAttendance = new System.Windows.Forms.TabPage();
             this.llblUsername = new System.Windows.Forms.LinkLabel();
             this.lblUserType = new System.Windows.Forms.Label();
-            this.label1 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
-            this.label5 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.splitMain)).BeginInit();
             this.splitMain.Panel1.SuspendLayout();
             this.splitMain.Panel2.SuspendLayout();
@@ -164,10 +164,10 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.tvAllRouters.Location = new System.Drawing.Point(6, 6);
             this.tvAllRouters.Name = "tvAllRouters";
-            treeNode3.Name = "MineSite";
-            treeNode3.Text = "Mine Site Name";
+            treeNode1.Name = "MineSite";
+            treeNode1.Text = "Mine Site Name";
             this.tvAllRouters.Nodes.AddRange(new System.Windows.Forms.TreeNode[] {
-            treeNode3});
+            treeNode1});
             this.tvAllRouters.Size = new System.Drawing.Size(252, 436);
             this.tvAllRouters.TabIndex = 0;
             this.tvAllRouters.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.tvAllRouters_AfterSelect);
@@ -185,8 +185,8 @@
             // 
             // dataRouters
             // 
-            dataGridViewCellStyle5.Font = new System.Drawing.Font("Segoe UI", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dataRouters.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Segoe UI", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dataRouters.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
             this.dataRouters.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left)));
             this.dataRouters.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
@@ -203,8 +203,8 @@
             // 
             // dgRouter
             // 
-            dataGridViewCellStyle6.Font = new System.Drawing.Font("Segoe UI", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dgRouter.DefaultCellStyle = dataGridViewCellStyle6;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Segoe UI", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dgRouter.DefaultCellStyle = dataGridViewCellStyle2;
             this.dgRouter.HeaderText = "Router";
             this.dgRouter.Name = "dgRouter";
             this.dgRouter.ReadOnly = true;
@@ -380,20 +380,6 @@
             this.tabMaster.Text = "Master";
             this.tabMaster.UseVisualStyleBackColor = true;
             // 
-            // btnMember
-            // 
-            this.btnMember.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnMember.BackgroundImage")));
-            this.btnMember.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.btnMember.FlatAppearance.BorderSize = 0;
-            this.btnMember.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnMember.Font = new System.Drawing.Font("Segoe UI", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnMember.Location = new System.Drawing.Point(219, 4);
-            this.btnMember.Name = "btnMember";
-            this.btnMember.Size = new System.Drawing.Size(45, 45);
-            this.btnMember.TabIndex = 3;
-            this.btnMember.UseVisualStyleBackColor = true;
-            this.btnMember.Click += new System.EventHandler(this.btnMember_Click);
-            // 
             // btnSensor
             // 
             this.btnSensor.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnSensor.BackgroundImage")));
@@ -405,6 +391,7 @@
             this.btnSensor.Size = new System.Drawing.Size(45, 45);
             this.btnSensor.TabIndex = 2;
             this.btnSensor.UseVisualStyleBackColor = true;
+            this.btnSensor.Click += new System.EventHandler(this.btnSensor_Click);
             // 
             // btnLoadMap
             // 
@@ -431,6 +418,60 @@
             this.btnRouters.TabIndex = 1;
             this.btnRouters.UseVisualStyleBackColor = true;
             this.btnRouters.Click += new System.EventHandler(this.btnRouters_Click);
+            // 
+            // btnMember
+            // 
+            this.btnMember.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnMember.BackgroundImage")));
+            this.btnMember.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnMember.FlatAppearance.BorderSize = 0;
+            this.btnMember.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnMember.Font = new System.Drawing.Font("Segoe UI", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnMember.Location = new System.Drawing.Point(219, 4);
+            this.btnMember.Name = "btnMember";
+            this.btnMember.Size = new System.Drawing.Size(45, 45);
+            this.btnMember.TabIndex = 3;
+            this.btnMember.UseVisualStyleBackColor = true;
+            this.btnMember.Click += new System.EventHandler(this.btnMember_Click);
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Font = new System.Drawing.Font("Segoe UI", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label5.Location = new System.Drawing.Point(207, 45);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(67, 19);
+            this.label5.TabIndex = 7;
+            this.label5.Text = "Members";
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("Segoe UI", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.Location = new System.Drawing.Point(140, 45);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(56, 19);
+            this.label4.TabIndex = 6;
+            this.label4.Text = "Sensors";
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Segoe UI", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.Location = new System.Drawing.Point(78, 45);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(56, 19);
+            this.label3.TabIndex = 5;
+            this.label3.Text = "Routers";
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Segoe UI", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(1, 45);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(71, 19);
+            this.label1.TabIndex = 4;
+            this.label1.Text = "Load Map";
             // 
             // tabTracking
             // 
@@ -568,46 +609,6 @@
             this.lblUserType.TabIndex = 6;
             this.lblUserType.Text = "Regular User";
             this.lblUserType.TextAlign = System.Drawing.ContentAlignment.TopRight;
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Segoe UI", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(1, 45);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(71, 19);
-            this.label1.TabIndex = 4;
-            this.label1.Text = "Load Map";
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Segoe UI", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(78, 45);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(56, 19);
-            this.label3.TabIndex = 5;
-            this.label3.Text = "Routers";
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Segoe UI", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(140, 45);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(56, 19);
-            this.label4.TabIndex = 6;
-            this.label4.Text = "Sensors";
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Font = new System.Drawing.Font("Segoe UI", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(207, 45);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(67, 19);
-            this.label5.TabIndex = 7;
-            this.label5.Text = "Members";
             // 
             // MainForm
             // 

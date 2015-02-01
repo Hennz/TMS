@@ -87,6 +87,12 @@
     <Compile Include="Forms\RouterAddEditForm.Designer.cs">
       <DependentUpon>RouterAddEditForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\SensorAddEditForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\SensorAddEditForm.Designer.cs">
+      <DependentUpon>SensorAddEditForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\ShiftAddEditForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -129,6 +135,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\RouterAddEditForm.resx">
       <DependentUpon>RouterAddEditForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\SensorAddEditForm.resx">
+      <DependentUpon>SensorAddEditForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\ShiftAddEditForm.resx">
       <DependentUpon>ShiftAddEditForm.cs</DependentUpon>

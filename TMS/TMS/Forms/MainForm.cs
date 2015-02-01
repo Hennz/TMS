@@ -50,6 +50,10 @@ namespace TMS
         }
 
 
+        public void AddNewCreatedRouter(Router router)
+        {
+            _trackingController.AddOneRouterToMap(router);
+        }
         public void AddToLeftPanel(Form form)
         {
             form.TopLevel = false;
@@ -144,6 +148,11 @@ namespace TMS
         private void nudMapScale_ValueChanged(object sender, EventArgs e)
         {
             MineSite.GetInstance().UpdateScale((float)(nudMapScale.Value));
+        }
+
+        private void btnSensor_Click(object sender, EventArgs e)
+        {
+            _masterController.OpenSensors();
         }
 
     }
