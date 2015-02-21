@@ -46,6 +46,16 @@ namespace TMS
 
             _trackingController.AddAllRoutersToMap();
 
+            // Load all active miners to list
+            foreach (Member member in MineSite.GetInstance().siteMembers)
+            {
+                if (!member.isVehicle)
+                {
+                    lstActiveMiners.Items.Add(member);
+                }
+
+            }
+
             nudMapScale.Value = (decimal) (MineSite.GetInstance().mapScale);
         }
 
@@ -153,6 +163,25 @@ namespace TMS
         private void btnSensor_Click(object sender, EventArgs e)
         {
             _masterController.OpenSensors();
+        }
+
+        /// <summary>
+        /// Show the router form of where the member is after clicking on a member
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void lstActiveMiners_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            Member member = (Member)lstActiveMiners.SelectedItem;
+            if (member != null && member.path.First != null)
+            {
+                _trackingController.ShowMinerPosition(sender, null, member.path.First.Value);
+            }
+        }
+
+        private void btnTags_Click(object sender, EventArgs e)
+        {
+            _masterController.OpenCreateTag();
         }
 
     }

@@ -303,7 +303,7 @@
             this.lblTitleMemReg.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.lblTitleMemReg.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblTitleMemReg.ForeColor = System.Drawing.SystemColors.ControlDark;
-            this.lblTitleMemReg.Location = new System.Drawing.Point(207, 13);
+            this.lblTitleMemReg.Location = new System.Drawing.Point(208, 13);
             this.lblTitleMemReg.Name = "lblTitleMemReg";
             this.lblTitleMemReg.Size = new System.Drawing.Size(203, 28);
             this.lblTitleMemReg.TabIndex = 24;
@@ -388,7 +388,7 @@
             // rbUpdate
             // 
             this.rbUpdate.AutoSize = true;
-            this.rbUpdate.Location = new System.Drawing.Point(128, 54);
+            this.rbUpdate.Location = new System.Drawing.Point(112, 54);
             this.rbUpdate.Name = "rbUpdate";
             this.rbUpdate.Size = new System.Drawing.Size(75, 21);
             this.rbUpdate.TabIndex = 28;

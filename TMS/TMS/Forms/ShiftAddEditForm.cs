@@ -59,7 +59,7 @@ namespace TMS
                         member.assignedShifts.Add(shift);
                     }
 
-                    Dispose();
+                    Close();
                 }
             }
 
@@ -67,7 +67,12 @@ namespace TMS
 
         private void btnClose_Click(object sender, EventArgs e)
         {
-            Dispose();
+            Close();
+        }
+
+        private void ShiftAddEditForm_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            _controller.ClosedShiftForm();
         }
     }
 }

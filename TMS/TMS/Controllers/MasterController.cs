@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -22,6 +23,7 @@ namespace TMS
         RouterAddEditForm _routerForm;
         SensorAddEditForm _sensorForm;
         ShiftAddEditForm _shiftForm;
+        TagAddEditForm _tagForm;
         UserEditForm _userEditForm;
         UserAddForm _userAddForm;
 
@@ -49,17 +51,17 @@ namespace TMS
                 oCmd[0] = new SqlCommand(cmdDelete, sqlCon);
                 oCmd[0].Parameters.AddWithValue("@memberNo", member.memberId);
 
-                for (int i = 1; i < shift.Length; i++)
+                for (int i = 1; i < shift.Length + 1; i++)
                 {
                     oCmd[i] = new SqlCommand(cmdString, sqlCon);
-                    oCmd[i].Parameters.AddWithValue("@start", shift[i].startTime.ToString("HH:mm:00"));
-                    oCmd[i].Parameters.AddWithValue("@end", shift[i].endTime.ToString("HH:mm:00"));
+                    oCmd[i].Parameters.AddWithValue("@start", shift[i-1].startTime.ToString("HH:mm:00"));
+                    oCmd[i].Parameters.AddWithValue("@end", shift[i-1].endTime.ToString("HH:mm:00"));
                     oCmd[i].Parameters.AddWithValue("@memberNo", member.memberId);
                 }
 
                 try
                 {
-                    for (int i = 0; i < shift.Length; i++)
+                    for (int i = 0; i < shift.Length + 1; i++)
                     {
                         int rows = oCmd[i].ExecuteNonQuery();
                     }
@@ -138,6 +140,11 @@ namespace TMS
             _routerForm.Dispose();
         }
 
+        public void ClosedShiftForm()
+        {
+            _minerForm.Enabled = true;
+        }
+
         /// <summary>
         /// 
         /// </summary>
@@ -155,6 +162,37 @@ namespace TMS
 
         }
 
+        /// <summary>
+        /// Returns a list of all tags and whether or not they are assigned to a miner
+        /// </summary>
+        /// <returns>A Dictionary of all tags and whether or not they are assigned to a miner</returns>
+        public Dictionary<string, bool> GetAllTagsAssigned()
+        {
+            Dictionary<string, bool> tags = new Dictionary<string, bool>();
+
+            using (SqlConnection sqlCon = new SqlConnection(Properties.Settings.Default.TMS_DatabaseConnectionString))
+            {
+                string cmdString = "SELECT Id, CASE WHEN EXISTS(SELECT * FROM Members where tagId=Id) THEN 1 ELSE 0 END AS 'isAssigned' FROM Tags";
+
+                SqlCommand oCmd = new SqlCommand(cmdString, sqlCon);
+
+                sqlCon.Open();
+                using (SqlDataReader oReader = oCmd.ExecuteReader())
+                {
+                    while (oReader.Read())
+                    {
+                        tags.Add(oReader["Id"].ToString(), oReader["isAssigned"].ToString().Equals("1") ? true : false);
+                    }
+                }
+            }
+
+            return tags;
+        }
+
+        /// <summary>
+        /// Returns a list of all usernames
+        /// </summary>
+        /// <returns>A list of all registered usernames</returns>
         public List<string> GetAllUsernames()
         {
             List<string> usernames = new List<string>();
@@ -373,6 +411,7 @@ namespace TMS
         {
             if (_shiftForm == null || _shiftForm.Visible == false)
             {
+                _minerForm.Enabled = false;
                 _shiftForm = new ShiftAddEditForm(this, member);
                 _shiftForm.Show();
             }
@@ -395,7 +434,11 @@ namespace TMS
         /// </summary>
         public void OpenCreateTag()
         {
-
+            if (_tagForm == null || _tagForm.Visible == false)
+            {
+                _tagForm = new TagAddEditForm(this);
+                _tagForm.Show();
+            }
         }
 
         /// <summary>
@@ -495,6 +538,18 @@ namespace TMS
                 try
                 {
                     int rows = oCmd.ExecuteNonQuery();
+                    Member member = new Member( memberNo,
+                                                fName, mName, lName,
+                                                addr, prov, city, pinNo,
+                                                phoneNo, mobileNo, isVehicle,
+                                                tagId);
+                    MineSite.GetInstance().siteMembers.Add(member);
+
+                    Shift[] newShifts = { new Shift(new DateTime(0), new DateTime(0)),
+                                 new Shift(new DateTime(0), new DateTime(0)),
+                                 new Shift(new DateTime(0), new DateTime(0))};
+
+                    AssignShift(member, newShifts);
                     
                     return 0;
                 }
@@ -724,6 +779,64 @@ namespace TMS
                 _picMinePlan.MouseDown += SelectRouterPosClick;
                 isSelectingPos = true;
             }
+        }
+
+        /// <summary>
+        /// Creates a tag ID and adds it to the database
+        /// </summary>
+        /// <param name="tagId"></param>
+        public bool TagCreate(string tagId)
+        {
+            using (SqlConnection sqlCon = new SqlConnection(Properties.Settings.Default.TMS_DatabaseConnectionString))
+            {
+                string cmdString = "INSERT INTO Tags(Id) VALUES(@Id)";
+
+                sqlCon.Open();
+                SqlCommand oCmd = new SqlCommand(cmdString, sqlCon);
+                oCmd.Parameters.AddWithValue("@Id", tagId);
+
+                try
+                {
+                    int rows = oCmd.ExecuteNonQuery();
+                }
+                catch (SqlException e)
+                {
+                    MessageBox.Show(e.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+                    return false;
+                }
+            }
+
+            return true;
+        }
+
+        /// <summary>
+        /// Deletes the tag ID from the database
+        /// </summary>
+        /// <param name="tagId"></param>
+        public bool TagDelete(string tagId)
+        {
+            using (SqlConnection sqlCon = new SqlConnection(Properties.Settings.Default.TMS_DatabaseConnectionString))
+            {
+                string cmdString = "DELETE FROM Tags WHERE Id=@Id";
+
+                sqlCon.Open();
+                SqlCommand oCmd = new SqlCommand(cmdString, sqlCon);
+                oCmd.Parameters.AddWithValue("@Id", tagId);
+
+                try
+                {
+                    int rows = oCmd.ExecuteNonQuery();
+                }
+                catch (SqlException e)
+                {
+                    MessageBox.Show(e.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+                    return false;
+                }
+            }
+
+            return true;
         }
 
         /// <summary>

@@ -232,6 +232,7 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Shifts for <MEMBER>";
             this.TopMost = true;
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.ShiftAddEditForm_FormClosed);
             this.ResumeLayout(false);
             this.PerformLayout();
 

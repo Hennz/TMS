@@ -49,7 +49,16 @@ namespace TMS
 
         private void EnterCreate(object sender, EventArgs e)
         {
-            if (cboTags.SelectedItem != null)
+            if (cboTags.SelectedItem != null && 
+                !txtMID.Text.Equals("") &&
+                !mtxtPin.Text.Equals("") &&
+                !txtFName.Text.Equals("") &&
+                !txtLName.Text.Equals("") &&
+                !txtAddr.Text.Equals("") &&
+                !txtProv.Text.Equals("") &&
+                !txtCity.Text.Equals("") &&
+                !mtxtPhone.Text.Equals("")
+                )
             {
                 int errorCode = _controller.MemberCreate(txtMID.Text,
                     txtFName.Text, txtMName.Text, txtLName.Text,
@@ -57,7 +66,7 @@ namespace TMS
                     Int32.Parse(mtxtPin.Text),
                     mtxtPhone.Text, mtxtMobile.Text,
                     chkIsVehicle.Checked,
-                    (string)(cboTags.SelectedItem));
+                    (string)(cboTags.Items[cboTags.SelectedIndex]));
 
                 if (errorCode == 0)
                 {
@@ -65,25 +74,37 @@ namespace TMS
 
                     LoadMembersList();
                 }
+                else
+                {
+                    MessageBox.Show("The member could not be created.", "Database Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+            else
+            {
+                MessageBox.Show("Please fill out all mandatory fields", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
         private void EnterUpdate(object sender, EventArgs e)
         {
+            if (txtMID.Text.Equals(""))
+            {
+                return;
+            }
+
             int errorCode = _controller.MemberUpdate(member, txtMID.Text,
                 txtFName.Text, txtMName.Text, txtLName.Text,
                 txtAddr.Text, txtProv.Text, txtCity.Text,
                 Int32.Parse(mtxtPin.Text),
                 mtxtPhone.Text, mtxtMobile.Text,
                 chkIsVehicle.Checked,
-                (string)(cboTags.SelectedItem));
+                (string)(cboTags.Items[cboTags.SelectedIndex]));
 
             if (errorCode == 0)
             {
-                ClearInput();
+                rbNew.Checked = true;
 
                 LoadMembersList();
-                lstMembers.SelectedItem = member;
             }
         }
 
@@ -136,12 +157,28 @@ namespace TMS
 
                 btnShift.Enabled = false;
                 btnShift.Text = "Assign Shifts";
+
+                txtMID.Enabled = true;
             }
         }
 
         private void rbUpdate_CheckedChanged(object sender, EventArgs e)
         {
-            if (rbUpdate.Checked && member != null)
+            // Set to new input if there are no registered members
+            if (lstMembers.Items.Count == 0)
+            {
+                rbNew.Checked = true;
+            }
+
+            // Automatically select the first member
+            if (member == null)
+            {
+                lstMembers.SelectedIndex = 0;
+                member = (Member)lstMembers.Items[0];
+            }
+
+            // Fill in the details of the selected member
+            if (rbUpdate.Checked)
             {
                 txtMID.Enabled = false;
 
@@ -160,7 +197,7 @@ namespace TMS
                 txtCity.Text = member.city;
 
                 chkIsVehicle.Checked = member.isVehicle;
-                cboTags.SelectedValue = member.tagId;
+                cboTags.SelectedIndex = cboTags.Items.IndexOf(member.tagId);
 
                 btnEnter.Click -= EnterCreate;
                 btnEnter.Click += EnterUpdate;
@@ -174,6 +211,7 @@ namespace TMS
         {
             member = (Member)(lstMembers.SelectedItem);
 
+            rbUpdate.Checked = false;
             rbUpdate.Checked = true;
         }
     }

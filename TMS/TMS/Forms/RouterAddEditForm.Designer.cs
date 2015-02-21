@@ -221,7 +221,7 @@
             this.btnDelete.Location = new System.Drawing.Point(13, 308);
             this.btnDelete.Name = "btnDelete";
             this.btnDelete.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.btnDelete.Size = new System.Drawing.Size(190, 30);
+            this.btnDelete.Size = new System.Drawing.Size(190, 35);
             this.btnDelete.TabIndex = 16;
             this.btnDelete.Text = "Delete Router";
             this.btnDelete.TextAlign = System.Drawing.ContentAlignment.TopCenter;

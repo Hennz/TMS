@@ -86,7 +86,7 @@
             this.mtxtNewSensor.Location = new System.Drawing.Point(178, 23);
             this.mtxtNewSensor.Mask = "aaaaa";
             this.mtxtNewSensor.Name = "mtxtNewSensor";
-            this.mtxtNewSensor.Size = new System.Drawing.Size(277, 30);
+            this.mtxtNewSensor.Size = new System.Drawing.Size(322, 30);
             this.mtxtNewSensor.TabIndex = 4;
             this.mtxtNewSensor.TextChanged += new System.EventHandler(this.mtxtNewSensor_TextChanged);
             this.mtxtNewSensor.Leave += new System.EventHandler(this.mtxtNewSensor_Leave);
