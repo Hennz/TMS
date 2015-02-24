@@ -650,6 +650,31 @@ namespace TMS
             }
         }
 
+        public bool MineSiteUpdate()    
+        {
+            using (SqlConnection sqlCon = new SqlConnection(Properties.Settings.Default.TMS_DatabaseConnectionString))
+            {
+                string cmdString = "UPDATE Site SET mapScale=@mapScale";
+
+                SqlCommand oCmd = new SqlCommand(cmdString, sqlCon);
+                oCmd.Parameters.AddWithValue("@mapScale", MineSite.GetInstance().mapScale);
+
+                sqlCon.Open();
+
+                try
+                {
+                    int rows = oCmd.ExecuteNonQuery();
+                    return true;
+                }
+                catch (SqlException e)
+                {
+                    MessageBox.Show("Error", e.Message, MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+                    return false;
+                }
+            }
+        }
+
         /// <summary>
         /// Queries the database for a list of all the tags
         /// </summary>

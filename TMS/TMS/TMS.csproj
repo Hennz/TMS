@@ -62,6 +62,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Controllers\MessagingController.cs" />
     <Compile Include="Forms\LoginForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -75,6 +76,18 @@
       <DependentUpon>MainForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Controllers\MasterController.cs" />
+    <Compile Include="Forms\MessagesSendForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\MessagesSendForm.Designer.cs">
+      <DependentUpon>MessagesSendForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\MessagesViewForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\MessagesViewForm.Designer.cs">
+      <DependentUpon>MessagesViewForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\MinerAddEditForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -117,6 +130,7 @@
     <Compile Include="Forms\UserEditForm.Designer.cs">
       <DependentUpon>UserEditForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Models\EDBroadcast.cs" />
     <Compile Include="Models\Member.cs" />
     <Compile Include="Models\Router.cs" />
     <Compile Include="Models\MineSite.cs" />
@@ -141,6 +155,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\MessagesSendForm.resx">
+      <DependentUpon>MessagesSendForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\MessagesViewForm.resx">
+      <DependentUpon>MessagesViewForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\MinerAddEditForm.resx">
       <DependentUpon>MinerAddEditForm.cs</DependentUpon>

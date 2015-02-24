@@ -28,11 +28,12 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.TreeNode treeNode2 = new System.Windows.Forms.TreeNode("Mine Site Name");
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.TreeNode treeNode1 = new System.Windows.Forms.TreeNode("Mine Site Name");
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
             this.splitMain = new System.Windows.Forms.SplitContainer();
+            this.lblActiveMiners = new System.Windows.Forms.Label();
             this.lstActiveMiners = new System.Windows.Forms.ListBox();
             this.tabRouters = new System.Windows.Forms.TabControl();
             this.tabAllRouters = new System.Windows.Forms.TabPage();
@@ -42,12 +43,8 @@
             this.dgRouter = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dgAddress = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dgLocation = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.picMinePlan = new System.Windows.Forms.PictureBox();
             this.pnlLegend = new System.Windows.Forms.Panel();
-            this.picMiner = new System.Windows.Forms.PictureBox();
             this.lblActiveMiner = new System.Windows.Forms.Label();
-            this.picRouterBlocked = new System.Windows.Forms.PictureBox();
-            this.picRouter = new System.Windows.Forms.PictureBox();
             this.lblBRouter = new System.Windows.Forms.Label();
             this.lblLegendRouter = new System.Windows.Forms.Label();
             this.lblSiteInfo = new System.Windows.Forms.Label();
@@ -55,19 +52,14 @@
             this.statusTextConnected = new System.Windows.Forms.ToolStripStatusLabel();
             this.tmMain = new System.Windows.Forms.TabControl();
             this.tabMaster = new System.Windows.Forms.TabPage();
-            this.btnTags = new System.Windows.Forms.Button();
             this.lblTags = new System.Windows.Forms.Label();
-            this.btnSensor = new System.Windows.Forms.Button();
-            this.btnLoadMap = new System.Windows.Forms.Button();
-            this.btnRouters = new System.Windows.Forms.Button();
-            this.btnMember = new System.Windows.Forms.Button();
             this.label5 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.tabTracking = new System.Windows.Forms.TabPage();
             this.btnSaveScale = new System.Windows.Forms.Button();
-            this.label2 = new System.Windows.Forms.Label();
+            this.lblMapScale = new System.Windows.Forms.Label();
             this.nudMapScale = new System.Windows.Forms.NumericUpDown();
             this.lblAllActiveMiners = new System.Windows.Forms.Label();
             this.lblRouterCount = new System.Windows.Forms.Label();
@@ -89,9 +81,19 @@
             this.tabAttendance = new System.Windows.Forms.TabPage();
             this.llblUsername = new System.Windows.Forms.LinkLabel();
             this.lblUserType = new System.Windows.Forms.Label();
-            this.btnViewMessages = new System.Windows.Forms.Button();
             this.btnSendMessage = new System.Windows.Forms.Button();
-            this.lblActiveMiners = new System.Windows.Forms.Label();
+            this.btnViewMessages = new System.Windows.Forms.Button();
+            this.btnTags = new System.Windows.Forms.Button();
+            this.btnSensor = new System.Windows.Forms.Button();
+            this.btnLoadMap = new System.Windows.Forms.Button();
+            this.btnRouters = new System.Windows.Forms.Button();
+            this.btnMember = new System.Windows.Forms.Button();
+            this.picMinePlan = new System.Windows.Forms.PictureBox();
+            this.picMiner = new System.Windows.Forms.PictureBox();
+            this.picRouterBlocked = new System.Windows.Forms.PictureBox();
+            this.picRouter = new System.Windows.Forms.PictureBox();
+            this.label6 = new System.Windows.Forms.Label();
+            this.label7 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.splitMain)).BeginInit();
             this.splitMain.Panel1.SuspendLayout();
             this.splitMain.Panel2.SuspendLayout();
@@ -100,17 +102,17 @@
             this.tabAllRouters.SuspendLayout();
             this.tabJustRouters.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataRouters)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.picMinePlan)).BeginInit();
             this.pnlLegend.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.picMiner)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.picRouterBlocked)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.picRouter)).BeginInit();
             this.statusMain.SuspendLayout();
             this.tmMain.SuspendLayout();
             this.tabMaster.SuspendLayout();
             this.tabTracking.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nudMapScale)).BeginInit();
             this.tabReports.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.picMinePlan)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.picMiner)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.picRouterBlocked)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.picRouter)).BeginInit();
             this.SuspendLayout();
             // 
             // splitMain
@@ -140,6 +142,16 @@
             this.splitMain.Size = new System.Drawing.Size(1188, 711);
             this.splitMain.SplitterDistance = 289;
             this.splitMain.TabIndex = 1;
+            // 
+            // lblActiveMiners
+            // 
+            this.lblActiveMiners.AutoSize = true;
+            this.lblActiveMiners.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblActiveMiners.Location = new System.Drawing.Point(4, 0);
+            this.lblActiveMiners.Name = "lblActiveMiners";
+            this.lblActiveMiners.Size = new System.Drawing.Size(98, 20);
+            this.lblActiveMiners.TabIndex = 2;
+            this.lblActiveMiners.Text = "Active Miners";
             // 
             // lstActiveMiners
             // 
@@ -186,10 +198,10 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.tvAllRouters.Location = new System.Drawing.Point(6, 6);
             this.tvAllRouters.Name = "tvAllRouters";
-            treeNode2.Name = "MineSite";
-            treeNode2.Text = "Mine Site Name";
+            treeNode1.Name = "MineSite";
+            treeNode1.Text = "Mine Site Name";
             this.tvAllRouters.Nodes.AddRange(new System.Windows.Forms.TreeNode[] {
-            treeNode2});
+            treeNode1});
             this.tvAllRouters.Size = new System.Drawing.Size(252, 436);
             this.tvAllRouters.TabIndex = 0;
             this.tvAllRouters.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.tvAllRouters_AfterSelect);
@@ -207,8 +219,8 @@
             // 
             // dataRouters
             // 
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Segoe UI", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dataRouters.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Segoe UI", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dataRouters.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
             this.dataRouters.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left)));
             this.dataRouters.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
@@ -225,8 +237,8 @@
             // 
             // dgRouter
             // 
-            dataGridViewCellStyle4.Font = new System.Drawing.Font("Segoe UI", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dgRouter.DefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Segoe UI", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dgRouter.DefaultCellStyle = dataGridViewCellStyle2;
             this.dgRouter.HeaderText = "Router";
             this.dgRouter.Name = "dgRouter";
             this.dgRouter.ReadOnly = true;
@@ -241,21 +253,6 @@
             this.dgLocation.HeaderText = "Loc";
             this.dgLocation.Name = "dgLocation";
             this.dgLocation.ReadOnly = true;
-            // 
-            // picMinePlan
-            // 
-            this.picMinePlan.BackColor = System.Drawing.SystemColors.ControlLightLight;
-            this.picMinePlan.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.picMinePlan.Location = new System.Drawing.Point(4, 3);
-            this.picMinePlan.MaximumSize = new System.Drawing.Size(800, 700);
-            this.picMinePlan.MinimumSize = new System.Drawing.Size(800, 700);
-            this.picMinePlan.Name = "picMinePlan";
-            this.picMinePlan.Size = new System.Drawing.Size(800, 700);
-            this.picMinePlan.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.picMinePlan.TabIndex = 0;
-            this.picMinePlan.TabStop = false;
-            this.picMinePlan.Click += new System.EventHandler(this.picMinePlan_Click);
-            this.picMinePlan.Paint += new System.Windows.Forms.PaintEventHandler(this.picMinePlan_Paint);
             // 
             // pnlLegend
             // 
@@ -272,16 +269,6 @@
             this.pnlLegend.Size = new System.Drawing.Size(70, 257);
             this.pnlLegend.TabIndex = 1;
             // 
-            // picMiner
-            // 
-            this.picMiner.Image = ((System.Drawing.Image)(resources.GetObject("picMiner.Image")));
-            this.picMiner.Location = new System.Drawing.Point(23, 174);
-            this.picMiner.Name = "picMiner";
-            this.picMiner.Size = new System.Drawing.Size(30, 30);
-            this.picMiner.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.picMiner.TabIndex = 5;
-            this.picMiner.TabStop = false;
-            // 
             // lblActiveMiner
             // 
             this.lblActiveMiner.AutoSize = true;
@@ -293,28 +280,6 @@
             this.lblActiveMiner.TabIndex = 4;
             this.lblActiveMiner.Text = "Active Miner";
             this.lblActiveMiner.TextAlign = System.Drawing.ContentAlignment.TopCenter;
-            // 
-            // picRouterBlocked
-            // 
-            this.picRouterBlocked.Image = ((System.Drawing.Image)(resources.GetObject("picRouterBlocked.Image")));
-            this.picRouterBlocked.Location = new System.Drawing.Point(23, 85);
-            this.picRouterBlocked.Name = "picRouterBlocked";
-            this.picRouterBlocked.Size = new System.Drawing.Size(30, 30);
-            this.picRouterBlocked.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.picRouterBlocked.TabIndex = 3;
-            this.picRouterBlocked.TabStop = false;
-            // 
-            // picRouter
-            // 
-            this.picRouter.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.picRouter.Image = ((System.Drawing.Image)(resources.GetObject("picRouter.Image")));
-            this.picRouter.ImageLocation = "";
-            this.picRouter.Location = new System.Drawing.Point(23, 3);
-            this.picRouter.Name = "picRouter";
-            this.picRouter.Size = new System.Drawing.Size(30, 30);
-            this.picRouter.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.picRouter.TabIndex = 2;
-            this.picRouter.TabStop = false;
             // 
             // lblBRouter
             // 
@@ -384,7 +349,7 @@
             this.tmMain.Location = new System.Drawing.Point(2, 2);
             this.tmMain.Name = "tmMain";
             this.tmMain.SelectedIndex = 0;
-            this.tmMain.Size = new System.Drawing.Size(989, 103);
+            this.tmMain.Size = new System.Drawing.Size(939, 103);
             this.tmMain.TabIndex = 4;
             // 
             // tabMaster
@@ -402,24 +367,10 @@
             this.tabMaster.Location = new System.Drawing.Point(4, 32);
             this.tabMaster.Name = "tabMaster";
             this.tabMaster.Padding = new System.Windows.Forms.Padding(3);
-            this.tabMaster.Size = new System.Drawing.Size(981, 67);
+            this.tabMaster.Size = new System.Drawing.Size(931, 67);
             this.tabMaster.TabIndex = 0;
             this.tabMaster.Text = "Master";
             this.tabMaster.UseVisualStyleBackColor = true;
-            // 
-            // btnTags
-            // 
-            this.btnTags.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnTags.BackgroundImage")));
-            this.btnTags.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.btnTags.FlatAppearance.BorderSize = 0;
-            this.btnTags.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnTags.Font = new System.Drawing.Font("Segoe UI", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnTags.Location = new System.Drawing.Point(281, 4);
-            this.btnTags.Name = "btnTags";
-            this.btnTags.Size = new System.Drawing.Size(45, 45);
-            this.btnTags.TabIndex = 8;
-            this.btnTags.UseVisualStyleBackColor = true;
-            this.btnTags.Click += new System.EventHandler(this.btnTags_Click);
             // 
             // lblTags
             // 
@@ -430,59 +381,6 @@
             this.lblTags.Size = new System.Drawing.Size(37, 19);
             this.lblTags.TabIndex = 9;
             this.lblTags.Text = "Tags";
-            // 
-            // btnSensor
-            // 
-            this.btnSensor.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnSensor.BackgroundImage")));
-            this.btnSensor.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.btnSensor.FlatAppearance.BorderSize = 0;
-            this.btnSensor.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnSensor.Location = new System.Drawing.Point(144, 3);
-            this.btnSensor.Name = "btnSensor";
-            this.btnSensor.Size = new System.Drawing.Size(45, 45);
-            this.btnSensor.TabIndex = 2;
-            this.btnSensor.UseVisualStyleBackColor = true;
-            this.btnSensor.Click += new System.EventHandler(this.btnSensor_Click);
-            // 
-            // btnLoadMap
-            // 
-            this.btnLoadMap.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnLoadMap.BackgroundImage")));
-            this.btnLoadMap.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.btnLoadMap.FlatAppearance.BorderSize = 0;
-            this.btnLoadMap.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnLoadMap.Location = new System.Drawing.Point(14, 1);
-            this.btnLoadMap.Name = "btnLoadMap";
-            this.btnLoadMap.Size = new System.Drawing.Size(45, 45);
-            this.btnLoadMap.TabIndex = 0;
-            this.btnLoadMap.UseVisualStyleBackColor = true;
-            this.btnLoadMap.Click += new System.EventHandler(this.btnLoadMap_Click);
-            // 
-            // btnRouters
-            // 
-            this.btnRouters.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnRouters.BackgroundImage")));
-            this.btnRouters.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.btnRouters.FlatAppearance.BorderSize = 0;
-            this.btnRouters.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnRouters.Location = new System.Drawing.Point(82, 3);
-            this.btnRouters.Name = "btnRouters";
-            this.btnRouters.Size = new System.Drawing.Size(45, 45);
-            this.btnRouters.TabIndex = 1;
-            this.btnRouters.UseVisualStyleBackColor = true;
-            this.btnRouters.Click += new System.EventHandler(this.btnRouters_Click);
-            // 
-            // btnMember
-            // 
-            this.btnMember.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnMember.BackgroundImage")));
-            this.btnMember.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.btnMember.FlatAppearance.BorderSize = 0;
-            this.btnMember.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnMember.Font = new System.Drawing.Font("Segoe UI", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnMember.Location = new System.Drawing.Point(219, 4);
-            this.btnMember.Name = "btnMember";
-            this.btnMember.Size = new System.Drawing.Size(45, 45);
-            this.btnMember.TabIndex = 3;
-            this.btnMember.UseVisualStyleBackColor = true;
-            this.btnMember.Click += new System.EventHandler(this.btnMember_Click);
             // 
             // label5
             // 
@@ -527,7 +425,7 @@
             // tabTracking
             // 
             this.tabTracking.Controls.Add(this.btnSaveScale);
-            this.tabTracking.Controls.Add(this.label2);
+            this.tabTracking.Controls.Add(this.lblMapScale);
             this.tabTracking.Controls.Add(this.nudMapScale);
             this.tabTracking.Controls.Add(this.lblAllActiveMiners);
             this.tabTracking.Controls.Add(this.lblRouterCount);
@@ -536,7 +434,7 @@
             this.tabTracking.Location = new System.Drawing.Point(4, 32);
             this.tabTracking.Name = "tabTracking";
             this.tabTracking.Padding = new System.Windows.Forms.Padding(3);
-            this.tabTracking.Size = new System.Drawing.Size(981, 67);
+            this.tabTracking.Size = new System.Drawing.Size(931, 67);
             this.tabTracking.TabIndex = 4;
             this.tabTracking.Text = "Tracking";
             this.tabTracking.UseVisualStyleBackColor = true;
@@ -553,17 +451,18 @@
             this.btnSaveScale.Text = "Save";
             this.btnSaveScale.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             this.btnSaveScale.UseVisualStyleBackColor = true;
+            this.btnSaveScale.Click += new System.EventHandler(this.btnSaveScale_Click);
             // 
-            // label2
+            // lblMapScale
             // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Segoe UI Semibold", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(327, 3);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(89, 23);
-            this.label2.TabIndex = 8;
-            this.label2.Text = "Map Scale";
-            this.label2.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.lblMapScale.AutoSize = true;
+            this.lblMapScale.Font = new System.Drawing.Font("Segoe UI Semibold", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblMapScale.Location = new System.Drawing.Point(327, 3);
+            this.lblMapScale.Name = "lblMapScale";
+            this.lblMapScale.Size = new System.Drawing.Size(89, 23);
+            this.lblMapScale.TabIndex = 8;
+            this.lblMapScale.Text = "Map Scale";
+            this.lblMapScale.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             // 
             // nudMapScale
             // 
@@ -596,7 +495,7 @@
             this.lblAllActiveMiners.AutoSize = true;
             this.lblAllActiveMiners.Font = new System.Drawing.Font("Segoe UI Semibold", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblAllActiveMiners.ForeColor = System.Drawing.SystemColors.InactiveCaption;
-            this.lblAllActiveMiners.Location = new System.Drawing.Point(695, 31);
+            this.lblAllActiveMiners.Location = new System.Drawing.Point(645, 31);
             this.lblAllActiveMiners.Name = "lblAllActiveMiners";
             this.lblAllActiveMiners.Size = new System.Drawing.Size(162, 25);
             this.lblAllActiveMiners.TabIndex = 5;
@@ -608,7 +507,7 @@
             this.lblRouterCount.AutoSize = true;
             this.lblRouterCount.Font = new System.Drawing.Font("Segoe UI Semibold", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblRouterCount.ForeColor = System.Drawing.SystemColors.InactiveCaption;
-            this.lblRouterCount.Location = new System.Drawing.Point(695, 3);
+            this.lblRouterCount.Location = new System.Drawing.Point(645, 3);
             this.lblRouterCount.Name = "lblRouterCount";
             this.lblRouterCount.Size = new System.Drawing.Size(176, 25);
             this.lblRouterCount.TabIndex = 4;
@@ -815,39 +714,165 @@
             this.lblUserType.Text = "Regular User";
             this.lblUserType.TextAlign = System.Drawing.ContentAlignment.TopRight;
             // 
-            // btnViewMessages
-            // 
-            this.btnViewMessages.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnViewMessages.BackgroundImage")));
-            this.btnViewMessages.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.btnViewMessages.FlatAppearance.BorderSize = 0;
-            this.btnViewMessages.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnViewMessages.Location = new System.Drawing.Point(997, 2);
-            this.btnViewMessages.Name = "btnViewMessages";
-            this.btnViewMessages.Size = new System.Drawing.Size(45, 45);
-            this.btnViewMessages.TabIndex = 7;
-            this.btnViewMessages.UseVisualStyleBackColor = true;
-            // 
             // btnSendMessage
             // 
             this.btnSendMessage.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnSendMessage.BackgroundImage")));
             this.btnSendMessage.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.btnSendMessage.FlatAppearance.BorderSize = 0;
             this.btnSendMessage.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnSendMessage.Location = new System.Drawing.Point(997, 53);
+            this.btnSendMessage.Location = new System.Drawing.Point(943, 34);
             this.btnSendMessage.Name = "btnSendMessage";
             this.btnSendMessage.Size = new System.Drawing.Size(45, 45);
             this.btnSendMessage.TabIndex = 8;
             this.btnSendMessage.UseVisualStyleBackColor = true;
+            this.btnSendMessage.Click += new System.EventHandler(this.btnSendMessage_Click);
             // 
-            // lblActiveMiners
+            // btnViewMessages
             // 
-            this.lblActiveMiners.AutoSize = true;
-            this.lblActiveMiners.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblActiveMiners.Location = new System.Drawing.Point(4, 0);
-            this.lblActiveMiners.Name = "lblActiveMiners";
-            this.lblActiveMiners.Size = new System.Drawing.Size(98, 20);
-            this.lblActiveMiners.TabIndex = 2;
-            this.lblActiveMiners.Text = "Active Miners";
+            this.btnViewMessages.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnViewMessages.BackgroundImage")));
+            this.btnViewMessages.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnViewMessages.FlatAppearance.BorderSize = 0;
+            this.btnViewMessages.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnViewMessages.Location = new System.Drawing.Point(994, 35);
+            this.btnViewMessages.Name = "btnViewMessages";
+            this.btnViewMessages.Size = new System.Drawing.Size(45, 45);
+            this.btnViewMessages.TabIndex = 7;
+            this.btnViewMessages.UseVisualStyleBackColor = true;
+            this.btnViewMessages.Click += new System.EventHandler(this.btnViewMessages_Click);
+            // 
+            // btnTags
+            // 
+            this.btnTags.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnTags.BackgroundImage")));
+            this.btnTags.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnTags.FlatAppearance.BorderSize = 0;
+            this.btnTags.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnTags.Font = new System.Drawing.Font("Segoe UI", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnTags.Location = new System.Drawing.Point(281, 4);
+            this.btnTags.Name = "btnTags";
+            this.btnTags.Size = new System.Drawing.Size(45, 45);
+            this.btnTags.TabIndex = 8;
+            this.btnTags.UseVisualStyleBackColor = true;
+            this.btnTags.Click += new System.EventHandler(this.btnTags_Click);
+            // 
+            // btnSensor
+            // 
+            this.btnSensor.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnSensor.BackgroundImage")));
+            this.btnSensor.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnSensor.FlatAppearance.BorderSize = 0;
+            this.btnSensor.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnSensor.Location = new System.Drawing.Point(144, 3);
+            this.btnSensor.Name = "btnSensor";
+            this.btnSensor.Size = new System.Drawing.Size(45, 45);
+            this.btnSensor.TabIndex = 2;
+            this.btnSensor.UseVisualStyleBackColor = true;
+            this.btnSensor.Click += new System.EventHandler(this.btnSensor_Click);
+            // 
+            // btnLoadMap
+            // 
+            this.btnLoadMap.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnLoadMap.BackgroundImage")));
+            this.btnLoadMap.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnLoadMap.FlatAppearance.BorderSize = 0;
+            this.btnLoadMap.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnLoadMap.Location = new System.Drawing.Point(14, 1);
+            this.btnLoadMap.Name = "btnLoadMap";
+            this.btnLoadMap.Size = new System.Drawing.Size(45, 45);
+            this.btnLoadMap.TabIndex = 0;
+            this.btnLoadMap.UseVisualStyleBackColor = true;
+            this.btnLoadMap.Click += new System.EventHandler(this.btnLoadMap_Click);
+            // 
+            // btnRouters
+            // 
+            this.btnRouters.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnRouters.BackgroundImage")));
+            this.btnRouters.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnRouters.FlatAppearance.BorderSize = 0;
+            this.btnRouters.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnRouters.Location = new System.Drawing.Point(82, 3);
+            this.btnRouters.Name = "btnRouters";
+            this.btnRouters.Size = new System.Drawing.Size(45, 45);
+            this.btnRouters.TabIndex = 1;
+            this.btnRouters.UseVisualStyleBackColor = true;
+            this.btnRouters.Click += new System.EventHandler(this.btnRouters_Click);
+            // 
+            // btnMember
+            // 
+            this.btnMember.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnMember.BackgroundImage")));
+            this.btnMember.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnMember.FlatAppearance.BorderSize = 0;
+            this.btnMember.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnMember.Font = new System.Drawing.Font("Segoe UI", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnMember.Location = new System.Drawing.Point(219, 4);
+            this.btnMember.Name = "btnMember";
+            this.btnMember.Size = new System.Drawing.Size(45, 45);
+            this.btnMember.TabIndex = 3;
+            this.btnMember.UseVisualStyleBackColor = true;
+            this.btnMember.Click += new System.EventHandler(this.btnMember_Click);
+            // 
+            // picMinePlan
+            // 
+            this.picMinePlan.BackColor = System.Drawing.SystemColors.ControlLightLight;
+            this.picMinePlan.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.picMinePlan.Location = new System.Drawing.Point(4, 3);
+            this.picMinePlan.MaximumSize = new System.Drawing.Size(800, 700);
+            this.picMinePlan.MinimumSize = new System.Drawing.Size(800, 700);
+            this.picMinePlan.Name = "picMinePlan";
+            this.picMinePlan.Size = new System.Drawing.Size(800, 700);
+            this.picMinePlan.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.picMinePlan.TabIndex = 0;
+            this.picMinePlan.TabStop = false;
+            this.picMinePlan.Click += new System.EventHandler(this.picMinePlan_Click);
+            this.picMinePlan.Paint += new System.Windows.Forms.PaintEventHandler(this.picMinePlan_Paint);
+            // 
+            // picMiner
+            // 
+            this.picMiner.Image = ((System.Drawing.Image)(resources.GetObject("picMiner.Image")));
+            this.picMiner.Location = new System.Drawing.Point(23, 174);
+            this.picMiner.Name = "picMiner";
+            this.picMiner.Size = new System.Drawing.Size(30, 30);
+            this.picMiner.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.picMiner.TabIndex = 5;
+            this.picMiner.TabStop = false;
+            // 
+            // picRouterBlocked
+            // 
+            this.picRouterBlocked.Image = ((System.Drawing.Image)(resources.GetObject("picRouterBlocked.Image")));
+            this.picRouterBlocked.Location = new System.Drawing.Point(23, 85);
+            this.picRouterBlocked.Name = "picRouterBlocked";
+            this.picRouterBlocked.Size = new System.Drawing.Size(30, 30);
+            this.picRouterBlocked.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.picRouterBlocked.TabIndex = 3;
+            this.picRouterBlocked.TabStop = false;
+            // 
+            // picRouter
+            // 
+            this.picRouter.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.picRouter.Image = ((System.Drawing.Image)(resources.GetObject("picRouter.Image")));
+            this.picRouter.ImageLocation = "";
+            this.picRouter.Location = new System.Drawing.Point(23, 3);
+            this.picRouter.Name = "picRouter";
+            this.picRouter.Size = new System.Drawing.Size(30, 30);
+            this.picRouter.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.picRouter.TabIndex = 2;
+            this.picRouter.TabStop = false;
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Font = new System.Drawing.Font("Segoe UI", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label6.Location = new System.Drawing.Point(945, 83);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(39, 19);
+            this.label6.TabIndex = 9;
+            this.label6.Text = "Send";
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Font = new System.Drawing.Font("Segoe UI", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label7.Location = new System.Drawing.Point(998, 83);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(38, 19);
+            this.label7.TabIndex = 10;
+            this.label7.Text = "View";
             // 
             // MainForm
             // 
@@ -855,6 +880,8 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ControlLightLight;
             this.ClientSize = new System.Drawing.Size(1202, 843);
+            this.Controls.Add(this.label7);
+            this.Controls.Add(this.label6);
             this.Controls.Add(this.btnSendMessage);
             this.Controls.Add(this.btnViewMessages);
             this.Controls.Add(this.lblUserType);
@@ -879,12 +906,8 @@
             this.tabAllRouters.ResumeLayout(false);
             this.tabJustRouters.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dataRouters)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.picMinePlan)).EndInit();
             this.pnlLegend.ResumeLayout(false);
             this.pnlLegend.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.picMiner)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.picRouterBlocked)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.picRouter)).EndInit();
             this.statusMain.ResumeLayout(false);
             this.statusMain.PerformLayout();
             this.tmMain.ResumeLayout(false);
@@ -895,6 +918,10 @@
             ((System.ComponentModel.ISupportInitialize)(this.nudMapScale)).EndInit();
             this.tabReports.ResumeLayout(false);
             this.tabReports.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.picMinePlan)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.picMiner)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.picRouterBlocked)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.picRouter)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -934,7 +961,7 @@
         private System.Windows.Forms.Label lblScale1;
         private System.Windows.Forms.NumericUpDown nudMapScale;
         private System.Windows.Forms.Label lblUserType;
-        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label lblMapScale;
         private System.Windows.Forms.Button btnMember;
         private System.Windows.Forms.DataGridViewTextBoxColumn dgRouter;
         private System.Windows.Forms.DataGridViewTextBoxColumn dgAddress;
@@ -962,6 +989,8 @@
         private System.Windows.Forms.Button btnViewMessages;
         private System.Windows.Forms.Button btnSendMessage;
         private System.Windows.Forms.Label lblActiveMiners;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.Label label7;
     }
 }
 

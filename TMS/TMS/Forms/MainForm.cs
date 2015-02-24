@@ -14,6 +14,7 @@ namespace TMS
     public partial class MainForm : Form
     {
         MasterController _masterController;
+        MessagingController _messagingController;
         TrackingController _trackingController;
 
         public MainForm(MasterController c)
@@ -24,6 +25,7 @@ namespace TMS
             c._picMinePlan = picMinePlan;
 
             _trackingController = new TrackingController(this, picMinePlan);
+            _messagingController = new MessagingController(this);
 
             lblSiteInfo.Text = MineSite.GetInstance().siteName;
 
@@ -158,6 +160,9 @@ namespace TMS
         private void nudMapScale_ValueChanged(object sender, EventArgs e)
         {
             MineSite.GetInstance().UpdateScale((float)(nudMapScale.Value));
+
+            nudMapScale.Font = new Font(nudMapScale.Font, FontStyle.Bold);
+            btnSaveScale.Enabled = true;
         }
 
         private void btnSensor_Click(object sender, EventArgs e)
@@ -184,6 +189,23 @@ namespace TMS
         private void btnTags_Click(object sender, EventArgs e)
         {
             _masterController.OpenCreateTag();
+        }
+
+        private void btnSaveScale_Click(object sender, EventArgs e)
+        {
+            bool didComplete = _masterController.MineSiteUpdate();
+
+            btnSaveScale.Enabled = !didComplete;
+        }
+
+        private void btnViewMessages_Click(object sender, EventArgs e)
+        {
+            _messagingController.OpenMessageView();
+        }
+
+        private void btnSendMessage_Click(object sender, EventArgs e)
+        {
+            _messagingController.OpenMessageSend();
         }
 
     }
