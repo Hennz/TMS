@@ -209,5 +209,12 @@ namespace TMS
             _messagingController.OpenMessageSend();
         }
 
+        private void MainForm_Load(object sender, EventArgs e)
+        {
+            // TODO: This line of code loads data into the 'tMS_DatabaseDataSet1.Routers' table. You can move, or remove it, as needed.
+            this.routersTableAdapter.Fill(this.tMS_DatabaseDataSet1.Routers);
+
+        }
+
     }
 }

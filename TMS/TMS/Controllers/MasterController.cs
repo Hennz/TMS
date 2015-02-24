@@ -19,6 +19,7 @@ namespace TMS
         LoginForm _loginForm;
         MainForm _mainForm;
 
+        // Forms used for data entry
         MinerAddEditForm _minerForm;
         RouterAddEditForm _routerForm;
         SensorAddEditForm _sensorForm;
@@ -736,6 +737,40 @@ namespace TMS
                     MessageBox.Show("Error", e.Message, MessageBoxButtons.OK, MessageBoxIcon.Error);
 
                     return 1;
+                }
+
+            }
+        }
+
+        /// <summary>
+        /// Removes a router from the database
+        /// </summary>
+        /// <param name="router">The router to be removed.</param>
+        /// <returns>True if successfully removed, false otherwise.</returns>
+        public bool RouterDelete(Router router)
+        {
+            using (SqlConnection sqlCon = new SqlConnection(Properties.Settings.Default.TMS_DatabaseConnectionString))
+            {
+                string cmdString = "DELETE FROM Routers WHERE Id=@rId";
+
+                sqlCon.Open();
+                SqlCommand oCmd = new SqlCommand(cmdString, sqlCon);
+                oCmd.Parameters.AddWithValue("@Id", router.routerId);
+
+                try
+                {
+                    int rows = oCmd.ExecuteNonQuery();
+                    MineSite.GetInstance().siteRouters.Remove(router);
+
+                    _mainForm.AddNewCreatedRouter(router);
+
+                    return true;
+                }
+                catch (SqlException e)
+                {
+                    MessageBox.Show("Error", e.Message, MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+                    return false;
                 }
 
             }
