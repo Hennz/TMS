@@ -58,7 +58,9 @@ namespace TMS
 
             }
 
+            // Set mapscale number incrementer
             nudMapScale.Value = (decimal) (MineSite.GetInstance().mapScale);
+            nudMapScale.Font = new Font(nudMapScale.Font, FontStyle.Regular);
         }
 
 
@@ -101,11 +103,6 @@ namespace TMS
         {
             _masterController.LoadMap(picMinePlan);
         }
-
-        private void msMain_Click(object sender, EventArgs e)
-        {
-
-        }
         
         private void picMinePlan_Paint(object sender, PaintEventArgs e)
         {
@@ -128,7 +125,7 @@ namespace TMS
         }
 
         /// <summary>
-        /// TODO Open a user account form
+        /// Open a user account form
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
@@ -195,7 +192,11 @@ namespace TMS
         {
             bool didComplete = _masterController.MineSiteUpdate();
 
-            btnSaveScale.Enabled = !didComplete;
+            if (didComplete)
+            {
+                btnSaveScale.Enabled = false;
+                nudMapScale.Font = new Font(nudMapScale.Font, FontStyle.Regular);
+            }
         }
 
         private void btnViewMessages_Click(object sender, EventArgs e)

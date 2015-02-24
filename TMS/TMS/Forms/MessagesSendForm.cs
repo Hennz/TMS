@@ -21,7 +21,17 @@ namespace TMS
             _controller = c;
 
             lblUsername.Text = User.GetInstance().username;
-            lblDate.Text = DateTime.Now.ToString("YYYY-MM-DD");
+            lblDate.Text = DateTime.Now.ToString("yyyy-MM-dd");
+        }
+
+        private void btnClose_Click(object sender, EventArgs e)
+        {
+            Dispose();
+        }
+
+        private void btnSend_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

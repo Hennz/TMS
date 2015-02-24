@@ -31,8 +31,9 @@ namespace TMS
         {
             router = r;
 
-            // TODO Set to update mode with the router selected
+            // Set to update mode with the router selected
             rbUpdate.Checked = true;
+            lstRouters.SelectedIndex = lstRouters.Items.IndexOf(r);
 
             btnEnter.Click -= NewRouter;
             btnEnter.Click += UpdateRouter;

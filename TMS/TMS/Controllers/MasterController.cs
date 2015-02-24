@@ -468,7 +468,7 @@ namespace TMS
         }
 
         /// <summary>
-        /// TODO Open tag form
+        /// Open tag form
         /// </summary>
         public void OpenCreateTag()
         {

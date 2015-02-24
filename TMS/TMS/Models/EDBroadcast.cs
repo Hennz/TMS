@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace TMS
 {
-    class EDBroadcast
+    public class EDBroadcast
     {
         public string content { get; private set; }
 
