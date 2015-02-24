@@ -32,7 +32,21 @@ namespace TMS
             lblRouterInfo.Text =    "Address : " + router.address + 
                                     "\nLocation: " + router.location + 
                                     "\nPosition: " + router.posX + ", " + router.posY;
+            
+            // Load end devices into treeview
+            tvEndDevices.BeginUpdate();
+            tvEndDevices.Nodes[0].Nodes.Clear();
 
+            foreach (Member member in router.hasConnectedMember)
+            {
+                TreeNode memberNode = new TreeNode(member.ToString());
+                tvEndDevices.Nodes[0].Nodes.Add(memberNode);
+
+            }
+            tvEndDevices.Nodes[0].ExpandAll();
+
+            tvEndDevices.EndUpdate();
+            
             Show();
         }
     }

@@ -144,6 +144,7 @@
             this.mtxtX.Location = new System.Drawing.Point(88, 515);
             this.mtxtX.Mask = "00000";
             this.mtxtX.Name = "mtxtX";
+            this.mtxtX.PromptChar = ' ';
             this.mtxtX.Size = new System.Drawing.Size(50, 25);
             this.mtxtX.TabIndex = 6;
             this.mtxtX.Text = "00000";

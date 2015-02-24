@@ -176,6 +176,8 @@ namespace TMS
             if (member != null && member.path.First != null)
             {
                 _trackingController.ShowMinerPosition(sender, null, member.path.First.Value);
+
+                _trackingController.DrawMemberPath(member);
             }
         }
 

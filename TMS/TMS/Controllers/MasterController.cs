@@ -37,6 +37,12 @@ namespace TMS
 
         }
 
+        /// <summary>
+        /// Updates the three shifts of the member to in the database.
+        /// </summary>
+        /// <param name="member">The member whom to assign the shifts to.</param>
+        /// <param name="shift">The three shifts to be assigned</param>
+        /// <returns></returns>
         public int AssignShift(Member member, Shift[] shift)
         {
             using (SqlConnection sqlCon = new SqlConnection(Properties.Settings.Default.TMS_DatabaseConnectionString))
@@ -135,18 +141,24 @@ namespace TMS
             return 0;
         }
 
+        /// <summary>
+        /// To be called from the router form when it is closed.
+        /// </summary>
         public void ClosedRouterForm()
         {
             _routerForm.Dispose();
         }
 
+        /// <summary>
+        /// To be called from the shift form so that the member creation form can be reenabled.
+        /// </summary>
         public void ClosedShiftForm()
         {
             _minerForm.Enabled = true;
         }
 
         /// <summary>
-        /// 
+        /// To be called from the UserAddForm so the UserEditForm can be shown again
         /// </summary>
         public void ClosedUserAddForm()
         {
@@ -289,6 +301,9 @@ namespace TMS
                         mapScale = float.Parse(oReader["mapScale"].ToString());
                     }
                 }
+                Dictionary<string, Router> routerMap = new Dictionary<string, Router>();
+                Dictionary<string, Member> memberMap = new Dictionary<string, Member>();
+
 
                 // Load all routers
                 cmdString = "SELECT * FROM Routers WHERE siteId = @siteId";
@@ -299,14 +314,15 @@ namespace TMS
                 {
                     while (oReader.Read())
                     {
-                        routers.Add(
-                            new Router(oReader["Id"].ToString(),
+                        Router router = new Router(oReader["Id"].ToString(),
                             oReader["address"].ToString(),
                             oReader["location"].ToString(),
                             Int32.Parse(oReader["x"].ToString()),
                             Int32.Parse(oReader["y"].ToString()),
-                            bool.Parse(oReader["isBlocked"].ToString()))
-                            );
+                            bool.Parse(oReader["isBlocked"].ToString()));
+
+                        routers.Add(router);
+                        routerMap.Add(router.routerId, router);
                     }
                 }
 
@@ -349,6 +365,7 @@ namespace TMS
                                 DateTime.Parse(oReader["end"].ToString())));
 
                             members.Add(member);
+                            memberMap.Add(member.memberId, member);
                         }
                     }
                 }
@@ -362,6 +379,27 @@ namespace TMS
                     while (oReader.Read())
                     {
                         sensors.Add(oReader["Id"].ToString());
+                    }
+                }
+
+                cmdString = "SELECT * FROM PathElement ORDER BY timeVisited DESC";
+                oCmd = new SqlCommand(cmdString, sqlCon);
+
+                using (SqlDataReader oReader = oCmd.ExecuteReader())
+                {
+                    while (oReader.Read())
+                    {
+                        Member member = memberMap[oReader["memberId"].ToString()];
+                        Router router = routerMap[oReader["routerId"].ToString()];
+
+                        // Use the member map and router map from above to create each miner's path
+                        member.path.AddLast(router);
+
+                        // Add to router's connected members if this is the member's first router
+                        if (member.path.Count == 1)
+                        {
+                            router.hasConnectedMember.AddLast(member);
+                        }
                     }
                 }
             }

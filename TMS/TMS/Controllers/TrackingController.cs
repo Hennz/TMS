@@ -15,7 +15,15 @@ namespace TMS
         MainForm _mainForm;
         PictureBox _picMinePlan;
 
+        /// <summary>
+        /// The info form that appears wen clicking on a router.
+        /// </summary>
         RouterMapForm routerMapForm;
+
+        /// <summary>
+        /// The current member whose path is being drawn
+        /// </summary>
+        private Member currentMember;
 
         public TrackingController(MainForm m, PictureBox pm)
         {
@@ -28,6 +36,9 @@ namespace TMS
             };
         }
 
+        /// <summary>
+        /// Adds every site router to the map
+        /// </summary>
         public void AddAllRoutersToMap()
         {
             foreach (Router router in MineSite.GetInstance().siteRouters)
@@ -36,6 +47,10 @@ namespace TMS
             }
         }
 
+        /// <summary>
+        /// Adds a router image to the map and event handlers for clicking.
+        /// </summary>
+        /// <param name="router">The router to be added to the map.</param>
         public void AddOneRouterToMap(Router router)
         {
             PictureBox picRouter = new PictureBox();
@@ -45,7 +60,7 @@ namespace TMS
             picRouter.BackColor = Color.Transparent;
             picRouter.Image = router.isBlocked ? TMS.Properties.Resources.router_blocked_map : TMS.Properties.Resources.router_active_map;
             picRouter.Size = new Size(picRouter.Image.Width, picRouter.Image.Height);
-            picRouter.Location = new Point((int)(router.posX * MineSite.GetInstance().mapScale), (int)(router.posY * MineSite.GetInstance().mapScale));
+            picRouter.Location = new Point((int)(router.posX * MineSite.GetInstance().mapScale - picRouter.Width / 2), (int)(router.posY * MineSite.GetInstance().mapScale - picRouter.Width / 2));
 
             // Set up events for the router
             picRouter.MouseDown += (sender, e) =>
@@ -55,16 +70,20 @@ namespace TMS
 
             router.OnUpdated += (x, y, isBlocked) =>
             {
-                picRouter.Location = new Point((int)(router.posX * MineSite.GetInstance().mapScale), (int)(router.posY * MineSite.GetInstance().mapScale));
+                picRouter.Location = new Point((int)(router.posX * MineSite.GetInstance().mapScale - picRouter.Width / 2), (int)(router.posY * MineSite.GetInstance().mapScale - picRouter.Width / 2));
                 picRouter.Image = router.isBlocked ? TMS.Properties.Resources.router_blocked_map : TMS.Properties.Resources.router_active_map;
             };
             MineSite.GetInstance().OnUpdated += (scale) =>
             {
-                picRouter.Location = new Point((int)(router.posX * MineSite.GetInstance().mapScale), (int)(router.posY * MineSite.GetInstance().mapScale));
+                picRouter.Location = new Point((int)(router.posX * MineSite.GetInstance().mapScale - picRouter.Width / 2), (int)(router.posY * MineSite.GetInstance().mapScale - picRouter.Width / 2));
                 picRouter.Image = router.isBlocked ? TMS.Properties.Resources.router_blocked_map : TMS.Properties.Resources.router_active_map;
             };
         }
 
+        /// <summary>
+        /// Draws grids to scale over top of the map.
+        /// </summary>
+        /// <param name="graphics"></param>
         public void DrawGridLines(Graphics graphics = null)
         {
             if (graphics == null)
@@ -96,7 +115,42 @@ namespace TMS
             {
                 g.DrawLine(p, i * cellSize, 0, i * cellSize, numOfCells * cellSize);
             }
+
+            // Draw a member's path
+            if (currentMember != null)
+            {
+                Pen pathPen = new Pen(Color.Red);
+                pathPen.Width = 3.0f;
+
+                Router lastRouter = null;
+
+                foreach (Router router in currentMember.path)
+                {
+                    if (lastRouter == null)
+                    {
+                        lastRouter = router;
+                        continue;
+                    }
+
+                    g.DrawLine(pathPen,
+                        lastRouter.posX * MineSite.GetInstance().mapScale, lastRouter.posY * MineSite.GetInstance().mapScale,
+                        router.posX * MineSite.GetInstance().mapScale, router.posY * MineSite.GetInstance().mapScale);
+                    lastRouter = router;
+                }
+            }
+            
+
         }
+
+        public void DrawMemberPath(Member member)
+        {
+            currentMember = member;
+            _picMinePlan.Refresh();
+        }
+
+        /// <summary>
+        /// Hides the router info form.
+        /// </summary>
         public void HideRouterForm()
         {
             if (routerMapForm != null)
@@ -113,15 +167,13 @@ namespace TMS
             }
 
             // Center of the router
-            int mouseX = (int)(router.posX * MineSite.GetInstance().mapScale) + 
-                TMS.Properties.Resources.router_active_map.Width / 2;
+            int mouseX = (int)(router.posX * MineSite.GetInstance().mapScale);
             // Under the router
-            int mouseY = (int)(router.posY * MineSite.GetInstance().mapScale) + 
-                TMS.Properties.Resources.router_active_map.Height;
+            int mouseY = (int)(router.posY * MineSite.GetInstance().mapScale);
 
             // Calculates the form's x and y so it stays in the tracking window
             int x = _picMinePlan.Width - mouseX >= routerMapForm.Width ? mouseX : mouseX - routerMapForm.Width;
-            int y = _picMinePlan.Height - mouseY >= routerMapForm.Height ? mouseY : mouseY - routerMapForm.Height - TMS.Properties.Resources.router_active_map.Height;
+            int y = _picMinePlan.Height - mouseY >= routerMapForm.Height ? mouseY : mouseY - routerMapForm.Height;
 
             routerMapForm.Show(router);
             routerMapForm.Location = new Point(x, y);

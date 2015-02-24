@@ -8,34 +8,34 @@ namespace TMS
 {
     public class Member
     {
-        public String memberId { get; private set; }
-        public String fName { get; private set; }
-        public String mName { get; private set; }
-        public String lName { get; private set; }
+        public string memberId { get; private set; }
+        public string fName { get; private set; }
+        public string mName { get; private set; }
+        public string lName { get; private set; }
 
-        public String address { get; private set; }
-        public String province { get; private set; }
-        public String city { get; private set; }
+        public string address { get; private set; }
+        public string province { get; private set; }
+        public string city { get; private set; }
 
         public int pinNo { get; private set; }
 
-        public String phoneNo { get; private set; }
-        public String mobileNo { get; private set; }
+        public string phoneNo { get; private set; }
+        public string mobileNo { get; private set; }
 
         public bool isVehicle { get; private set; }
 
-        public String tagId { get; private set; }
+        public string tagId { get; private set; }
 
         public LinkedList<Router> path { get; private set; }
 
         public List<Shift> assignedShifts { get; private set; }
 
-        public Member(String mId, String f, String m, String l, 
-            String addr, String prov, String cit, 
+        public Member(string mId, string f, string m, string l,
+            string addr, string prov, string cit, 
             int pNo,
-            String phNo, String mNo,
+            string phNo, string mNo,
             bool isV,
-            String tId)
+            string tId)
         {
             memberId = mId;
 
@@ -78,12 +78,12 @@ namespace TMS
             return tagId + " " + lName + ", " + fName + (path.First == null ? "" : " - " + path.First.Value.location);
         }
 
-        public void Update(String mId, String f, String m, String l,
-            String addr, String prov, String cit,
+        public void Update(string mId, string f, string m, string l,
+            string addr, string prov, string cit,
             int pNo,
-            String phNo, String mNo,
+            string phNo, string mNo,
             bool isV,
-            String tId)
+            string tId)
         {
             memberId = mId;
 
