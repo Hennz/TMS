@@ -27,7 +27,7 @@ namespace TMS
             _trackingController = new TrackingController(this, picMinePlan);
             _messagingController = new MessagingController(this);
 
-            lblSiteInfo.Text = MineSite.GetInstance().siteName;
+            llblSiteInfo.Text = MineSite.GetInstance().siteName;
 
             llblUsername.Text = User.GetInstance().username;
             lblUserType.Text = User.GetInstance().isAdmin ? "Administrator" : "Regular User";
@@ -68,6 +68,7 @@ namespace TMS
         {
             _trackingController.AddOneRouterToMap(router);
         }
+
         public void AddToLeftPanel(Form form)
         {
             form.TopLevel = false;
@@ -175,11 +176,20 @@ namespace TMS
         private void lstActiveMiners_SelectedIndexChanged(object sender, EventArgs e)
         {
             Member member = (Member)lstActiveMiners.SelectedItem;
-            if (member != null && member.path.First != null)
+            if (member != null)
             {
-                _trackingController.ShowMinerPosition(sender, null, member.path.First.Value);
+                if (member.path.First != null)
+                {
+                    _trackingController.ShowMinerPosition(sender, null, member.path.First.Value);
 
-                _trackingController.DrawMemberPath(member);
+                    _trackingController.DrawMemberPath(member);
+                }
+                else
+                {
+                    _trackingController.DrawMemberPath(null);
+                }
+
+                alertToolStripMenuItem.Text = "Alert " + member.fName + " " + member.lName;
             }
         }
 
@@ -214,6 +224,37 @@ namespace TMS
             // TODO: This line of code loads data into the 'tMS_DatabaseDataSet1.Routers' table. You can move, or remove it, as needed.
             this.routersTableAdapter.Fill(this.tMS_DatabaseDataSet1.Routers);
 
+        }
+
+        private void llblSiteInfo_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            _masterController.OpenMineSiteForm();
+        }
+
+        private void alertToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            DialogResult result = MessageBox.Show("Are you sure you would like to alert this member?", "Confirm Alert", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+
+            if (result == System.Windows.Forms.DialogResult.Yes)
+            {
+                _messagingController.SendMessage(false, "");
+            }
+        }
+
+        private void broadcastAllToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            // Open message send window with broadcast mode set
+            _messagingController.OpenMessageSend(true);
+        }
+
+        private void cboSites_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnAllMiners_Click(object sender, EventArgs e)
+        {
+            //_trackingController.
         }
 
     }

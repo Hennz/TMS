@@ -13,8 +13,8 @@ namespace TMS
     public partial class MessagesSendForm : Form
     {
         MessagingController _controller;
-
-        public MessagesSendForm(MessagingController c)
+        
+        public MessagesSendForm(MessagingController c, bool isDefaultBroadcast)
         {
             InitializeComponent();
 
@@ -22,6 +22,13 @@ namespace TMS
 
             lblUsername.Text = User.GetInstance().username;
             lblDate.Text = DateTime.Now.ToString("yyyy-MM-dd");
+
+            foreach (Member member in MineSite.GetInstance().siteMembers)
+            {
+                lstMembers.Items.Add(member);
+            }
+
+            rbBroadcast.Checked = isDefaultBroadcast;
         }
 
         private void btnClose_Click(object sender, EventArgs e)
@@ -31,6 +38,13 @@ namespace TMS
 
         private void btnSend_Click(object sender, EventArgs e)
         {
+            _controller.SendMessage(rbBroadcast.Checked, txtContent.Text);
+        }
+
+        private void rbBroadcast_CheckedChanged(object sender, EventArgs e)
+        {
+            lstMembers.Enabled = !rbBroadcast.Checked;
+            txtContent.Enabled = rbBroadcast.Checked;
 
         }
     }

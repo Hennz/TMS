@@ -431,6 +431,9 @@ namespace TMS
                         {
                             Image image = Image.FromStream(imageStream);
                             picMinePlan.Image = image;
+
+                            MineSite.GetInstance().localMapFileAddr = openImageFileDialog.FileName;
+                            MineSiteUpdate();
                         }
                     }
                 }
@@ -439,6 +442,37 @@ namespace TMS
                     MessageBox.Show("Error: Could not open file. \n", ex.Message, MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
+        }
+
+        public void LoadMap(PictureBox picMinePlan, string filePath)
+        {
+            Stream imageStream = null;
+            try
+            {
+                imageStream = new FileStream(filePath, FileMode.Open);
+            }
+            catch (FileNotFoundException e)
+            {
+                MessageBox.Show("The map file associated with this mine site could not be found.", "Map File Error", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+
+                LoadMap(picMinePlan);
+                
+                return;
+            }
+
+            try
+            {
+                using (imageStream)
+                {
+                    Image image = Image.FromStream(imageStream);
+                    picMinePlan.Image = image;
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error: Could not open file. \n", ex.Message, MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            
         }
 
         #region Open Object Creation Forms
@@ -496,7 +530,7 @@ namespace TMS
         }
 
         /// <summary>
-        /// Closes the login form and open the main form
+        /// Closes the login form and opens the main form
         /// </summary>
         public void OpenMainForm()
         {
@@ -506,6 +540,16 @@ namespace TMS
 
             _mainForm = new MainForm(this);
             _mainForm.Show();
+
+            LoadMap(_picMinePlan, MineSite.GetInstance().localMapFileAddr);
+        }
+
+        /// <summary>
+        /// TODO Open a form to edit mine site info
+        /// </summary>
+        public void OpenMineSiteForm()
+        {
+
         }
 
         public void OpenRouters()
@@ -655,10 +699,11 @@ namespace TMS
         {
             using (SqlConnection sqlCon = new SqlConnection(Properties.Settings.Default.TMS_DatabaseConnectionString))
             {
-                string cmdString = "UPDATE Site SET mapScale=@mapScale";
+                string cmdString = "UPDATE Site SET mapScale=@mapScale, localMapFileAddr=@localMapFileAddr";
 
                 SqlCommand oCmd = new SqlCommand(cmdString, sqlCon);
                 oCmd.Parameters.AddWithValue("@mapScale", MineSite.GetInstance().mapScale);
+                oCmd.Parameters.AddWithValue("@localMapFileAddr", MineSite.GetInstance().localMapFileAddr);
 
                 sqlCon.Open();
 

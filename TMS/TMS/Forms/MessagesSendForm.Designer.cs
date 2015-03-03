@@ -53,6 +53,7 @@
             // rbAlert
             // 
             this.rbAlert.AutoSize = true;
+            this.rbAlert.Checked = true;
             this.rbAlert.Location = new System.Drawing.Point(10, 12);
             this.rbAlert.Name = "rbAlert";
             this.rbAlert.Size = new System.Drawing.Size(59, 23);
@@ -68,9 +69,9 @@
             this.rbBroadcast.Name = "rbBroadcast";
             this.rbBroadcast.Size = new System.Drawing.Size(90, 23);
             this.rbBroadcast.TabIndex = 2;
-            this.rbBroadcast.TabStop = true;
             this.rbBroadcast.Text = "Broadcast";
             this.rbBroadcast.UseVisualStyleBackColor = true;
+            this.rbBroadcast.CheckedChanged += new System.EventHandler(this.rbBroadcast_CheckedChanged);
             // 
             // lblUsername
             // 
@@ -88,6 +89,7 @@
             this.txtContent.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtContent.Enabled = false;
             this.txtContent.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtContent.Location = new System.Drawing.Point(205, 84);
             this.txtContent.Multiline = true;

@@ -157,6 +157,11 @@ namespace TMS
                 routerMapForm.Hide();
         }
 
+        public void OpenAllMinersView()
+        {
+
+        }
+
         public void ShowMinerPosition(object sender, MouseEventArgs e, Router router)
         {
             if (routerMapForm == null)

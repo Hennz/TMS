@@ -51,11 +51,11 @@ namespace TMS
         /// <summary>
         /// Opens the form to send messages.
         /// </summary>
-        public void OpenMessageSend()
+        public void OpenMessageSend(bool isDefaultBroadcast = false)
         {
             if (_sendForm == null || _sendForm.Visible == false)
             {
-                _sendForm = new MessagesSendForm(this);
+                _sendForm = new MessagesSendForm(this, isDefaultBroadcast);
                 _sendForm.Show();
 
             }

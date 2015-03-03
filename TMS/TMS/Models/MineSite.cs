@@ -12,7 +12,7 @@ namespace TMS
 
         public int siteId { get; private set; }
         public String siteName { get; private set; }
-        public String localMapFileAddr { get; private set; }
+        public String localMapFileAddr { get; set; }
         public float mapScale { get; private set; }
 
         public List<Router> siteRouters { get; private set; }

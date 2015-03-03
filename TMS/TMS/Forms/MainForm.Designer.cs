@@ -29,17 +29,25 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.TreeNode treeNode1 = new System.Windows.Forms.TreeNode("Mine Site Name");
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.TreeNode treeNode3 = new System.Windows.Forms.TreeNode("Mine Site Name");
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
             this.splitMain = new System.Windows.Forms.SplitContainer();
             this.lblActiveMiners = new System.Windows.Forms.Label();
             this.lstActiveMiners = new System.Windows.Forms.ListBox();
+            this.cmnuMinerMessages = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.alertToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.broadcastAllToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.tabRouters = new System.Windows.Forms.TabControl();
             this.tabAllRouters = new System.Windows.Forms.TabPage();
             this.tvAllRouters = new System.Windows.Forms.TreeView();
             this.tabJustRouters = new System.Windows.Forms.TabPage();
             this.dataRouters = new System.Windows.Forms.DataGridView();
+            this.idDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.addressDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.locationDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.routersBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.tMS_DatabaseDataSet1 = new TMS.TMS_DatabaseDataSet1();
             this.picMinePlan = new System.Windows.Forms.PictureBox();
             this.pnlLegend = new System.Windows.Forms.Panel();
             this.picMiner = new System.Windows.Forms.PictureBox();
@@ -48,7 +56,6 @@
             this.picRouter = new System.Windows.Forms.PictureBox();
             this.lblBRouter = new System.Windows.Forms.Label();
             this.lblLegendRouter = new System.Windows.Forms.Label();
-            this.lblSiteInfo = new System.Windows.Forms.Label();
             this.statusMain = new System.Windows.Forms.StatusStrip();
             this.statusTextConnected = new System.Windows.Forms.ToolStripStatusLabel();
             this.tmMain = new System.Windows.Forms.TabControl();
@@ -64,10 +71,18 @@
             this.label3 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.tabTracking = new System.Windows.Forms.TabPage();
-            this.btnSaveScale = new System.Windows.Forms.Button();
-            this.lblMapScale = new System.Windows.Forms.Label();
+            this.panel2 = new System.Windows.Forms.Panel();
             this.nudMapScale = new System.Windows.Forms.NumericUpDown();
+            this.lblMapScale = new System.Windows.Forms.Label();
+            this.btnSaveScale = new System.Windows.Forms.Button();
             this.lblScale1 = new System.Windows.Forms.Label();
+            this.btnAllMiners = new System.Windows.Forms.Button();
+            this.llblSiteInfo = new System.Windows.Forms.LinkLabel();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.btnLoadSite = new System.Windows.Forms.Button();
+            this.lblChangeSites = new System.Windows.Forms.Label();
+            this.cboSites = new System.Windows.Forms.ComboBox();
+            this.lblAllMiners = new System.Windows.Forms.Label();
             this.tabReports = new System.Windows.Forms.TabPage();
             this.pnlReportInput = new System.Windows.Forms.Panel();
             this.lblRepMBock = new System.Windows.Forms.Label();
@@ -91,20 +106,19 @@
             this.label7 = new System.Windows.Forms.Label();
             this.tMS_DatabaseDataSet = new TMS.TMS_DatabaseDataSet();
             this.tMSDatabaseDataSetBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.tMS_DatabaseDataSet1 = new TMS.TMS_DatabaseDataSet1();
-            this.routersBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.routersTableAdapter = new TMS.TMS_DatabaseDataSet1TableAdapters.RoutersTableAdapter();
-            this.idDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.addressDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.locationDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
             ((System.ComponentModel.ISupportInitialize)(this.splitMain)).BeginInit();
             this.splitMain.Panel1.SuspendLayout();
             this.splitMain.Panel2.SuspendLayout();
             this.splitMain.SuspendLayout();
+            this.cmnuMinerMessages.SuspendLayout();
             this.tabRouters.SuspendLayout();
             this.tabAllRouters.SuspendLayout();
             this.tabJustRouters.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataRouters)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.routersBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.tMS_DatabaseDataSet1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.picMinePlan)).BeginInit();
             this.pnlLegend.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.picMiner)).BeginInit();
@@ -114,12 +128,12 @@
             this.tmMain.SuspendLayout();
             this.tabMaster.SuspendLayout();
             this.tabTracking.SuspendLayout();
+            this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nudMapScale)).BeginInit();
+            this.panel1.SuspendLayout();
             this.tabReports.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.tMS_DatabaseDataSet)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.tMSDatabaseDataSetBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.tMS_DatabaseDataSet1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.routersBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // splitMain
@@ -166,6 +180,7 @@
             this.lstActiveMiners.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.lstActiveMiners.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.lstActiveMiners.ContextMenuStrip = this.cmnuMinerMessages;
             this.lstActiveMiners.FormattingEnabled = true;
             this.lstActiveMiners.ItemHeight = 17;
             this.lstActiveMiners.Location = new System.Drawing.Point(8, 24);
@@ -173,6 +188,29 @@
             this.lstActiveMiners.Size = new System.Drawing.Size(209, 189);
             this.lstActiveMiners.TabIndex = 1;
             this.lstActiveMiners.SelectedIndexChanged += new System.EventHandler(this.lstActiveMiners_SelectedIndexChanged);
+            // 
+            // cmnuMinerMessages
+            // 
+            this.cmnuMinerMessages.ImageScalingSize = new System.Drawing.Size(20, 20);
+            this.cmnuMinerMessages.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.alertToolStripMenuItem,
+            this.broadcastAllToolStripMenuItem});
+            this.cmnuMinerMessages.Name = "cmnuMinerMessages";
+            this.cmnuMinerMessages.Size = new System.Drawing.Size(195, 52);
+            // 
+            // alertToolStripMenuItem
+            // 
+            this.alertToolStripMenuItem.Name = "alertToolStripMenuItem";
+            this.alertToolStripMenuItem.Size = new System.Drawing.Size(194, 24);
+            this.alertToolStripMenuItem.Text = "Alert <MEMBER>";
+            this.alertToolStripMenuItem.Click += new System.EventHandler(this.alertToolStripMenuItem_Click);
+            // 
+            // broadcastAllToolStripMenuItem
+            // 
+            this.broadcastAllToolStripMenuItem.Name = "broadcastAllToolStripMenuItem";
+            this.broadcastAllToolStripMenuItem.Size = new System.Drawing.Size(194, 24);
+            this.broadcastAllToolStripMenuItem.Text = "Broadcast All";
+            this.broadcastAllToolStripMenuItem.Click += new System.EventHandler(this.broadcastAllToolStripMenuItem_Click);
             // 
             // tabRouters
             // 
@@ -207,10 +245,10 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.tvAllRouters.Location = new System.Drawing.Point(6, 6);
             this.tvAllRouters.Name = "tvAllRouters";
-            treeNode1.Name = "MineSite";
-            treeNode1.Text = "Mine Site Name";
+            treeNode3.Name = "MineSite";
+            treeNode3.Text = "Mine Site Name";
             this.tvAllRouters.Nodes.AddRange(new System.Windows.Forms.TreeNode[] {
-            treeNode1});
+            treeNode3});
             this.tvAllRouters.Size = new System.Drawing.Size(193, 436);
             this.tvAllRouters.TabIndex = 0;
             this.tvAllRouters.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.tvAllRouters_AfterSelect);
@@ -228,8 +266,8 @@
             // 
             // dataRouters
             // 
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Segoe UI", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dataRouters.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Segoe UI", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dataRouters.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle3;
             this.dataRouters.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left)));
             this.dataRouters.AutoGenerateColumns = false;
@@ -246,6 +284,37 @@
             this.dataRouters.RowTemplate.Height = 24;
             this.dataRouters.Size = new System.Drawing.Size(251, 435);
             this.dataRouters.TabIndex = 0;
+            // 
+            // idDataGridViewTextBoxColumn
+            // 
+            this.idDataGridViewTextBoxColumn.DataPropertyName = "Id";
+            this.idDataGridViewTextBoxColumn.HeaderText = "Id";
+            this.idDataGridViewTextBoxColumn.Name = "idDataGridViewTextBoxColumn";
+            this.idDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // addressDataGridViewTextBoxColumn
+            // 
+            this.addressDataGridViewTextBoxColumn.DataPropertyName = "address";
+            this.addressDataGridViewTextBoxColumn.HeaderText = "Addr";
+            this.addressDataGridViewTextBoxColumn.Name = "addressDataGridViewTextBoxColumn";
+            this.addressDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // locationDataGridViewTextBoxColumn
+            // 
+            this.locationDataGridViewTextBoxColumn.DataPropertyName = "location";
+            this.locationDataGridViewTextBoxColumn.HeaderText = "Loc";
+            this.locationDataGridViewTextBoxColumn.Name = "locationDataGridViewTextBoxColumn";
+            this.locationDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // routersBindingSource
+            // 
+            this.routersBindingSource.DataMember = "Routers";
+            this.routersBindingSource.DataSource = this.tMS_DatabaseDataSet1;
+            // 
+            // tMS_DatabaseDataSet1
+            // 
+            this.tMS_DatabaseDataSet1.DataSetName = "TMS_DatabaseDataSet1";
+            this.tMS_DatabaseDataSet1.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
             // picMinePlan
             // 
@@ -344,18 +413,6 @@
             this.lblLegendRouter.TabIndex = 0;
             this.lblLegendRouter.Text = "Active Router";
             this.lblLegendRouter.TextAlign = System.Drawing.ContentAlignment.TopCenter;
-            // 
-            // lblSiteInfo
-            // 
-            this.lblSiteInfo.AutoSize = true;
-            this.lblSiteInfo.Font = new System.Drawing.Font("Segoe UI Semibold", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblSiteInfo.ForeColor = System.Drawing.SystemColors.InactiveCaption;
-            this.lblSiteInfo.Location = new System.Drawing.Point(6, 0);
-            this.lblSiteInfo.MaximumSize = new System.Drawing.Size(300, 64);
-            this.lblSiteInfo.Name = "lblSiteInfo";
-            this.lblSiteInfo.Size = new System.Drawing.Size(228, 64);
-            this.lblSiteInfo.TabIndex = 0;
-            this.lblSiteInfo.Text = "SITE NAME REALLY REALLY LONG";
             // 
             // statusMain
             // 
@@ -531,11 +588,11 @@
             // 
             // tabTracking
             // 
-            this.tabTracking.Controls.Add(this.btnSaveScale);
-            this.tabTracking.Controls.Add(this.lblMapScale);
-            this.tabTracking.Controls.Add(this.nudMapScale);
-            this.tabTracking.Controls.Add(this.lblScale1);
-            this.tabTracking.Controls.Add(this.lblSiteInfo);
+            this.tabTracking.Controls.Add(this.panel2);
+            this.tabTracking.Controls.Add(this.btnAllMiners);
+            this.tabTracking.Controls.Add(this.llblSiteInfo);
+            this.tabTracking.Controls.Add(this.panel1);
+            this.tabTracking.Controls.Add(this.lblAllMiners);
             this.tabTracking.Location = new System.Drawing.Point(4, 32);
             this.tabTracking.Name = "tabTracking";
             this.tabTracking.Padding = new System.Windows.Forms.Padding(3);
@@ -544,35 +601,22 @@
             this.tabTracking.Text = "Tracking";
             this.tabTracking.UseVisualStyleBackColor = true;
             // 
-            // btnSaveScale
+            // panel2
             // 
-            this.btnSaveScale.Enabled = false;
-            this.btnSaveScale.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnSaveScale.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnSaveScale.Location = new System.Drawing.Point(495, 31);
-            this.btnSaveScale.Name = "btnSaveScale";
-            this.btnSaveScale.Size = new System.Drawing.Size(75, 30);
-            this.btnSaveScale.TabIndex = 9;
-            this.btnSaveScale.Text = "Save";
-            this.btnSaveScale.TextAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.btnSaveScale.UseVisualStyleBackColor = true;
-            this.btnSaveScale.Click += new System.EventHandler(this.btnSaveScale_Click);
-            // 
-            // lblMapScale
-            // 
-            this.lblMapScale.AutoSize = true;
-            this.lblMapScale.Font = new System.Drawing.Font("Segoe UI Semibold", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblMapScale.Location = new System.Drawing.Point(327, 3);
-            this.lblMapScale.Name = "lblMapScale";
-            this.lblMapScale.Size = new System.Drawing.Size(89, 23);
-            this.lblMapScale.TabIndex = 8;
-            this.lblMapScale.Text = "Map Scale";
-            this.lblMapScale.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.panel2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel2.Controls.Add(this.nudMapScale);
+            this.panel2.Controls.Add(this.lblMapScale);
+            this.panel2.Controls.Add(this.btnSaveScale);
+            this.panel2.Controls.Add(this.lblScale1);
+            this.panel2.Location = new System.Drawing.Point(674, 3);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(251, 61);
+            this.panel2.TabIndex = 17;
             // 
             // nudMapScale
             // 
             this.nudMapScale.DecimalPlaces = 2;
-            this.nudMapScale.Location = new System.Drawing.Point(385, 31);
+            this.nudMapScale.Location = new System.Drawing.Point(61, 29);
             this.nudMapScale.Maximum = new decimal(new int[] {
             700,
             0,
@@ -594,14 +638,119 @@
             0});
             this.nudMapScale.ValueChanged += new System.EventHandler(this.nudMapScale_ValueChanged);
             // 
+            // lblMapScale
+            // 
+            this.lblMapScale.AutoSize = true;
+            this.lblMapScale.Font = new System.Drawing.Font("Segoe UI Semibold", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblMapScale.Location = new System.Drawing.Point(3, 1);
+            this.lblMapScale.Name = "lblMapScale";
+            this.lblMapScale.Size = new System.Drawing.Size(89, 23);
+            this.lblMapScale.TabIndex = 8;
+            this.lblMapScale.Text = "Map Scale";
+            this.lblMapScale.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            // 
+            // btnSaveScale
+            // 
+            this.btnSaveScale.Enabled = false;
+            this.btnSaveScale.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnSaveScale.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnSaveScale.Location = new System.Drawing.Point(171, 29);
+            this.btnSaveScale.Name = "btnSaveScale";
+            this.btnSaveScale.Size = new System.Drawing.Size(75, 30);
+            this.btnSaveScale.TabIndex = 9;
+            this.btnSaveScale.Text = "Save";
+            this.btnSaveScale.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.btnSaveScale.UseVisualStyleBackColor = true;
+            this.btnSaveScale.Click += new System.EventHandler(this.btnSaveScale_Click);
+            // 
             // lblScale1
             // 
             this.lblScale1.AutoSize = true;
-            this.lblScale1.Location = new System.Drawing.Point(327, 33);
+            this.lblScale1.Location = new System.Drawing.Point(3, 33);
             this.lblScale1.Name = "lblScale1";
             this.lblScale1.Size = new System.Drawing.Size(159, 23);
             this.lblScale1.TabIndex = 2;
             this.lblScale1.Text = "1cm =                 m";
+            // 
+            // btnAllMiners
+            // 
+            this.btnAllMiners.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnAllMiners.BackgroundImage")));
+            this.btnAllMiners.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnAllMiners.FlatAppearance.BorderSize = 0;
+            this.btnAllMiners.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnAllMiners.Location = new System.Drawing.Point(251, 3);
+            this.btnAllMiners.Name = "btnAllMiners";
+            this.btnAllMiners.Size = new System.Drawing.Size(45, 45);
+            this.btnAllMiners.TabIndex = 11;
+            this.btnAllMiners.UseVisualStyleBackColor = true;
+            this.btnAllMiners.Click += new System.EventHandler(this.btnAllMiners_Click);
+            // 
+            // llblSiteInfo
+            // 
+            this.llblSiteInfo.AutoSize = true;
+            this.llblSiteInfo.Font = new System.Drawing.Font("Segoe UI Semibold", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.llblSiteInfo.LinkBehavior = System.Windows.Forms.LinkBehavior.HoverUnderline;
+            this.llblSiteInfo.LinkColor = System.Drawing.SystemColors.ControlDark;
+            this.llblSiteInfo.Location = new System.Drawing.Point(3, 3);
+            this.llblSiteInfo.MaximumSize = new System.Drawing.Size(300, 64);
+            this.llblSiteInfo.Name = "llblSiteInfo";
+            this.llblSiteInfo.Size = new System.Drawing.Size(228, 64);
+            this.llblSiteInfo.TabIndex = 10;
+            this.llblSiteInfo.TabStop = true;
+            this.llblSiteInfo.Text = "SITE NAME REALLY REALLY LONG";
+            this.llblSiteInfo.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.llblSiteInfo_LinkClicked);
+            // 
+            // panel1
+            // 
+            this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel1.Controls.Add(this.btnLoadSite);
+            this.panel1.Controls.Add(this.lblChangeSites);
+            this.panel1.Controls.Add(this.cboSites);
+            this.panel1.Location = new System.Drawing.Point(458, 3);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(210, 61);
+            this.panel1.TabIndex = 16;
+            // 
+            // btnLoadSite
+            // 
+            this.btnLoadSite.Enabled = false;
+            this.btnLoadSite.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnLoadSite.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnLoadSite.Location = new System.Drawing.Point(130, 26);
+            this.btnLoadSite.Name = "btnLoadSite";
+            this.btnLoadSite.Size = new System.Drawing.Size(75, 31);
+            this.btnLoadSite.TabIndex = 15;
+            this.btnLoadSite.Text = "Load";
+            this.btnLoadSite.UseVisualStyleBackColor = true;
+            // 
+            // lblChangeSites
+            // 
+            this.lblChangeSites.AutoSize = true;
+            this.lblChangeSites.Font = new System.Drawing.Font("Segoe UI Semibold", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblChangeSites.Location = new System.Drawing.Point(3, 1);
+            this.lblChangeSites.Name = "lblChangeSites";
+            this.lblChangeSites.Size = new System.Drawing.Size(102, 23);
+            this.lblChangeSites.TabIndex = 14;
+            this.lblChangeSites.Text = "Change Site";
+            // 
+            // cboSites
+            // 
+            this.cboSites.FormattingEnabled = true;
+            this.cboSites.Location = new System.Drawing.Point(3, 26);
+            this.cboSites.Name = "cboSites";
+            this.cboSites.Size = new System.Drawing.Size(121, 31);
+            this.cboSites.TabIndex = 13;
+            this.cboSites.SelectedIndexChanged += new System.EventHandler(this.cboSites_SelectedIndexChanged);
+            // 
+            // lblAllMiners
+            // 
+            this.lblAllMiners.AutoSize = true;
+            this.lblAllMiners.Font = new System.Drawing.Font("Segoe UI", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblAllMiners.Location = new System.Drawing.Point(237, 45);
+            this.lblAllMiners.Name = "lblAllMiners";
+            this.lblAllMiners.Size = new System.Drawing.Size(70, 19);
+            this.lblAllMiners.TabIndex = 12;
+            this.lblAllMiners.Text = "All Miners";
             // 
             // tabReports
             // 
@@ -855,40 +1004,9 @@
             this.tMSDatabaseDataSetBindingSource.DataSource = this.tMS_DatabaseDataSet;
             this.tMSDatabaseDataSetBindingSource.Position = 0;
             // 
-            // tMS_DatabaseDataSet1
-            // 
-            this.tMS_DatabaseDataSet1.DataSetName = "TMS_DatabaseDataSet1";
-            this.tMS_DatabaseDataSet1.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
-            // routersBindingSource
-            // 
-            this.routersBindingSource.DataMember = "Routers";
-            this.routersBindingSource.DataSource = this.tMS_DatabaseDataSet1;
-            // 
             // routersTableAdapter
             // 
             this.routersTableAdapter.ClearBeforeFill = true;
-            // 
-            // idDataGridViewTextBoxColumn
-            // 
-            this.idDataGridViewTextBoxColumn.DataPropertyName = "Id";
-            this.idDataGridViewTextBoxColumn.HeaderText = "Id";
-            this.idDataGridViewTextBoxColumn.Name = "idDataGridViewTextBoxColumn";
-            this.idDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // addressDataGridViewTextBoxColumn
-            // 
-            this.addressDataGridViewTextBoxColumn.DataPropertyName = "address";
-            this.addressDataGridViewTextBoxColumn.HeaderText = "Addr";
-            this.addressDataGridViewTextBoxColumn.Name = "addressDataGridViewTextBoxColumn";
-            this.addressDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // locationDataGridViewTextBoxColumn
-            // 
-            this.locationDataGridViewTextBoxColumn.DataPropertyName = "location";
-            this.locationDataGridViewTextBoxColumn.HeaderText = "Loc";
-            this.locationDataGridViewTextBoxColumn.Name = "locationDataGridViewTextBoxColumn";
-            this.locationDataGridViewTextBoxColumn.ReadOnly = true;
             // 
             // MainForm
             // 
@@ -919,10 +1037,13 @@
             this.splitMain.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.splitMain)).EndInit();
             this.splitMain.ResumeLayout(false);
+            this.cmnuMinerMessages.ResumeLayout(false);
             this.tabRouters.ResumeLayout(false);
             this.tabAllRouters.ResumeLayout(false);
             this.tabJustRouters.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dataRouters)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.routersBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.tMS_DatabaseDataSet1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.picMinePlan)).EndInit();
             this.pnlLegend.ResumeLayout(false);
             this.pnlLegend.PerformLayout();
@@ -936,13 +1057,15 @@
             this.tabMaster.PerformLayout();
             this.tabTracking.ResumeLayout(false);
             this.tabTracking.PerformLayout();
+            this.panel2.ResumeLayout(false);
+            this.panel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nudMapScale)).EndInit();
+            this.panel1.ResumeLayout(false);
+            this.panel1.PerformLayout();
             this.tabReports.ResumeLayout(false);
             this.tabReports.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.tMS_DatabaseDataSet)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.tMSDatabaseDataSetBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.tMS_DatabaseDataSet1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.routersBindingSource)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -968,7 +1091,6 @@
         private System.Windows.Forms.Button btnRouters;
         private System.Windows.Forms.Button btnSensor;
         private System.Windows.Forms.Button btnLoadMap;
-        private System.Windows.Forms.Label lblSiteInfo;
         private System.Windows.Forms.LinkLabel llblUsername;
         private System.Windows.Forms.TabPage tabTracking;
         private System.Windows.Forms.TabControl tabRouters;
@@ -1015,6 +1137,18 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn idDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn addressDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn locationDataGridViewTextBoxColumn;
+        private System.ComponentModel.BackgroundWorker backgroundWorker1;
+        private System.Windows.Forms.LinkLabel llblSiteInfo;
+        private System.Windows.Forms.Label lblAllMiners;
+        private System.Windows.Forms.Button btnAllMiners;
+        private System.Windows.Forms.Panel panel2;
+        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Button btnLoadSite;
+        private System.Windows.Forms.Label lblChangeSites;
+        private System.Windows.Forms.ComboBox cboSites;
+        private System.Windows.Forms.ContextMenuStrip cmnuMinerMessages;
+        private System.Windows.Forms.ToolStripMenuItem alertToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem broadcastAllToolStripMenuItem;
     }
 }
 
