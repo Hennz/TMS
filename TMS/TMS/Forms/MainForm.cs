@@ -254,7 +254,7 @@ namespace TMS
 
         private void btnAllMiners_Click(object sender, EventArgs e)
         {
-            //_trackingController.
+            _trackingController.OpenAllMinersView();
         }
 
     }

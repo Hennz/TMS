@@ -16,6 +16,11 @@ namespace TMS
         PictureBox _picMinePlan;
 
         /// <summary>
+        /// 
+        /// </summary>
+        ActiveMinersInfoForm _activeMinersForm;
+
+        /// <summary>
         /// The info form that appears wen clicking on a router.
         /// </summary>
         RouterMapForm routerMapForm;
@@ -159,7 +164,11 @@ namespace TMS
 
         public void OpenAllMinersView()
         {
-
+            if (_activeMinersForm == null || _activeMinersForm.Visible == false)
+            {
+                _activeMinersForm = new ActiveMinersInfoForm(this);
+                _activeMinersForm.Show();
+            }
         }
 
         public void ShowMinerPosition(object sender, MouseEventArgs e, Router router)
