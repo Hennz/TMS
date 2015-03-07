@@ -33,34 +33,23 @@ namespace TMS
             lblUserType.Text = User.GetInstance().isAdmin ? "Administrator" : "Regular User";
 
             // Load routers into treeview
-            tvAllRouters.BeginUpdate();
-
-            foreach (Router router in MineSite.GetInstance().siteRouters)
-            {
-                TreeNode routerNode = new TreeNode(router.ToString());
-                tvAllRouters.Nodes[0].Nodes.Add(routerNode);
-
-            }
-            tvAllRouters.Nodes[0].ExpandAll();
-            tvAllRouters.Nodes[0].Text = MineSite.GetInstance().siteName;
-
-            tvAllRouters.EndUpdate();
+            LoadRoutersToTree();
 
             _trackingController.AddAllRoutersToMap();
 
             // Load all active miners to list
             foreach (Member member in MineSite.GetInstance().siteMembers)
             {
-                if (!member.isVehicle)
+                if (!member.isVehicle && _trackingController.IsMemberActive(member))
                 {
                     lstActiveMiners.Items.Add(member);
                 }
-
             }
 
             // Set mapscale number incrementer
             nudMapScale.Value = (decimal) (MineSite.GetInstance().mapScale);
             nudMapScale.Font = new Font(nudMapScale.Font, FontStyle.Regular);
+            btnSaveScale.Enabled = false;
         }
 
 
@@ -74,6 +63,22 @@ namespace TMS
             form.TopLevel = false;
             splitMain.Panel1.Controls.Add(form);
             form.Show();
+        }
+
+        private void LoadRoutersToTree()
+        {
+            tvAllRouters.BeginUpdate();
+
+            foreach (Router router in MineSite.GetInstance().siteRouters)
+            {
+                TreeNode routerNode = new TreeNode(router.ToString());
+                tvAllRouters.Nodes[0].Nodes.Add(routerNode);
+
+            }
+            tvAllRouters.Nodes[0].ExpandAll();
+            tvAllRouters.Nodes[0].Text = MineSite.GetInstance().siteName;
+
+            tvAllRouters.EndUpdate();
         }
 
 

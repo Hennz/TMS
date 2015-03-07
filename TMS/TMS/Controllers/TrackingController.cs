@@ -16,7 +16,7 @@ namespace TMS
         PictureBox _picMinePlan;
 
         /// <summary>
-        /// 
+        /// The form for displaying all active miners and their locations
         /// </summary>
         ActiveMinersInfoForm _activeMinersForm;
 
@@ -86,6 +86,24 @@ namespace TMS
         }
 
         /// <summary>
+        /// Checks if a member has an active shift now
+        /// </summary>
+        /// <param name="m">The member to check</param>
+        /// <returns>Whether or not the miner's shift is taking place now</returns>
+        public bool IsMemberActive(Member m)
+        {
+            foreach (Shift s in m.assignedShifts)
+            {
+                if (s.startTime < DateTime.Now && s.endTime > DateTime.Now)
+                {
+                    return true;
+                }
+            }
+
+            return false;
+        }
+
+        /// <summary>
         /// Draws grids to scale over top of the map.
         /// </summary>
         /// <param name="graphics"></param>
@@ -96,6 +114,7 @@ namespace TMS
                 _picMinePlan.Refresh();
             }
 
+            // Too many gridlines would appear
             if (MineSite.GetInstance().mapScale == 1)
             {
                 return;
@@ -175,7 +194,7 @@ namespace TMS
         {
             if (routerMapForm == null)
             {
-                routerMapForm = new RouterMapForm();
+                routerMapForm = new RouterMapForm(this);
                 routerMapForm.TopLevel = false;
                 _picMinePlan.Controls.Add(routerMapForm);
             }

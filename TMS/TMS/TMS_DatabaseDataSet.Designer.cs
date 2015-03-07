@@ -972,17 +972,17 @@ namespace TMS.TMS_DatabaseDataSetTableAdapters {
             this._commandCollection = new global::System.Data.SqlClient.SqlCommand[1];
             this._commandCollection[0] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[0].Connection = this.Connection;
-            this._commandCollection[0].CommandText = @"SELECT m.memberNo AS MemberNo, { fn CONCAT({ fn CONCAT(m.lName, ', ') }, m.fName) } AS Name, m.tagId AS Tag, r.Id AS Router, r.location AS Location, paths.timeVisited AS Time, 'Status' = CASE 
-            WHEN r.isBlocked = 1 THEN 'Blocked'
-            ELSE 'Safe Zone'
-        END
-FROM     Members AS m INNER JOIN
+            this._commandCollection[0].CommandText = @"SELECT m.memberNo AS MemberNo, { fn CONCAT({ fn CONCAT(m.lName, ', ') }, m.fName) } AS Name, m.tagId AS Tag, r.Id AS Router, r.location AS Location, paths.timeVisited AS Time, 
+                  CASE WHEN r.isBlocked = 1 THEN 'Blocked' ELSE 'Safe Zone' END AS 'Status'
+FROM     Shifts AS s INNER JOIN
+                  Members AS m INNER JOIN
                       (SELECT p.memberId, p.routerId, p.timeVisited
                        FROM      PathElement AS p INNER JOIN
                                              (SELECT memberId, MAX(timeVisited) AS maxTime
                                               FROM      PathElement
                                               GROUP BY memberId) AS maxPe ON p.memberId = maxPe.memberId AND p.timeVisited = maxPe.maxTime) AS paths ON m.memberNo = paths.memberId INNER JOIN
-                  Routers AS r ON paths.routerId = r.Id";
+                  Routers AS r ON paths.routerId = r.Id ON s.memberNo = m.memberNo AND s.memberNo = m.memberNo
+WHERE  (DATEPART(HOUR, GETDATE()) BETWEEN DATEPART(HOUR, s.start) AND DATEPART(HOUR, s.[end]))";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
         }
         

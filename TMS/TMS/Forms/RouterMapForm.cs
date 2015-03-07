@@ -12,11 +12,15 @@ namespace TMS
 {
     public partial class RouterMapForm : Form
     {
+        TrackingController _controller;
+
         Router router;
 
-        public RouterMapForm()
+        public RouterMapForm(TrackingController c)
         {
             InitializeComponent();
+
+            _controller = c;
         }
 
         private void RouterMapForm_Deactivate(object sender, EventArgs e)
@@ -39,8 +43,11 @@ namespace TMS
 
             foreach (Member member in router.hasConnectedMember)
             {
-                TreeNode memberNode = new TreeNode(member.ToString());
-                tvEndDevices.Nodes[0].Nodes.Add(memberNode);
+                if (_controller.IsMemberActive(member))
+                {
+                    TreeNode memberNode = new TreeNode(member.ToString());
+                    tvEndDevices.Nodes[0].Nodes.Add(memberNode);
+                }
 
             }
             tvEndDevices.Nodes[0].ExpandAll();
