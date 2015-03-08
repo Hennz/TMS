@@ -7,18 +7,6 @@
         /// </summary>
         private System.ComponentModel.IContainer components = null;
 
-        /// <summary>
-        /// Clean up any resources being used.
-        /// </summary>
-        /// <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
-        protected override void Dispose(bool disposing)
-        {
-            if (disposing && (components != null))
-            {
-                components.Dispose();
-            }
-            base.Dispose(disposing);
-        }
 
         #region Windows Form Designer generated code
 
@@ -29,8 +17,8 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.TreeNode treeNode3 = new System.Windows.Forms.TreeNode("Mine Site Name");
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.TreeNode treeNode1 = new System.Windows.Forms.TreeNode("Mine Site Name");
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
             this.splitMain = new System.Windows.Forms.SplitContainer();
             this.lblActiveMiners = new System.Windows.Forms.Label();
@@ -102,8 +90,8 @@
             this.lblUserType = new System.Windows.Forms.Label();
             this.btnSendMessage = new System.Windows.Forms.Button();
             this.btnViewMessages = new System.Windows.Forms.Button();
-            this.label6 = new System.Windows.Forms.Label();
-            this.label7 = new System.Windows.Forms.Label();
+            this.lblSendMessages = new System.Windows.Forms.Label();
+            this.lblViewMessages = new System.Windows.Forms.Label();
             this.tMS_DatabaseDataSet = new TMS.TMS_DatabaseDataSet();
             this.tMSDatabaseDataSetBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.routersTableAdapter = new TMS.TMS_DatabaseDataSet1TableAdapters.RoutersTableAdapter();
@@ -245,10 +233,10 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.tvAllRouters.Location = new System.Drawing.Point(6, 6);
             this.tvAllRouters.Name = "tvAllRouters";
-            treeNode3.Name = "MineSite";
-            treeNode3.Text = "Mine Site Name";
+            treeNode1.Name = "MineSite";
+            treeNode1.Text = "Mine Site Name";
             this.tvAllRouters.Nodes.AddRange(new System.Windows.Forms.TreeNode[] {
-            treeNode3});
+            treeNode1});
             this.tvAllRouters.Size = new System.Drawing.Size(193, 436);
             this.tvAllRouters.TabIndex = 0;
             this.tvAllRouters.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.tvAllRouters_AfterSelect);
@@ -266,8 +254,8 @@
             // 
             // dataRouters
             // 
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Segoe UI", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dataRouters.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Segoe UI", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dataRouters.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
             this.dataRouters.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left)));
             this.dataRouters.AutoGenerateColumns = false;
@@ -972,27 +960,27 @@
             this.btnViewMessages.UseVisualStyleBackColor = true;
             this.btnViewMessages.Click += new System.EventHandler(this.btnViewMessages_Click);
             // 
-            // label6
+            // lblSendMessages
             // 
-            this.label6.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.label6.AutoSize = true;
-            this.label6.Font = new System.Drawing.Font("Segoe UI", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.Location = new System.Drawing.Point(945, 83);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(39, 19);
-            this.label6.TabIndex = 9;
-            this.label6.Text = "Send";
+            this.lblSendMessages.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.lblSendMessages.AutoSize = true;
+            this.lblSendMessages.Font = new System.Drawing.Font("Segoe UI", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblSendMessages.Location = new System.Drawing.Point(945, 83);
+            this.lblSendMessages.Name = "lblSendMessages";
+            this.lblSendMessages.Size = new System.Drawing.Size(39, 19);
+            this.lblSendMessages.TabIndex = 9;
+            this.lblSendMessages.Text = "Send";
             // 
-            // label7
+            // lblViewMessages
             // 
-            this.label7.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.label7.AutoSize = true;
-            this.label7.Font = new System.Drawing.Font("Segoe UI", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.Location = new System.Drawing.Point(998, 83);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(38, 19);
-            this.label7.TabIndex = 10;
-            this.label7.Text = "View";
+            this.lblViewMessages.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.lblViewMessages.AutoSize = true;
+            this.lblViewMessages.Font = new System.Drawing.Font("Segoe UI", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblViewMessages.Location = new System.Drawing.Point(998, 83);
+            this.lblViewMessages.Name = "lblViewMessages";
+            this.lblViewMessages.Size = new System.Drawing.Size(38, 19);
+            this.lblViewMessages.TabIndex = 10;
+            this.lblViewMessages.Text = "View";
             // 
             // tMS_DatabaseDataSet
             // 
@@ -1014,8 +1002,8 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ControlLightLight;
             this.ClientSize = new System.Drawing.Size(1202, 843);
-            this.Controls.Add(this.label7);
-            this.Controls.Add(this.label6);
+            this.Controls.Add(this.lblViewMessages);
+            this.Controls.Add(this.lblSendMessages);
             this.Controls.Add(this.btnSendMessage);
             this.Controls.Add(this.btnViewMessages);
             this.Controls.Add(this.lblUserType);
@@ -1127,8 +1115,8 @@
         private System.Windows.Forms.Button btnViewMessages;
         private System.Windows.Forms.Button btnSendMessage;
         private System.Windows.Forms.Label lblActiveMiners;
-        private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.Label lblSendMessages;
+        private System.Windows.Forms.Label lblViewMessages;
         private TMS_DatabaseDataSet tMS_DatabaseDataSet;
         private System.Windows.Forms.BindingSource tMSDatabaseDataSetBindingSource;
         private TMS_DatabaseDataSet1 tMS_DatabaseDataSet1;

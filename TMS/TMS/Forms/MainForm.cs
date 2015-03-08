@@ -13,8 +13,23 @@ namespace TMS
 {
     public partial class MainForm : Form
     {
+        const int DBT_DEVICEREMOVECOMPLETE = 0x8004;
+
+        // Controllers
+
+        /// <summary>
+        /// Controls for all miscelaneous functions
+        /// </summary>
         MasterController _masterController;
+
+        /// <summary>
+        /// Controls for all messaging functions
+        /// </summary>
         MessagingController _messagingController;
+
+        /// <summary>
+        /// Controller for all tracking functions
+        /// </summary>
         TrackingController _trackingController;
 
         public MainForm(MasterController c)
@@ -27,6 +42,7 @@ namespace TMS
             _trackingController = new TrackingController(this, picMinePlan);
             _messagingController = new MessagingController(this);
 
+            // Set labels
             llblSiteInfo.Text = MineSite.GetInstance().siteName;
 
             llblUsername.Text = User.GetInstance().username;
@@ -40,7 +56,7 @@ namespace TMS
             // Load all active miners to list
             foreach (Member member in MineSite.GetInstance().siteMembers)
             {
-                if (!member.isVehicle && _trackingController.IsMemberActive(member))
+                if (!member.isVehicle && _trackingController.CheckMemberActive(member))
                 {
                     lstActiveMiners.Items.Add(member);
                 }
@@ -50,6 +66,8 @@ namespace TMS
             nudMapScale.Value = (decimal) (MineSite.GetInstance().mapScale);
             nudMapScale.Font = new Font(nudMapScale.Font, FontStyle.Regular);
             btnSaveScale.Enabled = false;
+
+            LoadMineSiteBox();
         }
 
 
@@ -63,6 +81,23 @@ namespace TMS
             form.TopLevel = false;
             splitMain.Panel1.Controls.Add(form);
             form.Show();
+        }
+
+        /// <summary>
+        /// Load all mine sites to combobox
+        /// </summary>
+        private void LoadMineSiteBox()
+        {
+            cboSites.Items.Clear();
+
+            List<string> mineSites = _masterController.GetAllMineSites();
+
+            foreach (string site in mineSites)
+            {
+                cboSites.Items.Add(site);
+            }
+
+            cboSites.SelectedItem = MineSite.GetInstance().siteName;
         }
 
         private void LoadRoutersToTree()
@@ -81,6 +116,10 @@ namespace TMS
             tvAllRouters.EndUpdate();
         }
 
+        public void SetStatusText(string text)
+        {
+            statusTextConnected.Text = text;
+        }
 
         private void MainForm_FormClosed(object sender, FormClosedEventArgs e)
         {
@@ -191,6 +230,8 @@ namespace TMS
                 }
                 else
                 {
+                    _trackingController.HideRouterForm();
+
                     _trackingController.DrawMemberPath(null);
                 }
 
@@ -254,7 +295,7 @@ namespace TMS
 
         private void cboSites_SelectedIndexChanged(object sender, EventArgs e)
         {
-
+            btnLoadSite.Enabled = !cboSites.SelectedItem.ToString().Equals(MineSite.GetInstance().siteName);
         }
 
         private void btnAllMiners_Click(object sender, EventArgs e)
@@ -262,5 +303,15 @@ namespace TMS
             _trackingController.OpenAllMinersView();
         }
 
+        protected override void Dispose(bool disposing)
+        {
+            _trackingController.Dispose();
+            if (disposing && (components != null))
+            {
+                components.Dispose();
+            }
+
+            base.Dispose(disposing);
+        }
     }
 }

@@ -175,6 +175,29 @@ namespace TMS
 
         }
 
+        public List<string> GetAllMineSites()
+        {
+            List<string> mineSites = new List<string>();
+
+            using (SqlConnection sqlCon = new SqlConnection(Properties.Settings.Default.TMS_DatabaseConnectionString))
+            {
+                string cmdString = "SELECT siteName FROM Site ORDER BY siteName";
+
+                SqlCommand oCmd = new SqlCommand(cmdString, sqlCon);
+
+                sqlCon.Open();
+                using (SqlDataReader oReader = oCmd.ExecuteReader())
+                {
+                    while (oReader.Read())
+                    {
+                        mineSites.Add(oReader["siteName"].ToString());
+                    }
+                }
+            }
+
+            return mineSites;
+        }
+
         /// <summary>
         /// Returns a list of all tags and whether or not they are assigned to a miner
         /// </summary>
@@ -560,7 +583,6 @@ namespace TMS
                 _mainForm.AddToLeftPanel(_routerForm);
 
             }
-
         }
 
         public void OpenSensors()
