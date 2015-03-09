@@ -41,7 +41,7 @@ namespace TMS
             tvEndDevices.BeginUpdate();
             tvEndDevices.Nodes[0].Nodes.Clear();
 
-            foreach (Member member in router.hasConnectedMember)
+            foreach (Member member in router.hasConnectedMembers)
             {
                 if (_controller.CheckMemberActive(member))
                 {

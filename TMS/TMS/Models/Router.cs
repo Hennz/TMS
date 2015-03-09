@@ -17,11 +17,13 @@ namespace TMS
 
         public bool isBlocked { get; private set; }
 
-        public LinkedList<Member> hasConnectedMember { get; private set; }
+        public LinkedList<Member> hasConnectedMembers { get; private set; }
 
         public delegate void OnUpdatedDelegate();
 
         public event OnUpdatedDelegate OnUpdated;
+
+        public event OnUpdatedDelegate OnDeleted;
 
         public Router(String rId, String addr, String loc, int x, int y, bool iB)
         {
@@ -34,7 +36,7 @@ namespace TMS
 
             isBlocked = iB;
 
-            hasConnectedMember = new LinkedList<Member>();
+            hasConnectedMembers = new LinkedList<Member>();
             
         }
 
@@ -43,9 +45,25 @@ namespace TMS
             return routerId;
         }
 
+        public void Dispose()
+        {
+            foreach(Member member in hasConnectedMembers)
+            {
+                member.path.Remove(this);
+
+                if (OnDeleted != null)
+                {
+                    OnDeleted();
+                }
+            }
+        }
+
         public void RequestUpdate()
         {
-            OnUpdated();
+            if (OnUpdated != null)
+            {
+                OnUpdated();
+            }
         }
 
         public void Update(String rId, String addr, String loc, int x, int y, bool iB)
@@ -59,7 +77,7 @@ namespace TMS
 
             isBlocked = iB;
 
-            OnUpdated();
+            RequestUpdate();
         }
     }
 }

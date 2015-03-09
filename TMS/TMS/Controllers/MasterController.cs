@@ -422,7 +422,7 @@ namespace TMS
                         // Add to router's connected members if this is the member's first router
                         if (member.path.Count == 1)
                         {
-                            router.hasConnectedMember.AddLast(member);
+                            router.hasConnectedMembers.AddLast(member);
                         }
                     }
                 }
@@ -822,20 +822,21 @@ namespace TMS
 
                 sqlCon.Open();
                 SqlCommand oCmd = new SqlCommand(cmdString, sqlCon);
-                oCmd.Parameters.AddWithValue("@Id", router.routerId);
+                oCmd.Parameters.AddWithValue("@rId", router.routerId);
 
                 try
                 {
                     int rows = oCmd.ExecuteNonQuery();
-                    MineSite.GetInstance().siteRouters.Remove(router);
 
-                    _mainForm.AddNewCreatedRouter(router);
+                    // Remove router objects
+                    router.Dispose();
+                    MineSite.GetInstance().siteRouters.Remove(router);
 
                     return true;
                 }
                 catch (SqlException e)
                 {
-                    MessageBox.Show("Error", e.Message, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show(e.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
 
                     return false;
                 }

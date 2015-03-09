@@ -146,19 +146,28 @@ namespace TMS
         private void lstRouters_SelectedIndexChanged(object sender, EventArgs e)
         {
             router = (Router)(lstRouters.SelectedItem);
-            mtxtId.Text = router.routerId;
-            txtAddr.Text = router.address;
-            txtLocation.Text = router.location;
-            mtxtX.Text = router.posX.ToString();
-            mtxtY.Text = router.posY.ToString();
-            chkBlocked.Checked = router.isBlocked;
+            if (router != null)
+            {
 
-            rbUpdate.Checked = true;
+                mtxtId.Text = router.routerId;
+                txtAddr.Text = router.address;
+                txtLocation.Text = router.location;
+                mtxtX.Text = router.posX.ToString();
+                mtxtY.Text = router.posY.ToString();
+                chkBlocked.Checked = router.isBlocked;
+
+                rbUpdate.Checked = true;
+            }
         }
 
         private void btnDelete_Click(object sender, EventArgs e)
         {
+            bool didComplete = _controller.RouterDelete((Router)lstRouters.SelectedItem);
 
+            if (didComplete)
+            {
+                lstRouters.Items.RemoveAt(lstRouters.SelectedIndex);
+            }
         }
 
         private void btnSelPos_Click(object sender, EventArgs e)

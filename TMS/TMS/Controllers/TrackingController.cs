@@ -87,9 +87,7 @@ namespace TMS
             _picMinePlan.Controls.Add(picRouter);
 
             picRouter.BackColor = Color.Transparent;
-
             OnRouterUpdate(picRouter, router);
-
             picRouter.Size = new Size(picRouter.Image.Width, picRouter.Image.Height);
 
             // Set up events for the router updating
@@ -98,10 +96,17 @@ namespace TMS
                 ShowMinerPosition(sender, e, router);
             };
 
+            // Subscribe to router updates
             router.OnUpdated += () =>
             {
                 OnRouterUpdate(picRouter, router);
             };
+
+            router.OnDeleted += () =>
+            {
+                _picMinePlan.Controls.Remove(picRouter);
+            };
+
             MineSite.GetInstance().OnUpdated += (scale) =>
             {
                 OnRouterUpdate(picRouter, router);
@@ -359,7 +364,7 @@ namespace TMS
         {
             picRouter.Location = new Point((int)(router.posX * MineSite.GetInstance().mapScale - picRouter.Width / 2), (int)(router.posY * MineSite.GetInstance().mapScale - picRouter.Width / 2));
 
-            if (router.hasConnectedMember.Count > 0)
+            if (router.hasConnectedMembers.Count > 0)
             {
                 picRouter.Image = router.isBlocked ? TMS.Properties.Resources.router_blocked_miner_map : TMS.Properties.Resources.router_active_miner_map;
             }

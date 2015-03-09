@@ -71,16 +71,19 @@ namespace TMS
                 // Remove this member from its current connected router
                 if (path.First != null)
                 {
-                    path.First.Value.hasConnectedMember.Remove(this);
+                    path.First.Value.hasConnectedMembers.Remove(this);
                     path.First.Value.RequestUpdate();
                 }
 
                 path.AddFirst(router);
-                router.hasConnectedMember.AddLast(this);
+                router.hasConnectedMembers.AddLast(this);
 
                 router.RequestUpdate();
 
-                OnPathUpdated();
+                if (OnPathUpdated != null)
+                {
+                    OnPathUpdated();
+                }
                 
             }
         }
