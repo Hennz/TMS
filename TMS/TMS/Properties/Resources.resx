@@ -121,7 +121,13 @@
   <data name="router_active_map" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\router-active-map.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="router_active_miner_map" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\router-active-miner-map.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="router_blocked_map" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\router-blocked-map.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="router_blocked_miner_map" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\router-blocked-miner-map.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>

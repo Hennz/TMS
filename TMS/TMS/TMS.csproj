@@ -127,6 +127,12 @@
     <Compile Include="Forms\TagAddEditForm.Designer.cs">
       <DependentUpon>TagAddEditForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\TestCommForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\TestCommForm.Designer.cs">
+      <DependentUpon>TestCommForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\UserAddForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -158,6 +164,16 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>TMS_DatabaseDataSet.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="TMS_DatabaseDataSet2.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>TMS_DatabaseDataSet2.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="TMS_DatabaseDataSet3.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>TMS_DatabaseDataSet3.xsd</DependentUpon>
     </Compile>
     <Compile Include="TMS_DatabaseDataSet_Routers.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -193,6 +209,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\TagAddEditForm.resx">
       <DependentUpon>TagAddEditForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\TestCommForm.resx">
+      <DependentUpon>TestCommForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\UserAddForm.resx">
       <DependentUpon>UserAddForm.cs</DependentUpon>
@@ -233,6 +252,28 @@
     <None Include="TMS_DatabaseDataSet.xss">
       <DependentUpon>TMS_DatabaseDataSet.xsd</DependentUpon>
     </None>
+    <None Include="TMS_DatabaseDataSet2.xsc">
+      <DependentUpon>TMS_DatabaseDataSet2.xsd</DependentUpon>
+    </None>
+    <None Include="TMS_DatabaseDataSet2.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>TMS_DatabaseDataSet2.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="TMS_DatabaseDataSet2.xss">
+      <DependentUpon>TMS_DatabaseDataSet2.xsd</DependentUpon>
+    </None>
+    <None Include="TMS_DatabaseDataSet3.xsc">
+      <DependentUpon>TMS_DatabaseDataSet3.xsd</DependentUpon>
+    </None>
+    <None Include="TMS_DatabaseDataSet3.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>TMS_DatabaseDataSet3.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="TMS_DatabaseDataSet3.xss">
+      <DependentUpon>TMS_DatabaseDataSet3.xsd</DependentUpon>
+    </None>
     <None Include="TMS_DatabaseDataSet_Routers.xsc">
       <DependentUpon>TMS_DatabaseDataSet_Routers.xsd</DependentUpon>
     </None>
@@ -251,10 +292,13 @@
   <ItemGroup>
     <None Include="Resources\active-miner-map.png" />
     <Content Include="Resources\active-miner.png" />
+    <None Include="Resources\active_miner_map.png" />
     <Content Include="Resources\load-map.png" />
     <Content Include="Resources\router-active-map.png" />
+    <None Include="Resources\router-active-miner-map.png" />
     <Content Include="Resources\router-active.png" />
     <Content Include="Resources\router-blocked-map.png" />
+    <None Include="Resources\router-blocked-miner-map.png" />
     <Content Include="Resources\router-blocked.png" />
     <Content Include="Resources\TMS-Logo_2.ico" />
     <Content Include="TMS_Database.mdf">

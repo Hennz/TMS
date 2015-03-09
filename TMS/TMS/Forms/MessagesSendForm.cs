@@ -23,7 +23,7 @@ namespace TMS
             lblUsername.Text = User.GetInstance().username;
             lblDate.Text = DateTime.Now.ToString("yyyy-MM-dd");
 
-            foreach (Member member in MineSite.GetInstance().siteMembers)
+            foreach (Member member in MineSite.GetInstance().siteMembers.Values)
             {
                 lstMembers.Items.Add(member);
             }

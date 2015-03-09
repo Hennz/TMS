@@ -16,7 +16,7 @@ namespace TMS
         public float mapScale { get; private set; }
 
         public List<Router> siteRouters { get; private set; }
-        public List<Member> siteMembers { get; private set; }
+        public Dictionary<string, Member> siteMembers { get; private set; }
         public List<string> siteSensors { get; private set; }
 
         public delegate void OnUpdatedDelegate(float new_scale);
@@ -44,8 +44,8 @@ namespace TMS
             return _instance;
         }
 
-        public void Init(int id, string siteN, string mapPath, float scale, 
-            List<Router> routers, List<Member> members, List<string> sensors)
+        public void Init(int id, string siteN, string mapPath, float scale,
+            List<Router> routers, Dictionary<string, Member> members, List<string> sensors)
         {
             siteId = id;
             siteName = siteN;

@@ -30,6 +30,10 @@ namespace TMS
 
         public List<Shift> assignedShifts { get; private set; }
 
+        public delegate void OnPathUpdatedDelegate();
+
+        public event OnPathUpdatedDelegate OnPathUpdated;
+
         public Member(string mId, string f, string m, string l,
             string addr, string prov, string cit, 
             int pNo,
@@ -64,13 +68,21 @@ namespace TMS
         {
             if (!path.Contains(router))
             {
-                path.AddFirst(router);
-            }
-        }
+                // Remove this member from its current connected router
+                if (path.First != null)
+                {
+                    path.First.Value.hasConnectedMember.Remove(this);
+                    path.First.Value.RequestUpdate();
+                }
 
-        public LinkedList<Router> GetPath()
-        {
-            return path;
+                path.AddFirst(router);
+                router.hasConnectedMember.AddLast(this);
+
+                router.RequestUpdate();
+
+                OnPathUpdated();
+                
+            }
         }
 
         public override string ToString()

@@ -19,7 +19,7 @@ namespace TMS
 
         public LinkedList<Member> hasConnectedMember { get; private set; }
 
-        public delegate void OnUpdatedDelegate(int new_x, int new_y, bool new_blocked);
+        public delegate void OnUpdatedDelegate();
 
         public event OnUpdatedDelegate OnUpdated;
 
@@ -43,6 +43,11 @@ namespace TMS
             return routerId;
         }
 
+        public void RequestUpdate()
+        {
+            OnUpdated();
+        }
+
         public void Update(String rId, String addr, String loc, int x, int y, bool iB)
         {
             routerId = rId;
@@ -54,7 +59,7 @@ namespace TMS
 
             isBlocked = iB;
 
-            OnUpdated(posX, posY, isBlocked);
+            OnUpdated();
         }
     }
 }

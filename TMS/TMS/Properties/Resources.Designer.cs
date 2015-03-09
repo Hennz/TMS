@@ -73,9 +73,29 @@ namespace TMS.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap router_active_miner_map {
+            get {
+                object obj = ResourceManager.GetObject("router_active_miner_map", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap router_blocked_map {
             get {
                 object obj = ResourceManager.GetObject("router_blocked_map", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap router_blocked_miner_map {
+            get {
+                object obj = ResourceManager.GetObject("router_blocked_miner_map", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

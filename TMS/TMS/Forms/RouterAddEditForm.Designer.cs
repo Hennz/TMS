@@ -33,7 +33,6 @@
             this.rbNew = new System.Windows.Forms.RadioButton();
             this.rbUpdate = new System.Windows.Forms.RadioButton();
             this.lstRouters = new System.Windows.Forms.ListBox();
-            this.txtId = new System.Windows.Forms.TextBox();
             this.txtAddr = new System.Windows.Forms.TextBox();
             this.lblId = new System.Windows.Forms.Label();
             this.lblAddr = new System.Windows.Forms.Label();
@@ -49,6 +48,7 @@
             this.btnDelete = new System.Windows.Forms.Button();
             this.btnSelPos = new System.Windows.Forms.Button();
             this.lblRDetails = new System.Windows.Forms.Label();
+            this.mtxtId = new System.Windows.Forms.MaskedTextBox();
             ((System.ComponentModel.ISupportInitialize)(this.epRID)).BeginInit();
             this.SuspendLayout();
             // 
@@ -89,15 +89,6 @@
             this.lstRouters.Size = new System.Drawing.Size(190, 255);
             this.lstRouters.TabIndex = 2;
             this.lstRouters.SelectedIndexChanged += new System.EventHandler(this.lstRouters_SelectedIndexChanged);
-            // 
-            // txtId
-            // 
-            this.txtId.Font = new System.Drawing.Font("Segoe UI", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtId.Location = new System.Drawing.Point(88, 393);
-            this.txtId.Name = "txtId";
-            this.txtId.Size = new System.Drawing.Size(111, 25);
-            this.txtId.TabIndex = 3;
-            this.txtId.Leave += new System.EventHandler(this.txtId_Leave);
             // 
             // txtAddr
             // 
@@ -147,7 +138,7 @@
             this.mtxtX.PromptChar = ' ';
             this.mtxtX.Size = new System.Drawing.Size(50, 25);
             this.mtxtX.TabIndex = 6;
-            this.mtxtX.Text = "00000";
+            this.mtxtX.Text = "0";
             // 
             // mtxtY
             // 
@@ -155,9 +146,10 @@
             this.mtxtY.Location = new System.Drawing.Point(149, 515);
             this.mtxtY.Mask = "00000";
             this.mtxtY.Name = "mtxtY";
+            this.mtxtY.PromptChar = ' ';
             this.mtxtY.Size = new System.Drawing.Size(50, 25);
             this.mtxtY.TabIndex = 7;
-            this.mtxtY.Text = "00000";
+            this.mtxtY.Text = "0";
             // 
             // btnEnter
             // 
@@ -256,6 +248,14 @@
             this.lblRDetails.TabIndex = 18;
             this.lblRDetails.Text = "Router Details";
             // 
+            // mtxtId
+            // 
+            this.mtxtId.Font = new System.Drawing.Font("Segoe UI", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.mtxtId.Location = new System.Drawing.Point(88, 393);
+            this.mtxtId.Name = "mtxtId";
+            this.mtxtId.Size = new System.Drawing.Size(111, 25);
+            this.mtxtId.TabIndex = 19;
+            // 
             // RouterAddEditForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -265,6 +265,7 @@
             this.BackColor = System.Drawing.SystemColors.ControlLightLight;
             this.ClientSize = new System.Drawing.Size(248, 853);
             this.ControlBox = false;
+            this.Controls.Add(this.mtxtId);
             this.Controls.Add(this.lblRDetails);
             this.Controls.Add(this.btnSelPos);
             this.Controls.Add(this.btnDelete);
@@ -279,7 +280,6 @@
             this.Controls.Add(this.lblAddr);
             this.Controls.Add(this.lblId);
             this.Controls.Add(this.txtAddr);
-            this.Controls.Add(this.txtId);
             this.Controls.Add(this.lstRouters);
             this.Controls.Add(this.rbUpdate);
             this.Controls.Add(this.rbNew);
@@ -301,7 +301,6 @@
         private System.Windows.Forms.RadioButton rbNew;
         private System.Windows.Forms.RadioButton rbUpdate;
         private System.Windows.Forms.ListBox lstRouters;
-        private System.Windows.Forms.TextBox txtId;
         private System.Windows.Forms.TextBox txtAddr;
         private System.Windows.Forms.Label lblId;
         private System.Windows.Forms.Label lblAddr;
@@ -317,5 +316,6 @@
         private System.Windows.Forms.Button btnDelete;
         private System.Windows.Forms.Button btnSelPos;
         private System.Windows.Forms.Label lblRDetails;
+        private System.Windows.Forms.MaskedTextBox mtxtId;
     }
 }

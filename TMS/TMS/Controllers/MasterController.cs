@@ -305,7 +305,7 @@ namespace TMS
             string siteName = "", mapAddr = "";
             float mapScale = 0;
             List<Router> routers = new List<Router>();
-            List<Member> members = new List<Member>();
+            Dictionary<string, Member> members = new Dictionary<string, Member>();
             List<string> sensors = new List<string>();
 
             // Load routers and members
@@ -388,7 +388,7 @@ namespace TMS
                                 DateTime.Parse(oReader["start"].ToString()),
                                 DateTime.Parse(oReader["end"].ToString())));
 
-                            members.Add(member);
+                            members.Add(member.memberId, member);
                             memberMap.Add(member.memberId, member);
                         }
                     }
@@ -648,14 +648,14 @@ namespace TMS
                                                 addr, prov, city, pinNo,
                                                 phoneNo, mobileNo, isVehicle,
                                                 tagId);
-                    MineSite.GetInstance().siteMembers.Add(member);
+                    MineSite.GetInstance().siteMembers.Add(member.memberId, member);
 
                     Shift[] newShifts = { new Shift(new DateTime(0), new DateTime(0)),
                                  new Shift(new DateTime(0), new DateTime(0)),
                                  new Shift(new DateTime(0), new DateTime(0))};
 
                     AssignShift(member, newShifts);
-                    
+
                     return 0;
                 }
                 catch (SqlException e)

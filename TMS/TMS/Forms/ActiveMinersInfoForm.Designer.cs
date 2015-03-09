@@ -150,6 +150,7 @@
             this.Font = new System.Drawing.Font("Segoe UI", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "ActiveMinersInfoForm";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Active Miners";
             this.Load += new System.EventHandler(this.ActiveMinersInfoForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.membersBindingSource)).EndInit();

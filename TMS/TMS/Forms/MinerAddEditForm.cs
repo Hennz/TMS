@@ -30,7 +30,7 @@ namespace TMS
 
         private void ClearInput()
         {
-            txtMID.Text = "";
+            mtxtMID.Text = "M";
             txtFName.Text = "";
             txtMName.Text = "";
             txtLName.Text = "";
@@ -50,7 +50,7 @@ namespace TMS
         private void EnterCreate(object sender, EventArgs e)
         {
             if (cboTags.SelectedItem != null && 
-                !txtMID.Text.Equals("") &&
+                !mtxtMID.Text.Equals("") &&
                 !mtxtPin.Text.Equals("") &&
                 !txtFName.Text.Equals("") &&
                 !txtLName.Text.Equals("") &&
@@ -60,7 +60,7 @@ namespace TMS
                 !mtxtPhone.Text.Equals("")
                 )
             {
-                int errorCode = _controller.MemberCreate(txtMID.Text,
+                int errorCode = _controller.MemberCreate(mtxtMID.Text,
                     txtFName.Text, txtMName.Text, txtLName.Text,
                     txtAddr.Text, txtProv.Text, txtCity.Text,
                     Int32.Parse(mtxtPin.Text),
@@ -87,12 +87,12 @@ namespace TMS
 
         private void EnterUpdate(object sender, EventArgs e)
         {
-            if (txtMID.Text.Equals(""))
+            if (mtxtMID.Text.Equals(""))
             {
                 return;
             }
 
-            int errorCode = _controller.MemberUpdate(member, txtMID.Text,
+            int errorCode = _controller.MemberUpdate(member, mtxtMID.Text,
                 txtFName.Text, txtMName.Text, txtLName.Text,
                 txtAddr.Text, txtProv.Text, txtCity.Text,
                 Int32.Parse(mtxtPin.Text),
@@ -115,7 +115,7 @@ namespace TMS
         {
             lstMembers.Items.Clear();
 
-            foreach (Member member in MineSite.GetInstance().siteMembers)
+            foreach (Member member in MineSite.GetInstance().siteMembers.Values)
             {
                 lstMembers.Items.Add(member);
             }
@@ -158,7 +158,7 @@ namespace TMS
                 btnShift.Enabled = false;
                 btnShift.Text = "Assign Shifts";
 
-                txtMID.Enabled = true;
+                mtxtMID.Enabled = true;
             }
         }
 
@@ -180,10 +180,10 @@ namespace TMS
             // Fill in the details of the selected member
             if (rbUpdate.Checked)
             {
-                txtMID.Enabled = false;
+                mtxtMID.Enabled = false;
 
                 // Fill text boxes with values
-                txtMID.Text = member.memberId;
+                mtxtMID.Text = member.memberId;
                 txtFName.Text = member.fName;
                 txtMName.Text = member.mName;
                 txtLName.Text = member.lName;

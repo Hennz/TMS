@@ -96,6 +96,7 @@
             this.tMSDatabaseDataSetBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.routersTableAdapter = new TMS.TMS_DatabaseDataSet1TableAdapters.RoutersTableAdapter();
             this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
+            this.btnTest = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.splitMain)).BeginInit();
             this.splitMain.Panel1.SuspendLayout();
             this.splitMain.Panel2.SuspendLayout();
@@ -576,6 +577,7 @@
             // 
             // tabTracking
             // 
+            this.tabTracking.Controls.Add(this.btnTest);
             this.tabTracking.Controls.Add(this.panel2);
             this.tabTracking.Controls.Add(this.btnAllMiners);
             this.tabTracking.Controls.Add(this.llblSiteInfo);
@@ -996,6 +998,16 @@
             // 
             this.routersTableAdapter.ClearBeforeFill = true;
             // 
+            // btnTest
+            // 
+            this.btnTest.Location = new System.Drawing.Point(377, 3);
+            this.btnTest.Name = "btnTest";
+            this.btnTest.Size = new System.Drawing.Size(75, 57);
+            this.btnTest.TabIndex = 18;
+            this.btnTest.Text = "TEST";
+            this.btnTest.UseVisualStyleBackColor = true;
+            this.btnTest.Click += new System.EventHandler(this.btnTest_Click);
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -1137,6 +1149,7 @@
         private System.Windows.Forms.ContextMenuStrip cmnuMinerMessages;
         private System.Windows.Forms.ToolStripMenuItem alertToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem broadcastAllToolStripMenuItem;
+        private System.Windows.Forms.Button btnTest;
     }
 }
 

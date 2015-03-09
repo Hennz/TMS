@@ -44,7 +44,7 @@ namespace TMS
         private void ClearInputs()
         {
             router = null;
-            txtId.Text = "";
+            mtxtId.Text = "";
             txtAddr.Text = "";
             txtLocation.Text = "";
             mtxtX.Text = "000";
@@ -64,13 +64,13 @@ namespace TMS
 
         private void NewRouter(object sender, EventArgs e)
         {
-            if (txtId.Text == "" || mtxtX.Text == "" || mtxtY.Text == "")   
+            if (mtxtId.Text == "" || mtxtX.Text == "" || mtxtY.Text == "")   
             {
                 MessageBox.Show("Please enter all the required fields.", "Required Fields", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
 
-            int errorCode = _controller.RouterCreate(   txtId.Text,
+            int errorCode = _controller.RouterCreate(   mtxtId.Text,
                                                         txtAddr.Text, txtLocation.Text,
                                                         Int32.Parse(mtxtX.Text), Int32.Parse(mtxtY.Text),
                                                         chkBlocked.Checked);
@@ -92,7 +92,7 @@ namespace TMS
         private void UpdateRouter(object sender, EventArgs e)   
         {
             int errorCode = _controller.RouterUpdate(   router,
-                                                        txtId.Text,
+                                                        mtxtId.Text,
                                                         txtAddr.Text, txtLocation.Text,
                                                         Int32.Parse(mtxtX.Text), Int32.Parse(mtxtY.Text),
                                                         chkBlocked.Checked);
@@ -106,9 +106,9 @@ namespace TMS
 
         private void txtId_Leave(object sender, EventArgs e)
         {
-            if (MineSite.GetInstance().ContainsRouter(txtId.Text) != null)
+            if (MineSite.GetInstance().ContainsRouter(mtxtId.Text) != null)
             {
-                epRID.SetError(txtId, "This ID already exists.");
+                epRID.SetError(mtxtId, "This ID already exists.");
             }
             else
             {
@@ -125,7 +125,7 @@ namespace TMS
         {
             if (rbUpdate.Checked)
             {
-                txtId.Enabled = false;
+                mtxtId.Enabled = false;
                 btnDelete.Enabled = true;
                 btnEnter.Click -= NewRouter;
                 btnEnter.Click += UpdateRouter;
@@ -136,7 +136,7 @@ namespace TMS
         {
             if (rbNew.Checked)
             {
-                txtId.Enabled = true;
+                mtxtId.Enabled = true;
                 btnDelete.Enabled = false;
                 btnEnter.Click -= UpdateRouter;
                 btnEnter.Click += NewRouter;
@@ -146,7 +146,7 @@ namespace TMS
         private void lstRouters_SelectedIndexChanged(object sender, EventArgs e)
         {
             router = (Router)(lstRouters.SelectedItem);
-            txtId.Text = router.routerId;
+            mtxtId.Text = router.routerId;
             txtAddr.Text = router.address;
             txtLocation.Text = router.location;
             mtxtX.Text = router.posX.ToString();

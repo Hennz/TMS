@@ -12,6 +12,8 @@ using System.Drawing;
 using LibUsbDotNet;
 using LibUsbDotNet.Main;
 
+using System.Data.SqlClient;
+
 namespace TMS
 {
     public class TrackingController
@@ -32,6 +34,8 @@ namespace TMS
         // Forms controlled by this
         MainForm _mainForm;
         PictureBox _picMinePlan;
+
+        TestCommForm _testForm;
 
         /// <summary>
         /// The form for displaying all active miners and their locations
@@ -59,7 +63,6 @@ namespace TMS
             };
 
             InitUSB();
-
         }
 
         /// <summary>
@@ -84,26 +87,27 @@ namespace TMS
             _picMinePlan.Controls.Add(picRouter);
 
             picRouter.BackColor = Color.Transparent;
-            picRouter.Image = router.isBlocked ? TMS.Properties.Resources.router_blocked_map : TMS.Properties.Resources.router_active_map;
-            picRouter.Size = new Size(picRouter.Image.Width, picRouter.Image.Height);
-            picRouter.Location = new Point((int)(router.posX * MineSite.GetInstance().mapScale - picRouter.Width / 2), (int)(router.posY * MineSite.GetInstance().mapScale - picRouter.Width / 2));
 
-            // Set up events for the router
+            OnRouterUpdate(picRouter, router);
+
+            picRouter.Size = new Size(picRouter.Image.Width, picRouter.Image.Height);
+
+            // Set up events for the router updating
             picRouter.MouseDown += (sender, e) =>
             {
                 ShowMinerPosition(sender, e, router);
             };
 
-            router.OnUpdated += (x, y, isBlocked) =>
+            router.OnUpdated += () =>
             {
-                picRouter.Location = new Point((int)(router.posX * MineSite.GetInstance().mapScale - picRouter.Width / 2), (int)(router.posY * MineSite.GetInstance().mapScale - picRouter.Width / 2));
-                picRouter.Image = router.isBlocked ? TMS.Properties.Resources.router_blocked_map : TMS.Properties.Resources.router_active_map;
+                OnRouterUpdate(picRouter, router);
             };
             MineSite.GetInstance().OnUpdated += (scale) =>
             {
-                picRouter.Location = new Point((int)(router.posX * MineSite.GetInstance().mapScale - picRouter.Width / 2), (int)(router.posY * MineSite.GetInstance().mapScale - picRouter.Width / 2));
-                picRouter.Image = router.isBlocked ? TMS.Properties.Resources.router_blocked_map : TMS.Properties.Resources.router_active_map;
+                OnRouterUpdate(picRouter, router);
             };
+
+
         }
 
         /// <summary>
@@ -122,6 +126,32 @@ namespace TMS
             }
 
             return false;
+        }
+
+        private bool CreatePathElement(Member member, Router router)
+        {
+            using (SqlConnection sqlCon = new SqlConnection(Properties.Settings.Default.TMS_DatabaseConnectionString))
+            {
+                string cmdString = "INSERT INTO PathElement(routerId, memberId, timeVisited) VALUES(@routerId, @memberId, GETDATE())";
+
+                sqlCon.Open();
+                SqlCommand oCmd = new SqlCommand(cmdString, sqlCon);
+                oCmd.Parameters.AddWithValue("@memberId", member.memberId);
+                oCmd.Parameters.AddWithValue("@routerId", router.routerId);
+
+                try
+                {
+                    int rows = oCmd.ExecuteNonQuery();
+                }
+                catch (SqlException e)
+                {
+                    MessageBox.Show(e.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+                    return false;
+                }
+            }
+
+            return true;
         }
 
         /// <summary>
@@ -216,9 +246,25 @@ namespace TMS
         /// Sets the member for whom to draw a path
         /// </summary>
         /// <param name="member"></param>
-        public void DrawMemberPath(Member member)
+        public void SetCurrentDrawMember(Member member)
         {
-            currentMember = member;
+            if (member != null)
+            {
+                if (currentMember != null)
+                {
+                    currentMember.OnPathUpdated -= DrawCurrentMember;
+                }
+            
+                currentMember = member;
+
+                currentMember.OnPathUpdated += DrawCurrentMember;
+            }
+
+            DrawCurrentMember();
+        }
+
+        public void DrawCurrentMember()
+        {
             _picMinePlan.Refresh();
         }
 
@@ -242,6 +288,7 @@ namespace TMS
             if (coordinatorUsb == null)
             {
                 _mainForm.SetStatusText("Coordinator Not Connected.");
+                return;
             }
             else
             {
@@ -308,13 +355,59 @@ namespace TMS
             }
         }
 
+        private void OnRouterUpdate(PictureBox picRouter, Router router)
+        {
+            picRouter.Location = new Point((int)(router.posX * MineSite.GetInstance().mapScale - picRouter.Width / 2), (int)(router.posY * MineSite.GetInstance().mapScale - picRouter.Width / 2));
+
+            if (router.hasConnectedMember.Count > 0)
+            {
+                picRouter.Image = router.isBlocked ? TMS.Properties.Resources.router_blocked_miner_map : TMS.Properties.Resources.router_active_miner_map;
+            }
+            else
+            {
+                picRouter.Image = router.isBlocked ? TMS.Properties.Resources.router_blocked_map : TMS.Properties.Resources.router_active_map;
+            }
+
+            HideRouterForm();
+        }
+
+        public void OpenTestForm()
+        {
+            if (_testForm == null || _testForm.Visible == false)
+            {
+                _testForm = new TestCommForm(this);
+                _testForm.Show();
+            }
+        }
+
         /// <summary>
         /// Processes a byte stream from the coordinator
         /// </summary>
-        /// <param name="data"></param>
+        /// <param name="data">Data formatted so we have a member id and a router ID like MXXXXRXXXX</param>
         public void PutDataFromCoordinator(byte[] data)
         {
+            int memberNoL = (int)data[0];
+            int routerNoL = (int)data[1];
 
+            char[] chars = new char[memberNoL];
+            System.Buffer.BlockCopy(data, 2, chars, 0, memberNoL * sizeof(char));
+            string memberId = new string(chars);
+
+            chars = new char[routerNoL];
+            System.Buffer.BlockCopy(data, 2 + memberNoL * sizeof(char), chars, 0, routerNoL * sizeof(char));
+            string routerNo = new string(chars);
+
+            Console.WriteLine(memberId + " at " + routerNo);
+
+            Member member = MineSite.GetInstance().siteMembers[memberId];
+            Router router = MineSite.GetInstance().ContainsRouter(routerNo);
+
+            if (router != null && member != null)
+            {
+                member.AppendRouter(router);
+
+                CreatePathElement(member, router);
+            }
         }
 
         public void ShowMinerPosition(object sender, MouseEventArgs e, Router router)

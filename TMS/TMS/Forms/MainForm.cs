@@ -13,8 +13,6 @@ namespace TMS
 {
     public partial class MainForm : Form
     {
-        const int DBT_DEVICEREMOVECOMPLETE = 0x8004;
-
         // Controllers
 
         /// <summary>
@@ -54,7 +52,7 @@ namespace TMS
             _trackingController.AddAllRoutersToMap();
 
             // Load all active miners to list
-            foreach (Member member in MineSite.GetInstance().siteMembers)
+            foreach (Member member in MineSite.GetInstance().siteMembers.Values)
             {
                 if (!member.isVehicle && _trackingController.CheckMemberActive(member))
                 {
@@ -226,13 +224,13 @@ namespace TMS
                 {
                     _trackingController.ShowMinerPosition(sender, null, member.path.First.Value);
 
-                    _trackingController.DrawMemberPath(member);
+                    _trackingController.SetCurrentDrawMember(member);
                 }
                 else
                 {
                     _trackingController.HideRouterForm();
 
-                    _trackingController.DrawMemberPath(null);
+                    _trackingController.SetCurrentDrawMember(null);
                 }
 
                 alertToolStripMenuItem.Text = "Alert " + member.fName + " " + member.lName;
@@ -312,6 +310,11 @@ namespace TMS
             }
 
             base.Dispose(disposing);
+        }
+
+        private void btnTest_Click(object sender, EventArgs e)
+        {
+            _trackingController.OpenTestForm();
         }
     }
 }

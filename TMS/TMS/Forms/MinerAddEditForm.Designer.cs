@@ -45,7 +45,6 @@
             this.btnEnter = new System.Windows.Forms.Button();
             this.mtxtPhone = new System.Windows.Forms.MaskedTextBox();
             this.mtxtMobile = new System.Windows.Forms.MaskedTextBox();
-            this.txtMID = new System.Windows.Forms.TextBox();
             this.txtFName = new System.Windows.Forms.TextBox();
             this.txtMName = new System.Windows.Forms.TextBox();
             this.txtLName = new System.Windows.Forms.TextBox();
@@ -60,6 +59,7 @@
             this.btnShift = new System.Windows.Forms.Button();
             this.rbNew = new System.Windows.Forms.RadioButton();
             this.rbUpdate = new System.Windows.Forms.RadioButton();
+            this.mtxtMID = new System.Windows.Forms.MaskedTextBox();
             this.pnlRegistration.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -113,7 +113,7 @@
             // 
             this.lblLName.AutoSize = true;
             this.lblLName.Font = new System.Drawing.Font("Segoe UI", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblLName.Location = new System.Drawing.Point(8, 113);
+            this.lblLName.Location = new System.Drawing.Point(3, 113);
             this.lblLName.Name = "lblLName";
             this.lblLName.Size = new System.Drawing.Size(80, 19);
             this.lblLName.TabIndex = 4;
@@ -230,14 +230,6 @@
             this.mtxtMobile.Size = new System.Drawing.Size(100, 25);
             this.mtxtMobile.TabIndex = 33;
             // 
-            // txtMID
-            // 
-            this.txtMID.Font = new System.Drawing.Font("Segoe UI", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtMID.Location = new System.Drawing.Point(95, 8);
-            this.txtMID.Name = "txtMID";
-            this.txtMID.Size = new System.Drawing.Size(100, 25);
-            this.txtMID.TabIndex = 23;
-            // 
             // txtFName
             // 
             this.txtFName.Font = new System.Drawing.Font("Segoe UI", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -313,9 +305,9 @@
             // 
             this.pnlRegistration.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left)));
+            this.pnlRegistration.Controls.Add(this.mtxtMID);
             this.pnlRegistration.Controls.Add(this.lblTags);
             this.pnlRegistration.Controls.Add(this.cboTags);
-            this.pnlRegistration.Controls.Add(this.txtMID);
             this.pnlRegistration.Controls.Add(this.lblFName);
             this.pnlRegistration.Controls.Add(this.mtxtPin);
             this.pnlRegistration.Controls.Add(this.lblMName);
@@ -397,6 +389,15 @@
             this.rbUpdate.UseVisualStyleBackColor = true;
             this.rbUpdate.CheckedChanged += new System.EventHandler(this.rbUpdate_CheckedChanged);
             // 
+            // mtxtMID
+            // 
+            this.mtxtMID.Font = new System.Drawing.Font("Segoe UI", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.mtxtMID.Location = new System.Drawing.Point(95, 8);
+            this.mtxtMID.Mask = "M0000";
+            this.mtxtMID.Name = "mtxtMID";
+            this.mtxtMID.Size = new System.Drawing.Size(100, 25);
+            this.mtxtMID.TabIndex = 29;
+            // 
             // MinerAddEditForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -444,7 +445,6 @@
         private System.Windows.Forms.Button btnEnter;
         private System.Windows.Forms.MaskedTextBox mtxtPhone;
         private System.Windows.Forms.MaskedTextBox mtxtMobile;
-        private System.Windows.Forms.TextBox txtMID;
         private System.Windows.Forms.TextBox txtFName;
         private System.Windows.Forms.TextBox txtMName;
         private System.Windows.Forms.TextBox txtLName;
@@ -459,5 +459,6 @@
         private System.Windows.Forms.Button btnShift;
         private System.Windows.Forms.RadioButton rbNew;
         private System.Windows.Forms.RadioButton rbUpdate;
+        private System.Windows.Forms.MaskedTextBox mtxtMID;
     }
 }
