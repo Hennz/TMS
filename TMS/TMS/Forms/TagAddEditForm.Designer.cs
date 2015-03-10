@@ -43,10 +43,10 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.lstTags.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lstTags.FormattingEnabled = true;
-            this.lstTags.ItemHeight = 23;
+            this.lstTags.ItemHeight = 19;
             this.lstTags.Location = new System.Drawing.Point(178, 57);
             this.lstTags.Name = "lstTags";
-            this.lstTags.Size = new System.Drawing.Size(322, 303);
+            this.lstTags.Size = new System.Drawing.Size(322, 289);
             this.lstTags.TabIndex = 10;
             this.lstTags.SelectedValueChanged += new System.EventHandler(this.lstTags_SelectedValueChanged);
             // 
@@ -56,9 +56,9 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.mtxtNewTag.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.mtxtNewTag.Location = new System.Drawing.Point(178, 12);
-            this.mtxtNewTag.Mask = "aaaaa";
+            this.mtxtNewTag.Mask = "E0000";
             this.mtxtNewTag.Name = "mtxtNewTag";
-            this.mtxtNewTag.Size = new System.Drawing.Size(322, 30);
+            this.mtxtNewTag.Size = new System.Drawing.Size(322, 26);
             this.mtxtNewTag.TabIndex = 9;
             this.mtxtNewTag.TextChanged += new System.EventHandler(this.mtxtNewTag_TextChanged);
             // 
@@ -103,7 +103,7 @@
             // 
             // TagAddEditForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 17F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ControlLightLight;
             this.ClientSize = new System.Drawing.Size(512, 378);

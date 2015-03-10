@@ -87,7 +87,7 @@ namespace TMS
 
         private void EnterUpdate(object sender, EventArgs e)
         {
-            if (mtxtMID.Text.Equals(""))
+            if (mtxtMID.Text.Equals("M"))
             {
                 return;
             }
@@ -151,6 +151,7 @@ namespace TMS
             if (rbNew.Checked)
             {
                 ClearInput();
+                LoadTagsList();
 
                 btnEnter.Click -= EnterUpdate;
                 btnEnter.Click += EnterCreate;
@@ -197,6 +198,9 @@ namespace TMS
                 txtCity.Text = member.city;
 
                 chkIsVehicle.Checked = member.isVehicle;
+
+                LoadTagsList();
+                cboTags.Items.Add(member.tagId);
                 cboTags.SelectedIndex = cboTags.Items.IndexOf(member.tagId);
 
                 btnEnter.Click -= EnterCreate;

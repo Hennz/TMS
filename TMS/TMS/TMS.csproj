@@ -103,6 +103,12 @@
     <Compile Include="Forms\MinerAddEditForm.Designer.cs">
       <DependentUpon>MinerAddEditForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\MineSiteEditForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\MineSiteEditForm.Designer.cs">
+      <DependentUpon>MineSiteEditForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\RouterAddEditForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -197,6 +203,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\MinerAddEditForm.resx">
       <DependentUpon>MinerAddEditForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\MineSiteEditForm.resx">
+      <DependentUpon>MineSiteEditForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\RouterAddEditForm.resx">
       <DependentUpon>RouterAddEditForm.cs</DependentUpon>

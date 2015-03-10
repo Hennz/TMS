@@ -436,6 +436,14 @@ namespace TMS {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public MembersRow FindByMemberNoRouter(string MemberNo, string Router) {
+                return ((MembersRow)(this.Rows.Find(new object[] {
+                            MemberNo,
+                            Router})));
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public override global::System.Data.DataTable Clone() {
                 MembersDataTable cln = ((MembersDataTable)(base.Clone()));
                 cln.InitVars();
@@ -477,6 +485,9 @@ namespace TMS {
                 base.Columns.Add(this.columnTime);
                 this.columnStatus = new global::System.Data.DataColumn("Status", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnStatus);
+                this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
+                                this.columnMemberNo,
+                                this.columnRouter}, true));
                 this.columnName.ReadOnly = true;
                 this.columnName.MaxLength = 2147483647;
                 this.columnTag.MaxLength = 50;
@@ -972,17 +983,18 @@ namespace TMS.TMS_DatabaseDataSetTableAdapters {
             this._commandCollection = new global::System.Data.SqlClient.SqlCommand[1];
             this._commandCollection[0] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[0].Connection = this.Connection;
-            this._commandCollection[0].CommandText = @"SELECT m.memberNo AS MemberNo, { fn CONCAT({ fn CONCAT(m.lName, ', ') }, m.fName) } AS Name, m.tagId AS Tag, r.Id AS Router, r.location AS Location, paths.timeVisited AS Time, 
-                  CASE WHEN r.isBlocked = 1 THEN 'Blocked' ELSE 'Safe Zone' END AS 'Status'
-FROM     Shifts AS s INNER JOIN
-                  Members AS m INNER JOIN
-                      (SELECT p.memberId, p.routerId, p.timeVisited
-                       FROM      PathElement AS p INNER JOIN
-                                             (SELECT memberId, MAX(timeVisited) AS maxTime
-                                              FROM      PathElement
-                                              GROUP BY memberId) AS maxPe ON p.memberId = maxPe.memberId AND p.timeVisited = maxPe.maxTime) AS paths ON m.memberNo = paths.memberId INNER JOIN
-                  Routers AS r ON paths.routerId = r.Id ON s.memberNo = m.memberNo AND s.memberNo = m.memberNo
-WHERE  (DATEPART(HOUR, GETDATE()) BETWEEN DATEPART(HOUR, s.start) AND DATEPART(HOUR, s.[end]))";
+            this._commandCollection[0].CommandText = @"SELECT DISTINCT 
+                         m.memberNo AS MemberNo, { fn CONCAT({ fn CONCAT(m.lName, ', ') }, m.fName) } AS Name, m.tagId AS Tag, r.Id AS Router, r.location AS Location, paths.timeVisited AS Time, 
+                         CASE WHEN r.isBlocked = 1 THEN 'Blocked' ELSE 'Safe Zone' END AS 'Status'
+FROM            Shifts AS s INNER JOIN
+                         Members AS m INNER JOIN
+                             (SELECT        p.memberId, p.routerId, p.timeVisited
+                               FROM            PathElement AS p INNER JOIN
+                                                             (SELECT        memberId, MAX(timeVisited) AS maxTime
+                                                               FROM            PathElement
+                                                               GROUP BY memberId) AS maxPe ON p.memberId = maxPe.memberId AND p.timeVisited = maxPe.maxTime) AS paths ON m.memberNo = paths.memberId INNER JOIN
+                         Routers AS r ON paths.routerId = r.Id ON s.memberNo = m.memberNo AND s.memberNo = m.memberNo
+WHERE        (DATEPART(HOUR, GETDATE()) BETWEEN DATEPART(HOUR, s.start) AND DATEPART(HOUR, s.[end]))";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
         }
         

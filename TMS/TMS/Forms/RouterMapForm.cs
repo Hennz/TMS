@@ -43,7 +43,7 @@ namespace TMS
 
             foreach (Member member in router.hasConnectedMembers)
             {
-                if (_controller.CheckMemberActive(member))
+                if (member.IsActive())
                 {
                     TreeNode memberNode = new TreeNode(member.ToString());
                     tvEndDevices.Nodes[0].Nodes.Add(memberNode);

@@ -115,24 +115,6 @@ namespace TMS
 
         }
 
-        /// <summary>
-        /// Checks if a member has an active shift now
-        /// </summary>
-        /// <param name="m">The member to check</param>
-        /// <returns>Whether or not the miner's shift is taking place now</returns>
-        public bool CheckMemberActive(Member m)
-        {
-            foreach (Shift s in m.assignedShifts)
-            {
-                if (s.startTime < DateTime.Now && s.endTime > DateTime.Now)
-                {
-                    return true;
-                }
-            }
-
-            return false;
-        }
-
         private bool CreatePathElement(Member member, Router router)
         {
             using (SqlConnection sqlCon = new SqlConnection(Properties.Settings.Default.TMS_DatabaseConnectionString))
@@ -225,7 +207,10 @@ namespace TMS
             // Draw a member's path
             if (currentMember != null)
             {
-                Pen pathPen = new Pen(Color.Red);
+                // Start at red
+                Color penColor = Color.FromArgb(255, 0, 0);
+
+                Pen pathPen = new Pen(penColor);
                 pathPen.Width = 3.0f;
 
                 Router lastRouter = null;
@@ -241,7 +226,12 @@ namespace TMS
                     g.DrawLine(pathPen,
                         lastRouter.posX * MineSite.GetInstance().mapScale, lastRouter.posY * MineSite.GetInstance().mapScale,
                         router.posX * MineSite.GetInstance().mapScale, router.posY * MineSite.GetInstance().mapScale);
+
                     lastRouter = router;
+
+                    penColor = Color.FromArgb(255, (int)(penColor.G + (255.0f / currentMember.path.Count)), 0);
+                    pathPen = new Pen(penColor);
+                    pathPen.Width = 3.0f;
                 }
             }
             
@@ -253,18 +243,15 @@ namespace TMS
         /// <param name="member"></param>
         public void SetCurrentDrawMember(Member member)
         {
-            if (member != null)
+            if (currentMember != null)
             {
-                if (currentMember != null)
-                {
-                    currentMember.OnPathUpdated -= DrawCurrentMember;
-                }
-            
-                currentMember = member;
-
-                currentMember.OnPathUpdated += DrawCurrentMember;
+                currentMember.OnPathUpdated -= DrawCurrentMember;
             }
+            
+            currentMember = member;
 
+            currentMember.OnPathUpdated += DrawCurrentMember;
+            
             DrawCurrentMember();
         }
 
@@ -364,7 +351,7 @@ namespace TMS
         {
             picRouter.Location = new Point((int)(router.posX * MineSite.GetInstance().mapScale - picRouter.Width / 2), (int)(router.posY * MineSite.GetInstance().mapScale - picRouter.Width / 2));
 
-            if (router.hasConnectedMembers.Count > 0)
+            if (router.HasActiveMembers())
             {
                 picRouter.Image = router.isBlocked ? TMS.Properties.Resources.router_blocked_miner_map : TMS.Properties.Resources.router_active_miner_map;
             }

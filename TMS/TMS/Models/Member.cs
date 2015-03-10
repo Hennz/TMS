@@ -30,9 +30,12 @@ namespace TMS
 
         public List<Shift> assignedShifts { get; private set; }
 
-        public delegate void OnPathUpdatedDelegate();
+        public delegate void OnUpdatedDelegate();
 
-        public event OnPathUpdatedDelegate OnPathUpdated;
+        public event OnUpdatedDelegate OnPathUpdated;
+
+        public event OnUpdatedDelegate OnInfoUpdated;
+
 
         public Member(string mId, string f, string m, string l,
             string addr, string prov, string cit, 
@@ -41,24 +44,12 @@ namespace TMS
             bool isV,
             string tId)
         {
-            memberId = mId;
-
-            fName = f;
-            mName = m;
-            lName = l;
-
-            address = addr;
-            province = prov;
-            city = cit;
-
-            pinNo = pNo;
-
-            phoneNo = phNo;
-            mobileNo = mNo;
-
-            isVehicle = isV;
-
-            tagId = tId;
+            Update( mId, f, m, l,
+                     addr, prov, cit,
+                     pNo,
+                     phNo, mNo,
+                     isV,
+                     tId);
 
             path = new LinkedList<Router>();
             assignedShifts = new List<Shift>();
@@ -66,25 +57,46 @@ namespace TMS
 
         public void AppendRouter(Router router)
         {
-            if (!path.Contains(router))
+            // Remove this member from its current connected router
+            if (path.First != null)
             {
-                // Remove this member from its current connected router
-                if (path.First != null)
+                path.First.Value.hasConnectedMembers.Remove(this);
+                path.First.Value.RequestUpdate();
+            }
+
+            path.AddFirst(router);
+            router.hasConnectedMembers.AddLast(this);
+
+            router.RequestUpdate();
+
+            if (OnPathUpdated != null)
+            {
+                OnPathUpdated();
+            }
+        }
+
+        /// <summary>
+        /// Checks if a member has an active shift now
+        /// </summary>
+        /// <returns>Whether or not the miner's shift is taking place now</returns>
+        public bool IsActive()
+        {
+            foreach (Shift s in assignedShifts)
+            {
+                if (s.startTime < DateTime.Now && s.endTime > DateTime.Now)
                 {
-                    path.First.Value.hasConnectedMembers.Remove(this);
-                    path.First.Value.RequestUpdate();
+                    return true;
                 }
+            }
 
-                path.AddFirst(router);
-                router.hasConnectedMembers.AddLast(this);
+            return false;
+        }
 
-                router.RequestUpdate();
-
-                if (OnPathUpdated != null)
-                {
-                    OnPathUpdated();
-                }
-                
+        public void RequestInfoUpdate()
+        {
+            if (OnInfoUpdated != null)
+            {
+                OnInfoUpdated();
             }
         }
 
@@ -118,6 +130,8 @@ namespace TMS
             isVehicle = isV;
 
             tagId = tId;
+
+            RequestInfoUpdate();
 
         }
 

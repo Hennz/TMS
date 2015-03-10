@@ -51,14 +51,7 @@ namespace TMS
 
             _trackingController.AddAllRoutersToMap();
 
-            // Load all active miners to list
-            foreach (Member member in MineSite.GetInstance().siteMembers.Values)
-            {
-                if (!member.isVehicle && _trackingController.CheckMemberActive(member))
-                {
-                    lstActiveMiners.Items.Add(member);
-                }
-            }
+            LoadAllActiveMembers();
 
             // Set mapscale number incrementer
             nudMapScale.Value = (decimal) (MineSite.GetInstance().mapScale);
@@ -66,12 +59,21 @@ namespace TMS
             btnSaveScale.Enabled = false;
 
             LoadMineSiteBox();
-        }
 
+            // Subscribe mainform to let it deal with member changes
+            foreach (Member member in MineSite.GetInstance().siteMembers.Values)
+            {
+                member.OnInfoUpdated += LoadAllActiveMembers;
+                member.OnPathUpdated += LoadRoutersToTree;
+            }
+        }
 
         public void AddNewCreatedRouter(Router router)
         {
             _trackingController.AddOneRouterToMap(router);
+
+            router.OnUpdated += LoadRoutersToTree;
+            router.OnDeleted += LoadRoutersToTree;
         }
 
         public void AddToLeftPanel(Form form)
@@ -79,6 +81,22 @@ namespace TMS
             form.TopLevel = false;
             splitMain.Panel1.Controls.Add(form);
             form.Show();
+        }
+
+        /// <summary>
+        /// Load all active miners to list
+        /// </summary>
+        public void LoadAllActiveMembers()
+        {
+            lstActiveMiners.Items.Clear();
+
+            foreach (Member member in MineSite.GetInstance().siteMembers.Values)
+            {
+                if (!member.isVehicle && member.IsActive())
+                {
+                    lstActiveMiners.Items.Add(member);
+                }
+            }
         }
 
         /// <summary>
@@ -97,15 +115,29 @@ namespace TMS
 
             cboSites.SelectedItem = MineSite.GetInstance().siteName;
         }
-
-        private void LoadRoutersToTree()
+        
+        /// <summary>
+        /// Loads all the routers and members to the treeview
+        /// </summary>
+        public void LoadRoutersToTree()
         {
             tvAllRouters.BeginUpdate();
+
+            tvAllRouters.Nodes[0].Nodes.Clear();
 
             foreach (Router router in MineSite.GetInstance().siteRouters)
             {
                 TreeNode routerNode = new TreeNode(router.ToString());
                 tvAllRouters.Nodes[0].Nodes.Add(routerNode);
+
+                foreach (Member member in router.hasConnectedMembers)
+                {
+                    if (member.IsActive())
+                    {
+                        TreeNode memberNode = new TreeNode(member.ToString());
+                        routerNode.Nodes.Add(memberNode);
+                    }
+                }
 
             }
             tvAllRouters.Nodes[0].ExpandAll();
@@ -114,6 +146,10 @@ namespace TMS
             tvAllRouters.EndUpdate();
         }
 
+        /// <summary>
+        /// Updates the text in the bottom status bar
+        /// </summary>
+        /// <param name="text"></param>
         public void SetStatusText(string text)
         {
             statusTextConnected.Text = text;
@@ -220,18 +256,9 @@ namespace TMS
             Member member = (Member)lstActiveMiners.SelectedItem;
             if (member != null)
             {
-                if (member.path.First != null)
-                {
-                    _trackingController.ShowMinerPosition(sender, null, member.path.First.Value);
+                _trackingController.HideRouterForm();
 
-                    _trackingController.SetCurrentDrawMember(member);
-                }
-                else
-                {
-                    _trackingController.HideRouterForm();
-
-                    _trackingController.SetCurrentDrawMember(null);
-                }
+                _trackingController.SetCurrentDrawMember(member);
 
                 alertToolStripMenuItem.Text = "Alert " + member.fName + " " + member.lName;
             }

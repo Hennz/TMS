@@ -58,6 +58,19 @@ namespace TMS
             }
         }
 
+        public bool HasActiveMembers()
+        {
+            foreach(Member member in hasConnectedMembers)
+            {
+                if (member.IsActive())
+                {
+                    return true;
+                }
+            }
+
+            return false;
+        }
+
         public void RequestUpdate()
         {
             if (OnUpdated != null)

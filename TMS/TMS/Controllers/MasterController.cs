@@ -21,6 +21,7 @@ namespace TMS
 
         // Forms used for data entry
         MinerAddEditForm _minerForm;
+        MineSiteEditForm _mineSiteForm;
         RouterAddEditForm _routerForm;
         SensorAddEditForm _sensorForm;
         ShiftAddEditForm _shiftForm;
@@ -175,6 +176,10 @@ namespace TMS
 
         }
 
+        /// <summary>
+        /// Returns a list of all the names of all the mine sites
+        /// </summary>
+        /// <returns></returns>
         public List<string> GetAllMineSites()
         {
             List<string> mineSites = new List<string>();
@@ -572,7 +577,12 @@ namespace TMS
         /// </summary>
         public void OpenMineSiteForm()
         {
+            if (_mineSiteForm == null || _mineSiteForm.Visible == false)
+            {
+                _mineSiteForm = new MineSiteEditForm(this);
+                _mineSiteForm.Show();
 
+            }
         }
 
         public void OpenRouters()
@@ -655,6 +665,10 @@ namespace TMS
                                  new Shift(new DateTime(0), new DateTime(0))};
 
                     AssignShift(member, newShifts);
+
+                    member.OnInfoUpdated += _mainForm.LoadAllActiveMembers;
+                    member.OnPathUpdated += _mainForm.LoadRoutersToTree;
+                    _mainForm.LoadAllActiveMembers();
 
                     return 0;
                 }
@@ -753,7 +767,7 @@ namespace TMS
 
             using (SqlConnection sqlCon = new SqlConnection(Properties.Settings.Default.TMS_DatabaseConnectionString))
             {
-                string cmdString = "SELECT * FROM Tags";
+                string cmdString = "SELECT DISTINCT t.Id FROM Tags t WHERE t.Id NOT IN (SELECT tagId FROM Members)";
 
                 SqlCommand oCmd = new SqlCommand(cmdString, sqlCon);
 
