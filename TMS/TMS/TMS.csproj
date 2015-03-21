@@ -53,8 +53,11 @@
     <Reference Include="LibUsbDotNet">
       <HintPath>..\..\..\..\..\..\..\..\..\..\Program Files\LibUsbDotNet\LibUsbDotNet.dll</HintPath>
     </Reference>
+    <Reference Include="Microsoft.ReportViewer.Common, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91" />
+    <Reference Include="Microsoft.ReportViewer.WinForms, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91" />
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Web.Services" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -66,6 +69,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Controllers\MessagingController.cs" />
+    <Compile Include="Controllers\ReportsController.cs" />
     <Compile Include="Forms\ActiveMinersInfoForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -108,6 +112,12 @@
     </Compile>
     <Compile Include="Forms\MineSiteEditForm.Designer.cs">
       <DependentUpon>MineSiteEditForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\ReportForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\ReportForm.Designer.cs">
+      <DependentUpon>ReportForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\RouterAddEditForm.cs">
       <SubType>Form</SubType>
@@ -181,6 +191,11 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>TMS_DatabaseDataSet3.xsd</DependentUpon>
     </Compile>
+    <Compile Include="TMS_DatabaseDataSet4.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>TMS_DatabaseDataSet4.xsd</DependentUpon>
+    </Compile>
     <Compile Include="TMS_DatabaseDataSet_Routers.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -206,6 +221,10 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\MineSiteEditForm.resx">
       <DependentUpon>MineSiteEditForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\MemberDetailsReport.rdlc" />
+    <EmbeddedResource Include="Forms\ReportForm.resx">
+      <DependentUpon>ReportForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\RouterAddEditForm.resx">
       <DependentUpon>RouterAddEditForm.cs</DependentUpon>
@@ -282,6 +301,17 @@
     </None>
     <None Include="TMS_DatabaseDataSet3.xss">
       <DependentUpon>TMS_DatabaseDataSet3.xsd</DependentUpon>
+    </None>
+    <None Include="TMS_DatabaseDataSet4.xsc">
+      <DependentUpon>TMS_DatabaseDataSet4.xsd</DependentUpon>
+    </None>
+    <None Include="TMS_DatabaseDataSet4.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>TMS_DatabaseDataSet4.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="TMS_DatabaseDataSet4.xss">
+      <DependentUpon>TMS_DatabaseDataSet4.xsd</DependentUpon>
     </None>
     <None Include="TMS_DatabaseDataSet_Routers.xsc">
       <DependentUpon>TMS_DatabaseDataSet_Routers.xsd</DependentUpon>

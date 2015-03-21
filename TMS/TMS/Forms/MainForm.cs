@@ -26,6 +26,11 @@ namespace TMS
         MessagingController _messagingController;
 
         /// <summary>
+        /// Controls for generating reports
+        /// </summary>
+        ReportsController _reportsController;
+
+        /// <summary>
         /// Controller for all tracking functions
         /// </summary>
         TrackingController _trackingController;
@@ -39,6 +44,7 @@ namespace TMS
 
             _trackingController = new TrackingController(this, picMinePlan);
             _messagingController = new MessagingController(this);
+            _reportsController = new ReportsController();
 
             // Set labels
             llblSiteInfo.Text = MineSite.GetInstance().siteName;
@@ -342,6 +348,11 @@ namespace TMS
         private void btnTest_Click(object sender, EventArgs e)
         {
             _trackingController.OpenTestForm();
+        }
+
+        private void btnRepMembers_Click(object sender, EventArgs e)
+        {
+            _reportsController.MembersReport();
         }
     }
 }
