@@ -958,6 +958,7 @@
             this.btnRepRouter.Size = new System.Drawing.Size(34, 37);
             this.btnRepRouter.TabIndex = 0;
             this.btnRepRouter.UseVisualStyleBackColor = true;
+            this.btnRepRouter.Click += new System.EventHandler(this.btnRepRouter_Click);
             // 
             // tabAttendance
             // 

@@ -10,23 +10,37 @@ using System.Windows.Forms;
 
 namespace TMS
 {
+    public enum REPORT_TYPES
+    {
+        MEMBER = 0,
+        ROUTER
+    }
+
     public partial class ReportForm : Form
     {
-        ReportsController _controller;
+        REPORT_TYPES reportType;
 
-        public ReportForm(ReportsController c)
+        public ReportForm(REPORT_TYPES type)
         {
             InitializeComponent();
 
-            _controller = c;
+            reportType = type;
         }
 
         private void ReportForm_Load(object sender, EventArgs e)
         {
-            // TODO: This line of code loads data into the 'TMS_DatabaseDataSet4.Members' table. You can move, or remove it, as needed.
-            this.MembersTableAdapter.Fill(this.TMS_DatabaseDataSet4.Members);
-
-            this.reportViewer.RefreshReport();
+            if (reportType == REPORT_TYPES.ROUTER)
+            {
+                this.RoutersTableAdapter.Fill(this.TMS_DatabaseDataSet5.Routers);
+                this.routerReportViewer.RefreshReport();
+                routerReportViewer.Visible = true;
+            }
+            else if (reportType == REPORT_TYPES.MEMBER)
+            {
+                this.MembersTableAdapter.Fill(this.TMS_DatabaseDataSet4.Members);
+                this.membersReportViewer.RefreshReport();
+                membersReportViewer.Visible = true;
+            }
         }
     }
 }

@@ -196,6 +196,11 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>TMS_DatabaseDataSet4.xsd</DependentUpon>
     </Compile>
+    <Compile Include="TMS_DatabaseDataSet5.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>TMS_DatabaseDataSet5.xsd</DependentUpon>
+    </Compile>
     <Compile Include="TMS_DatabaseDataSet_Routers.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -222,6 +227,7 @@
     <EmbeddedResource Include="Forms\MineSiteEditForm.resx">
       <DependentUpon>MineSiteEditForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Reports\RouterDetailsReport.rdlc" />
     <EmbeddedResource Include="Reports\MemberDetailsReport.rdlc" />
     <EmbeddedResource Include="Forms\ReportForm.resx">
       <DependentUpon>ReportForm.cs</DependentUpon>
@@ -312,6 +318,17 @@
     </None>
     <None Include="TMS_DatabaseDataSet4.xss">
       <DependentUpon>TMS_DatabaseDataSet4.xsd</DependentUpon>
+    </None>
+    <None Include="TMS_DatabaseDataSet5.xsc">
+      <DependentUpon>TMS_DatabaseDataSet5.xsd</DependentUpon>
+    </None>
+    <None Include="TMS_DatabaseDataSet5.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>TMS_DatabaseDataSet5.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="TMS_DatabaseDataSet5.xss">
+      <DependentUpon>TMS_DatabaseDataSet5.xsd</DependentUpon>
     </None>
     <None Include="TMS_DatabaseDataSet_Routers.xsc">
       <DependentUpon>TMS_DatabaseDataSet_Routers.xsd</DependentUpon>

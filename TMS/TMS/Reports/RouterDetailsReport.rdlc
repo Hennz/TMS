@@ -6,7 +6,7 @@
         <TablixBody>
           <TablixColumns>
             <TablixColumn>
-              <Width>2.09615cm</Width>
+              <Width>2.9464cm</Width>
             </TablixColumn>
           </TablixColumns>
           <TablixRows>
@@ -15,21 +15,21 @@
               <TablixCells>
                 <TablixCell>
                   <CellContents>
-                    <Textbox Name="Textbox13">
+                    <Textbox Name="Textbox11">
                       <CanGrow>true</CanGrow>
                       <KeepTogether>true</KeepTogether>
                       <Paragraphs>
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value>Mobile</Value>
+                              <Value>Block Status</Value>
                               <Style />
                             </TextRun>
                           </TextRuns>
                           <Style />
                         </Paragraph>
                       </Paragraphs>
-                      <rd:DefaultName>Textbox13</rd:DefaultName>
+                      <rd:DefaultName>Textbox11</rd:DefaultName>
                       <Style>
                         <Border>
                           <Color>LightGrey</Color>
@@ -50,21 +50,56 @@
               <TablixCells>
                 <TablixCell>
                   <CellContents>
-                    <Textbox Name="mobileNo">
+                    <Textbox Name="Textbox37">
                       <CanGrow>true</CanGrow>
                       <KeepTogether>true</KeepTogether>
                       <Paragraphs>
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value>=Fields!mobileNo.Value</Value>
+                              <Value />
                               <Style />
                             </TextRun>
                           </TextRuns>
                           <Style />
                         </Paragraph>
                       </Paragraphs>
-                      <rd:DefaultName>mobileNo</rd:DefaultName>
+                      <rd:DefaultName>Textbox37</rd:DefaultName>
+                      <Style>
+                        <Border>
+                          <Color>LightGrey</Color>
+                          <Style>Solid</Style>
+                        </Border>
+                        <PaddingLeft>2pt</PaddingLeft>
+                        <PaddingRight>2pt</PaddingRight>
+                        <PaddingTop>2pt</PaddingTop>
+                        <PaddingBottom>2pt</PaddingBottom>
+                      </Style>
+                    </Textbox>
+                  </CellContents>
+                </TablixCell>
+              </TablixCells>
+            </TablixRow>
+            <TablixRow>
+              <Height>0.6cm</Height>
+              <TablixCells>
+                <TablixCell>
+                  <CellContents>
+                    <Textbox Name="isBlocked">
+                      <CanGrow>true</CanGrow>
+                      <KeepTogether>true</KeepTogether>
+                      <Paragraphs>
+                        <Paragraph>
+                          <TextRuns>
+                            <TextRun>
+                              <Value>=Fields!isBlocked.Value</Value>
+                              <Style />
+                            </TextRun>
+                          </TextRuns>
+                          <Style />
+                        </Paragraph>
+                      </Paragraphs>
+                      <rd:DefaultName>isBlocked</rd:DefaultName>
                       <Style>
                         <Border>
                           <Color>LightGrey</Color>
@@ -91,23 +126,23 @@
           <TablixMembers>
             <TablixMember>
               <TablixHeader>
-                <Size>2.09615cm</Size>
+                <Size>2.9464cm</Size>
                 <CellContents>
-                  <Textbox Name="Textbox27">
+                  <Textbox Name="Textbox23">
                     <CanGrow>true</CanGrow>
                     <KeepTogether>true</KeepTogether>
                     <Paragraphs>
                       <Paragraph>
                         <TextRuns>
                           <TextRun>
-                            <Value>Member No</Value>
+                            <Value>Router ID</Value>
                             <Style />
                           </TextRun>
                         </TextRuns>
                         <Style />
                       </Paragraph>
                     </Paragraphs>
-                    <rd:DefaultName>Textbox27</rd:DefaultName>
+                    <rd:DefaultName>Textbox23</rd:DefaultName>
                     <Style>
                       <Border>
                         <Color>LightGrey</Color>
@@ -124,23 +159,23 @@
               <TablixMembers>
                 <TablixMember>
                   <TablixHeader>
-                    <Size>6.28845cm</Size>
+                    <Size>2.9464cm</Size>
                     <CellContents>
-                      <Textbox Name="Textbox25">
+                      <Textbox Name="Textbox21">
                         <CanGrow>true</CanGrow>
                         <KeepTogether>true</KeepTogether>
                         <Paragraphs>
                           <Paragraph>
                             <TextRuns>
                               <TextRun>
-                                <Value>Name</Value>
+                                <Value>Router Address</Value>
                                 <Style />
                               </TextRun>
                             </TextRuns>
                             <Style />
                           </Paragraph>
                         </Paragraphs>
-                        <rd:DefaultName>Textbox25</rd:DefaultName>
+                        <rd:DefaultName>Textbox21</rd:DefaultName>
                         <Style>
                           <Border>
                             <Color>LightGrey</Color>
@@ -157,7 +192,7 @@
                   <TablixMembers>
                     <TablixMember>
                       <TablixHeader>
-                        <Size>2.09615cm</Size>
+                        <Size>2.9464cm</Size>
                         <CellContents>
                           <Textbox Name="Textbox19">
                             <CanGrow>true</CanGrow>
@@ -166,7 +201,7 @@
                               <Paragraph>
                                 <TextRuns>
                                   <TextRun>
-                                    <Value>Address</Value>
+                                    <Value>Router Location</Value>
                                     <Style />
                                   </TextRun>
                                 </TextRuns>
@@ -190,7 +225,7 @@
                       <TablixMembers>
                         <TablixMember>
                           <TablixHeader>
-                            <Size>2.09615cm</Size>
+                            <Size>2.9464cm</Size>
                             <CellContents>
                               <Textbox Name="Textbox17">
                                 <CanGrow>true</CanGrow>
@@ -199,7 +234,7 @@
                                   <Paragraph>
                                     <TextRuns>
                                       <TextRun>
-                                        <Value>Phone</Value>
+                                        <Value>X-Y Coordinate</Value>
                                         <Style />
                                       </TextRun>
                                     </TextRuns>
@@ -232,34 +267,78 @@
               <KeepWithGroup>After</KeepWithGroup>
             </TablixMember>
             <TablixMember>
-              <Group Name="memberNo">
-                <GroupExpressions>
-                  <GroupExpression>=Fields!memberNo.Value</GroupExpression>
-                </GroupExpressions>
-              </Group>
-              <SortExpressions>
-                <SortExpression>
-                  <Value>=Fields!memberNo.Value</Value>
-                </SortExpression>
-              </SortExpressions>
               <TablixHeader>
-                <Size>2.09615cm</Size>
+                <Size>11.7856cm</Size>
                 <CellContents>
-                  <Textbox Name="memberNo1">
+                  <Textbox Name="Textbox26">
                     <CanGrow>true</CanGrow>
                     <KeepTogether>true</KeepTogether>
                     <Paragraphs>
                       <Paragraph>
                         <TextRuns>
                           <TextRun>
-                            <Value>=Fields!memberNo.Value</Value>
+                            <Value>Site Name</Value>
+                            <Style>
+                              <FontWeight>Bold</FontWeight>
+                            </Style>
+                          </TextRun>
+                          <TextRun>
+                            <Value xml:space="preserve"> </Value>
+                            <Style />
+                          </TextRun>
+                          <TextRun>
+                            <Value>=Fields!siteName.Value</Value>
                             <Style />
                           </TextRun>
                         </TextRuns>
                         <Style />
                       </Paragraph>
                     </Paragraphs>
-                    <rd:DefaultName>memberNo1</rd:DefaultName>
+                    <rd:DefaultName>Textbox26</rd:DefaultName>
+                    <Style>
+                      <Border>
+                        <Color>LightGrey</Color>
+                        <Style>Solid</Style>
+                      </Border>
+                      <PaddingLeft>2pt</PaddingLeft>
+                      <PaddingRight>2pt</PaddingRight>
+                      <PaddingTop>2pt</PaddingTop>
+                      <PaddingBottom>2pt</PaddingBottom>
+                    </Style>
+                  </Textbox>
+                </CellContents>
+              </TablixHeader>
+              <KeepWithGroup>After</KeepWithGroup>
+            </TablixMember>
+            <TablixMember>
+              <Group Name="Id">
+                <GroupExpressions>
+                  <GroupExpression>=Fields!Id.Value</GroupExpression>
+                </GroupExpressions>
+              </Group>
+              <SortExpressions>
+                <SortExpression>
+                  <Value>=Fields!Id.Value</Value>
+                </SortExpression>
+              </SortExpressions>
+              <TablixHeader>
+                <Size>2.9464cm</Size>
+                <CellContents>
+                  <Textbox Name="Id1">
+                    <CanGrow>true</CanGrow>
+                    <KeepTogether>true</KeepTogether>
+                    <Paragraphs>
+                      <Paragraph>
+                        <TextRuns>
+                          <TextRun>
+                            <Value>=Fields!Id.Value</Value>
+                            <Style />
+                          </TextRun>
+                        </TextRuns>
+                        <Style />
+                      </Paragraph>
+                    </Paragraphs>
+                    <rd:DefaultName>Id1</rd:DefaultName>
                     <Style>
                       <Border>
                         <Color>LightGrey</Color>
@@ -275,34 +354,34 @@
               </TablixHeader>
               <TablixMembers>
                 <TablixMember>
-                  <Group Name="fName">
+                  <Group Name="address">
                     <GroupExpressions>
-                      <GroupExpression>=Fields!fName.Value</GroupExpression>
+                      <GroupExpression>=Fields!address.Value</GroupExpression>
                     </GroupExpressions>
                   </Group>
                   <SortExpressions>
                     <SortExpression>
-                      <Value>=Fields!fName.Value</Value>
+                      <Value>=Fields!address.Value</Value>
                     </SortExpression>
                   </SortExpressions>
                   <TablixHeader>
-                    <Size>2.09615cm</Size>
+                    <Size>2.9464cm</Size>
                     <CellContents>
-                      <Textbox Name="fName1">
+                      <Textbox Name="address1">
                         <CanGrow>true</CanGrow>
                         <KeepTogether>true</KeepTogether>
                         <Paragraphs>
                           <Paragraph>
                             <TextRuns>
                               <TextRun>
-                                <Value>=Fields!fName.Value</Value>
+                                <Value>=Fields!address.Value</Value>
                                 <Style />
                               </TextRun>
                             </TextRuns>
                             <Style />
                           </Paragraph>
                         </Paragraphs>
-                        <rd:DefaultName>fName1</rd:DefaultName>
+                        <rd:DefaultName>address1</rd:DefaultName>
                         <Style>
                           <Border>
                             <Color>LightGrey</Color>
@@ -318,34 +397,34 @@
                   </TablixHeader>
                   <TablixMembers>
                     <TablixMember>
-                      <Group Name="mName">
+                      <Group Name="location">
                         <GroupExpressions>
-                          <GroupExpression>=Fields!mName.Value</GroupExpression>
+                          <GroupExpression>=Fields!location.Value</GroupExpression>
                         </GroupExpressions>
                       </Group>
                       <SortExpressions>
                         <SortExpression>
-                          <Value>=Fields!mName.Value</Value>
+                          <Value>=Fields!location.Value</Value>
                         </SortExpression>
                       </SortExpressions>
                       <TablixHeader>
-                        <Size>2.09615cm</Size>
+                        <Size>2.9464cm</Size>
                         <CellContents>
-                          <Textbox Name="mName1">
+                          <Textbox Name="location1">
                             <CanGrow>true</CanGrow>
                             <KeepTogether>true</KeepTogether>
                             <Paragraphs>
                               <Paragraph>
                                 <TextRuns>
                                   <TextRun>
-                                    <Value>=Fields!mName.Value</Value>
+                                    <Value>=Fields!location.Value</Value>
                                     <Style />
                                   </TextRun>
                                 </TextRuns>
                                 <Style />
                               </Paragraph>
                             </Paragraphs>
-                            <rd:DefaultName>mName1</rd:DefaultName>
+                            <rd:DefaultName>location1</rd:DefaultName>
                             <Style>
                               <Border>
                                 <Color>LightGrey</Color>
@@ -361,34 +440,42 @@
                       </TablixHeader>
                       <TablixMembers>
                         <TablixMember>
-                          <Group Name="lName">
+                          <Group Name="x">
                             <GroupExpressions>
-                              <GroupExpression>=Fields!lName.Value</GroupExpression>
+                              <GroupExpression>=Fields!x.Value</GroupExpression>
                             </GroupExpressions>
                           </Group>
                           <SortExpressions>
                             <SortExpression>
-                              <Value>=Fields!lName.Value</Value>
+                              <Value>=Fields!x.Value</Value>
                             </SortExpression>
                           </SortExpressions>
                           <TablixHeader>
-                            <Size>2.09615cm</Size>
+                            <Size>2.9464cm</Size>
                             <CellContents>
-                              <Textbox Name="lName1">
+                              <Textbox Name="x1">
                                 <CanGrow>true</CanGrow>
                                 <KeepTogether>true</KeepTogether>
                                 <Paragraphs>
                                   <Paragraph>
                                     <TextRuns>
                                       <TextRun>
-                                        <Value>=Fields!lName.Value</Value>
+                                        <Value>=Fields!x.Value</Value>
+                                        <Style />
+                                      </TextRun>
+                                      <TextRun>
+                                        <Value>-</Value>
+                                        <Style />
+                                      </TextRun>
+                                      <TextRun>
+                                        <Value>=Fields!y.Value</Value>
                                         <Style />
                                       </TextRun>
                                     </TextRuns>
                                     <Style />
                                   </Paragraph>
                                 </Paragraphs>
-                                <rd:DefaultName>lName1</rd:DefaultName>
+                                <rd:DefaultName>x1</rd:DefaultName>
                                 <Style>
                                   <Border>
                                     <Color>LightGrey</Color>
@@ -404,107 +491,31 @@
                           </TablixHeader>
                           <TablixMembers>
                             <TablixMember>
-                              <Group Name="address">
+                              <Group Name="y">
                                 <GroupExpressions>
-                                  <GroupExpression>=Fields!address.Value</GroupExpression>
+                                  <GroupExpression>=Fields!y.Value</GroupExpression>
                                 </GroupExpressions>
                               </Group>
                               <SortExpressions>
                                 <SortExpression>
-                                  <Value>=Fields!address.Value</Value>
+                                  <Value>=Fields!y.Value</Value>
                                 </SortExpression>
                               </SortExpressions>
-                              <TablixHeader>
-                                <Size>2.09615cm</Size>
-                                <CellContents>
-                                  <Textbox Name="address1">
-                                    <CanGrow>true</CanGrow>
-                                    <KeepTogether>true</KeepTogether>
-                                    <Paragraphs>
-                                      <Paragraph>
-                                        <TextRuns>
-                                          <TextRun>
-                                            <Value>=Fields!address.Value</Value>
-                                            <Style />
-                                          </TextRun>
-                                        </TextRuns>
-                                        <Style />
-                                      </Paragraph>
-                                    </Paragraphs>
-                                    <rd:DefaultName>address1</rd:DefaultName>
-                                    <Style>
-                                      <Border>
-                                        <Color>LightGrey</Color>
-                                        <Style>Solid</Style>
-                                      </Border>
-                                      <PaddingLeft>2pt</PaddingLeft>
-                                      <PaddingRight>2pt</PaddingRight>
-                                      <PaddingTop>2pt</PaddingTop>
-                                      <PaddingBottom>2pt</PaddingBottom>
-                                    </Style>
-                                  </Textbox>
-                                </CellContents>
-                              </TablixHeader>
                               <TablixMembers>
                                 <TablixMember>
-                                  <Group Name="phoneNo">
+                                  <Group Name="isBlocked">
                                     <GroupExpressions>
-                                      <GroupExpression>=Fields!phoneNo.Value</GroupExpression>
+                                      <GroupExpression>=Fields!isBlocked.Value</GroupExpression>
                                     </GroupExpressions>
                                   </Group>
                                   <SortExpressions>
                                     <SortExpression>
-                                      <Value>=Fields!phoneNo.Value</Value>
+                                      <Value>=Fields!isBlocked.Value</Value>
                                     </SortExpression>
                                   </SortExpressions>
-                                  <TablixHeader>
-                                    <Size>2.09615cm</Size>
-                                    <CellContents>
-                                      <Textbox Name="phoneNo1">
-                                        <CanGrow>true</CanGrow>
-                                        <KeepTogether>true</KeepTogether>
-                                        <Paragraphs>
-                                          <Paragraph>
-                                            <TextRuns>
-                                              <TextRun>
-                                                <Value>=Fields!phoneNo.Value</Value>
-                                                <Style />
-                                              </TextRun>
-                                            </TextRuns>
-                                            <Style />
-                                          </Paragraph>
-                                        </Paragraphs>
-                                        <rd:DefaultName>phoneNo1</rd:DefaultName>
-                                        <Style>
-                                          <Border>
-                                            <Color>LightGrey</Color>
-                                            <Style>Solid</Style>
-                                          </Border>
-                                          <PaddingLeft>2pt</PaddingLeft>
-                                          <PaddingRight>2pt</PaddingRight>
-                                          <PaddingTop>2pt</PaddingTop>
-                                          <PaddingBottom>2pt</PaddingBottom>
-                                        </Style>
-                                      </Textbox>
-                                    </CellContents>
-                                  </TablixHeader>
                                   <TablixMembers>
                                     <TablixMember>
-                                      <Group Name="mobileNo">
-                                        <GroupExpressions>
-                                          <GroupExpression>=Fields!mobileNo.Value</GroupExpression>
-                                        </GroupExpressions>
-                                      </Group>
-                                      <SortExpressions>
-                                        <SortExpression>
-                                          <Value>=Fields!mobileNo.Value</Value>
-                                        </SortExpression>
-                                      </SortExpressions>
-                                      <TablixMembers>
-                                        <TablixMember>
-                                          <Group Name="Details" />
-                                        </TablixMember>
-                                      </TablixMembers>
+                                      <Group Name="Details" />
                                     </TablixMember>
                                   </TablixMembers>
                                 </TablixMember>
@@ -520,25 +531,23 @@
             </TablixMember>
           </TablixMembers>
         </TablixRowHierarchy>
-        <DataSetName>MemberSet</DataSetName>
-        <Top>1.29646cm</Top>
-        <Height>1.2cm</Height>
-        <Width>14.67305cm</Width>
+        <Top>1.68382cm</Top>
+        <Height>1.8cm</Height>
+        <Width>14.732cm</Width>
         <Style>
           <Border>
             <Style>None</Style>
           </Border>
-          <TextAlign>Center</TextAlign>
         </Style>
       </Tablix>
-      <Textbox Name="Textbox45">
+      <Textbox Name="Textbox25">
         <CanGrow>true</CanGrow>
         <KeepTogether>true</KeepTogether>
         <Paragraphs>
           <Paragraph>
             <TextRuns>
               <TextRun>
-                <Value>MEMBER DETAILS REPORT</Value>
+                <Value>ROUTER DETAILS REPORT</Value>
                 <Style>
                   <FontSize>14pt</FontSize>
                   <FontWeight>Bold</FontWeight>
@@ -550,9 +559,10 @@
             </Style>
           </Paragraph>
         </Paragraphs>
-        <rd:DefaultName>Textbox45</rd:DefaultName>
-        <Height>1.12007cm</Height>
-        <Width>14.67304cm</Width>
+        <rd:DefaultName>Textbox25</rd:DefaultName>
+        <Top>0.0434cm</Top>
+        <Height>1.46403cm</Height>
+        <Width>14.732cm</Width>
         <ZIndex>1</ZIndex>
         <Style>
           <Border>
@@ -582,60 +592,60 @@
   </Page>
   <AutoRefresh>0</AutoRefresh>
   <DataSources>
-    <DataSource Name="TMS_DatabaseDataSet4">
+    <DataSource Name="TMS_DatabaseDataSet5">
       <ConnectionProperties>
         <DataProvider>System.Data.DataSet</DataProvider>
         <ConnectString>/* Local Connection */</ConnectString>
       </ConnectionProperties>
-      <rd:DataSourceID>55c92ce3-c35d-43d2-bf19-7a71be7ad53c</rd:DataSourceID>
+      <rd:DataSourceID>e129f6ed-3245-4e7a-8f06-66dbc7fcfa33</rd:DataSourceID>
     </DataSource>
   </DataSources>
   <DataSets>
-    <DataSet Name="MemberSet">
+    <DataSet Name="RouterDetailsSet">
       <Query>
-        <DataSourceName>TMS_DatabaseDataSet4</DataSourceName>
+        <DataSourceName>TMS_DatabaseDataSet5</DataSourceName>
         <CommandText>/* Local Query */</CommandText>
       </Query>
       <Fields>
-        <Field Name="memberNo">
-          <DataField>memberNo</DataField>
-          <rd:TypeName>System.String</rd:TypeName>
-        </Field>
-        <Field Name="fName">
-          <DataField>fName</DataField>
-          <rd:TypeName>System.String</rd:TypeName>
-        </Field>
-        <Field Name="mName">
-          <DataField>mName</DataField>
-          <rd:TypeName>System.String</rd:TypeName>
-        </Field>
-        <Field Name="lName">
-          <DataField>lName</DataField>
+        <Field Name="Id">
+          <DataField>Id</DataField>
           <rd:TypeName>System.String</rd:TypeName>
         </Field>
         <Field Name="address">
           <DataField>address</DataField>
           <rd:TypeName>System.String</rd:TypeName>
         </Field>
-        <Field Name="phoneNo">
-          <DataField>phoneNo</DataField>
+        <Field Name="location">
+          <DataField>location</DataField>
           <rd:TypeName>System.String</rd:TypeName>
         </Field>
-        <Field Name="mobileNo">
-          <DataField>mobileNo</DataField>
+        <Field Name="x">
+          <DataField>x</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="y">
+          <DataField>y</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="isBlocked">
+          <DataField>isBlocked</DataField>
+          <rd:TypeName>System.Boolean</rd:TypeName>
+        </Field>
+        <Field Name="siteName">
+          <DataField>siteName</DataField>
           <rd:TypeName>System.String</rd:TypeName>
         </Field>
       </Fields>
       <rd:DataSetInfo>
-        <rd:DataSetName>TMS_DatabaseDataSet4</rd:DataSetName>
-        <rd:SchemaPath>C:\Users\Philip\Documents\##School##\Year 4\Semester 2\SE 4450 - Software Design II\TMS\TMS\TMS\TMS_DatabaseDataSet4.xsd</rd:SchemaPath>
-        <rd:TableName>Members</rd:TableName>
+        <rd:DataSetName>TMS_DatabaseDataSet5</rd:DataSetName>
+        <rd:SchemaPath>C:\Users\Philip\Documents\##School##\Year 4\Semester 2\SE 4450 - Software Design II\TMS\TMS\TMS\TMS_DatabaseDataSet5.xsd</rd:SchemaPath>
+        <rd:TableName>Routers</rd:TableName>
         <rd:TableAdapterFillMethod>Fill</rd:TableAdapterFillMethod>
         <rd:TableAdapterGetDataMethod>GetData</rd:TableAdapterGetDataMethod>
-        <rd:TableAdapterName>MembersTableAdapter</rd:TableAdapterName>
+        <rd:TableAdapterName>RoutersTableAdapter</rd:TableAdapterName>
       </rd:DataSetInfo>
     </DataSet>
   </DataSets>
   <rd:ReportUnitType>Cm</rd:ReportUnitType>
-  <rd:ReportID>ca86efc7-7095-44eb-85c7-f112980880cf</rd:ReportID>
+  <rd:ReportID>c236af1a-a376-40a5-982a-9dff0a5ce4eb</rd:ReportID>
 </Report>

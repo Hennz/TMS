@@ -354,5 +354,10 @@ namespace TMS
         {
             _reportsController.MembersReport();
         }
+
+        private void btnRepRouter_Click(object sender, EventArgs e)
+        {
+            _reportsController.RoutersReport();
+        }
     }
 }

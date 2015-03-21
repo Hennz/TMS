@@ -19,14 +19,15 @@ namespace TMS
 
         public void MembersReport()
         {
-            _reportForm = new ReportForm(this);
+            _reportForm = new ReportForm(REPORT_TYPES.MEMBER);
             _reportForm.Show();
 
         }
 
         public void RoutersReport()
         {
-
+            _reportForm = new ReportForm(REPORT_TYPES.ROUTER);
+            _reportForm.Show();
         }
     }
 }

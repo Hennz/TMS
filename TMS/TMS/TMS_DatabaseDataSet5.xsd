@@ -1,0 +1,86 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="TMS_DatabaseDataSet5" targetNamespace="http://tempuri.org/TMS_DatabaseDataSet5.xsd" xmlns:mstns="http://tempuri.org/TMS_DatabaseDataSet5.xsd" xmlns="http://tempuri.org/TMS_DatabaseDataSet5.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xs:annotation>
+    <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+        <Connections>
+          <Connection AppSettingsObjectName="Settings" AppSettingsPropertyName="TMS_DatabaseConnectionString" ConnectionStringObject="" IsAppSettingsProperty="true" Modifier="Assembly" Name="TMS_DatabaseConnectionString (Settings)" ParameterPrefix="@" PropertyReference="ApplicationSettings.TMS.Properties.Settings.GlobalReference.Default.TMS_DatabaseConnectionString" Provider="System.Data.SqlClient" />
+        </Connections>
+        <Tables>
+          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="RoutersTableAdapter" GeneratorDataComponentClassName="RoutersTableAdapter" Name="Routers" UserDataComponentName="RoutersTableAdapter">
+            <MainSource>
+              <DbSource ConnectionRef="TMS_DatabaseConnectionString (Settings)" DbObjectType="Unknown" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetData" UserSourceName="Fill">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="true">
+                    <CommandText>SELECT        r.Id, r.address, r.location, r.x, r.y, r.isBlocked, s.siteName
+FROM            Routers AS r INNER JOIN
+                         Site AS s ON r.siteId = s.Id</CommandText>
+                    <Parameters />
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+            </MainSource>
+            <Mappings>
+              <Mapping SourceColumn="Id" DataSetColumn="Id" />
+              <Mapping SourceColumn="address" DataSetColumn="address" />
+              <Mapping SourceColumn="location" DataSetColumn="location" />
+              <Mapping SourceColumn="x" DataSetColumn="x" />
+              <Mapping SourceColumn="y" DataSetColumn="y" />
+              <Mapping SourceColumn="isBlocked" DataSetColumn="isBlocked" />
+              <Mapping SourceColumn="siteName" DataSetColumn="siteName" />
+            </Mappings>
+            <Sources />
+          </TableAdapter>
+        </Tables>
+        <Sources />
+      </DataSource>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="TMS_DatabaseDataSet5" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="True" msprop:Generator_DataSetName="TMS_DatabaseDataSet5" msprop:Generator_UserDSName="TMS_DatabaseDataSet5">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="Routers" msprop:Generator_TableClassName="RoutersDataTable" msprop:Generator_TableVarName="tableRouters" msprop:Generator_RowChangedName="RoutersRowChanged" msprop:Generator_TablePropName="Routers" msprop:Generator_RowDeletingName="RoutersRowDeleting" msprop:Generator_RowChangingName="RoutersRowChanging" msprop:Generator_RowEvHandlerName="RoutersRowChangeEventHandler" msprop:Generator_RowDeletedName="RoutersRowDeleted" msprop:Generator_RowClassName="RoutersRow" msprop:Generator_UserTableName="Routers" msprop:Generator_RowEvArgName="RoutersRowChangeEvent">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="Id" msprop:Generator_ColumnVarNameInTable="columnId" msprop:Generator_ColumnPropNameInRow="Id" msprop:Generator_ColumnPropNameInTable="IdColumn" msprop:Generator_UserColumnName="Id">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="5" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="address" msprop:Generator_ColumnVarNameInTable="columnaddress" msprop:Generator_ColumnPropNameInRow="address" msprop:Generator_ColumnPropNameInTable="addressColumn" msprop:Generator_UserColumnName="address" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="2147483647" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="location" msprop:Generator_ColumnVarNameInTable="columnlocation" msprop:Generator_ColumnPropNameInRow="location" msprop:Generator_ColumnPropNameInTable="locationColumn" msprop:Generator_UserColumnName="location" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="2147483647" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="x" msprop:Generator_ColumnVarNameInTable="columnx" msprop:Generator_ColumnPropNameInRow="x" msprop:Generator_ColumnPropNameInTable="xColumn" msprop:Generator_UserColumnName="x" type="xs:int" />
+              <xs:element name="y" msprop:Generator_ColumnVarNameInTable="columny" msprop:Generator_ColumnPropNameInRow="y" msprop:Generator_ColumnPropNameInTable="yColumn" msprop:Generator_UserColumnName="y" type="xs:int" />
+              <xs:element name="isBlocked" msprop:Generator_ColumnVarNameInTable="columnisBlocked" msprop:Generator_ColumnPropNameInRow="isBlocked" msprop:Generator_ColumnPropNameInTable="isBlockedColumn" msprop:Generator_UserColumnName="isBlocked" type="xs:boolean" />
+              <xs:element name="siteName" msprop:Generator_ColumnVarNameInTable="columnsiteName" msprop:Generator_ColumnPropNameInRow="siteName" msprop:Generator_ColumnPropNameInTable="siteNameColumn" msprop:Generator_UserColumnName="siteName" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+    <xs:unique name="Constraint1" msdata:PrimaryKey="true">
+      <xs:selector xpath=".//mstns:Routers" />
+      <xs:field xpath="mstns:Id" />
+    </xs:unique>
+  </xs:element>
+</xs:schema>

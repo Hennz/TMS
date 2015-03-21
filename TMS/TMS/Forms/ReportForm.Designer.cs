@@ -30,12 +30,20 @@
         {
             this.components = new System.ComponentModel.Container();
             Microsoft.Reporting.WinForms.ReportDataSource reportDataSource1 = new Microsoft.Reporting.WinForms.ReportDataSource();
+            Microsoft.Reporting.WinForms.ReportDataSource reportDataSource2 = new Microsoft.Reporting.WinForms.ReportDataSource();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ReportForm));
             this.MembersBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.TMS_DatabaseDataSet4 = new TMS.TMS_DatabaseDataSet4();
-            this.reportViewer = new Microsoft.Reporting.WinForms.ReportViewer();
+            this.routerReportViewer = new Microsoft.Reporting.WinForms.ReportViewer();
             this.MembersTableAdapter = new TMS.TMS_DatabaseDataSet4TableAdapters.MembersTableAdapter();
+            this.membersReportViewer = new Microsoft.Reporting.WinForms.ReportViewer();
+            this.RoutersBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.TMS_DatabaseDataSet5 = new TMS.TMS_DatabaseDataSet5();
+            this.RoutersTableAdapter = new TMS.TMS_DatabaseDataSet5TableAdapters.RoutersTableAdapter();
             ((System.ComponentModel.ISupportInitialize)(this.MembersBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.TMS_DatabaseDataSet4)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.RoutersBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.TMS_DatabaseDataSet5)).BeginInit();
             this.SuspendLayout();
             // 
             // MembersBindingSource
@@ -48,21 +56,49 @@
             this.TMS_DatabaseDataSet4.DataSetName = "TMS_DatabaseDataSet4";
             this.TMS_DatabaseDataSet4.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
-            // reportViewer
+            // routerReportViewer
             // 
-            this.reportViewer.Dock = System.Windows.Forms.DockStyle.Fill;
-            reportDataSource1.Name = "MemberSet";
-            reportDataSource1.Value = this.MembersBindingSource;
-            this.reportViewer.LocalReport.DataSources.Add(reportDataSource1);
-            this.reportViewer.LocalReport.ReportEmbeddedResource = "TMS.Reports.MemberDetailsReport.rdlc";
-            this.reportViewer.Location = new System.Drawing.Point(0, 0);
-            this.reportViewer.Name = "reportViewer";
-            this.reportViewer.Size = new System.Drawing.Size(751, 428);
-            this.reportViewer.TabIndex = 0;
+            this.routerReportViewer.Dock = System.Windows.Forms.DockStyle.Fill;
+            reportDataSource1.Name = "RouterDetailsSet";
+            reportDataSource1.Value = this.RoutersBindingSource;
+            this.routerReportViewer.LocalReport.DataSources.Add(reportDataSource1);
+            this.routerReportViewer.LocalReport.ReportEmbeddedResource = "TMS.Reports.RouterDetailsReport.rdlc";
+            this.routerReportViewer.Location = new System.Drawing.Point(0, 0);
+            this.routerReportViewer.Name = "routerReportViewer";
+            this.routerReportViewer.Size = new System.Drawing.Size(751, 428);
+            this.routerReportViewer.TabIndex = 0;
+            this.routerReportViewer.Visible = false;
             // 
             // MembersTableAdapter
             // 
             this.MembersTableAdapter.ClearBeforeFill = true;
+            // 
+            // membersReportViewer
+            // 
+            this.membersReportViewer.Dock = System.Windows.Forms.DockStyle.Fill;
+            reportDataSource2.Name = "MemberSet";
+            reportDataSource2.Value = this.MembersBindingSource;
+            this.membersReportViewer.LocalReport.DataSources.Add(reportDataSource2);
+            this.membersReportViewer.LocalReport.ReportEmbeddedResource = "TMS.Reports.MemberDetailsReport.rdlc";
+            this.membersReportViewer.Location = new System.Drawing.Point(0, 0);
+            this.membersReportViewer.Name = "membersReportViewer";
+            this.membersReportViewer.Size = new System.Drawing.Size(751, 428);
+            this.membersReportViewer.TabIndex = 1;
+            this.membersReportViewer.Visible = false;
+            // 
+            // RoutersBindingSource
+            // 
+            this.RoutersBindingSource.DataMember = "Routers";
+            this.RoutersBindingSource.DataSource = this.TMS_DatabaseDataSet5;
+            // 
+            // TMS_DatabaseDataSet5
+            // 
+            this.TMS_DatabaseDataSet5.DataSetName = "TMS_DatabaseDataSet5";
+            this.TMS_DatabaseDataSet5.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
+            // RoutersTableAdapter
+            // 
+            this.RoutersTableAdapter.ClearBeforeFill = true;
             // 
             // ReportForm
             // 
@@ -70,23 +106,31 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ControlLightLight;
             this.ClientSize = new System.Drawing.Size(751, 428);
-            this.Controls.Add(this.reportViewer);
+            this.Controls.Add(this.membersReportViewer);
+            this.Controls.Add(this.routerReportViewer);
             this.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "ReportForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "ReportForm";
             this.Load += new System.EventHandler(this.ReportForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.MembersBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.TMS_DatabaseDataSet4)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.RoutersBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.TMS_DatabaseDataSet5)).EndInit();
             this.ResumeLayout(false);
 
         }
 
         #endregion
 
-        private Microsoft.Reporting.WinForms.ReportViewer reportViewer;
+        private Microsoft.Reporting.WinForms.ReportViewer routerReportViewer;
         private System.Windows.Forms.BindingSource MembersBindingSource;
         private TMS_DatabaseDataSet4 TMS_DatabaseDataSet4;
         private TMS_DatabaseDataSet4TableAdapters.MembersTableAdapter MembersTableAdapter;
+        private System.Windows.Forms.BindingSource RoutersBindingSource;
+        private TMS_DatabaseDataSet5 TMS_DatabaseDataSet5;
+        private TMS_DatabaseDataSet5TableAdapters.RoutersTableAdapter RoutersTableAdapter;
+        private Microsoft.Reporting.WinForms.ReportViewer membersReportViewer;
     }
 }
