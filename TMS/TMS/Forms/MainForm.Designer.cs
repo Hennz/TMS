@@ -894,6 +894,7 @@
             this.btnReptag.Size = new System.Drawing.Size(34, 37);
             this.btnReptag.TabIndex = 10;
             this.btnReptag.UseVisualStyleBackColor = true;
+            this.btnReptag.Click += new System.EventHandler(this.btnReptag_Click);
             // 
             // lblRepMembers
             // 

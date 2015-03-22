@@ -12,8 +12,9 @@ namespace TMS
 {
     public enum REPORT_TYPES
     {
-        MEMBER = 0,
-        ROUTER
+        MEMBER,
+        ROUTER,
+        TAGS
     }
 
     public partial class ReportForm : Form
@@ -40,6 +41,12 @@ namespace TMS
                 this.MembersTableAdapter.Fill(this.TMS_DatabaseDataSet4.Members);
                 this.membersReportViewer.RefreshReport();
                 membersReportViewer.Visible = true;
+            }
+            else if (reportType == REPORT_TYPES.TAGS)
+            {
+                this.MembersTableAdapter.Fill(this.TMS_DatabaseDataSet4.Members);
+                this.tagsReportViewer.RefreshReport();
+                tagsReportViewer.Visible = true;
             }
         }
     }

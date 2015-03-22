@@ -20,9 +20,9 @@ namespace TMS {
     [global::System.ComponentModel.DesignerCategoryAttribute("code")]
     [global::System.ComponentModel.ToolboxItem(true)]
     [global::System.Xml.Serialization.XmlSchemaProviderAttribute("GetTypedDataSetSchema")]
-    [global::System.Xml.Serialization.XmlRootAttribute("TMS_DatabaseDataSet4")]
+    [global::System.Xml.Serialization.XmlRootAttribute("TMS_DatabaseDataSet6")]
     [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.DataSet")]
-    public partial class TMS_DatabaseDataSet4 : global::System.Data.DataSet {
+    public partial class TMS_DatabaseDataSet6 : global::System.Data.DataSet {
         
         private MembersDataTable tableMembers;
         
@@ -30,7 +30,7 @@ namespace TMS {
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        public TMS_DatabaseDataSet4() {
+        public TMS_DatabaseDataSet6() {
             this.BeginInit();
             this.InitClass();
             global::System.ComponentModel.CollectionChangeEventHandler schemaChangedHandler = new global::System.ComponentModel.CollectionChangeEventHandler(this.SchemaChanged);
@@ -41,7 +41,7 @@ namespace TMS {
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        protected TMS_DatabaseDataSet4(global::System.Runtime.Serialization.SerializationInfo info, global::System.Runtime.Serialization.StreamingContext context) : 
+        protected TMS_DatabaseDataSet6(global::System.Runtime.Serialization.SerializationInfo info, global::System.Runtime.Serialization.StreamingContext context) : 
                 base(info, context, false) {
             if ((this.IsBinarySerialized(info, context) == true)) {
                 this.InitVars(false);
@@ -127,7 +127,7 @@ namespace TMS {
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         public override global::System.Data.DataSet Clone() {
-            TMS_DatabaseDataSet4 cln = ((TMS_DatabaseDataSet4)(base.Clone()));
+            TMS_DatabaseDataSet6 cln = ((TMS_DatabaseDataSet6)(base.Clone()));
             cln.InitVars();
             cln.SchemaSerializationMode = this.SchemaSerializationMode;
             return cln;
@@ -199,9 +199,9 @@ namespace TMS {
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         private void InitClass() {
-            this.DataSetName = "TMS_DatabaseDataSet4";
+            this.DataSetName = "TMS_DatabaseDataSet6";
             this.Prefix = "";
-            this.Namespace = "http://tempuri.org/TMS_DatabaseDataSet4.xsd";
+            this.Namespace = "http://tempuri.org/TMS_DatabaseDataSet6.xsd";
             this.EnforceConstraints = true;
             this.SchemaSerializationMode = global::System.Data.SchemaSerializationMode.IncludeSchema;
             this.tableMembers = new MembersDataTable();
@@ -225,7 +225,7 @@ namespace TMS {
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         public static global::System.Xml.Schema.XmlSchemaComplexType GetTypedDataSetSchema(global::System.Xml.Schema.XmlSchemaSet xs) {
-            TMS_DatabaseDataSet4 ds = new TMS_DatabaseDataSet4();
+            TMS_DatabaseDataSet6 ds = new TMS_DatabaseDataSet6();
             global::System.Xml.Schema.XmlSchemaComplexType type = new global::System.Xml.Schema.XmlSchemaComplexType();
             global::System.Xml.Schema.XmlSchemaSequence sequence = new global::System.Xml.Schema.XmlSchemaSequence();
             global::System.Xml.Schema.XmlSchemaAny any = new global::System.Xml.Schema.XmlSchemaAny();
@@ -286,12 +286,6 @@ namespace TMS {
             private global::System.Data.DataColumn columnmName;
             
             private global::System.Data.DataColumn columnlName;
-            
-            private global::System.Data.DataColumn columnaddress;
-            
-            private global::System.Data.DataColumn columnphoneNo;
-            
-            private global::System.Data.DataColumn columnmobileNo;
             
             private global::System.Data.DataColumn columntagId;
             
@@ -362,30 +356,6 @@ namespace TMS {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn addressColumn {
-                get {
-                    return this.columnaddress;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn phoneNoColumn {
-                get {
-                    return this.columnphoneNo;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn mobileNoColumn {
-                get {
-                    return this.columnmobileNo;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public global::System.Data.DataColumn tagIdColumn {
                 get {
                     return this.columntagId;
@@ -429,16 +399,13 @@ namespace TMS {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public MembersRow AddMembersRow(string memberNo, string fName, string mName, string lName, string address, string phoneNo, string mobileNo, string tagId) {
+            public MembersRow AddMembersRow(string memberNo, string fName, string mName, string lName, string tagId) {
                 MembersRow rowMembersRow = ((MembersRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         memberNo,
                         fName,
                         mName,
                         lName,
-                        address,
-                        phoneNo,
-                        mobileNo,
                         tagId};
                 rowMembersRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowMembersRow);
@@ -473,9 +440,6 @@ namespace TMS {
                 this.columnfName = base.Columns["fName"];
                 this.columnmName = base.Columns["mName"];
                 this.columnlName = base.Columns["lName"];
-                this.columnaddress = base.Columns["address"];
-                this.columnphoneNo = base.Columns["phoneNo"];
-                this.columnmobileNo = base.Columns["mobileNo"];
                 this.columntagId = base.Columns["tagId"];
             }
             
@@ -490,12 +454,6 @@ namespace TMS {
                 base.Columns.Add(this.columnmName);
                 this.columnlName = new global::System.Data.DataColumn("lName", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnlName);
-                this.columnaddress = new global::System.Data.DataColumn("address", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnaddress);
-                this.columnphoneNo = new global::System.Data.DataColumn("phoneNo", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnphoneNo);
-                this.columnmobileNo = new global::System.Data.DataColumn("mobileNo", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnmobileNo);
                 this.columntagId = new global::System.Data.DataColumn("tagId", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columntagId);
                 this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
@@ -507,10 +465,6 @@ namespace TMS {
                 this.columnmName.AllowDBNull = false;
                 this.columnmName.MaxLength = 2147483647;
                 this.columnlName.MaxLength = 2147483647;
-                this.columnaddress.MaxLength = 2147483647;
-                this.columnphoneNo.MaxLength = 2147483647;
-                this.columnmobileNo.AllowDBNull = false;
-                this.columnmobileNo.MaxLength = 2147483647;
                 this.columntagId.MaxLength = 5;
             }
             
@@ -579,7 +533,7 @@ namespace TMS {
             public static global::System.Xml.Schema.XmlSchemaComplexType GetTypedTableSchema(global::System.Xml.Schema.XmlSchemaSet xs) {
                 global::System.Xml.Schema.XmlSchemaComplexType type = new global::System.Xml.Schema.XmlSchemaComplexType();
                 global::System.Xml.Schema.XmlSchemaSequence sequence = new global::System.Xml.Schema.XmlSchemaSequence();
-                TMS_DatabaseDataSet4 ds = new TMS_DatabaseDataSet4();
+                TMS_DatabaseDataSet6 ds = new TMS_DatabaseDataSet6();
                 global::System.Xml.Schema.XmlSchemaAny any1 = new global::System.Xml.Schema.XmlSchemaAny();
                 any1.Namespace = "http://www.w3.org/2001/XMLSchema";
                 any1.MinOccurs = new decimal(0);
@@ -708,49 +662,6 @@ namespace TMS {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public string address {
-                get {
-                    try {
-                        return ((string)(this[this.tableMembers.addressColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'address\' in table \'Members\' is DBNull.", e);
-                    }
-                }
-                set {
-                    this[this.tableMembers.addressColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public string phoneNo {
-                get {
-                    try {
-                        return ((string)(this[this.tableMembers.phoneNoColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'phoneNo\' in table \'Members\' is DBNull.", e);
-                    }
-                }
-                set {
-                    this[this.tableMembers.phoneNoColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public string mobileNo {
-                get {
-                    return ((string)(this[this.tableMembers.mobileNoColumn]));
-                }
-                set {
-                    this[this.tableMembers.mobileNoColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public string tagId {
                 get {
                     try {
@@ -787,30 +698,6 @@ namespace TMS {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public void SetlNameNull() {
                 this[this.tableMembers.lNameColumn] = global::System.Convert.DBNull;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public bool IsaddressNull() {
-                return this.IsNull(this.tableMembers.addressColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void SetaddressNull() {
-                this[this.tableMembers.addressColumn] = global::System.Convert.DBNull;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public bool IsphoneNoNull() {
-                return this.IsNull(this.tableMembers.phoneNoColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void SetphoneNoNull() {
-                this[this.tableMembers.phoneNoColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -861,7 +748,7 @@ namespace TMS {
         }
     }
 }
-namespace TMS.TMS_DatabaseDataSet4TableAdapters {
+namespace TMS.TMS_DatabaseDataSet6TableAdapters {
     
     
     /// <summary>
@@ -989,9 +876,6 @@ namespace TMS.TMS_DatabaseDataSet4TableAdapters {
             tableMapping.ColumnMappings.Add("fName", "fName");
             tableMapping.ColumnMappings.Add("mName", "mName");
             tableMapping.ColumnMappings.Add("lName", "lName");
-            tableMapping.ColumnMappings.Add("address", "address");
-            tableMapping.ColumnMappings.Add("phoneNo", "phoneNo");
-            tableMapping.ColumnMappings.Add("mobileNo", "mobileNo");
             tableMapping.ColumnMappings.Add("tagId", "tagId");
             this._adapter.TableMappings.Add(tableMapping);
             this._adapter.DeleteCommand = new global::System.Data.SqlClient.SqlCommand();
@@ -1004,16 +888,13 @@ namespace TMS.TMS_DatabaseDataSet4TableAdapters {
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_tagId", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "tagId", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.UpdateCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.UpdateCommand.Connection = this.Connection;
-            this._adapter.UpdateCommand.CommandText = @"UPDATE [dbo].[Members] SET [memberNo] = @memberNo, [fName] = @fName, [mName] = @mName, [lName] = @lName, [address] = @address, [phoneNo] = @phoneNo, [mobileNo] = @mobileNo, [tagId] = @tagId WHERE (([memberNo] = @Original_memberNo) AND ((@IsNull_tagId = 1 AND [tagId] IS NULL) OR ([tagId] = @Original_tagId)));
-SELECT memberNo, fName, mName, lName, address, phoneNo, mobileNo, tagId FROM Members WHERE (memberNo = @memberNo)";
+            this._adapter.UpdateCommand.CommandText = @"UPDATE [dbo].[Members] SET [memberNo] = @memberNo, [fName] = @fName, [mName] = @mName, [lName] = @lName, [tagId] = @tagId WHERE (([memberNo] = @Original_memberNo) AND ((@IsNull_tagId = 1 AND [tagId] IS NULL) OR ([tagId] = @Original_tagId)));
+SELECT memberNo, fName, mName, lName, tagId FROM Members WHERE (memberNo = @memberNo)";
             this._adapter.UpdateCommand.CommandType = global::System.Data.CommandType.Text;
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@memberNo", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "memberNo", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@fName", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "fName", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@mName", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "mName", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@lName", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "lName", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@address", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "address", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@phoneNo", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "phoneNo", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@mobileNo", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "mobileNo", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@tagId", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "tagId", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_memberNo", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "memberNo", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_tagId", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "tagId", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
@@ -1033,8 +914,7 @@ SELECT memberNo, fName, mName, lName, address, phoneNo, mobileNo, tagId FROM Mem
             this._commandCollection = new global::System.Data.SqlClient.SqlCommand[1];
             this._commandCollection[0] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[0].Connection = this.Connection;
-            this._commandCollection[0].CommandText = "SELECT memberNo, fName, mName, lName, address, phoneNo, mobileNo, tagId FROM dbo." +
-                "Members";
+            this._commandCollection[0].CommandText = "SELECT memberNo, fName, mName, lName, tagId FROM dbo.Members";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
         }
         
@@ -1042,7 +922,7 @@ SELECT memberNo, fName, mName, lName, address, phoneNo, mobileNo, tagId FROM Mem
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Fill, true)]
-        public virtual int Fill(TMS_DatabaseDataSet4.MembersDataTable dataTable) {
+        public virtual int Fill(TMS_DatabaseDataSet6.MembersDataTable dataTable) {
             this.Adapter.SelectCommand = this.CommandCollection[0];
             if ((this.ClearBeforeFill == true)) {
                 dataTable.Clear();
@@ -1055,9 +935,9 @@ SELECT memberNo, fName, mName, lName, address, phoneNo, mobileNo, tagId FROM Mem
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, true)]
-        public virtual TMS_DatabaseDataSet4.MembersDataTable GetData() {
+        public virtual TMS_DatabaseDataSet6.MembersDataTable GetData() {
             this.Adapter.SelectCommand = this.CommandCollection[0];
-            TMS_DatabaseDataSet4.MembersDataTable dataTable = new TMS_DatabaseDataSet4.MembersDataTable();
+            TMS_DatabaseDataSet6.MembersDataTable dataTable = new TMS_DatabaseDataSet6.MembersDataTable();
             this.Adapter.Fill(dataTable);
             return dataTable;
         }
@@ -1065,14 +945,14 @@ SELECT memberNo, fName, mName, lName, address, phoneNo, mobileNo, tagId FROM Mem
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        public virtual int Update(TMS_DatabaseDataSet4.MembersDataTable dataTable) {
+        public virtual int Update(TMS_DatabaseDataSet6.MembersDataTable dataTable) {
             return this.Adapter.Update(dataTable);
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        public virtual int Update(TMS_DatabaseDataSet4 dataSet) {
+        public virtual int Update(TMS_DatabaseDataSet6 dataSet) {
             return this.Adapter.Update(dataSet, "Members");
         }
         
@@ -1130,7 +1010,7 @@ SELECT memberNo, fName, mName, lName, address, phoneNo, mobileNo, tagId FROM Mem
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Update, true)]
-        public virtual int Update(string memberNo, string fName, string mName, string lName, string address, string phoneNo, string mobileNo, string tagId, string Original_memberNo, string Original_tagId) {
+        public virtual int Update(string memberNo, string fName, string mName, string lName, string tagId, string Original_memberNo, string Original_tagId) {
             if ((memberNo == null)) {
                 throw new global::System.ArgumentNullException("memberNo");
             }
@@ -1155,43 +1035,25 @@ SELECT memberNo, fName, mName, lName, address, phoneNo, mobileNo, tagId FROM Mem
             else {
                 this.Adapter.UpdateCommand.Parameters[3].Value = ((string)(lName));
             }
-            if ((address == null)) {
+            if ((tagId == null)) {
                 this.Adapter.UpdateCommand.Parameters[4].Value = global::System.DBNull.Value;
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[4].Value = ((string)(address));
-            }
-            if ((phoneNo == null)) {
-                this.Adapter.UpdateCommand.Parameters[5].Value = global::System.DBNull.Value;
-            }
-            else {
-                this.Adapter.UpdateCommand.Parameters[5].Value = ((string)(phoneNo));
-            }
-            if ((mobileNo == null)) {
-                throw new global::System.ArgumentNullException("mobileNo");
-            }
-            else {
-                this.Adapter.UpdateCommand.Parameters[6].Value = ((string)(mobileNo));
-            }
-            if ((tagId == null)) {
-                this.Adapter.UpdateCommand.Parameters[7].Value = global::System.DBNull.Value;
-            }
-            else {
-                this.Adapter.UpdateCommand.Parameters[7].Value = ((string)(tagId));
+                this.Adapter.UpdateCommand.Parameters[4].Value = ((string)(tagId));
             }
             if ((Original_memberNo == null)) {
                 throw new global::System.ArgumentNullException("Original_memberNo");
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[8].Value = ((string)(Original_memberNo));
+                this.Adapter.UpdateCommand.Parameters[5].Value = ((string)(Original_memberNo));
             }
             if ((Original_tagId == null)) {
-                this.Adapter.UpdateCommand.Parameters[9].Value = ((object)(1));
-                this.Adapter.UpdateCommand.Parameters[10].Value = global::System.DBNull.Value;
+                this.Adapter.UpdateCommand.Parameters[6].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[7].Value = global::System.DBNull.Value;
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[9].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[10].Value = ((string)(Original_tagId));
+                this.Adapter.UpdateCommand.Parameters[6].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[7].Value = ((string)(Original_tagId));
             }
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.UpdateCommand.Connection.State;
             if (((this.Adapter.UpdateCommand.Connection.State & global::System.Data.ConnectionState.Open) 
@@ -1213,8 +1075,8 @@ SELECT memberNo, fName, mName, lName, address, phoneNo, mobileNo, tagId FROM Mem
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Update, true)]
-        public virtual int Update(string fName, string mName, string lName, string address, string phoneNo, string mobileNo, string tagId, string Original_memberNo, string Original_tagId) {
-            return this.Update(Original_memberNo, fName, mName, lName, address, phoneNo, mobileNo, tagId, Original_memberNo, Original_tagId);
+        public virtual int Update(string fName, string mName, string lName, string tagId, string Original_memberNo, string Original_tagId) {
+            return this.Update(Original_memberNo, fName, mName, lName, tagId, Original_memberNo, Original_tagId);
         }
     }
     
@@ -1309,7 +1171,7 @@ SELECT memberNo, fName, mName, lName, address, phoneNo, mobileNo, tagId FROM Mem
         ///</summary>
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        private int UpdateUpdatedRows(TMS_DatabaseDataSet4 dataSet, global::System.Collections.Generic.List<global::System.Data.DataRow> allChangedRows, global::System.Collections.Generic.List<global::System.Data.DataRow> allAddedRows) {
+        private int UpdateUpdatedRows(TMS_DatabaseDataSet6 dataSet, global::System.Collections.Generic.List<global::System.Data.DataRow> allChangedRows, global::System.Collections.Generic.List<global::System.Data.DataRow> allAddedRows) {
             int result = 0;
             if ((this._membersTableAdapter != null)) {
                 global::System.Data.DataRow[] updatedRows = dataSet.Members.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
@@ -1328,7 +1190,7 @@ SELECT memberNo, fName, mName, lName, address, phoneNo, mobileNo, tagId FROM Mem
         ///</summary>
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        private int UpdateInsertedRows(TMS_DatabaseDataSet4 dataSet, global::System.Collections.Generic.List<global::System.Data.DataRow> allAddedRows) {
+        private int UpdateInsertedRows(TMS_DatabaseDataSet6 dataSet, global::System.Collections.Generic.List<global::System.Data.DataRow> allAddedRows) {
             int result = 0;
             if ((this._membersTableAdapter != null)) {
                 global::System.Data.DataRow[] addedRows = dataSet.Members.Select(null, null, global::System.Data.DataViewRowState.Added);
@@ -1346,7 +1208,7 @@ SELECT memberNo, fName, mName, lName, address, phoneNo, mobileNo, tagId FROM Mem
         ///</summary>
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        private int UpdateDeletedRows(TMS_DatabaseDataSet4 dataSet, global::System.Collections.Generic.List<global::System.Data.DataRow> allChangedRows) {
+        private int UpdateDeletedRows(TMS_DatabaseDataSet6 dataSet, global::System.Collections.Generic.List<global::System.Data.DataRow> allChangedRows) {
             int result = 0;
             if ((this._membersTableAdapter != null)) {
                 global::System.Data.DataRow[] deletedRows = dataSet.Members.Select(null, null, global::System.Data.DataViewRowState.Deleted);
@@ -1388,7 +1250,7 @@ SELECT memberNo, fName, mName, lName, address, phoneNo, mobileNo, tagId FROM Mem
         ///</summary>
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        public virtual int UpdateAll(TMS_DatabaseDataSet4 dataSet) {
+        public virtual int UpdateAll(TMS_DatabaseDataSet6 dataSet) {
             if ((dataSet == null)) {
                 throw new global::System.ArgumentNullException("dataSet");
             }

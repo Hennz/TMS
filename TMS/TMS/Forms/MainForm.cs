@@ -359,5 +359,10 @@ namespace TMS
         {
             _reportsController.RoutersReport();
         }
+
+        private void btnReptag_Click(object sender, EventArgs e)
+        {
+            _reportsController.TagsReport();
+        }
     }
 }

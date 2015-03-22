@@ -29,5 +29,11 @@ namespace TMS
             _reportForm = new ReportForm(REPORT_TYPES.ROUTER);
             _reportForm.Show();
         }
+
+        public void TagsReport()
+        {
+            _reportForm = new ReportForm(REPORT_TYPES.TAGS);
+            _reportForm.Show();
+        }
     }
 }

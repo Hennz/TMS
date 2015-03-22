@@ -277,7 +277,7 @@
                       <Paragraph>
                         <TextRuns>
                           <TextRun>
-                            <Value>Site Name</Value>
+                            <Value>Site Name:</Value>
                             <Style>
                               <FontWeight>Bold</FontWeight>
                             </Style>

@@ -31,20 +31,34 @@
             this.components = new System.ComponentModel.Container();
             Microsoft.Reporting.WinForms.ReportDataSource reportDataSource1 = new Microsoft.Reporting.WinForms.ReportDataSource();
             Microsoft.Reporting.WinForms.ReportDataSource reportDataSource2 = new Microsoft.Reporting.WinForms.ReportDataSource();
+            Microsoft.Reporting.WinForms.ReportDataSource reportDataSource3 = new Microsoft.Reporting.WinForms.ReportDataSource();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ReportForm));
+            this.RoutersBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.TMS_DatabaseDataSet5 = new TMS.TMS_DatabaseDataSet5();
             this.MembersBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.TMS_DatabaseDataSet4 = new TMS.TMS_DatabaseDataSet4();
             this.routerReportViewer = new Microsoft.Reporting.WinForms.ReportViewer();
             this.MembersTableAdapter = new TMS.TMS_DatabaseDataSet4TableAdapters.MembersTableAdapter();
             this.membersReportViewer = new Microsoft.Reporting.WinForms.ReportViewer();
-            this.RoutersBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.TMS_DatabaseDataSet5 = new TMS.TMS_DatabaseDataSet5();
             this.RoutersTableAdapter = new TMS.TMS_DatabaseDataSet5TableAdapters.RoutersTableAdapter();
-            ((System.ComponentModel.ISupportInitialize)(this.MembersBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.TMS_DatabaseDataSet4)).BeginInit();
+            this.tagsReportViewer = new Microsoft.Reporting.WinForms.ReportViewer();
+            this.TMS_DatabaseDataSet6 = new TMS.TMS_DatabaseDataSet6();
             ((System.ComponentModel.ISupportInitialize)(this.RoutersBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.TMS_DatabaseDataSet5)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.MembersBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.TMS_DatabaseDataSet4)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.TMS_DatabaseDataSet6)).BeginInit();
             this.SuspendLayout();
+            // 
+            // RoutersBindingSource
+            // 
+            this.RoutersBindingSource.DataMember = "Routers";
+            this.RoutersBindingSource.DataSource = this.TMS_DatabaseDataSet5;
+            // 
+            // TMS_DatabaseDataSet5
+            // 
+            this.TMS_DatabaseDataSet5.DataSetName = "TMS_DatabaseDataSet5";
+            this.TMS_DatabaseDataSet5.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
             // MembersBindingSource
             // 
@@ -86,19 +100,27 @@
             this.membersReportViewer.TabIndex = 1;
             this.membersReportViewer.Visible = false;
             // 
-            // RoutersBindingSource
-            // 
-            this.RoutersBindingSource.DataMember = "Routers";
-            this.RoutersBindingSource.DataSource = this.TMS_DatabaseDataSet5;
-            // 
-            // TMS_DatabaseDataSet5
-            // 
-            this.TMS_DatabaseDataSet5.DataSetName = "TMS_DatabaseDataSet5";
-            this.TMS_DatabaseDataSet5.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
             // RoutersTableAdapter
             // 
             this.RoutersTableAdapter.ClearBeforeFill = true;
+            // 
+            // tagsReportViewer
+            // 
+            this.tagsReportViewer.Dock = System.Windows.Forms.DockStyle.Fill;
+            reportDataSource3.Name = "MemberTagsDataSet";
+            reportDataSource3.Value = this.MembersBindingSource;
+            this.tagsReportViewer.LocalReport.DataSources.Add(reportDataSource3);
+            this.tagsReportViewer.LocalReport.ReportEmbeddedResource = "TMS.Reports.TagDetailsReport.rdlc";
+            this.tagsReportViewer.Location = new System.Drawing.Point(0, 0);
+            this.tagsReportViewer.Name = "tagsReportViewer";
+            this.tagsReportViewer.Size = new System.Drawing.Size(751, 428);
+            this.tagsReportViewer.TabIndex = 2;
+            this.tagsReportViewer.Visible = false;
+            // 
+            // TMS_DatabaseDataSet6
+            // 
+            this.TMS_DatabaseDataSet6.DataSetName = "TMS_DatabaseDataSet6";
+            this.TMS_DatabaseDataSet6.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
             // ReportForm
             // 
@@ -106,6 +128,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ControlLightLight;
             this.ClientSize = new System.Drawing.Size(751, 428);
+            this.Controls.Add(this.tagsReportViewer);
             this.Controls.Add(this.membersReportViewer);
             this.Controls.Add(this.routerReportViewer);
             this.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -114,10 +137,11 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "ReportForm";
             this.Load += new System.EventHandler(this.ReportForm_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.MembersBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.TMS_DatabaseDataSet4)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.RoutersBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.TMS_DatabaseDataSet5)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.MembersBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.TMS_DatabaseDataSet4)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.TMS_DatabaseDataSet6)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -132,5 +156,7 @@
         private TMS_DatabaseDataSet5 TMS_DatabaseDataSet5;
         private TMS_DatabaseDataSet5TableAdapters.RoutersTableAdapter RoutersTableAdapter;
         private Microsoft.Reporting.WinForms.ReportViewer membersReportViewer;
+        private Microsoft.Reporting.WinForms.ReportViewer tagsReportViewer;
+        private TMS_DatabaseDataSet6 TMS_DatabaseDataSet6;
     }
 }
