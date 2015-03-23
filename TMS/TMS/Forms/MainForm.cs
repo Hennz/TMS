@@ -298,6 +298,10 @@ namespace TMS
 
         private void MainForm_Load(object sender, EventArgs e)
         {
+            // TODO: This line of code loads data into the 'tMS_DatabaseDataSet2.Members' table. You can move, or remove it, as needed.
+            this.membersTableAdapter1.Fill(this.tMS_DatabaseDataSet2.Members);
+            // TODO: This line of code loads data into the 'tMS_DatabaseDataSet.Members' table. You can move, or remove it, as needed.
+            this.membersTableAdapter.Fill(this.tMS_DatabaseDataSet.Members);
             // TODO: This line of code loads data into the 'tMS_DatabaseDataSet1.Routers' table. You can move, or remove it, as needed.
             this.routersTableAdapter.Fill(this.tMS_DatabaseDataSet1.Routers);
 
@@ -363,6 +367,11 @@ namespace TMS
         private void btnReptag_Click(object sender, EventArgs e)
         {
             _reportsController.TagsReport();
+        }
+
+        private void btnRepTWM_Click(object sender, EventArgs e)
+        {
+            _reportsController.TWMinersReport(cboMinerReport.SelectedValue.ToString());
         }
     }
 }

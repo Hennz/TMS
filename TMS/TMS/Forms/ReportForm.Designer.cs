@@ -32,6 +32,7 @@
             Microsoft.Reporting.WinForms.ReportDataSource reportDataSource1 = new Microsoft.Reporting.WinForms.ReportDataSource();
             Microsoft.Reporting.WinForms.ReportDataSource reportDataSource2 = new Microsoft.Reporting.WinForms.ReportDataSource();
             Microsoft.Reporting.WinForms.ReportDataSource reportDataSource3 = new Microsoft.Reporting.WinForms.ReportDataSource();
+            Microsoft.Reporting.WinForms.ReportDataSource reportDataSource4 = new Microsoft.Reporting.WinForms.ReportDataSource();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ReportForm));
             this.RoutersBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.TMS_DatabaseDataSet5 = new TMS.TMS_DatabaseDataSet5();
@@ -43,11 +44,17 @@
             this.RoutersTableAdapter = new TMS.TMS_DatabaseDataSet5TableAdapters.RoutersTableAdapter();
             this.tagsReportViewer = new Microsoft.Reporting.WinForms.ReportViewer();
             this.TMS_DatabaseDataSet6 = new TMS.TMS_DatabaseDataSet6();
+            this.timeWiseReportViewer = new Microsoft.Reporting.WinForms.ReportViewer();
+            this.TMS_TWMinersDataSet = new TMS.TMS_TWMinersDataSet();
+            this.TWMinerProcedureBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.TWMinerProcedureTableAdapter = new TMS.TMS_TWMinersDataSetTableAdapters.TWMinerProcedureTableAdapter();
             ((System.ComponentModel.ISupportInitialize)(this.RoutersBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.TMS_DatabaseDataSet5)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.MembersBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.TMS_DatabaseDataSet4)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.TMS_DatabaseDataSet6)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.TMS_TWMinersDataSet)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.TWMinerProcedureBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // RoutersBindingSource
@@ -122,12 +129,40 @@
             this.TMS_DatabaseDataSet6.DataSetName = "TMS_DatabaseDataSet6";
             this.TMS_DatabaseDataSet6.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
+            // timeWiseReportViewer
+            // 
+            this.timeWiseReportViewer.Dock = System.Windows.Forms.DockStyle.Fill;
+            reportDataSource4.Name = "TWMinerSet";
+            reportDataSource4.Value = this.TWMinerProcedureBindingSource;
+            this.timeWiseReportViewer.LocalReport.DataSources.Add(reportDataSource4);
+            this.timeWiseReportViewer.LocalReport.ReportEmbeddedResource = "TMS.Reports.TWMinerReport.rdlc";
+            this.timeWiseReportViewer.Location = new System.Drawing.Point(0, 0);
+            this.timeWiseReportViewer.Name = "timeWiseReportViewer";
+            this.timeWiseReportViewer.Size = new System.Drawing.Size(751, 428);
+            this.timeWiseReportViewer.TabIndex = 3;
+            this.timeWiseReportViewer.Visible = false;
+            // 
+            // TMS_TWMinersDataSet
+            // 
+            this.TMS_TWMinersDataSet.DataSetName = "TMS_TWMinersDataSet";
+            this.TMS_TWMinersDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
+            // TWMinerProcedureBindingSource
+            // 
+            this.TWMinerProcedureBindingSource.DataMember = "TWMinerProcedure";
+            this.TWMinerProcedureBindingSource.DataSource = this.TMS_TWMinersDataSet;
+            // 
+            // TWMinerProcedureTableAdapter
+            // 
+            this.TWMinerProcedureTableAdapter.ClearBeforeFill = true;
+            // 
             // ReportForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ControlLightLight;
             this.ClientSize = new System.Drawing.Size(751, 428);
+            this.Controls.Add(this.timeWiseReportViewer);
             this.Controls.Add(this.tagsReportViewer);
             this.Controls.Add(this.membersReportViewer);
             this.Controls.Add(this.routerReportViewer);
@@ -135,13 +170,15 @@
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "ReportForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "ReportForm";
+            this.Text = "Report";
             this.Load += new System.EventHandler(this.ReportForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.RoutersBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.TMS_DatabaseDataSet5)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.MembersBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.TMS_DatabaseDataSet4)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.TMS_DatabaseDataSet6)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.TMS_TWMinersDataSet)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.TWMinerProcedureBindingSource)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -158,5 +195,9 @@
         private Microsoft.Reporting.WinForms.ReportViewer membersReportViewer;
         private Microsoft.Reporting.WinForms.ReportViewer tagsReportViewer;
         private TMS_DatabaseDataSet6 TMS_DatabaseDataSet6;
+        private Microsoft.Reporting.WinForms.ReportViewer timeWiseReportViewer;
+        private System.Windows.Forms.BindingSource TWMinerProcedureBindingSource;
+        private TMS_TWMinersDataSet TMS_TWMinersDataSet;
+        private TMS_TWMinersDataSetTableAdapters.TWMinerProcedureTableAdapter TWMinerProcedureTableAdapter;
     }
 }

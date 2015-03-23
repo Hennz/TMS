@@ -17,8 +17,8 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.TreeNode treeNode1 = new System.Windows.Forms.TreeNode("Mine Site Name");
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.TreeNode treeNode5 = new System.Windows.Forms.TreeNode("Mine Site Name");
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
             this.splitMain = new System.Windows.Forms.SplitContainer();
             this.lblActiveMiners = new System.Windows.Forms.Label();
@@ -74,16 +74,12 @@
             this.lblAllMiners = new System.Windows.Forms.Label();
             this.tabReports = new System.Windows.Forms.TabPage();
             this.pnlReportInput = new System.Windows.Forms.Panel();
-            this.lblRepMBock = new System.Windows.Forms.Label();
-            this.btnMRepBlock = new System.Windows.Forms.Button();
-            this.lblRepMPos = new System.Windows.Forms.Label();
-            this.btnRepMPos = new System.Windows.Forms.Button();
+            this.lblRepTWM = new System.Windows.Forms.Label();
+            this.btnRepTWM = new System.Windows.Forms.Button();
             this.lblRepTag = new System.Windows.Forms.Label();
             this.btnReptag = new System.Windows.Forms.Button();
             this.lblRepMembers = new System.Windows.Forms.Label();
             this.btnRepMembers = new System.Windows.Forms.Button();
-            this.lblRepSensors = new System.Windows.Forms.Label();
-            this.btnRepSensors = new System.Windows.Forms.Button();
             this.lblRepRouter = new System.Windows.Forms.Label();
             this.btnRepRouter = new System.Windows.Forms.Button();
             this.tabAttendance = new System.Windows.Forms.TabPage();
@@ -97,6 +93,13 @@
             this.btnViewMessages = new System.Windows.Forms.Button();
             this.tMS_DatabaseDataSet = new TMS.TMS_DatabaseDataSet();
             this.tMSDatabaseDataSetBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.cboMinerReport = new System.Windows.Forms.ComboBox();
+            this.membersBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.membersTableAdapter = new TMS.TMS_DatabaseDataSetTableAdapters.MembersTableAdapter();
+            this.tMS_DatabaseDataSet2 = new TMS.TMS_DatabaseDataSet2();
+            this.tMSDatabaseDataSet2BindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.membersBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
+            this.membersTableAdapter1 = new TMS.TMS_DatabaseDataSet2TableAdapters.MembersTableAdapter();
             ((System.ComponentModel.ISupportInitialize)(this.splitMain)).BeginInit();
             this.splitMain.Panel1.SuspendLayout();
             this.splitMain.Panel2.SuspendLayout();
@@ -123,6 +126,10 @@
             this.tabReports.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.tMS_DatabaseDataSet)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.tMSDatabaseDataSetBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.membersBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.tMS_DatabaseDataSet2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.tMSDatabaseDataSet2BindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.membersBindingSource1)).BeginInit();
             this.SuspendLayout();
             // 
             // splitMain
@@ -240,10 +247,10 @@
             this.tvAllRouters.Location = new System.Drawing.Point(4, 5);
             this.tvAllRouters.Margin = new System.Windows.Forms.Padding(2);
             this.tvAllRouters.Name = "tvAllRouters";
-            treeNode1.Name = "MineSite";
-            treeNode1.Text = "Mine Site Name";
+            treeNode5.Name = "MineSite";
+            treeNode5.Text = "Mine Site Name";
             this.tvAllRouters.Nodes.AddRange(new System.Windows.Forms.TreeNode[] {
-            treeNode1});
+            treeNode5});
             this.tvAllRouters.Size = new System.Drawing.Size(224, 358);
             this.tvAllRouters.TabIndex = 0;
             this.tvAllRouters.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.tvAllRouters_AfterSelect);
@@ -262,8 +269,8 @@
             // 
             // dataRouters
             // 
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Segoe UI", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dataRouters.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle5.Font = new System.Drawing.Font("Segoe UI", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dataRouters.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle5;
             this.dataRouters.AutoGenerateColumns = false;
             this.dataRouters.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dataRouters.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
@@ -796,17 +803,14 @@
             // 
             // tabReports
             // 
+            this.tabReports.Controls.Add(this.cboMinerReport);
             this.tabReports.Controls.Add(this.pnlReportInput);
-            this.tabReports.Controls.Add(this.lblRepMBock);
-            this.tabReports.Controls.Add(this.btnMRepBlock);
-            this.tabReports.Controls.Add(this.lblRepMPos);
-            this.tabReports.Controls.Add(this.btnRepMPos);
+            this.tabReports.Controls.Add(this.lblRepTWM);
+            this.tabReports.Controls.Add(this.btnRepTWM);
             this.tabReports.Controls.Add(this.lblRepTag);
             this.tabReports.Controls.Add(this.btnReptag);
             this.tabReports.Controls.Add(this.lblRepMembers);
             this.tabReports.Controls.Add(this.btnRepMembers);
-            this.tabReports.Controls.Add(this.lblRepSensors);
-            this.tabReports.Controls.Add(this.btnRepSensors);
             this.tabReports.Controls.Add(this.lblRepRouter);
             this.tabReports.Controls.Add(this.btnRepRouter);
             this.tabReports.Location = new System.Drawing.Point(4, 28);
@@ -823,62 +827,41 @@
             this.pnlReportInput.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.pnlReportInput.Location = new System.Drawing.Point(241, 1);
+            this.pnlReportInput.Location = new System.Drawing.Point(295, 1);
             this.pnlReportInput.Margin = new System.Windows.Forms.Padding(2);
             this.pnlReportInput.Name = "pnlReportInput";
-            this.pnlReportInput.Size = new System.Drawing.Size(490, 51);
+            this.pnlReportInput.Size = new System.Drawing.Size(436, 51);
             this.pnlReportInput.TabIndex = 16;
             // 
-            // lblRepMBock
+            // lblRepTWM
             // 
-            this.lblRepMBock.AutoSize = true;
-            this.lblRepMBock.Font = new System.Drawing.Font("Segoe UI", 6F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblRepMBock.Location = new System.Drawing.Point(130, 32);
-            this.lblRepMBock.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.lblRepMBock.MaximumSize = new System.Drawing.Size(34, 0);
-            this.lblRepMBock.Name = "lblRepMBock";
-            this.lblRepMBock.Size = new System.Drawing.Size(28, 22);
-            this.lblRepMBock.TabIndex = 15;
-            this.lblRepMBock.Text = "Miner Block";
+            this.lblRepTWM.AutoSize = true;
+            this.lblRepTWM.Font = new System.Drawing.Font("Segoe UI", 6F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblRepTWM.Location = new System.Drawing.Point(131, 29);
+            this.lblRepTWM.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lblRepTWM.MaximumSize = new System.Drawing.Size(34, 0);
+            this.lblRepTWM.Name = "lblRepTWM";
+            this.lblRepTWM.Size = new System.Drawing.Size(26, 22);
+            this.lblRepTWM.TabIndex = 13;
+            this.lblRepTWM.Text = "Miner Path";
+            this.lblRepTWM.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             // 
-            // btnMRepBlock
+            // btnRepTWM
             // 
-            this.btnMRepBlock.FlatAppearance.BorderSize = 0;
-            this.btnMRepBlock.Location = new System.Drawing.Point(125, 1);
-            this.btnMRepBlock.Margin = new System.Windows.Forms.Padding(2);
-            this.btnMRepBlock.Name = "btnMRepBlock";
-            this.btnMRepBlock.Size = new System.Drawing.Size(34, 37);
-            this.btnMRepBlock.TabIndex = 14;
-            this.btnMRepBlock.UseVisualStyleBackColor = true;
-            // 
-            // lblRepMPos
-            // 
-            this.lblRepMPos.AutoSize = true;
-            this.lblRepMPos.Font = new System.Drawing.Font("Segoe UI", 6F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblRepMPos.Location = new System.Drawing.Point(165, 32);
-            this.lblRepMPos.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.lblRepMPos.MaximumSize = new System.Drawing.Size(34, 0);
-            this.lblRepMPos.Name = "lblRepMPos";
-            this.lblRepMPos.Size = new System.Drawing.Size(34, 22);
-            this.lblRepMPos.TabIndex = 13;
-            this.lblRepMPos.Text = "Miner Position";
-            this.lblRepMPos.TextAlign = System.Drawing.ContentAlignment.TopCenter;
-            // 
-            // btnRepMPos
-            // 
-            this.btnRepMPos.FlatAppearance.BorderSize = 0;
-            this.btnRepMPos.Location = new System.Drawing.Point(164, 1);
-            this.btnRepMPos.Margin = new System.Windows.Forms.Padding(2);
-            this.btnRepMPos.Name = "btnRepMPos";
-            this.btnRepMPos.Size = new System.Drawing.Size(34, 37);
-            this.btnRepMPos.TabIndex = 12;
-            this.btnRepMPos.UseVisualStyleBackColor = true;
+            this.btnRepTWM.FlatAppearance.BorderSize = 0;
+            this.btnRepTWM.Location = new System.Drawing.Point(126, 1);
+            this.btnRepTWM.Margin = new System.Windows.Forms.Padding(2);
+            this.btnRepTWM.Name = "btnRepTWM";
+            this.btnRepTWM.Size = new System.Drawing.Size(34, 37);
+            this.btnRepTWM.TabIndex = 12;
+            this.btnRepTWM.UseVisualStyleBackColor = true;
+            this.btnRepTWM.Click += new System.EventHandler(this.btnRepTWM_Click);
             // 
             // lblRepTag
             // 
             this.lblRepTag.AutoSize = true;
             this.lblRepTag.Font = new System.Drawing.Font("Segoe UI", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblRepTag.Location = new System.Drawing.Point(206, 36);
+            this.lblRepTag.Location = new System.Drawing.Point(93, 36);
             this.lblRepTag.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblRepTag.Name = "lblRepTag";
             this.lblRepTag.Size = new System.Drawing.Size(25, 13);
@@ -888,7 +871,7 @@
             // btnReptag
             // 
             this.btnReptag.FlatAppearance.BorderSize = 0;
-            this.btnReptag.Location = new System.Drawing.Point(202, 1);
+            this.btnReptag.Location = new System.Drawing.Point(88, 1);
             this.btnReptag.Margin = new System.Windows.Forms.Padding(2);
             this.btnReptag.Name = "btnReptag";
             this.btnReptag.Size = new System.Drawing.Size(34, 37);
@@ -900,7 +883,7 @@
             // 
             this.lblRepMembers.AutoSize = true;
             this.lblRepMembers.Font = new System.Drawing.Font("Segoe UI", 7.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblRepMembers.Location = new System.Drawing.Point(88, 37);
+            this.lblRepMembers.Location = new System.Drawing.Point(52, 37);
             this.lblRepMembers.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblRepMembers.Name = "lblRepMembers";
             this.lblRepMembers.Size = new System.Drawing.Size(30, 12);
@@ -910,34 +893,13 @@
             // btnRepMembers
             // 
             this.btnRepMembers.FlatAppearance.BorderSize = 0;
-            this.btnRepMembers.Location = new System.Drawing.Point(87, 1);
+            this.btnRepMembers.Location = new System.Drawing.Point(50, 1);
             this.btnRepMembers.Margin = new System.Windows.Forms.Padding(2);
             this.btnRepMembers.Name = "btnRepMembers";
             this.btnRepMembers.Size = new System.Drawing.Size(34, 37);
             this.btnRepMembers.TabIndex = 8;
             this.btnRepMembers.UseVisualStyleBackColor = true;
             this.btnRepMembers.Click += new System.EventHandler(this.btnRepMembers_Click);
-            // 
-            // lblRepSensors
-            // 
-            this.lblRepSensors.AutoSize = true;
-            this.lblRepSensors.Font = new System.Drawing.Font("Segoe UI", 7.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblRepSensors.Location = new System.Drawing.Point(46, 37);
-            this.lblRepSensors.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.lblRepSensors.Name = "lblRepSensors";
-            this.lblRepSensors.Size = new System.Drawing.Size(38, 12);
-            this.lblRepSensors.TabIndex = 7;
-            this.lblRepSensors.Text = "Sensors";
-            // 
-            // btnRepSensors
-            // 
-            this.btnRepSensors.FlatAppearance.BorderSize = 0;
-            this.btnRepSensors.Location = new System.Drawing.Point(49, 1);
-            this.btnRepSensors.Margin = new System.Windows.Forms.Padding(2);
-            this.btnRepSensors.Name = "btnRepSensors";
-            this.btnRepSensors.Size = new System.Drawing.Size(34, 37);
-            this.btnRepSensors.TabIndex = 6;
-            this.btnRepSensors.UseVisualStyleBackColor = true;
             // 
             // lblRepRouter
             // 
@@ -1074,6 +1036,45 @@
             this.tMSDatabaseDataSetBindingSource.DataSource = this.tMS_DatabaseDataSet;
             this.tMSDatabaseDataSetBindingSource.Position = 0;
             // 
+            // cboMinerReport
+            // 
+            this.cboMinerReport.DataSource = this.membersBindingSource1;
+            this.cboMinerReport.DisplayMember = "memberNo";
+            this.cboMinerReport.FormattingEnabled = true;
+            this.cboMinerReport.Location = new System.Drawing.Point(165, 7);
+            this.cboMinerReport.Name = "cboMinerReport";
+            this.cboMinerReport.Size = new System.Drawing.Size(121, 27);
+            this.cboMinerReport.TabIndex = 17;
+            this.cboMinerReport.ValueMember = "MemberNo";
+            // 
+            // membersBindingSource
+            // 
+            this.membersBindingSource.DataMember = "Members";
+            this.membersBindingSource.DataSource = this.tMSDatabaseDataSetBindingSource;
+            // 
+            // membersTableAdapter
+            // 
+            this.membersTableAdapter.ClearBeforeFill = true;
+            // 
+            // tMS_DatabaseDataSet2
+            // 
+            this.tMS_DatabaseDataSet2.DataSetName = "TMS_DatabaseDataSet2";
+            this.tMS_DatabaseDataSet2.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
+            // tMSDatabaseDataSet2BindingSource
+            // 
+            this.tMSDatabaseDataSet2BindingSource.DataSource = this.tMS_DatabaseDataSet2;
+            this.tMSDatabaseDataSet2BindingSource.Position = 0;
+            // 
+            // membersBindingSource1
+            // 
+            this.membersBindingSource1.DataMember = "Members";
+            this.membersBindingSource1.DataSource = this.tMSDatabaseDataSet2BindingSource;
+            // 
+            // membersTableAdapter1
+            // 
+            this.membersTableAdapter1.ClearBeforeFill = true;
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1133,6 +1134,10 @@
             this.tabReports.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.tMS_DatabaseDataSet)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.tMSDatabaseDataSetBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.membersBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.tMS_DatabaseDataSet2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.tMSDatabaseDataSet2BindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.membersBindingSource1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1175,17 +1180,13 @@
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Label lblRepSensors;
-        private System.Windows.Forms.Button btnRepSensors;
         private System.Windows.Forms.Label lblRepRouter;
         private System.Windows.Forms.Button btnRepRouter;
         private System.Windows.Forms.Label lblRepMembers;
         private System.Windows.Forms.Button btnRepMembers;
         private System.Windows.Forms.Panel pnlReportInput;
-        private System.Windows.Forms.Label lblRepMBock;
-        private System.Windows.Forms.Button btnMRepBlock;
-        private System.Windows.Forms.Label lblRepMPos;
-        private System.Windows.Forms.Button btnRepMPos;
+        private System.Windows.Forms.Label lblRepTWM;
+        private System.Windows.Forms.Button btnRepTWM;
         private System.Windows.Forms.Label lblRepTag;
         private System.Windows.Forms.Button btnReptag;
         private System.Windows.Forms.Button btnSaveScale;
@@ -1217,6 +1218,13 @@
         private System.Windows.Forms.ToolStripMenuItem alertToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem broadcastAllToolStripMenuItem;
         private System.Windows.Forms.Button btnTest;
+        private System.Windows.Forms.ComboBox cboMinerReport;
+        private System.Windows.Forms.BindingSource membersBindingSource;
+        private TMS_DatabaseDataSetTableAdapters.MembersTableAdapter membersTableAdapter;
+        private System.Windows.Forms.BindingSource tMSDatabaseDataSet2BindingSource;
+        private TMS_DatabaseDataSet2 tMS_DatabaseDataSet2;
+        private System.Windows.Forms.BindingSource membersBindingSource1;
+        private TMS_DatabaseDataSet2TableAdapters.MembersTableAdapter membersTableAdapter1;
     }
 }
 

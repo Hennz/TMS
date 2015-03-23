@@ -14,18 +14,22 @@ namespace TMS
     {
         MEMBER,
         ROUTER,
-        TAGS
+        TAGS,
+        TWMINER
     }
 
     public partial class ReportForm : Form
     {
         REPORT_TYPES reportType;
 
-        public ReportForm(REPORT_TYPES type)
+        string twMemberNo;
+
+        public ReportForm(REPORT_TYPES type, string memberNo = null)
         {
             InitializeComponent();
 
             reportType = type;
+            twMemberNo = memberNo;
         }
 
         private void ReportForm_Load(object sender, EventArgs e)
@@ -47,6 +51,12 @@ namespace TMS
                 this.MembersTableAdapter.Fill(this.TMS_DatabaseDataSet4.Members);
                 this.tagsReportViewer.RefreshReport();
                 tagsReportViewer.Visible = true;
+            }
+            else if (reportType == REPORT_TYPES.TWMINER)
+            {
+                this.TWMinerProcedureTableAdapter.Fill(this.TMS_TWMinersDataSet.TWMinerProcedure, twMemberNo);
+                this.timeWiseReportViewer.RefreshReport();
+                timeWiseReportViewer.Visible = true;
             }
         }
     }

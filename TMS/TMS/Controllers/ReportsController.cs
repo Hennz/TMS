@@ -35,5 +35,11 @@ namespace TMS
             _reportForm = new ReportForm(REPORT_TYPES.TAGS);
             _reportForm.Show();
         }
+
+        public void TWMinersReport(string memberNo)
+        {
+            _reportForm = new ReportForm(REPORT_TYPES.TWMINER, memberNo);
+            _reportForm.Show();
+        }
     }
 }

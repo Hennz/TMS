@@ -32,31 +32,31 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(TestCommForm));
             this.btnOK = new System.Windows.Forms.Button();
             this.lstMiners = new System.Windows.Forms.ListBox();
+            this.membersBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
+            this.tMS_DatabaseDataSet2 = new TMS.TMS_DatabaseDataSet2();
             this.lstRouters = new System.Windows.Forms.ListBox();
+            this.routersBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.tMS_DatabaseDataSet3 = new TMS.TMS_DatabaseDataSet3();
             this.lblArrivedAt = new System.Windows.Forms.Label();
             this.tMS_DatabaseDataSet = new TMS.TMS_DatabaseDataSet();
             this.tMSDatabaseDataSetBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.membersBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.membersTableAdapter = new TMS.TMS_DatabaseDataSetTableAdapters.MembersTableAdapter();
-            this.tMS_DatabaseDataSet2 = new TMS.TMS_DatabaseDataSet2();
-            this.membersBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
             this.membersTableAdapter1 = new TMS.TMS_DatabaseDataSet2TableAdapters.MembersTableAdapter();
             this.tMS_DatabaseDataSet1 = new TMS.TMS_DatabaseDataSet1();
             this.tMSDatabaseDataSet1BindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.tMSDatabaseDataSet2BindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.tMS_DatabaseDataSet3 = new TMS.TMS_DatabaseDataSet3();
-            this.routersBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.routersTableAdapter = new TMS.TMS_DatabaseDataSet3TableAdapters.RoutersTableAdapter();
+            ((System.ComponentModel.ISupportInitialize)(this.membersBindingSource1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.tMS_DatabaseDataSet2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.routersBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.tMS_DatabaseDataSet3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.tMS_DatabaseDataSet)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.tMSDatabaseDataSetBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.membersBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.tMS_DatabaseDataSet2)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.membersBindingSource1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.tMS_DatabaseDataSet1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.tMSDatabaseDataSet1BindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.tMSDatabaseDataSet2BindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.tMS_DatabaseDataSet3)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.routersBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // btnOK
@@ -74,24 +74,44 @@
             this.lstMiners.DataSource = this.membersBindingSource1;
             this.lstMiners.DisplayMember = "lName";
             this.lstMiners.FormattingEnabled = true;
-            this.lstMiners.ItemHeight = 17;
+            this.lstMiners.ItemHeight = 12;
             this.lstMiners.Location = new System.Drawing.Point(12, 12);
             this.lstMiners.Name = "lstMiners";
-            this.lstMiners.Size = new System.Drawing.Size(120, 327);
+            this.lstMiners.Size = new System.Drawing.Size(120, 316);
             this.lstMiners.TabIndex = 1;
             this.lstMiners.ValueMember = "memberNo";
+            // 
+            // membersBindingSource1
+            // 
+            this.membersBindingSource1.DataMember = "Members";
+            this.membersBindingSource1.DataSource = this.tMS_DatabaseDataSet2;
+            // 
+            // tMS_DatabaseDataSet2
+            // 
+            this.tMS_DatabaseDataSet2.DataSetName = "TMS_DatabaseDataSet2";
+            this.tMS_DatabaseDataSet2.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
             // lstRouters
             // 
             this.lstRouters.DataSource = this.routersBindingSource;
             this.lstRouters.DisplayMember = "Id";
             this.lstRouters.FormattingEnabled = true;
-            this.lstRouters.ItemHeight = 17;
+            this.lstRouters.ItemHeight = 12;
             this.lstRouters.Location = new System.Drawing.Point(226, 12);
             this.lstRouters.Name = "lstRouters";
-            this.lstRouters.Size = new System.Drawing.Size(120, 327);
+            this.lstRouters.Size = new System.Drawing.Size(120, 316);
             this.lstRouters.TabIndex = 2;
             this.lstRouters.ValueMember = "Id";
+            // 
+            // routersBindingSource
+            // 
+            this.routersBindingSource.DataMember = "Routers";
+            this.routersBindingSource.DataSource = this.tMS_DatabaseDataSet3;
+            // 
+            // tMS_DatabaseDataSet3
+            // 
+            this.tMS_DatabaseDataSet3.DataSetName = "TMS_DatabaseDataSet3";
+            this.tMS_DatabaseDataSet3.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
             // lblArrivedAt
             // 
@@ -99,7 +119,7 @@
             this.lblArrivedAt.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblArrivedAt.Location = new System.Drawing.Point(138, 146);
             this.lblArrivedAt.Name = "lblArrivedAt";
-            this.lblArrivedAt.Size = new System.Drawing.Size(82, 23);
+            this.lblArrivedAt.Size = new System.Drawing.Size(67, 19);
             this.lblArrivedAt.TabIndex = 3;
             this.lblArrivedAt.Text = "arrived at";
             // 
@@ -122,16 +142,6 @@
             // 
             this.membersTableAdapter.ClearBeforeFill = true;
             // 
-            // tMS_DatabaseDataSet2
-            // 
-            this.tMS_DatabaseDataSet2.DataSetName = "TMS_DatabaseDataSet2";
-            this.tMS_DatabaseDataSet2.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
-            // membersBindingSource1
-            // 
-            this.membersBindingSource1.DataMember = "Members";
-            this.membersBindingSource1.DataSource = this.tMS_DatabaseDataSet2;
-            // 
             // membersTableAdapter1
             // 
             this.membersTableAdapter1.ClearBeforeFill = true;
@@ -151,23 +161,13 @@
             this.tMSDatabaseDataSet2BindingSource.DataSource = this.tMS_DatabaseDataSet2;
             this.tMSDatabaseDataSet2BindingSource.Position = 0;
             // 
-            // tMS_DatabaseDataSet3
-            // 
-            this.tMS_DatabaseDataSet3.DataSetName = "TMS_DatabaseDataSet3";
-            this.tMS_DatabaseDataSet3.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
-            // routersBindingSource
-            // 
-            this.routersBindingSource.DataMember = "Routers";
-            this.routersBindingSource.DataSource = this.tMS_DatabaseDataSet3;
-            // 
             // routersTableAdapter
             // 
             this.routersTableAdapter.ClearBeforeFill = true;
             // 
             // TestCommForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 17F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ControlLightLight;
             this.ClientSize = new System.Drawing.Size(436, 353);
@@ -180,16 +180,16 @@
             this.Name = "TestCommForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Load += new System.EventHandler(this.TestCommForm_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.membersBindingSource1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.tMS_DatabaseDataSet2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.routersBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.tMS_DatabaseDataSet3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.tMS_DatabaseDataSet)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.tMSDatabaseDataSetBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.membersBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.tMS_DatabaseDataSet2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.membersBindingSource1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.tMS_DatabaseDataSet1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.tMSDatabaseDataSet1BindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.tMSDatabaseDataSet2BindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.tMS_DatabaseDataSet3)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.routersBindingSource)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 

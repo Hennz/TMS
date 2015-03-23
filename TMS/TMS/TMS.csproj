@@ -176,40 +176,45 @@
       <DependentUpon>RouterMapForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Controllers\TrackingController.cs" />
-    <Compile Include="TMS_DatabaseDataSet.Designer.cs">
+    <Compile Include="TMS_MinerPosDataSet.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>TMS_DatabaseDataSet.xsd</DependentUpon>
+      <DependentUpon>TMS_MinerPosDataSet.xsd</DependentUpon>
     </Compile>
-    <Compile Include="TMS_DatabaseDataSet2.Designer.cs">
+    <Compile Include="TMS_MemberNameDataSet.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>TMS_DatabaseDataSet2.xsd</DependentUpon>
+      <DependentUpon>TMS_MemberNameDataSet.xsd</DependentUpon>
     </Compile>
     <Compile Include="TMS_DatabaseDataSet3.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>TMS_DatabaseDataSet3.xsd</DependentUpon>
     </Compile>
-    <Compile Include="TMS_DatabaseDataSet4.Designer.cs">
+    <Compile Include="TMS_MembersAllDataSet.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>TMS_DatabaseDataSet4.xsd</DependentUpon>
+      <DependentUpon>TMS_MembersAllDataSet.xsd</DependentUpon>
     </Compile>
-    <Compile Include="TMS_DatabaseDataSet5.Designer.cs">
+    <Compile Include="TMS_RoutersAllDataSet.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>TMS_DatabaseDataSet5.xsd</DependentUpon>
+      <DependentUpon>TMS_RoutersAllDataSet.xsd</DependentUpon>
     </Compile>
-    <Compile Include="TMS_DatabaseDataSet6.Designer.cs">
+    <Compile Include="TMS_MemberTagDataSet.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>TMS_DatabaseDataSet6.xsd</DependentUpon>
+      <DependentUpon>TMS_MemberTagDataSet.xsd</DependentUpon>
     </Compile>
-    <Compile Include="TMS_DatabaseDataSet_Routers.Designer.cs">
+    <Compile Include="TMS_RoutersViewDataSet.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>TMS_DatabaseDataSet_Routers.xsd</DependentUpon>
+      <DependentUpon>TMS_RoutersViewDataSet.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="TMS_TWMinersDataSet.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>TMS_TWMinersDataSet.xsd</DependentUpon>
     </Compile>
     <EmbeddedResource Include="Forms\ActiveMinersInfoForm.resx">
       <DependentUpon>ActiveMinersInfoForm.cs</DependentUpon>
@@ -232,6 +237,7 @@
     <EmbeddedResource Include="Forms\MineSiteEditForm.resx">
       <DependentUpon>MineSiteEditForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Reports\TWMinerReport.rdlc" />
     <EmbeddedResource Include="Reports\TagDetailsReport.rdlc" />
     <EmbeddedResource Include="Reports\RouterDetailsReport.rdlc" />
     <EmbeddedResource Include="Reports\MemberDetailsReport.rdlc" />
@@ -281,27 +287,27 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
-    <None Include="TMS_DatabaseDataSet.xsc">
-      <DependentUpon>TMS_DatabaseDataSet.xsd</DependentUpon>
+    <None Include="TMS_MinerPosDataSet.xsc">
+      <DependentUpon>TMS_MinerPosDataSet.xsd</DependentUpon>
     </None>
-    <None Include="TMS_DatabaseDataSet.xsd">
+    <None Include="TMS_MinerPosDataSet.xsd">
       <Generator>MSDataSetGenerator</Generator>
-      <LastGenOutput>TMS_DatabaseDataSet.Designer.cs</LastGenOutput>
+      <LastGenOutput>TMS_MinerPosDataSet.Designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
     </None>
-    <None Include="TMS_DatabaseDataSet.xss">
-      <DependentUpon>TMS_DatabaseDataSet.xsd</DependentUpon>
+    <None Include="TMS_MinerPosDataSet.xss">
+      <DependentUpon>TMS_MinerPosDataSet.xsd</DependentUpon>
     </None>
-    <None Include="TMS_DatabaseDataSet2.xsc">
-      <DependentUpon>TMS_DatabaseDataSet2.xsd</DependentUpon>
+    <None Include="TMS_MemberNameDataSet.xsc">
+      <DependentUpon>TMS_MemberNameDataSet.xsd</DependentUpon>
     </None>
-    <None Include="TMS_DatabaseDataSet2.xsd">
+    <None Include="TMS_MemberNameDataSet.xsd">
       <Generator>MSDataSetGenerator</Generator>
-      <LastGenOutput>TMS_DatabaseDataSet2.Designer.cs</LastGenOutput>
+      <LastGenOutput>TMS_MemberNameDataSet.Designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
     </None>
-    <None Include="TMS_DatabaseDataSet2.xss">
-      <DependentUpon>TMS_DatabaseDataSet2.xsd</DependentUpon>
+    <None Include="TMS_MemberNameDataSet.xss">
+      <DependentUpon>TMS_MemberNameDataSet.xsd</DependentUpon>
     </None>
     <None Include="TMS_DatabaseDataSet3.xsc">
       <DependentUpon>TMS_DatabaseDataSet3.xsd</DependentUpon>
@@ -314,49 +320,60 @@
     <None Include="TMS_DatabaseDataSet3.xss">
       <DependentUpon>TMS_DatabaseDataSet3.xsd</DependentUpon>
     </None>
-    <None Include="TMS_DatabaseDataSet4.xsc">
-      <DependentUpon>TMS_DatabaseDataSet4.xsd</DependentUpon>
+    <None Include="TMS_MembersAllDataSet.xsc">
+      <DependentUpon>TMS_MembersAllDataSet.xsd</DependentUpon>
     </None>
-    <None Include="TMS_DatabaseDataSet4.xsd">
+    <None Include="TMS_MembersAllDataSet.xsd">
       <Generator>MSDataSetGenerator</Generator>
-      <LastGenOutput>TMS_DatabaseDataSet4.Designer.cs</LastGenOutput>
+      <LastGenOutput>TMS_MembersAllDataSet.Designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
     </None>
-    <None Include="TMS_DatabaseDataSet4.xss">
-      <DependentUpon>TMS_DatabaseDataSet4.xsd</DependentUpon>
+    <None Include="TMS_MembersAllDataSet.xss">
+      <DependentUpon>TMS_MembersAllDataSet.xsd</DependentUpon>
     </None>
-    <None Include="TMS_DatabaseDataSet5.xsc">
-      <DependentUpon>TMS_DatabaseDataSet5.xsd</DependentUpon>
+    <None Include="TMS_RoutersAllDataSet.xsc">
+      <DependentUpon>TMS_RoutersAllDataSet.xsd</DependentUpon>
     </None>
-    <None Include="TMS_DatabaseDataSet5.xsd">
+    <None Include="TMS_RoutersAllDataSet.xsd">
       <Generator>MSDataSetGenerator</Generator>
-      <LastGenOutput>TMS_DatabaseDataSet5.Designer.cs</LastGenOutput>
+      <LastGenOutput>TMS_RoutersAllDataSet.Designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
     </None>
-    <None Include="TMS_DatabaseDataSet5.xss">
-      <DependentUpon>TMS_DatabaseDataSet5.xsd</DependentUpon>
+    <None Include="TMS_RoutersAllDataSet.xss">
+      <DependentUpon>TMS_RoutersAllDataSet.xsd</DependentUpon>
     </None>
-    <None Include="TMS_DatabaseDataSet6.xsc">
-      <DependentUpon>TMS_DatabaseDataSet6.xsd</DependentUpon>
+    <None Include="TMS_MemberTagDataSet.xsc">
+      <DependentUpon>TMS_MemberTagDataSet.xsd</DependentUpon>
     </None>
-    <None Include="TMS_DatabaseDataSet6.xsd">
+    <None Include="TMS_MemberTagDataSet.xsd">
       <Generator>MSDataSetGenerator</Generator>
-      <LastGenOutput>TMS_DatabaseDataSet6.Designer.cs</LastGenOutput>
+      <LastGenOutput>TMS_MemberTagDataSet.Designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
     </None>
-    <None Include="TMS_DatabaseDataSet6.xss">
-      <DependentUpon>TMS_DatabaseDataSet6.xsd</DependentUpon>
+    <None Include="TMS_MemberTagDataSet.xss">
+      <DependentUpon>TMS_MemberTagDataSet.xsd</DependentUpon>
     </None>
-    <None Include="TMS_DatabaseDataSet_Routers.xsc">
-      <DependentUpon>TMS_DatabaseDataSet_Routers.xsd</DependentUpon>
+    <None Include="TMS_RoutersViewDataSet.xsc">
+      <DependentUpon>TMS_RoutersViewDataSet.xsd</DependentUpon>
     </None>
-    <None Include="TMS_DatabaseDataSet_Routers.xsd">
+    <None Include="TMS_RoutersViewDataSet.xsd">
       <Generator>MSDataSetGenerator</Generator>
-      <LastGenOutput>TMS_DatabaseDataSet_Routers.Designer.cs</LastGenOutput>
+      <LastGenOutput>TMS_RoutersViewDataSet.Designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
     </None>
-    <None Include="TMS_DatabaseDataSet_Routers.xss">
-      <DependentUpon>TMS_DatabaseDataSet_Routers.xsd</DependentUpon>
+    <None Include="TMS_RoutersViewDataSet.xss">
+      <DependentUpon>TMS_RoutersViewDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="TMS_TWMinersDataSet.xsc">
+      <DependentUpon>TMS_TWMinersDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="TMS_TWMinersDataSet.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>TMS_TWMinersDataSet.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="TMS_TWMinersDataSet.xss">
+      <DependentUpon>TMS_TWMinersDataSet.xsd</DependentUpon>
     </None>
   </ItemGroup>
   <ItemGroup>
