@@ -44,6 +44,13 @@ namespace TMS
             return _instance;
         }
 
+        public void Dispose()
+        {
+            siteRouters.Clear();
+            siteMembers.Clear();
+            siteSensors.Clear();
+        }
+
         public void Init(int id, string siteN, string mapPath, float scale,
             List<Router> routers, Dictionary<string, Member> members, List<string> sensors)
         {

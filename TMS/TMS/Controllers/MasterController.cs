@@ -303,10 +303,9 @@ namespace TMS
         /// <summary>
         /// Loads all info into MineSite
         /// </summary>
-        private void LoadAllSiteInfo()   
+        private void LoadAllSiteInfo(int siteId)   
         {
             // Load site info
-            int siteId = 0;
             string siteName = "", mapAddr = "";
             float mapScale = 0;
             List<Router> routers = new List<Router>();
@@ -316,8 +315,9 @@ namespace TMS
             // Load routers and members
             using (SqlConnection sqlCon = new SqlConnection(Properties.Settings.Default.TMS_DatabaseConnectionString))
             {
-                string cmdString = "SELECT * FROM Site";
+                string cmdString = "SELECT * FROM Site WHERE Id=@siteId";
                 SqlCommand oCmd = new SqlCommand(cmdString, sqlCon);
+                oCmd.Parameters.AddWithValue("@siteId", siteId);
 
                 sqlCon.Open();
                 using (SqlDataReader oReader = oCmd.ExecuteReader())
@@ -411,8 +411,9 @@ namespace TMS
                     }
                 }
 
-                cmdString = "SELECT * FROM PathElement ORDER BY timeVisited DESC";
+                cmdString = "SELECT * FROM PathElement pe, Routers r WHERE pe.routerId=r.Id AND r.siteId=@siteId ORDER BY timeVisited DESC";
                 oCmd = new SqlCommand(cmdString, sqlCon);
+                oCmd.Parameters.AddWithValue("@siteId", siteId);
 
                 using (SqlDataReader oReader = oCmd.ExecuteReader())
                 {
@@ -477,6 +478,11 @@ namespace TMS
             Stream imageStream = null;
             try
             {
+                if (filePath.Equals(""))
+                {
+                    throw new FileNotFoundException();
+                }
+
                 imageStream = new FileStream(filePath, FileMode.Open);
             }
             catch (FileNotFoundException e)
@@ -560,13 +566,22 @@ namespace TMS
         /// <summary>
         /// Closes the login form and opens the main form
         /// </summary>
-        public void OpenMainForm()
+        public void OpenMainForm(int siteId)
         {
             _loginForm.Hide();
 
-            LoadAllSiteInfo();
+            if (_mainForm != null)
+            {
+                MineSite.GetInstance().Dispose();
+            }
+            else
+            {
+                _mainForm = new MainForm(this);
+            }
 
-            _mainForm = new MainForm(this);
+            LoadAllSiteInfo(siteId);
+
+            _mainForm.Init();
             _mainForm.Show();
 
             LoadMap(_picMinePlan, MineSite.GetInstance().localMapFileAddr);
@@ -731,15 +746,51 @@ namespace TMS
             }
         }
 
+        /// <summary>
+        /// Adds a new MineSite to the database
+        /// </summary>
+        /// <param name="siteName"></param>
+        /// <returns></returns>
+        public bool MineSiteCreate(string siteName)
+        {
+            using (SqlConnection sqlCon = new SqlConnection(Properties.Settings.Default.TMS_DatabaseConnectionString))
+            {
+                string cmdString = "INSERT INTO Site(siteName, mapScale, localMapFileAddr) VALUES(@siteName, @mapScale, @localMapFileAddr)";
+
+                SqlCommand oCmd = new SqlCommand(cmdString, sqlCon);
+                oCmd.Parameters.AddWithValue("@mapScale", 1);
+                oCmd.Parameters.AddWithValue("@localMapFileAddr", "");
+                oCmd.Parameters.AddWithValue("@siteName", siteName);
+
+                sqlCon.Open();
+
+                try
+                {
+                    int rows = oCmd.ExecuteNonQuery();
+
+                    _mainForm.UpdateMineSiteList();
+
+                    return true;
+                }
+                catch (SqlException e)
+                {
+                    MessageBox.Show("Error", e.Message, MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+                    return false;
+                }
+            }
+        }
+
         public bool MineSiteUpdate()    
         {
             using (SqlConnection sqlCon = new SqlConnection(Properties.Settings.Default.TMS_DatabaseConnectionString))
             {
-                string cmdString = "UPDATE Site SET mapScale=@mapScale, localMapFileAddr=@localMapFileAddr";
+                string cmdString = "UPDATE Site SET mapScale=@mapScale, localMapFileAddr=@localMapFileAddr WHERE Id=@siteId";
 
                 SqlCommand oCmd = new SqlCommand(cmdString, sqlCon);
                 oCmd.Parameters.AddWithValue("@mapScale", MineSite.GetInstance().mapScale);
                 oCmd.Parameters.AddWithValue("@localMapFileAddr", MineSite.GetInstance().localMapFileAddr);
+                oCmd.Parameters.AddWithValue("@siteId", MineSite.GetInstance().siteId);
 
                 sqlCon.Open();
 

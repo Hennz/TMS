@@ -24,6 +24,7 @@ namespace TMS
                 chkRemember.CheckState = CheckState.Checked;
                 txtUsername.Text = Properties.Settings.Default.Username;
 
+                cboMineSites.SelectedIndex = cboMineSites.Items.IndexOf(Properties.Settings.Default.MineSite);
             }        
         }
         public void SetController(MasterController c)
@@ -43,10 +44,11 @@ namespace TMS
                     // Save username and if should remember
                     Properties.Settings.Default.ShouldRemember = chkRemember.Checked;
                     Properties.Settings.Default.Username = chkRemember.Checked ? txtUsername.Text : "";
+                    Properties.Settings.Default.MineSite = chkRemember.Checked ? (int)cboMineSites.SelectedValue : -1;
 
                     Properties.Settings.Default.Save();
 
-                    _controller.OpenMainForm();
+                    _controller.OpenMainForm((int)cboMineSites.SelectedValue);
                 }
                 else if (error == 1)
                 {
@@ -68,6 +70,13 @@ namespace TMS
 
                 e.Handled = true;
             }
+        }
+
+        private void LoginForm_Load(object sender, EventArgs e)
+        {
+            // TODO: This line of code loads data into the 'tMS_MineSiteDataSet.Site' table. You can move, or remove it, as needed.
+            this.siteTableAdapter.Fill(this.tMS_MineSiteDataSet.Site);
+
         }
 
     }

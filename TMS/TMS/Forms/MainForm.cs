@@ -41,37 +41,6 @@ namespace TMS
 
             _masterController = c;
             c._picMinePlan = picMinePlan;
-
-            _trackingController = new TrackingController(this, picMinePlan);
-            _messagingController = new MessagingController(this);
-            _reportsController = new ReportsController();
-
-            // Set labels
-            llblSiteInfo.Text = MineSite.GetInstance().siteName;
-
-            llblUsername.Text = User.GetInstance().username;
-            lblUserType.Text = User.GetInstance().isAdmin ? "Administrator" : "Regular User";
-
-            // Load routers into treeview
-            LoadRoutersToTree();
-
-            _trackingController.AddAllRoutersToMap();
-
-            LoadAllActiveMembers();
-
-            // Set mapscale number incrementer
-            nudMapScale.Value = (decimal) (MineSite.GetInstance().mapScale);
-            nudMapScale.Font = new Font(nudMapScale.Font, FontStyle.Regular);
-            btnSaveScale.Enabled = false;
-
-            LoadMineSiteBox();
-
-            // Subscribe mainform to let it deal with member changes
-            foreach (Member member in MineSite.GetInstance().siteMembers.Values)
-            {
-                member.OnInfoUpdated += LoadAllActiveMembers;
-                member.OnPathUpdated += LoadRoutersToTree;
-            }
         }
 
         public void AddNewCreatedRouter(Router router)
@@ -90,6 +59,42 @@ namespace TMS
         }
 
         /// <summary>
+        /// Initializes all components
+        /// </summary>
+        public void Init()
+        {
+            _trackingController = new TrackingController(this, picMinePlan);
+            _messagingController = new MessagingController(this);
+            _reportsController = new ReportsController();
+
+            // Set labels
+            llblSiteInfo.Text = MineSite.GetInstance().siteName;
+
+            llblUsername.Text = User.GetInstance().username;
+            lblUserType.Text = User.GetInstance().isAdmin ? "Administrator" : "Regular User";
+
+            // Load routers into treeview
+            LoadRoutersToTree();
+
+            picMinePlan.Controls.Clear();
+            _trackingController.AddAllRoutersToMap();
+
+            LoadAllActiveMembers();
+
+            // Set mapscale number incrementer
+            nudMapScale.Value = (decimal)(MineSite.GetInstance().mapScale);
+            nudMapScale.Font = new Font(nudMapScale.Font, FontStyle.Regular);
+            btnSaveScale.Enabled = false;
+
+            // Subscribe mainform to let it deal with member changes
+            foreach (Member member in MineSite.GetInstance().siteMembers.Values)
+            {
+                member.OnInfoUpdated += LoadAllActiveMembers;
+                member.OnPathUpdated += LoadRoutersToTree;
+            }
+        }
+
+        /// <summary>
         /// Load all active miners to list
         /// </summary>
         public void LoadAllActiveMembers()
@@ -105,23 +110,6 @@ namespace TMS
             }
         }
 
-        /// <summary>
-        /// Load all mine sites to combobox
-        /// </summary>
-        private void LoadMineSiteBox()
-        {
-            cboSites.Items.Clear();
-
-            List<string> mineSites = _masterController.GetAllMineSites();
-
-            foreach (string site in mineSites)
-            {
-                cboSites.Items.Add(site);
-            }
-
-            cboSites.SelectedItem = MineSite.GetInstance().siteName;
-        }
-        
         /// <summary>
         /// Loads all the routers and members to the treeview
         /// </summary>
@@ -159,6 +147,11 @@ namespace TMS
         public void SetStatusText(string text)
         {
             statusTextConnected.Text = text;
+        }
+
+        public void UpdateMineSiteList()
+        {
+            this.siteTableAdapter.Fill(this.tMS_MineSiteDataSet.Site);
         }
 
         private void MainForm_FormClosed(object sender, FormClosedEventArgs e)
@@ -298,6 +291,8 @@ namespace TMS
 
         private void MainForm_Load(object sender, EventArgs e)
         {
+            // TODO: This line of code loads data into the 'tMS_MineSiteDataSet.Site' table. You can move, or remove it, as needed.
+            this.siteTableAdapter.Fill(this.tMS_MineSiteDataSet.Site);
             // TODO: This line of code loads data into the 'tMS_DatabaseDataSet2.Members' table. You can move, or remove it, as needed.
             this.membersTableAdapter1.Fill(this.tMS_DatabaseDataSet2.Members);
             // TODO: This line of code loads data into the 'tMS_DatabaseDataSet.Members' table. You can move, or remove it, as needed.
@@ -326,11 +321,6 @@ namespace TMS
         {
             // Open message send window with broadcast mode set
             _messagingController.OpenMessageSend(true);
-        }
-
-        private void cboSites_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            btnLoadSite.Enabled = !cboSites.SelectedItem.ToString().Equals(MineSite.GetInstance().siteName);
         }
 
         private void btnAllMiners_Click(object sender, EventArgs e)
@@ -372,6 +362,18 @@ namespace TMS
         private void btnRepTWM_Click(object sender, EventArgs e)
         {
             _reportsController.TWMinersReport(cboMinerReport.SelectedValue.ToString());
+        }
+
+        private void btnLoadSite_Click(object sender, EventArgs e)
+        {
+            if (!cboSites.SelectedValue.ToString().Equals(MineSite.GetInstance().siteId.ToString()))
+            {
+                _masterController.OpenMainForm((int)cboSites.SelectedValue);
+            }
+            else
+            {
+                MessageBox.Show("This site is already loaded.");
+            }
         }
     }
 }

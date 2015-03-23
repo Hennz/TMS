@@ -44,5 +44,35 @@ namespace TMS
 
             }
         }
+
+        private void llblNewSite_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            string siteName = "";
+            MineSiteEnterForm enterForm = new MineSiteEnterForm();
+
+            if (enterForm.ShowDialog(this) == DialogResult.OK)
+            {
+                // Read the contents of testDialog's TextBox.
+                siteName = enterForm.Controls[enterForm.Controls.Count - 1].Text;
+            }
+            else
+            {
+                enterForm.Dispose();
+            }
+
+            if (!siteName.Equals(""))
+            {
+                bool didComplete = _controller.MineSiteCreate(siteName);
+
+                if (didComplete)
+                { 
+                    enterForm.Dispose();
+                }
+                else
+                {
+                    MessageBox.Show("Could not create Mine Site", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+        }
     }
 }

@@ -17,8 +17,8 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.TreeNode treeNode5 = new System.Windows.Forms.TreeNode("Mine Site Name");
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.TreeNode treeNode4 = new System.Windows.Forms.TreeNode("Mine Site Name");
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
             this.splitMain = new System.Windows.Forms.SplitContainer();
             this.lblActiveMiners = new System.Windows.Forms.Label();
@@ -73,6 +73,10 @@
             this.cboSites = new System.Windows.Forms.ComboBox();
             this.lblAllMiners = new System.Windows.Forms.Label();
             this.tabReports = new System.Windows.Forms.TabPage();
+            this.cboMinerReport = new System.Windows.Forms.ComboBox();
+            this.membersBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
+            this.tMSDatabaseDataSet2BindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.tMS_DatabaseDataSet2 = new TMS.TMS_DatabaseDataSet2();
             this.pnlReportInput = new System.Windows.Forms.Panel();
             this.lblRepTWM = new System.Windows.Forms.Label();
             this.btnRepTWM = new System.Windows.Forms.Button();
@@ -93,13 +97,12 @@
             this.btnViewMessages = new System.Windows.Forms.Button();
             this.tMS_DatabaseDataSet = new TMS.TMS_DatabaseDataSet();
             this.tMSDatabaseDataSetBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.cboMinerReport = new System.Windows.Forms.ComboBox();
             this.membersBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.membersTableAdapter = new TMS.TMS_DatabaseDataSetTableAdapters.MembersTableAdapter();
-            this.tMS_DatabaseDataSet2 = new TMS.TMS_DatabaseDataSet2();
-            this.tMSDatabaseDataSet2BindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.membersBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
             this.membersTableAdapter1 = new TMS.TMS_DatabaseDataSet2TableAdapters.MembersTableAdapter();
+            this.tMS_MineSiteDataSet = new TMS.TMS_MineSiteDataSet();
+            this.siteBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.siteTableAdapter = new TMS.TMS_MineSiteDataSetTableAdapters.SiteTableAdapter();
             ((System.ComponentModel.ISupportInitialize)(this.splitMain)).BeginInit();
             this.splitMain.Panel1.SuspendLayout();
             this.splitMain.Panel2.SuspendLayout();
@@ -124,12 +127,14 @@
             ((System.ComponentModel.ISupportInitialize)(this.nudMapScale)).BeginInit();
             this.panel1.SuspendLayout();
             this.tabReports.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.membersBindingSource1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.tMSDatabaseDataSet2BindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.tMS_DatabaseDataSet2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.tMS_DatabaseDataSet)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.tMSDatabaseDataSetBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.membersBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.tMS_DatabaseDataSet2)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.tMSDatabaseDataSet2BindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.membersBindingSource1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.tMS_MineSiteDataSet)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.siteBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // splitMain
@@ -247,10 +252,10 @@
             this.tvAllRouters.Location = new System.Drawing.Point(4, 5);
             this.tvAllRouters.Margin = new System.Windows.Forms.Padding(2);
             this.tvAllRouters.Name = "tvAllRouters";
-            treeNode5.Name = "MineSite";
-            treeNode5.Text = "Mine Site Name";
+            treeNode4.Name = "MineSite";
+            treeNode4.Text = "Mine Site Name";
             this.tvAllRouters.Nodes.AddRange(new System.Windows.Forms.TreeNode[] {
-            treeNode5});
+            treeNode4});
             this.tvAllRouters.Size = new System.Drawing.Size(224, 358);
             this.tvAllRouters.TabIndex = 0;
             this.tvAllRouters.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.tvAllRouters_AfterSelect);
@@ -269,8 +274,8 @@
             // 
             // dataRouters
             // 
-            dataGridViewCellStyle5.Font = new System.Drawing.Font("Segoe UI", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dataRouters.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Segoe UI", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dataRouters.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle4;
             this.dataRouters.AutoGenerateColumns = false;
             this.dataRouters.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dataRouters.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
@@ -758,7 +763,6 @@
             // 
             // btnLoadSite
             // 
-            this.btnLoadSite.Enabled = false;
             this.btnLoadSite.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnLoadSite.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnLoadSite.Location = new System.Drawing.Point(98, 19);
@@ -768,6 +772,7 @@
             this.btnLoadSite.TabIndex = 15;
             this.btnLoadSite.Text = "Load";
             this.btnLoadSite.UseVisualStyleBackColor = true;
+            this.btnLoadSite.Click += new System.EventHandler(this.btnLoadSite_Click);
             // 
             // lblChangeSites
             // 
@@ -782,13 +787,15 @@
             // 
             // cboSites
             // 
+            this.cboSites.DataSource = this.siteBindingSource;
+            this.cboSites.DisplayMember = "siteName";
             this.cboSites.FormattingEnabled = true;
             this.cboSites.Location = new System.Drawing.Point(2, 20);
             this.cboSites.Margin = new System.Windows.Forms.Padding(2);
             this.cboSites.Name = "cboSites";
             this.cboSites.Size = new System.Drawing.Size(92, 27);
             this.cboSites.TabIndex = 13;
-            this.cboSites.SelectedIndexChanged += new System.EventHandler(this.cboSites_SelectedIndexChanged);
+            this.cboSites.ValueMember = "Id";
             // 
             // lblAllMiners
             // 
@@ -821,6 +828,32 @@
             this.tabReports.TabIndex = 1;
             this.tabReports.Text = "Reports";
             this.tabReports.UseVisualStyleBackColor = true;
+            // 
+            // cboMinerReport
+            // 
+            this.cboMinerReport.DataSource = this.membersBindingSource1;
+            this.cboMinerReport.DisplayMember = "memberNo";
+            this.cboMinerReport.FormattingEnabled = true;
+            this.cboMinerReport.Location = new System.Drawing.Point(165, 7);
+            this.cboMinerReport.Name = "cboMinerReport";
+            this.cboMinerReport.Size = new System.Drawing.Size(121, 27);
+            this.cboMinerReport.TabIndex = 17;
+            this.cboMinerReport.ValueMember = "MemberNo";
+            // 
+            // membersBindingSource1
+            // 
+            this.membersBindingSource1.DataMember = "Members";
+            this.membersBindingSource1.DataSource = this.tMSDatabaseDataSet2BindingSource;
+            // 
+            // tMSDatabaseDataSet2BindingSource
+            // 
+            this.tMSDatabaseDataSet2BindingSource.DataSource = this.tMS_DatabaseDataSet2;
+            this.tMSDatabaseDataSet2BindingSource.Position = 0;
+            // 
+            // tMS_DatabaseDataSet2
+            // 
+            this.tMS_DatabaseDataSet2.DataSetName = "TMS_DatabaseDataSet2";
+            this.tMS_DatabaseDataSet2.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
             // pnlReportInput
             // 
@@ -1036,17 +1069,6 @@
             this.tMSDatabaseDataSetBindingSource.DataSource = this.tMS_DatabaseDataSet;
             this.tMSDatabaseDataSetBindingSource.Position = 0;
             // 
-            // cboMinerReport
-            // 
-            this.cboMinerReport.DataSource = this.membersBindingSource1;
-            this.cboMinerReport.DisplayMember = "memberNo";
-            this.cboMinerReport.FormattingEnabled = true;
-            this.cboMinerReport.Location = new System.Drawing.Point(165, 7);
-            this.cboMinerReport.Name = "cboMinerReport";
-            this.cboMinerReport.Size = new System.Drawing.Size(121, 27);
-            this.cboMinerReport.TabIndex = 17;
-            this.cboMinerReport.ValueMember = "MemberNo";
-            // 
             // membersBindingSource
             // 
             this.membersBindingSource.DataMember = "Members";
@@ -1056,24 +1078,23 @@
             // 
             this.membersTableAdapter.ClearBeforeFill = true;
             // 
-            // tMS_DatabaseDataSet2
-            // 
-            this.tMS_DatabaseDataSet2.DataSetName = "TMS_DatabaseDataSet2";
-            this.tMS_DatabaseDataSet2.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
-            // tMSDatabaseDataSet2BindingSource
-            // 
-            this.tMSDatabaseDataSet2BindingSource.DataSource = this.tMS_DatabaseDataSet2;
-            this.tMSDatabaseDataSet2BindingSource.Position = 0;
-            // 
-            // membersBindingSource1
-            // 
-            this.membersBindingSource1.DataMember = "Members";
-            this.membersBindingSource1.DataSource = this.tMSDatabaseDataSet2BindingSource;
-            // 
             // membersTableAdapter1
             // 
             this.membersTableAdapter1.ClearBeforeFill = true;
+            // 
+            // tMS_MineSiteDataSet
+            // 
+            this.tMS_MineSiteDataSet.DataSetName = "TMS_MineSiteDataSet";
+            this.tMS_MineSiteDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
+            // siteBindingSource
+            // 
+            this.siteBindingSource.DataMember = "Site";
+            this.siteBindingSource.DataSource = this.tMS_MineSiteDataSet;
+            // 
+            // siteTableAdapter
+            // 
+            this.siteTableAdapter.ClearBeforeFill = true;
             // 
             // MainForm
             // 
@@ -1132,12 +1153,14 @@
             this.panel1.PerformLayout();
             this.tabReports.ResumeLayout(false);
             this.tabReports.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.membersBindingSource1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.tMSDatabaseDataSet2BindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.tMS_DatabaseDataSet2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.tMS_DatabaseDataSet)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.tMSDatabaseDataSetBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.membersBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.tMS_DatabaseDataSet2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.tMSDatabaseDataSet2BindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.membersBindingSource1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.tMS_MineSiteDataSet)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.siteBindingSource)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1225,6 +1248,9 @@
         private TMS_DatabaseDataSet2 tMS_DatabaseDataSet2;
         private System.Windows.Forms.BindingSource membersBindingSource1;
         private TMS_DatabaseDataSet2TableAdapters.MembersTableAdapter membersTableAdapter1;
+        private TMS_MineSiteDataSet tMS_MineSiteDataSet;
+        private System.Windows.Forms.BindingSource siteBindingSource;
+        private TMS_MineSiteDataSetTableAdapters.SiteTableAdapter siteTableAdapter;
     }
 }
 

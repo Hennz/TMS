@@ -36,6 +36,7 @@
             this.lblMembers = new System.Windows.Forms.Label();
             this.lblScale = new System.Windows.Forms.Label();
             this.lblPath = new System.Windows.Forms.Label();
+            this.llblNewSite = new System.Windows.Forms.LinkLabel();
             this.SuspendLayout();
             // 
             // lblName
@@ -55,7 +56,7 @@
             this.lstRouters.FormattingEnabled = true;
             this.lstRouters.Location = new System.Drawing.Point(12, 125);
             this.lstRouters.Name = "lstRouters";
-            this.lstRouters.Size = new System.Drawing.Size(120, 238);
+            this.lstRouters.Size = new System.Drawing.Size(120, 290);
             this.lstRouters.TabIndex = 1;
             // 
             // lstMiners
@@ -66,7 +67,7 @@
             this.lstMiners.FormattingEnabled = true;
             this.lstMiners.Location = new System.Drawing.Point(138, 125);
             this.lstMiners.Name = "lstMiners";
-            this.lstMiners.Size = new System.Drawing.Size(151, 238);
+            this.lstMiners.Size = new System.Drawing.Size(215, 290);
             this.lstMiners.TabIndex = 2;
             // 
             // lblRouters
@@ -101,18 +102,31 @@
             // 
             this.lblPath.ForeColor = System.Drawing.SystemColors.ControlDark;
             this.lblPath.Location = new System.Drawing.Point(20, 60);
-            this.lblPath.MaximumSize = new System.Drawing.Size(269, 49);
+            this.lblPath.MaximumSize = new System.Drawing.Size(333, 49);
             this.lblPath.Name = "lblPath";
-            this.lblPath.Size = new System.Drawing.Size(269, 49);
+            this.lblPath.Size = new System.Drawing.Size(333, 49);
             this.lblPath.TabIndex = 6;
             this.lblPath.Text = "<PATH>";
+            // 
+            // llblNewSite
+            // 
+            this.llblNewSite.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.llblNewSite.AutoSize = true;
+            this.llblNewSite.Location = new System.Drawing.Point(277, 423);
+            this.llblNewSite.Name = "llblNewSite";
+            this.llblNewSite.Size = new System.Drawing.Size(76, 13);
+            this.llblNewSite.TabIndex = 7;
+            this.llblNewSite.TabStop = true;
+            this.llblNewSite.Text = "Add New Site";
+            this.llblNewSite.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.llblNewSite_LinkClicked);
             // 
             // MineSiteEditForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ControlLightLight;
-            this.ClientSize = new System.Drawing.Size(301, 375);
+            this.ClientSize = new System.Drawing.Size(365, 445);
+            this.Controls.Add(this.llblNewSite);
             this.Controls.Add(this.lblPath);
             this.Controls.Add(this.lblScale);
             this.Controls.Add(this.lblMembers);
@@ -141,5 +155,6 @@
         private System.Windows.Forms.Label lblMembers;
         private System.Windows.Forms.Label lblScale;
         private System.Windows.Forms.Label lblPath;
+        private System.Windows.Forms.LinkLabel llblNewSite;
     }
 }

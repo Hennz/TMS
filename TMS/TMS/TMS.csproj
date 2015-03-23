@@ -113,6 +113,12 @@
     <Compile Include="Forms\MineSiteEditForm.Designer.cs">
       <DependentUpon>MineSiteEditForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\MineSiteEnterForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\MineSiteEnterForm.Designer.cs">
+      <DependentUpon>MineSiteEnterForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\ReportForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -196,6 +202,11 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>TMS_MembersAllDataSet.xsd</DependentUpon>
     </Compile>
+    <Compile Include="TMS_MineSiteDataSet.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>TMS_MineSiteDataSet.xsd</DependentUpon>
+    </Compile>
     <Compile Include="TMS_RoutersAllDataSet.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -236,6 +247,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\MineSiteEditForm.resx">
       <DependentUpon>MineSiteEditForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\MineSiteEnterForm.resx">
+      <DependentUpon>MineSiteEnterForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Reports\TWMinerReport.rdlc" />
     <EmbeddedResource Include="Reports\TagDetailsReport.rdlc" />
@@ -330,6 +344,17 @@
     </None>
     <None Include="TMS_MembersAllDataSet.xss">
       <DependentUpon>TMS_MembersAllDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="TMS_MineSiteDataSet.xsc">
+      <DependentUpon>TMS_MineSiteDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="TMS_MineSiteDataSet.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>TMS_MineSiteDataSet.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="TMS_MineSiteDataSet.xss">
+      <DependentUpon>TMS_MineSiteDataSet.xsd</DependentUpon>
     </None>
     <None Include="TMS_RoutersAllDataSet.xsc">
       <DependentUpon>TMS_RoutersAllDataSet.xsd</DependentUpon>
