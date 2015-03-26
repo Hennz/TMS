@@ -29,7 +29,6 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MineSiteEditForm));
-            this.lblName = new System.Windows.Forms.Label();
             this.lstRouters = new System.Windows.Forms.ListBox();
             this.lstMiners = new System.Windows.Forms.ListBox();
             this.lblRouters = new System.Windows.Forms.Label();
@@ -37,17 +36,8 @@
             this.lblScale = new System.Windows.Forms.Label();
             this.lblPath = new System.Windows.Forms.Label();
             this.llblNewSite = new System.Windows.Forms.LinkLabel();
+            this.llblName = new System.Windows.Forms.LinkLabel();
             this.SuspendLayout();
-            // 
-            // lblName
-            // 
-            this.lblName.AutoSize = true;
-            this.lblName.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblName.Location = new System.Drawing.Point(12, 9);
-            this.lblName.Name = "lblName";
-            this.lblName.Size = new System.Drawing.Size(101, 30);
-            this.lblName.TabIndex = 0;
-            this.lblName.Text = "<NAME>";
             // 
             // lstRouters
             // 
@@ -120,12 +110,26 @@
             this.llblNewSite.Text = "Add New Site";
             this.llblNewSite.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.llblNewSite_LinkClicked);
             // 
+            // llblName
+            // 
+            this.llblName.AutoSize = true;
+            this.llblName.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.llblName.LinkColor = System.Drawing.Color.Black;
+            this.llblName.Location = new System.Drawing.Point(12, 9);
+            this.llblName.Name = "llblName";
+            this.llblName.Size = new System.Drawing.Size(101, 30);
+            this.llblName.TabIndex = 8;
+            this.llblName.TabStop = true;
+            this.llblName.Text = "<NAME>";
+            this.llblName.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.llblName_LinkClicked);
+            // 
             // MineSiteEditForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ControlLightLight;
             this.ClientSize = new System.Drawing.Size(365, 445);
+            this.Controls.Add(this.llblName);
             this.Controls.Add(this.llblNewSite);
             this.Controls.Add(this.lblPath);
             this.Controls.Add(this.lblScale);
@@ -133,7 +137,6 @@
             this.Controls.Add(this.lblRouters);
             this.Controls.Add(this.lstMiners);
             this.Controls.Add(this.lstRouters);
-            this.Controls.Add(this.lblName);
             this.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.SizableToolWindow;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
@@ -148,7 +151,6 @@
 
         #endregion
 
-        private System.Windows.Forms.Label lblName;
         private System.Windows.Forms.ListBox lstRouters;
         private System.Windows.Forms.ListBox lstMiners;
         private System.Windows.Forms.Label lblRouters;
@@ -156,5 +158,6 @@
         private System.Windows.Forms.Label lblScale;
         private System.Windows.Forms.Label lblPath;
         private System.Windows.Forms.LinkLabel llblNewSite;
+        private System.Windows.Forms.LinkLabel llblName;
     }
 }

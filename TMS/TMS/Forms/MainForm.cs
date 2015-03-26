@@ -140,6 +140,13 @@ namespace TMS
             tvAllRouters.EndUpdate();
         }
 
+        public void MineSiteUpdated()
+        {
+            UpdateMineSiteList();
+            LoadRoutersToTree();
+            llblSiteInfo.Text = MineSite.GetInstance().siteName;
+        }
+
         /// <summary>
         /// Updates the text in the bottom status bar
         /// </summary>
@@ -229,6 +236,15 @@ namespace TMS
             if (router != null)
             {
                 _trackingController.ShowMinerPosition(sender, null, router);
+            }
+            else
+            {
+                router = MineSite.GetInstance().ContainsRouter(e.Node.Parent.Text.Split(',')[0]);
+
+                if (router != null)
+                {
+                    _trackingController.ShowMinerPosition(sender, null, router);
+                }
             }
         }
 

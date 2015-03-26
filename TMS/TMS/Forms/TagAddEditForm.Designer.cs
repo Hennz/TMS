@@ -46,7 +46,7 @@
             this.lstTags.ItemHeight = 19;
             this.lstTags.Location = new System.Drawing.Point(178, 57);
             this.lstTags.Name = "lstTags";
-            this.lstTags.Size = new System.Drawing.Size(322, 289);
+            this.lstTags.Size = new System.Drawing.Size(322, 308);
             this.lstTags.TabIndex = 10;
             this.lstTags.SelectedValueChanged += new System.EventHandler(this.lstTags_SelectedValueChanged);
             // 
@@ -58,6 +58,7 @@
             this.mtxtNewTag.Location = new System.Drawing.Point(178, 12);
             this.mtxtNewTag.Mask = "E0000";
             this.mtxtNewTag.Name = "mtxtNewTag";
+            this.mtxtNewTag.PromptChar = ' ';
             this.mtxtNewTag.Size = new System.Drawing.Size(322, 26);
             this.mtxtNewTag.TabIndex = 9;
             this.mtxtNewTag.TextChanged += new System.EventHandler(this.mtxtNewTag_TextChanged);
@@ -80,7 +81,7 @@
             this.btnClose.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.btnClose.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnClose.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnClose.Location = new System.Drawing.Point(12, 310);
+            this.btnClose.Location = new System.Drawing.Point(12, 315);
             this.btnClose.Name = "btnClose";
             this.btnClose.Size = new System.Drawing.Size(159, 50);
             this.btnClose.TabIndex = 7;

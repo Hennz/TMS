@@ -69,10 +69,21 @@ namespace TMS
 
             router.RequestUpdate();
 
-            if (OnPathUpdated != null)
+            RequestPathUpdate();
+        }
+
+        public void Dispose()
+        {
+            if (path.First != null)
             {
-                OnPathUpdated();
+                Router router = path.First.Value;
+                router.hasConnectedMembers.Remove(this);
+
+                router.RequestUpdate();
             }
+
+            RequestInfoUpdate();
+            RequestPathUpdate();
         }
 
         /// <summary>
@@ -97,6 +108,14 @@ namespace TMS
             if (OnInfoUpdated != null)
             {
                 OnInfoUpdated();
+            }
+        }
+
+        public void RequestPathUpdate()
+        {
+            if (OnPathUpdated != null)
+            {
+                OnPathUpdated();
             }
         }
 

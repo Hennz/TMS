@@ -532,7 +532,10 @@ namespace TMS
             if (_minerForm == null || _minerForm.Visible == false)
             {
                 _minerForm = new MinerAddEditForm(this);
-                _minerForm.Show();
+                if (!_minerForm.IsDisposed)
+                {
+                    _minerForm.Show();
+                }
             }
         }
 
@@ -697,6 +700,35 @@ namespace TMS
             }
         }
 
+        public bool MemberDelete(Member member)
+        {
+            using (SqlConnection sqlCon = new SqlConnection(Properties.Settings.Default.TMS_DatabaseConnectionString))
+            {
+                string cmdString = "DELETE FROM Members WHERE memberNo=@Id";
+
+                sqlCon.Open();
+                SqlCommand oCmd = new SqlCommand(cmdString, sqlCon);
+                oCmd.Parameters.AddWithValue("@Id", member.memberId);
+
+                try
+                {
+                    int rows = oCmd.ExecuteNonQuery();
+
+                    MineSite.GetInstance().siteMembers.Remove(member.memberId);
+                    member.Dispose();
+
+                    return true;
+                }
+                catch (SqlException e)
+                {
+                    MessageBox.Show(e.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+                    return false;
+                }
+
+            }
+        }
+
         /// <summary>
         /// Composes an update statement for Routers table
         /// </summary>
@@ -785,9 +817,10 @@ namespace TMS
         {
             using (SqlConnection sqlCon = new SqlConnection(Properties.Settings.Default.TMS_DatabaseConnectionString))
             {
-                string cmdString = "UPDATE Site SET mapScale=@mapScale, localMapFileAddr=@localMapFileAddr WHERE Id=@siteId";
+                string cmdString = "UPDATE Site SET siteName=@siteName, mapScale=@mapScale, localMapFileAddr=@localMapFileAddr WHERE Id=@siteId";
 
                 SqlCommand oCmd = new SqlCommand(cmdString, sqlCon);
+                oCmd.Parameters.AddWithValue("@siteName", MineSite.GetInstance().siteName);
                 oCmd.Parameters.AddWithValue("@mapScale", MineSite.GetInstance().mapScale);
                 oCmd.Parameters.AddWithValue("@localMapFileAddr", MineSite.GetInstance().localMapFileAddr);
                 oCmd.Parameters.AddWithValue("@siteId", MineSite.GetInstance().siteId);
@@ -797,6 +830,10 @@ namespace TMS
                 try
                 {
                     int rows = oCmd.ExecuteNonQuery();
+
+                    // Update all MineSite related MainForm components
+                    _mainForm.MineSiteUpdated();
+
                     return true;
                 }
                 catch (SqlException e)

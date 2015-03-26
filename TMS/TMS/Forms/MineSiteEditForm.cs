@@ -26,7 +26,7 @@ namespace TMS
         private void LoadAllInfo()
         {
             // Fill labels
-            lblName.Text = MineSite.GetInstance().siteName;
+            llblName.Text = MineSite.GetInstance().siteName;
             lblScale.Text = "Current Map Scale: " + MineSite.GetInstance().mapScale;
             lblPath.Text = MineSite.GetInstance().localMapFileAddr;
 
@@ -47,6 +47,30 @@ namespace TMS
 
         private void llblNewSite_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
+            string siteName = GetNewSitename();
+
+            if (!siteName.Equals(""))
+            {
+                bool didComplete = _controller.MineSiteCreate(siteName);
+
+                if (!didComplete)
+                { 
+                    MessageBox.Show("Could not create Mine Site", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+        }
+
+        private void llblName_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            string siteName = GetNewSitename();
+
+            MineSite.GetInstance().siteName = siteName;
+
+            _controller.MineSiteUpdate();
+        }
+
+        private string GetNewSitename()
+        {
             string siteName = "";
             MineSiteEnterForm enterForm = new MineSiteEnterForm();
 
@@ -55,24 +79,11 @@ namespace TMS
                 // Read the contents of testDialog's TextBox.
                 siteName = enterForm.Controls[enterForm.Controls.Count - 1].Text;
             }
-            else
-            {
-                enterForm.Dispose();
-            }
+            
+            enterForm.Dispose();
+            
 
-            if (!siteName.Equals(""))
-            {
-                bool didComplete = _controller.MineSiteCreate(siteName);
-
-                if (didComplete)
-                { 
-                    enterForm.Dispose();
-                }
-                else
-                {
-                    MessageBox.Show("Could not create Mine Site", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
-            }
+            return siteName;
         }
     }
 }

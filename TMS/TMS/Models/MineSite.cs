@@ -11,7 +11,7 @@ namespace TMS
         private static MineSite _instance;
 
         public int siteId { get; private set; }
-        public String siteName { get; private set; }
+        public String siteName { get; set; }
         public String localMapFileAddr { get; set; }
         public float mapScale { get; private set; }
 

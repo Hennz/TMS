@@ -24,7 +24,21 @@ namespace TMS
             LoadMembersList();
             LoadTagsList();
 
-            cboTags.SelectedIndex = 0;
+            if (cboTags.Items.Count > 0)
+            {
+                cboTags.SelectedItem = cboTags.Items.IndexOf(0);
+            }
+            else
+            {
+                DialogResult result = MessageBox.Show("There are no free End Device tags. \nCreate a new tag ID from the Tag menu?", "No tags", MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation);
+
+                if (result == DialogResult.Yes)
+                {
+                    _controller.OpenCreateTag();
+                    Close();
+                }
+            }
+
             rbNew.Checked = true;
         }
 
@@ -44,7 +58,11 @@ namespace TMS
             txtCity.Text = "";
 
             chkIsVehicle.Checked = false;
-            cboTags.SelectedIndex = 0;
+
+            if (cboTags.Items.Count > 0)
+            {
+                cboTags.SelectedIndex = 0;
+            }
         }
 
         private void EnterCreate(object sender, EventArgs e)
@@ -134,6 +152,7 @@ namespace TMS
             {
                 cboTags.Items.Add(tag);
             }
+
         }
 
         /// <summary>
@@ -160,6 +179,7 @@ namespace TMS
                 btnShift.Text = "Assign Shifts";
 
                 mtxtMID.Enabled = true;
+                btnDelete.Enabled = false;
             }
         }
 
@@ -208,6 +228,8 @@ namespace TMS
 
                 btnShift.Enabled = true;
                 btnShift.Text = "Edit Shifts";
+
+                btnDelete.Enabled = true;
             }
         }
 
@@ -217,6 +239,23 @@ namespace TMS
 
             rbUpdate.Checked = false;
             rbUpdate.Checked = true;
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void btnDelete_Click(object sender, EventArgs e)
+        {
+            bool didComplete = _controller.MemberDelete(member);
+
+            if (didComplete)
+            {
+                rbNew.Checked = true;
+
+                LoadMembersList();
+            }
         }
     }
 }

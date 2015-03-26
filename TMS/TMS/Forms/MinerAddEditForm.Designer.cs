@@ -60,6 +60,7 @@
             this.btnShift = new System.Windows.Forms.Button();
             this.rbNew = new System.Windows.Forms.RadioButton();
             this.rbUpdate = new System.Windows.Forms.RadioButton();
+            this.btnDelete = new System.Windows.Forms.Button();
             this.pnlRegistration.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -72,9 +73,9 @@
             this.lstMembers.FormattingEnabled = true;
             this.lstMembers.ItemHeight = 19;
             this.lstMembers.Location = new System.Drawing.Point(9, 66);
-            this.lstMembers.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.lstMembers.Margin = new System.Windows.Forms.Padding(2);
             this.lstMembers.Name = "lstMembers";
-            this.lstMembers.Size = new System.Drawing.Size(132, 268);
+            this.lstMembers.Size = new System.Drawing.Size(132, 230);
             this.lstMembers.TabIndex = 0;
             this.lstMembers.SelectedValueChanged += new System.EventHandler(this.lstMembers_SelectedValueChanged);
             // 
@@ -206,10 +207,10 @@
             this.chkIsVehicle.AutoSize = true;
             this.chkIsVehicle.Font = new System.Drawing.Font("Segoe UI", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.chkIsVehicle.Location = new System.Drawing.Point(230, 7);
-            this.chkIsVehicle.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.chkIsVehicle.Margin = new System.Windows.Forms.Padding(2);
             this.chkIsVehicle.Name = "chkIsVehicle";
             this.chkIsVehicle.Size = new System.Drawing.Size(68, 17);
-            this.chkIsVehicle.TabIndex = 12;
+            this.chkIsVehicle.TabIndex = 23;
             this.chkIsVehicle.Text = "Vehicle*";
             this.chkIsVehicle.UseVisualStyleBackColor = true;
             // 
@@ -219,7 +220,7 @@
             this.btnEnter.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnEnter.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnEnter.Location = new System.Drawing.Point(387, 311);
-            this.btnEnter.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnEnter.Margin = new System.Windows.Forms.Padding(2);
             this.btnEnter.Name = "btnEnter";
             this.btnEnter.Size = new System.Drawing.Size(78, 37);
             this.btnEnter.TabIndex = 13;
@@ -230,7 +231,7 @@
             // 
             this.mtxtPhone.Font = new System.Drawing.Font("Segoe UI", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.mtxtPhone.Location = new System.Drawing.Point(72, 190);
-            this.mtxtPhone.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.mtxtPhone.Margin = new System.Windows.Forms.Padding(2);
             this.mtxtPhone.Mask = "(999) 000-0000";
             this.mtxtPhone.Name = "mtxtPhone";
             this.mtxtPhone.Size = new System.Drawing.Size(76, 21);
@@ -240,7 +241,7 @@
             // 
             this.mtxtMobile.Font = new System.Drawing.Font("Segoe UI", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.mtxtMobile.Location = new System.Drawing.Point(230, 192);
-            this.mtxtMobile.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.mtxtMobile.Margin = new System.Windows.Forms.Padding(2);
             this.mtxtMobile.Mask = "(999) 000-0000";
             this.mtxtMobile.Name = "mtxtMobile";
             this.mtxtMobile.Size = new System.Drawing.Size(76, 21);
@@ -250,7 +251,7 @@
             // 
             this.txtFName.Font = new System.Drawing.Font("Segoe UI", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtFName.Location = new System.Drawing.Point(71, 67);
-            this.txtFName.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txtFName.Margin = new System.Windows.Forms.Padding(2);
             this.txtFName.Name = "txtFName";
             this.txtFName.Size = new System.Drawing.Size(76, 21);
             this.txtFName.TabIndex = 26;
@@ -259,7 +260,7 @@
             // 
             this.txtMName.Font = new System.Drawing.Font("Segoe UI", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtMName.Location = new System.Drawing.Point(230, 66);
-            this.txtMName.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txtMName.Margin = new System.Windows.Forms.Padding(2);
             this.txtMName.Name = "txtMName";
             this.txtMName.Size = new System.Drawing.Size(76, 21);
             this.txtMName.TabIndex = 27;
@@ -268,7 +269,7 @@
             // 
             this.txtLName.Font = new System.Drawing.Font("Segoe UI", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtLName.Location = new System.Drawing.Point(72, 89);
-            this.txtLName.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txtLName.Margin = new System.Windows.Forms.Padding(2);
             this.txtLName.Name = "txtLName";
             this.txtLName.Size = new System.Drawing.Size(76, 21);
             this.txtLName.TabIndex = 28;
@@ -277,7 +278,7 @@
             // 
             this.txtAddr.Font = new System.Drawing.Font("Segoe UI", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtAddr.Location = new System.Drawing.Point(72, 128);
-            this.txtAddr.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txtAddr.Margin = new System.Windows.Forms.Padding(2);
             this.txtAddr.Multiline = true;
             this.txtAddr.Name = "txtAddr";
             this.txtAddr.Size = new System.Drawing.Size(76, 43);
@@ -287,7 +288,7 @@
             // 
             this.txtProv.Font = new System.Drawing.Font("Segoe UI", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtProv.Location = new System.Drawing.Point(232, 127);
-            this.txtProv.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txtProv.Margin = new System.Windows.Forms.Padding(2);
             this.txtProv.Name = "txtProv";
             this.txtProv.Size = new System.Drawing.Size(76, 21);
             this.txtProv.TabIndex = 30;
@@ -296,7 +297,7 @@
             // 
             this.txtCity.Font = new System.Drawing.Font("Segoe UI", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtCity.Location = new System.Drawing.Point(232, 151);
-            this.txtCity.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txtCity.Margin = new System.Windows.Forms.Padding(2);
             this.txtCity.Name = "txtCity";
             this.txtCity.Size = new System.Drawing.Size(76, 21);
             this.txtCity.TabIndex = 31;
@@ -305,7 +306,7 @@
             // 
             this.mtxtPin.Font = new System.Drawing.Font("Segoe UI", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.mtxtPin.Location = new System.Drawing.Point(72, 29);
-            this.mtxtPin.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.mtxtPin.Margin = new System.Windows.Forms.Padding(2);
             this.mtxtPin.Mask = "00000000";
             this.mtxtPin.Name = "mtxtPin";
             this.mtxtPin.Size = new System.Drawing.Size(76, 21);
@@ -354,7 +355,7 @@
             this.pnlRegistration.Controls.Add(this.chkIsVehicle);
             this.pnlRegistration.Font = new System.Drawing.Font("Segoe UI", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.pnlRegistration.Location = new System.Drawing.Point(160, 66);
-            this.pnlRegistration.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.pnlRegistration.Margin = new System.Windows.Forms.Padding(2);
             this.pnlRegistration.Name = "pnlRegistration";
             this.pnlRegistration.Size = new System.Drawing.Size(311, 240);
             this.pnlRegistration.TabIndex = 25;
@@ -363,11 +364,11 @@
             // 
             this.mtxtMID.Font = new System.Drawing.Font("Segoe UI", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.mtxtMID.Location = new System.Drawing.Point(71, 6);
-            this.mtxtMID.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.mtxtMID.Margin = new System.Windows.Forms.Padding(2);
             this.mtxtMID.Mask = "M0000";
             this.mtxtMID.Name = "mtxtMID";
             this.mtxtMID.Size = new System.Drawing.Size(76, 21);
-            this.mtxtMID.TabIndex = 29;
+            this.mtxtMID.TabIndex = 22;
             // 
             // lblTags
             // 
@@ -383,7 +384,7 @@
             // 
             this.cboTags.FormattingEnabled = true;
             this.cboTags.Location = new System.Drawing.Point(230, 31);
-            this.cboTags.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.cboTags.Margin = new System.Windows.Forms.Padding(2);
             this.cboTags.Name = "cboTags";
             this.cboTags.Size = new System.Drawing.Size(76, 20);
             this.cboTags.TabIndex = 25;
@@ -395,7 +396,7 @@
             this.btnShift.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnShift.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnShift.Location = new System.Drawing.Point(159, 312);
-            this.btnShift.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnShift.Margin = new System.Windows.Forms.Padding(2);
             this.btnShift.Name = "btnShift";
             this.btnShift.Size = new System.Drawing.Size(148, 37);
             this.btnShift.TabIndex = 26;
@@ -407,7 +408,7 @@
             // 
             this.rbNew.AutoSize = true;
             this.rbNew.Location = new System.Drawing.Point(9, 44);
-            this.rbNew.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.rbNew.Margin = new System.Windows.Forms.Padding(2);
             this.rbNew.Name = "rbNew";
             this.rbNew.Size = new System.Drawing.Size(47, 17);
             this.rbNew.TabIndex = 27;
@@ -420,7 +421,7 @@
             // 
             this.rbUpdate.AutoSize = true;
             this.rbUpdate.Location = new System.Drawing.Point(84, 44);
-            this.rbUpdate.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.rbUpdate.Margin = new System.Windows.Forms.Padding(2);
             this.rbUpdate.Name = "rbUpdate";
             this.rbUpdate.Size = new System.Drawing.Size(60, 17);
             this.rbUpdate.TabIndex = 28;
@@ -429,12 +430,28 @@
             this.rbUpdate.UseVisualStyleBackColor = true;
             this.rbUpdate.CheckedChanged += new System.EventHandler(this.rbUpdate_CheckedChanged);
             // 
+            // btnDelete
+            // 
+            this.btnDelete.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnDelete.Enabled = false;
+            this.btnDelete.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnDelete.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnDelete.Location = new System.Drawing.Point(9, 312);
+            this.btnDelete.Margin = new System.Windows.Forms.Padding(2);
+            this.btnDelete.Name = "btnDelete";
+            this.btnDelete.Size = new System.Drawing.Size(132, 37);
+            this.btnDelete.TabIndex = 29;
+            this.btnDelete.Text = "Delete";
+            this.btnDelete.UseVisualStyleBackColor = true;
+            this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
+            // 
             // MinerAddEditForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ControlLightLight;
             this.ClientSize = new System.Drawing.Size(476, 358);
+            this.Controls.Add(this.btnDelete);
             this.Controls.Add(this.rbUpdate);
             this.Controls.Add(this.rbNew);
             this.Controls.Add(this.btnShift);
@@ -444,7 +461,7 @@
             this.Controls.Add(this.lblTitle);
             this.Controls.Add(this.lstMembers);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.MinimumSize = new System.Drawing.Size(492, 365);
@@ -492,5 +509,6 @@
         private System.Windows.Forms.RadioButton rbNew;
         private System.Windows.Forms.RadioButton rbUpdate;
         private System.Windows.Forms.MaskedTextBox mtxtMID;
+        private System.Windows.Forms.Button btnDelete;
     }
 }

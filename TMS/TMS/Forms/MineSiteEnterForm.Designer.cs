@@ -75,9 +75,9 @@
             this.label1.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.Location = new System.Drawing.Point(12, 9);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(132, 17);
+            this.label1.Size = new System.Drawing.Size(102, 17);
             this.label1.TabIndex = 3;
-            this.label1.Text = "Enter New Site name:";
+            this.label1.Text = "Enter Site name:";
             // 
             // MineSiteEnterForm
             // 
@@ -94,7 +94,7 @@
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "MineSiteEnterForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "New Site Name";
+            this.Text = "Site Name";
             this.ResumeLayout(false);
             this.PerformLayout();
 
