@@ -76,6 +76,12 @@
     <Compile Include="Forms\ActiveMinersInfoForm.Designer.cs">
       <DependentUpon>ActiveMinersInfoForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\EDMessagesForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\EDMessagesForm.Designer.cs">
+      <DependentUpon>EDMessagesForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\LoginForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -182,6 +188,11 @@
       <DependentUpon>RouterMapForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Controllers\TrackingController.cs" />
+    <Compile Include="TMS_MemberPathViewSet.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>TMS_MemberPathViewSet.xsd</DependentUpon>
+    </Compile>
     <Compile Include="TMS_MinerPosDataSet.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -207,6 +218,11 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>TMS_MineSiteDataSet.xsd</DependentUpon>
     </Compile>
+    <Compile Include="TMS_PathElementsSet.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>TMS_PathElementsSet.xsd</DependentUpon>
+    </Compile>
     <Compile Include="TMS_RoutersAllDataSet.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -229,6 +245,9 @@
     </Compile>
     <EmbeddedResource Include="Forms\ActiveMinersInfoForm.resx">
       <DependentUpon>ActiveMinersInfoForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\EDMessagesForm.resx">
+      <DependentUpon>EDMessagesForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\LoginForm.resx">
       <DependentUpon>LoginForm.cs</DependentUpon>
@@ -301,6 +320,17 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <None Include="TMS_MemberPathViewSet.xsc">
+      <DependentUpon>TMS_MemberPathViewSet.xsd</DependentUpon>
+    </None>
+    <None Include="TMS_MemberPathViewSet.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>TMS_MemberPathViewSet.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="TMS_MemberPathViewSet.xss">
+      <DependentUpon>TMS_MemberPathViewSet.xsd</DependentUpon>
+    </None>
     <None Include="TMS_MinerPosDataSet.xsc">
       <DependentUpon>TMS_MinerPosDataSet.xsd</DependentUpon>
     </None>
@@ -355,6 +385,17 @@
     </None>
     <None Include="TMS_MineSiteDataSet.xss">
       <DependentUpon>TMS_MineSiteDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="TMS_PathElementsSet.xsc">
+      <DependentUpon>TMS_PathElementsSet.xsd</DependentUpon>
+    </None>
+    <None Include="TMS_PathElementsSet.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>TMS_PathElementsSet.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="TMS_PathElementsSet.xss">
+      <DependentUpon>TMS_PathElementsSet.xsd</DependentUpon>
     </None>
     <None Include="TMS_RoutersAllDataSet.xsc">
       <DependentUpon>TMS_RoutersAllDataSet.xsd</DependentUpon>

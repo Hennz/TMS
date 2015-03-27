@@ -43,6 +43,11 @@ namespace TMS
         ActiveMinersInfoForm _activeMinersForm;
 
         /// <summary>
+        /// 
+        /// </summary>
+        EDMessagesForm _edMessageForm;
+
+        /// <summary>
         /// The info form that appears wen clicking on a router.
         /// </summary>
         RouterMapForm routerMapForm;
@@ -338,15 +343,6 @@ namespace TMS
 
         }
 
-        public void OpenAllMinersView()
-        {
-            if (_activeMinersForm == null || _activeMinersForm.Visible == false)
-            {
-                _activeMinersForm = new ActiveMinersInfoForm(this);
-                _activeMinersForm.Show();
-            }
-        }
-
         private void OnRouterUpdate(PictureBox picRouter, Router router)
         {
             picRouter.Location = new Point((int)(router.posX * MineSite.GetInstance().mapScale - picRouter.Width / 2), (int)(router.posY * MineSite.GetInstance().mapScale - picRouter.Width / 2));
@@ -361,6 +357,24 @@ namespace TMS
             }
 
             HideRouterForm();
+        }
+
+        public void OpenAllMinersView()
+        {
+            if (_activeMinersForm == null || _activeMinersForm.Visible == false)
+            {
+                _activeMinersForm = new ActiveMinersInfoForm(this);
+                _activeMinersForm.Show();
+            }
+        }
+
+        public void OpenEDMessagesView()
+        {
+            if (_edMessageForm == null || _edMessageForm.Visible == false)
+            {
+                _edMessageForm = new EDMessagesForm();
+                _edMessageForm.Show();
+            }
         }
 
         public void OpenTestForm()
@@ -388,8 +402,6 @@ namespace TMS
             chars = new char[routerNoL];
             System.Buffer.BlockCopy(data, 2 + memberNoL * sizeof(char), chars, 0, routerNoL * sizeof(char));
             string routerNo = new string(chars);
-
-            Console.WriteLine(memberId + " at " + routerNo);
 
             Member member = MineSite.GetInstance().siteMembers[memberId];
             Router router = MineSite.GetInstance().ContainsRouter(routerNo);

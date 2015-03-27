@@ -59,6 +59,8 @@
             this.label3 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.tabTracking = new System.Windows.Forms.TabPage();
+            this.btnEDMessages = new System.Windows.Forms.Button();
+            this.lblEDMessages = new System.Windows.Forms.Label();
             this.btnTest = new System.Windows.Forms.Button();
             this.panel2 = new System.Windows.Forms.Panel();
             this.nudMapScale = new System.Windows.Forms.NumericUpDown();
@@ -89,31 +91,29 @@
             this.lblRepRouter = new System.Windows.Forms.Label();
             this.btnRepRouter = new System.Windows.Forms.Button();
             this.tabAttendance = new System.Windows.Forms.TabPage();
+            this.btnAttendance = new System.Windows.Forms.Button();
+            this.lblTo = new System.Windows.Forms.Label();
+            this.lblFrom = new System.Windows.Forms.Label();
+            this.dtpTo = new System.Windows.Forms.DateTimePicker();
+            this.dtpFrom = new System.Windows.Forms.DateTimePicker();
+            this.lblAttendanceMiner = new System.Windows.Forms.Label();
+            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.lblAttendanceReportType = new System.Windows.Forms.Label();
+            this.radioButton3 = new System.Windows.Forms.RadioButton();
+            this.radioButton2 = new System.Windows.Forms.RadioButton();
+            this.radioButton1 = new System.Windows.Forms.RadioButton();
             this.llblUsername = new System.Windows.Forms.LinkLabel();
             this.lblUserType = new System.Windows.Forms.Label();
             this.lblSendMessages = new System.Windows.Forms.Label();
-            this.lblViewMessages = new System.Windows.Forms.Label();
             this.routersTableAdapter = new TMS.TMS_DatabaseDataSet1TableAdapters.RoutersTableAdapter();
             this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
             this.btnSendMessage = new System.Windows.Forms.Button();
-            this.btnViewMessages = new System.Windows.Forms.Button();
             this.tMS_DatabaseDataSet = new TMS.TMS_DatabaseDataSet();
             this.tMSDatabaseDataSetBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.membersBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.membersTableAdapter = new TMS.TMS_DatabaseDataSetTableAdapters.MembersTableAdapter();
             this.membersTableAdapter1 = new TMS.TMS_DatabaseDataSet2TableAdapters.MembersTableAdapter();
             this.siteTableAdapter = new TMS.TMS_MineSiteDataSetTableAdapters.SiteTableAdapter();
-            this.radioButton1 = new System.Windows.Forms.RadioButton();
-            this.radioButton2 = new System.Windows.Forms.RadioButton();
-            this.radioButton3 = new System.Windows.Forms.RadioButton();
-            this.lblAttendanceReportType = new System.Windows.Forms.Label();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
-            this.lblAttendanceMiner = new System.Windows.Forms.Label();
-            this.dtpFrom = new System.Windows.Forms.DateTimePicker();
-            this.dtpTo = new System.Windows.Forms.DateTimePicker();
-            this.lblFrom = new System.Windows.Forms.Label();
-            this.lblTo = new System.Windows.Forms.Label();
-            this.btnAttendance = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.splitMain)).BeginInit();
             this.splitMain.Panel1.SuspendLayout();
             this.splitMain.Panel2.SuspendLayout();
@@ -476,7 +476,7 @@
             this.tmMain.Margin = new System.Windows.Forms.Padding(2);
             this.tmMain.Name = "tmMain";
             this.tmMain.SelectedIndex = 0;
-            this.tmMain.Size = new System.Drawing.Size(724, 84);
+            this.tmMain.Size = new System.Drawing.Size(762, 84);
             this.tmMain.TabIndex = 4;
             // 
             // tabMaster
@@ -495,7 +495,7 @@
             this.tabMaster.Margin = new System.Windows.Forms.Padding(2);
             this.tabMaster.Name = "tabMaster";
             this.tabMaster.Padding = new System.Windows.Forms.Padding(2);
-            this.tabMaster.Size = new System.Drawing.Size(716, 52);
+            this.tabMaster.Size = new System.Drawing.Size(754, 52);
             this.tabMaster.TabIndex = 0;
             this.tabMaster.Text = "Master";
             this.tabMaster.UseVisualStyleBackColor = true;
@@ -629,6 +629,8 @@
             // 
             // tabTracking
             // 
+            this.tabTracking.Controls.Add(this.btnEDMessages);
+            this.tabTracking.Controls.Add(this.lblEDMessages);
             this.tabTracking.Controls.Add(this.btnTest);
             this.tabTracking.Controls.Add(this.panel2);
             this.tabTracking.Controls.Add(this.btnAllMiners);
@@ -639,14 +641,39 @@
             this.tabTracking.Margin = new System.Windows.Forms.Padding(2);
             this.tabTracking.Name = "tabTracking";
             this.tabTracking.Padding = new System.Windows.Forms.Padding(2);
-            this.tabTracking.Size = new System.Drawing.Size(716, 52);
+            this.tabTracking.Size = new System.Drawing.Size(754, 52);
             this.tabTracking.TabIndex = 4;
             this.tabTracking.Text = "Tracking";
             this.tabTracking.UseVisualStyleBackColor = true;
             // 
+            // btnEDMessages
+            // 
+            this.btnEDMessages.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnEDMessages.BackgroundImage")));
+            this.btnEDMessages.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnEDMessages.FlatAppearance.BorderSize = 0;
+            this.btnEDMessages.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnEDMessages.Location = new System.Drawing.Point(254, 2);
+            this.btnEDMessages.Margin = new System.Windows.Forms.Padding(2);
+            this.btnEDMessages.Name = "btnEDMessages";
+            this.btnEDMessages.Size = new System.Drawing.Size(34, 37);
+            this.btnEDMessages.TabIndex = 19;
+            this.btnEDMessages.UseVisualStyleBackColor = true;
+            this.btnEDMessages.Click += new System.EventHandler(this.btnEDMessages_Click);
+            // 
+            // lblEDMessages
+            // 
+            this.lblEDMessages.AutoSize = true;
+            this.lblEDMessages.Font = new System.Drawing.Font("Segoe UI", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblEDMessages.Location = new System.Drawing.Point(244, 37);
+            this.lblEDMessages.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lblEDMessages.Name = "lblEDMessages";
+            this.lblEDMessages.Size = new System.Drawing.Size(57, 13);
+            this.lblEDMessages.TabIndex = 20;
+            this.lblEDMessages.Text = "Messages";
+            // 
             // btnTest
             // 
-            this.btnTest.Location = new System.Drawing.Point(283, 2);
+            this.btnTest.Location = new System.Drawing.Point(322, 4);
             this.btnTest.Margin = new System.Windows.Forms.Padding(2);
             this.btnTest.Name = "btnTest";
             this.btnTest.Size = new System.Drawing.Size(56, 46);
@@ -661,7 +688,7 @@
             this.panel2.Controls.Add(this.lblMapScale);
             this.panel2.Controls.Add(this.btnSaveScale);
             this.panel2.Controls.Add(this.lblScale1);
-            this.panel2.Location = new System.Drawing.Point(506, 2);
+            this.panel2.Location = new System.Drawing.Point(544, 1);
             this.panel2.Margin = new System.Windows.Forms.Padding(2);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(206, 50);
@@ -765,7 +792,7 @@
             this.panel1.Controls.Add(this.btnLoadSite);
             this.panel1.Controls.Add(this.lblChangeSites);
             this.panel1.Controls.Add(this.cboSites);
-            this.panel1.Location = new System.Drawing.Point(344, 2);
+            this.panel1.Location = new System.Drawing.Point(382, 2);
             this.panel1.Margin = new System.Windows.Forms.Padding(2);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(158, 50);
@@ -844,7 +871,7 @@
             this.tabReports.Margin = new System.Windows.Forms.Padding(2);
             this.tabReports.Name = "tabReports";
             this.tabReports.Padding = new System.Windows.Forms.Padding(2);
-            this.tabReports.Size = new System.Drawing.Size(716, 52);
+            this.tabReports.Size = new System.Drawing.Size(754, 52);
             this.tabReports.TabIndex = 1;
             this.tabReports.Text = "Reports";
             this.tabReports.UseVisualStyleBackColor = true;
@@ -993,10 +1020,122 @@
             this.tabAttendance.Margin = new System.Windows.Forms.Padding(2);
             this.tabAttendance.Name = "tabAttendance";
             this.tabAttendance.Padding = new System.Windows.Forms.Padding(2);
-            this.tabAttendance.Size = new System.Drawing.Size(716, 52);
+            this.tabAttendance.Size = new System.Drawing.Size(754, 52);
             this.tabAttendance.TabIndex = 3;
             this.tabAttendance.Text = "Attendance";
             this.tabAttendance.UseVisualStyleBackColor = true;
+            // 
+            // btnAttendance
+            // 
+            this.btnAttendance.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnAttendance.Location = new System.Drawing.Point(689, 3);
+            this.btnAttendance.Name = "btnAttendance";
+            this.btnAttendance.Size = new System.Drawing.Size(60, 44);
+            this.btnAttendance.TabIndex = 24;
+            this.btnAttendance.Text = "Create";
+            this.btnAttendance.UseVisualStyleBackColor = true;
+            // 
+            // lblTo
+            // 
+            this.lblTo.AutoSize = true;
+            this.lblTo.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblTo.Location = new System.Drawing.Point(536, 2);
+            this.lblTo.Name = "lblTo";
+            this.lblTo.Size = new System.Drawing.Size(25, 17);
+            this.lblTo.TabIndex = 23;
+            this.lblTo.Text = "To:";
+            // 
+            // lblFrom
+            // 
+            this.lblFrom.AutoSize = true;
+            this.lblFrom.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblFrom.Location = new System.Drawing.Point(390, 2);
+            this.lblFrom.Name = "lblFrom";
+            this.lblFrom.Size = new System.Drawing.Size(43, 17);
+            this.lblFrom.TabIndex = 22;
+            this.lblFrom.Text = "From:";
+            // 
+            // dtpTo
+            // 
+            this.dtpTo.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dtpTo.Location = new System.Drawing.Point(540, 24);
+            this.dtpTo.MinDate = new System.DateTime(2000, 1, 1, 0, 0, 0, 0);
+            this.dtpTo.Name = "dtpTo";
+            this.dtpTo.Size = new System.Drawing.Size(143, 25);
+            this.dtpTo.TabIndex = 21;
+            // 
+            // dtpFrom
+            // 
+            this.dtpFrom.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dtpFrom.Location = new System.Drawing.Point(394, 24);
+            this.dtpFrom.MinDate = new System.DateTime(2000, 1, 1, 0, 0, 0, 0);
+            this.dtpFrom.Name = "dtpFrom";
+            this.dtpFrom.Size = new System.Drawing.Size(140, 25);
+            this.dtpFrom.TabIndex = 20;
+            // 
+            // lblAttendanceMiner
+            // 
+            this.lblAttendanceMiner.AutoSize = true;
+            this.lblAttendanceMiner.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblAttendanceMiner.Location = new System.Drawing.Point(248, 2);
+            this.lblAttendanceMiner.Name = "lblAttendanceMiner";
+            this.lblAttendanceMiner.Size = new System.Drawing.Size(47, 17);
+            this.lblAttendanceMiner.TabIndex = 19;
+            this.lblAttendanceMiner.Text = "Miner:";
+            // 
+            // comboBox1
+            // 
+            this.comboBox1.DataSource = this.membersBindingSource1;
+            this.comboBox1.DisplayMember = "memberNo";
+            this.comboBox1.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.comboBox1.FormattingEnabled = true;
+            this.comboBox1.Location = new System.Drawing.Point(252, 24);
+            this.comboBox1.Name = "comboBox1";
+            this.comboBox1.Size = new System.Drawing.Size(121, 25);
+            this.comboBox1.TabIndex = 18;
+            this.comboBox1.ValueMember = "MemberNo";
+            // 
+            // lblAttendanceReportType
+            // 
+            this.lblAttendanceReportType.AutoSize = true;
+            this.lblAttendanceReportType.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblAttendanceReportType.Location = new System.Drawing.Point(6, 2);
+            this.lblAttendanceReportType.Name = "lblAttendanceReportType";
+            this.lblAttendanceReportType.Size = new System.Drawing.Size(84, 17);
+            this.lblAttendanceReportType.TabIndex = 3;
+            this.lblAttendanceReportType.Text = "Report Type:";
+            // 
+            // radioButton3
+            // 
+            this.radioButton3.AutoSize = true;
+            this.radioButton3.Location = new System.Drawing.Point(158, 24);
+            this.radioButton3.Name = "radioButton3";
+            this.radioButton3.Size = new System.Drawing.Size(64, 23);
+            this.radioButton3.TabIndex = 2;
+            this.radioButton3.Text = "Yearly";
+            this.radioButton3.UseVisualStyleBackColor = true;
+            // 
+            // radioButton2
+            // 
+            this.radioButton2.AutoSize = true;
+            this.radioButton2.Location = new System.Drawing.Point(73, 24);
+            this.radioButton2.Name = "radioButton2";
+            this.radioButton2.Size = new System.Drawing.Size(79, 23);
+            this.radioButton2.TabIndex = 1;
+            this.radioButton2.Text = "Monthly";
+            this.radioButton2.UseVisualStyleBackColor = true;
+            // 
+            // radioButton1
+            // 
+            this.radioButton1.AutoSize = true;
+            this.radioButton1.Checked = true;
+            this.radioButton1.Location = new System.Drawing.Point(10, 24);
+            this.radioButton1.Name = "radioButton1";
+            this.radioButton1.Size = new System.Drawing.Size(57, 23);
+            this.radioButton1.TabIndex = 0;
+            this.radioButton1.TabStop = true;
+            this.radioButton1.Text = "Daily";
+            this.radioButton1.UseVisualStyleBackColor = true;
             // 
             // llblUsername
             // 
@@ -1037,24 +1176,12 @@
             this.lblSendMessages.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.lblSendMessages.AutoSize = true;
             this.lblSendMessages.Font = new System.Drawing.Font("Segoe UI", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblSendMessages.Location = new System.Drawing.Point(729, 67);
+            this.lblSendMessages.Location = new System.Drawing.Point(768, 67);
             this.lblSendMessages.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblSendMessages.Name = "lblSendMessages";
             this.lblSendMessages.Size = new System.Drawing.Size(33, 13);
             this.lblSendMessages.TabIndex = 9;
             this.lblSendMessages.Text = "Send";
-            // 
-            // lblViewMessages
-            // 
-            this.lblViewMessages.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.lblViewMessages.AutoSize = true;
-            this.lblViewMessages.Font = new System.Drawing.Font("Segoe UI", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblViewMessages.Location = new System.Drawing.Point(768, 67);
-            this.lblViewMessages.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.lblViewMessages.Name = "lblViewMessages";
-            this.lblViewMessages.Size = new System.Drawing.Size(32, 13);
-            this.lblViewMessages.TabIndex = 10;
-            this.lblViewMessages.Text = "View";
             // 
             // routersTableAdapter
             // 
@@ -1067,28 +1194,13 @@
             this.btnSendMessage.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.btnSendMessage.FlatAppearance.BorderSize = 0;
             this.btnSendMessage.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnSendMessage.Location = new System.Drawing.Point(727, 28);
+            this.btnSendMessage.Location = new System.Drawing.Point(768, 30);
             this.btnSendMessage.Margin = new System.Windows.Forms.Padding(2);
             this.btnSendMessage.Name = "btnSendMessage";
             this.btnSendMessage.Size = new System.Drawing.Size(34, 37);
             this.btnSendMessage.TabIndex = 8;
             this.btnSendMessage.UseVisualStyleBackColor = true;
             this.btnSendMessage.Click += new System.EventHandler(this.btnSendMessage_Click);
-            // 
-            // btnViewMessages
-            // 
-            this.btnViewMessages.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnViewMessages.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnViewMessages.BackgroundImage")));
-            this.btnViewMessages.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.btnViewMessages.FlatAppearance.BorderSize = 0;
-            this.btnViewMessages.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnViewMessages.Location = new System.Drawing.Point(766, 28);
-            this.btnViewMessages.Margin = new System.Windows.Forms.Padding(2);
-            this.btnViewMessages.Name = "btnViewMessages";
-            this.btnViewMessages.Size = new System.Drawing.Size(34, 37);
-            this.btnViewMessages.TabIndex = 7;
-            this.btnViewMessages.UseVisualStyleBackColor = true;
-            this.btnViewMessages.Click += new System.EventHandler(this.btnViewMessages_Click);
             // 
             // tMS_DatabaseDataSet
             // 
@@ -1117,128 +1229,14 @@
             // 
             this.siteTableAdapter.ClearBeforeFill = true;
             // 
-            // radioButton1
-            // 
-            this.radioButton1.AutoSize = true;
-            this.radioButton1.Checked = true;
-            this.radioButton1.Location = new System.Drawing.Point(10, 24);
-            this.radioButton1.Name = "radioButton1";
-            this.radioButton1.Size = new System.Drawing.Size(57, 23);
-            this.radioButton1.TabIndex = 0;
-            this.radioButton1.TabStop = true;
-            this.radioButton1.Text = "Daily";
-            this.radioButton1.UseVisualStyleBackColor = true;
-            // 
-            // radioButton2
-            // 
-            this.radioButton2.AutoSize = true;
-            this.radioButton2.Location = new System.Drawing.Point(73, 24);
-            this.radioButton2.Name = "radioButton2";
-            this.radioButton2.Size = new System.Drawing.Size(79, 23);
-            this.radioButton2.TabIndex = 1;
-            this.radioButton2.Text = "Monthly";
-            this.radioButton2.UseVisualStyleBackColor = true;
-            // 
-            // radioButton3
-            // 
-            this.radioButton3.AutoSize = true;
-            this.radioButton3.Location = new System.Drawing.Point(158, 24);
-            this.radioButton3.Name = "radioButton3";
-            this.radioButton3.Size = new System.Drawing.Size(64, 23);
-            this.radioButton3.TabIndex = 2;
-            this.radioButton3.Text = "Yearly";
-            this.radioButton3.UseVisualStyleBackColor = true;
-            // 
-            // lblAttendanceReportType
-            // 
-            this.lblAttendanceReportType.AutoSize = true;
-            this.lblAttendanceReportType.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblAttendanceReportType.Location = new System.Drawing.Point(6, 2);
-            this.lblAttendanceReportType.Name = "lblAttendanceReportType";
-            this.lblAttendanceReportType.Size = new System.Drawing.Size(81, 17);
-            this.lblAttendanceReportType.TabIndex = 3;
-            this.lblAttendanceReportType.Text = "Report Type";
-            // 
-            // comboBox1
-            // 
-            this.comboBox1.DataSource = this.membersBindingSource1;
-            this.comboBox1.DisplayMember = "memberNo";
-            this.comboBox1.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(228, 24);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(121, 25);
-            this.comboBox1.TabIndex = 18;
-            this.comboBox1.ValueMember = "MemberNo";
-            // 
-            // lblAttendanceMiner
-            // 
-            this.lblAttendanceMiner.AutoSize = true;
-            this.lblAttendanceMiner.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblAttendanceMiner.Location = new System.Drawing.Point(224, 2);
-            this.lblAttendanceMiner.Name = "lblAttendanceMiner";
-            this.lblAttendanceMiner.Size = new System.Drawing.Size(43, 17);
-            this.lblAttendanceMiner.TabIndex = 19;
-            this.lblAttendanceMiner.Text = "Miner";
-            // 
-            // dtpFrom
-            // 
-            this.dtpFrom.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dtpFrom.Location = new System.Drawing.Point(355, 24);
-            this.dtpFrom.MinDate = new System.DateTime(2000, 1, 1, 0, 0, 0, 0);
-            this.dtpFrom.Name = "dtpFrom";
-            this.dtpFrom.Size = new System.Drawing.Size(140, 25);
-            this.dtpFrom.TabIndex = 20;
-            // 
-            // dtpTo
-            // 
-            this.dtpTo.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dtpTo.Location = new System.Drawing.Point(501, 24);
-            this.dtpTo.MinDate = new System.DateTime(2000, 1, 1, 0, 0, 0, 0);
-            this.dtpTo.Name = "dtpTo";
-            this.dtpTo.Size = new System.Drawing.Size(143, 25);
-            this.dtpTo.TabIndex = 21;
-            // 
-            // lblFrom
-            // 
-            this.lblFrom.AutoSize = true;
-            this.lblFrom.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblFrom.Location = new System.Drawing.Point(351, 2);
-            this.lblFrom.Name = "lblFrom";
-            this.lblFrom.Size = new System.Drawing.Size(43, 17);
-            this.lblFrom.TabIndex = 22;
-            this.lblFrom.Text = "From:";
-            // 
-            // lblTo
-            // 
-            this.lblTo.AutoSize = true;
-            this.lblTo.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblTo.Location = new System.Drawing.Point(497, 2);
-            this.lblTo.Name = "lblTo";
-            this.lblTo.Size = new System.Drawing.Size(25, 17);
-            this.lblTo.TabIndex = 23;
-            this.lblTo.Text = "To:";
-            // 
-            // btnAttendance
-            // 
-            this.btnAttendance.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnAttendance.Location = new System.Drawing.Point(651, 3);
-            this.btnAttendance.Name = "btnAttendance";
-            this.btnAttendance.Size = new System.Drawing.Size(60, 44);
-            this.btnAttendance.TabIndex = 24;
-            this.btnAttendance.Text = "Create";
-            this.btnAttendance.UseVisualStyleBackColor = true;
-            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ControlLightLight;
             this.ClientSize = new System.Drawing.Size(923, 691);
-            this.Controls.Add(this.lblViewMessages);
             this.Controls.Add(this.lblSendMessages);
             this.Controls.Add(this.btnSendMessage);
-            this.Controls.Add(this.btnViewMessages);
             this.Controls.Add(this.lblUserType);
             this.Controls.Add(this.llblUsername);
             this.Controls.Add(this.tmMain);
@@ -1350,11 +1348,9 @@
         private System.Windows.Forms.Button btnSaveScale;
         private System.Windows.Forms.Button btnTags;
         private System.Windows.Forms.Label lblTags;
-        private System.Windows.Forms.Button btnViewMessages;
         private System.Windows.Forms.Button btnSendMessage;
         private System.Windows.Forms.Label lblActiveMiners;
         private System.Windows.Forms.Label lblSendMessages;
-        private System.Windows.Forms.Label lblViewMessages;
         private TMS_DatabaseDataSet tMS_DatabaseDataSet;
         private System.Windows.Forms.BindingSource tMSDatabaseDataSetBindingSource;
         private TMS_DatabaseDataSet1 tMS_DatabaseDataSet1;
@@ -1397,6 +1393,8 @@
         private System.Windows.Forms.Label lblFrom;
         private System.Windows.Forms.DateTimePicker dtpTo;
         private System.Windows.Forms.DateTimePicker dtpFrom;
+        private System.Windows.Forms.Button btnEDMessages;
+        private System.Windows.Forms.Label lblEDMessages;
     }
 }
 

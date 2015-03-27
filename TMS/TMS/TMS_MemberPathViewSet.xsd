@@ -1,0 +1,60 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="TMS_MemberPathViewSet" targetNamespace="http://tempuri.org/TMS_MemberPathViewSet.xsd" xmlns:mstns="http://tempuri.org/TMS_MemberPathViewSet.xsd" xmlns="http://tempuri.org/TMS_MemberPathViewSet.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xs:annotation>
+    <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+        <Connections>
+          <Connection AppSettingsObjectName="Settings" AppSettingsPropertyName="TMS_DatabaseConnectionString" ConnectionStringObject="" IsAppSettingsProperty="true" Modifier="Assembly" Name="TMS_DatabaseConnectionString (Settings)" ParameterPrefix="@" PropertyReference="ApplicationSettings.TMS.Properties.Settings.GlobalReference.Default.TMS_DatabaseConnectionString" Provider="System.Data.SqlClient" />
+        </Connections>
+        <Tables>
+          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="MemberPathViewTableAdapter" GeneratorDataComponentClassName="MemberPathViewTableAdapter" Name="MemberPathView" UserDataComponentName="MemberPathViewTableAdapter">
+            <MainSource>
+              <DbSource ConnectionRef="TMS_DatabaseConnectionString (Settings)" DbObjectName="dbo.MemberPathView" DbObjectType="View" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetData" UserSourceName="Fill">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="false">
+                    <CommandText>SELECT [Router ID], [Miner Tag ID], Date FROM dbo.MemberPathView</CommandText>
+                    <Parameters />
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+            </MainSource>
+            <Mappings>
+              <Mapping SourceColumn="Router ID" DataSetColumn="Router ID" />
+              <Mapping SourceColumn="Miner Tag ID" DataSetColumn="Miner Tag ID" />
+              <Mapping SourceColumn="Date" DataSetColumn="Date" />
+            </Mappings>
+            <Sources />
+          </TableAdapter>
+        </Tables>
+        <Sources />
+      </DataSource>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="TMS_MemberPathViewSet" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="True" msprop:Generator_DataSetName="TMS_MemberPathViewSet" msprop:Generator_UserDSName="TMS_MemberPathViewSet">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="MemberPathView" msprop:Generator_TableClassName="MemberPathViewDataTable" msprop:Generator_TableVarName="tableMemberPathView" msprop:Generator_TablePropName="MemberPathView" msprop:Generator_RowDeletingName="MemberPathViewRowDeleting" msprop:Generator_RowChangingName="MemberPathViewRowChanging" msprop:Generator_RowEvHandlerName="MemberPathViewRowChangeEventHandler" msprop:Generator_RowDeletedName="MemberPathViewRowDeleted" msprop:Generator_UserTableName="MemberPathView" msprop:Generator_RowChangedName="MemberPathViewRowChanged" msprop:Generator_RowEvArgName="MemberPathViewRowChangeEvent" msprop:Generator_RowClassName="MemberPathViewRow">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="Router_x0020_ID" msprop:Generator_ColumnVarNameInTable="columnRouter_ID" msprop:Generator_ColumnPropNameInRow="Router_ID" msprop:Generator_ColumnPropNameInTable="Router_IDColumn" msprop:Generator_UserColumnName="Router ID">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="5" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="Miner_x0020_Tag_x0020_ID" msprop:Generator_ColumnVarNameInTable="columnMiner_Tag_ID" msprop:Generator_ColumnPropNameInRow="Miner_Tag_ID" msprop:Generator_ColumnPropNameInTable="Miner_Tag_IDColumn" msprop:Generator_UserColumnName="Miner Tag ID">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="5" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="Date" msprop:Generator_ColumnVarNameInTable="columnDate" msprop:Generator_ColumnPropNameInRow="Date" msprop:Generator_ColumnPropNameInTable="DateColumn" msprop:Generator_UserColumnName="Date" type="xs:dateTime" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

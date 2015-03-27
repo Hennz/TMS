@@ -299,7 +299,6 @@
         </TablixRowHierarchy>
         <DataSetName>TWMinerSet</DataSetName>
         <Top>2.44382cm</Top>
-        <Left>0cm</Left>
         <Height>1.2cm</Height>
         <Width>14.732cm</Width>
         <Style>
@@ -748,20 +747,13 @@
         </TablixColumnHierarchy>
         <TablixRowHierarchy>
           <TablixMembers>
-            <TablixMember>
-              <KeepWithGroup>After</KeepWithGroup>
-            </TablixMember>
-            <TablixMember>
-              <KeepWithGroup>After</KeepWithGroup>
-            </TablixMember>
-            <TablixMember>
-              <Group Name="Details1" />
-            </TablixMember>
+            <TablixMember />
+            <TablixMember />
+            <TablixMember />
           </TablixMembers>
         </TablixRowHierarchy>
         <DataSetName>TWMinerSet</DataSetName>
         <Top>0.17639cm</Top>
-        <Left>0cm</Left>
         <Height>2.09104cm</Height>
         <Width>14.732cm</Width>
         <ZIndex>1</ZIndex>
@@ -802,7 +794,6 @@
             </Paragraph>
           </Paragraphs>
           <rd:DefaultName>Textbox9</rd:DefaultName>
-          <Left>0cm</Left>
           <Height>2.36361cm</Height>
           <Width>14.732cm</Width>
           <Style>

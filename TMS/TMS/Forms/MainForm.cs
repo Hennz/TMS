@@ -391,5 +391,10 @@ namespace TMS
                 MessageBox.Show("This site is already loaded.");
             }
         }
+
+        private void btnEDMessages_Click(object sender, EventArgs e)
+        {
+            _trackingController.OpenEDMessagesView();
+        }
     }
 }
