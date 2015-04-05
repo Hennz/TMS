@@ -58,7 +58,7 @@ namespace TMS
                     data[i] = routerNoB[i - 2 - memberNoB.Length];
                 }
 
-                _controller.PutDataFromCoordinator(data);
+                _controller.ReadDataFromCoordinator(data);
             }
         }
 

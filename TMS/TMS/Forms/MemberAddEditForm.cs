@@ -10,12 +10,12 @@ using System.Windows.Forms;
 
 namespace TMS
 {
-    public partial class MinerAddEditForm : Form
+    public partial class MemberAddEditForm : Form
     {
         MasterController _controller;
 
         Member member;
-        public MinerAddEditForm(MasterController c)
+        public MemberAddEditForm(MasterController c)
         {
             InitializeComponent();
 
@@ -78,7 +78,7 @@ namespace TMS
                 !mtxtPhone.Text.Equals("")
                 )
             {
-                int errorCode = _controller.MemberCreate(mtxtMID.Text,
+                bool didComplete = _controller.MemberCreate(mtxtMID.Text,
                     txtFName.Text, txtMName.Text, txtLName.Text,
                     txtAddr.Text, txtProv.Text, txtCity.Text,
                     Int32.Parse(mtxtPin.Text),
@@ -86,7 +86,7 @@ namespace TMS
                     chkIsVehicle.Checked,
                     (string)(cboTags.Items[cboTags.SelectedIndex]));
 
-                if (errorCode == 0)
+                if (didComplete)
                 {
                     ClearInput();
 
@@ -110,7 +110,7 @@ namespace TMS
                 return;
             }
 
-            int errorCode = _controller.MemberUpdate(member, mtxtMID.Text,
+            bool didComplete = _controller.MemberUpdate(member, mtxtMID.Text,
                 txtFName.Text, txtMName.Text, txtLName.Text,
                 txtAddr.Text, txtProv.Text, txtCity.Text,
                 Int32.Parse(mtxtPin.Text),
@@ -118,7 +118,7 @@ namespace TMS
                 chkIsVehicle.Checked,
                 (string)(cboTags.Items[cboTags.SelectedIndex]));
 
-            if (errorCode == 0)
+            if (didComplete)
             {
                 rbNew.Checked = true;
 

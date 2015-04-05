@@ -48,9 +48,9 @@ namespace TMS
                                  new Shift(dtpStart2.Value, dtpEnd2.Value),
                                  new Shift(dtpStart3.Value, dtpEnd3.Value)};
 
-                int errorCode = _controller.AssignShift(member, shifts);
+                bool didComplete = _controller.AssignShift(member, shifts);
 
-                if (errorCode == 0)
+                if (didComplete)
                 {
                     member.assignedShifts.Clear();
 

@@ -64,9 +64,12 @@ namespace TMS
         {
             string siteName = GetNewSitename();
 
-            MineSite.GetInstance().siteName = siteName;
+            if (!siteName.Equals(""))
+            {
+                MineSite.GetInstance().siteName = siteName;
 
-            _controller.MineSiteUpdate();
+                bool didComplete = _controller.MineSiteUpdate();
+            }
         }
 
         private string GetNewSitename()

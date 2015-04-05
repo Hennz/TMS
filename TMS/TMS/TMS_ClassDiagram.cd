@@ -1,0 +1,430 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="TMS.MasterController">
+    <Position X="17.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>EAAEG+AGAqZEAAQDECIQEocgQgAIIAoEQUSAAAQBCAA=</HashCode>
+      <FileName>Controllers\MasterController.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="TMS.MessagingController" Collapsed="true">
+    <Position X="12" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>IAAAAAAAAAAAAAEAACAAAAAAAAAAAAAAAQAAAAQAIIA=</HashCode>
+      <FileName>Controllers\MessagingController.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="TMS.ReportsController" Collapsed="true">
+    <Position X="10.25" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAgAAAAAAAAQAAACAAAAAAAAAAAACAAAAAAAAAAEAA=</HashCode>
+      <FileName>Controllers\ReportsController.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="TMS.TrackingController" Collapsed="true">
+    <Position X="5.5" Y="8.25" Width="2.5" />
+    <TypeIdentifier>
+      <HashCode>JAYAgIAIgCIABACAAAAAAwQAAICBAABAAQAACAAEAQY=</HashCode>
+      <FileName>Controllers\TrackingController.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="TMS.ActiveMinersInfoForm" Collapsed="true">
+    <Position X="0.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAgDgAAQCgAAAAABACAAgACAACAAAAEAAIAAUgAAAA=</HashCode>
+      <FileName>Forms\ActiveMinersInfoForm.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="TMS.EDMessagesForm" Collapsed="true">
+    <Position X="5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>CAAAAgAAACAAAAAAAACAAAACAAkAAAAAAAAgAAgAAEQ=</HashCode>
+      <FileName>Forms\EDMessagesForm.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="TMS.LoginForm" Collapsed="true">
+    <Position X="6.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AEgAgIAAACAAAAAAAACKAAACEEAADAECAhAAAEBAAAQ=</HashCode>
+      <FileName>Forms\LoginForm.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="TMS.MainForm" Collapsed="true">
+    <Position X="8.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>FE0qFCkEj70gRJAzoZC1OgACESnmFhfGcqVCjZIZUxY=</HashCode>
+      <FileName>Forms\MainForm.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="TMS.MessagesSendForm" Collapsed="true">
+    <Position X="8.5" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAIAACAgAAAAAACAAAASCEAAQAAECIAAAmAAAAA=</HashCode>
+      <FileName>Forms\MessagesSendForm.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="TMS.MessagesViewForm" Collapsed="true">
+    <Position X="10.25" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AIAAgAAAACAAABAAAACAAAACAAAAQAAAAIAEAEAAAAQ=</HashCode>
+      <FileName>Forms\MessagesViewForm.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="TMS.MemberAddEditForm" Collapsed="true">
+    <Position X="13.75" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AiAAKIASgjCABCAAAgKQEIeWAgEWABABDAAAAEQBARU=</HashCode>
+      <FileName>Forms\MemberAddEditForm.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="TMS.MineSiteEditForm" Collapsed="true">
+    <Position X="1.5" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>QAAAAQABAioAAQAAAECEQAgCAAgAAAAAAAAAAEAAAAA=</HashCode>
+      <FileName>Forms\MineSiteEditForm.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="TMS.MineSiteEnterForm" Collapsed="true">
+    <Position X="3.25" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAACAAACAAABEAAACAAAACAAEAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Forms\MineSiteEnterForm.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="TMS.ReportForm" Collapsed="true">
+    <Position X="8.5" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAEAAAAACIBABAAAACAAAECgMICACCAgAAQAAgAACA=</HashCode>
+      <FileName>Forms\ReportForm.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="TMS.RouterAddEditForm" Collapsed="true">
+    <Position X="15.5" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>EAAAAAABgiIAACAAAkqSCADiAIEKUAAAAIAAQUQAAYQ=</HashCode>
+      <FileName>Forms\RouterAddEditForm.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="TMS.RouterMapForm" Collapsed="true">
+    <Position X="1.5" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAACCAAAACAAACAAABDAAAEAAAAAAAAAEABAAA=</HashCode>
+      <FileName>Forms\RouterMapForm.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="TMS.SensorAddEditForm" Collapsed="true">
+    <Position X="8.5" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AEAAAEAAAGAAAAAAAAGABABCAAAAwSAQAIAAAEAAAQQ=</HashCode>
+      <FileName>Forms\SensorAddEditForm.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="TMS.ShiftAddEditForm" Collapsed="true">
+    <Position X="13.75" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAADAASAAABAAAACAAAIKAAAAQBAACIAAAEIAAAA=</HashCode>
+      <FileName>Forms\ShiftAddEditForm.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="TMS.TagAddEditForm" Collapsed="true">
+    <Position X="5" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAIEAAAGAAAAAAAIGAAAACAAACQAAAAIAAAEAAIQQ=</HashCode>
+      <FileName>Forms\TagAddEditForm.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="TMS.TestCommForm" Collapsed="true">
+    <Position X="6.75" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AEAABAEBAiAgAAAAAACQSoACAACAAEAEEAAAAEDAAAA=</HashCode>
+      <FileName>Forms\TestCommForm.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="TMS.UserAddForm" Collapsed="true">
+    <Position X="1.5" Y="7.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAQAAAEDAAAEgAAACAAIUCAEAAAABABBACAkABCAE=</HashCode>
+      <FileName>Forms\UserAddForm.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="TMS.UserEditForm" Collapsed="true">
+    <Position X="3.25" Y="7.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAEAAAATASAEAEAACAAIcCAEABABABBCACAMIBAAE=</HashCode>
+      <FileName>Forms\UserEditForm.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="TMS.EDBroadcast" Collapsed="true">
+    <Position X="3.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAAAAAAAAAAAAAAAAAABAAAAAAAAAAAQAAAAAA=</HashCode>
+      <FileName>Models\EDBroadcast.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="TMS.Member" Collapsed="true">
+    <Position X="12" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>EAQAgAAAACAQAAAVEAASCAJAAAIABAAAFAgAQAAAQAI=</HashCode>
+      <FileName>Models\Member.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="TMS.MineSite" Collapsed="true">
+    <Position X="15.5" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAUAACAwCACAAAAEAAAAACABAACAAAAAAACAAEAAgA=</HashCode>
+      <FileName>Models\MineSite.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="TMS.Router" Collapsed="true">
+    <Position X="13.75" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AEQAgAAAACAAAAAEIAAAAAACAIIAEAAAAAIAwAEAAAA=</HashCode>
+      <FileName>Models\Router.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="TMS.Shift" Collapsed="true">
+    <Position X="12" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAgACAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\Shift.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="TMS.User" Collapsed="true">
+    <Position X="15.5" Y="6.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAEAAAAAAAAAAAAAAAQAAEABAAABAgAAAACAAAAAAA=</HashCode>
+      <FileName>Models\User.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="TMS.Program" Collapsed="true">
+    <Position X="6.75" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAA=</HashCode>
+      <FileName>Program.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="TMS.TMS_DatabaseDataSet3" Collapsed="true">
+    <Position X="13.75" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAgAAAABwgAAAJABAAAQAAAAAgCQBgAAAAAAAEABBA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="TMS.TMS_DatabaseDataSet2" Collapsed="true">
+    <Position X="12" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAgAwIAAAJABAAAQAAAAAgCQBgAAAAEAAEABBA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="TMS.TMS_MemberPathViewSet" Collapsed="true">
+    <Position X="5" Y="6.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAyAAEAJABAAAQAAAAAgCQBgAAAABAAEABBA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="TMS.TMS_DatabaseDataSet4" Collapsed="true">
+    <Position X="15.5" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAgAwIAAAJABAAAQAAAAAgCQBgAAAAEAAEABBA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="TMS.TMS_DatabaseDataSet6" Collapsed="true">
+    <Position X="3.25" Y="6.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAgAwIAAAJABAAAQAAAAAgCQBgAAAAEAAEABBA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="TMS.TMS_DatabaseDataSet" Collapsed="true">
+    <Position X="8.5" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAgAwIAAAJABAAAQAAAAAgCQBgAAAAEAAEABBA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="TMS.TMS_MineSiteDataSet" Collapsed="true">
+    <Position X="6.75" Y="6.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAwAAgAJABBAAQAAAAAgCQBgACAAAAAEABBA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="TMS.TMS_PathElementsSet" Collapsed="true">
+    <Position X="8.5" Y="6.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAgAwIAAAJABAAAQAAgAAgCQBgAAAAEAAEEBBA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="TMS.TMS_DatabaseDataSet5" Collapsed="true">
+    <Position X="1.5" Y="6.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAgAAAABwgAAAJABAAAQAAAAAgCQBgAAAAAAAEABBA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="TMS.TMS_DatabaseDataSet1" Collapsed="true">
+    <Position X="10.25" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAgAAAABwgAAAJABAAAQAAAAAgCQBgAAAAAAAEABBA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="TMS.TMS_TWMinersDataSet" Collapsed="true">
+    <Position X="10.25" Y="6.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AIAAAAAAAwAAAAJABAAARAAAAAgCQBgAAAAAAAEABBA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="TMS.Properties.Resources" Collapsed="true">
+    <Position X="12" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>CAAAAAAAAAAAABAAABABEAAAAQAAAAAAAEAAAAAAAIA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="TMS.Properties.Settings" Collapsed="true">
+    <Position X="10.25" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAACAAAAAAAAAAAAQAAIAAAABABAAAAAAAAAQAAAAA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="TMS.TMS_DatabaseDataSet3TableAdapters.RoutersTableAdapter" Collapsed="true">
+    <Position X="3.25" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>EASAAGAAEAAAAAcAIAAAAAAAACEICAAAAAAAAAAABBA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="TMS.TMS_DatabaseDataSet3TableAdapters.TableAdapterManager" Collapsed="true">
+    <Position X="3.25" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AUAAACAAAABABBEBAAAAMAAgAAACgAAAAAQAAAAABAQ=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="TMS.TMS_DatabaseDataSet2TableAdapters.MembersTableAdapter" Collapsed="true">
+    <Position X="6.75" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>EASAAGAAEAAAAAcAIAAAAAAAACEICAAAAAAAAAAABBA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="TMS.TMS_DatabaseDataSet2TableAdapters.TableAdapterManager" Collapsed="true">
+    <Position X="5" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AQAAACgAAAJABAEBAAAAMAAgAAACgAAAAAQAAAAABAQ=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="TMS.TMS_MemberPathViewSetTableAdapters.MemberPathViewTableAdapter" Collapsed="true">
+    <Position X="13.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>EACAAGAAEAAAAAcAIAAAAAAAACAICAAAAAAAAAAABBA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="TMS.TMS_MemberPathViewSetTableAdapters.TableAdapterManager" Collapsed="true">
+    <Position X="1.5" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AQAAACAAAABABAEBAAAAMAAgAAACgAAAAAQAAAAABAQ=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="TMS.TMS_DatabaseDataSet4TableAdapters.MembersTableAdapter" Collapsed="true">
+    <Position X="15.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>EASAAGAAEAAAAAcAIAAAAAAAACEICAAAAAAAAAAABBA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="TMS.TMS_DatabaseDataSet4TableAdapters.TableAdapterManager" Collapsed="true">
+    <Position X="13.75" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AQAAACgAAAJABAEBAAAAMAAgAAACgAAAAAQAAAAABAQ=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="TMS.TMS_DatabaseDataSet6TableAdapters.MembersTableAdapter" Collapsed="true">
+    <Position X="1.5" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>EASAAGAAEAAAAAcAIAAAAAAAACEICAAAAAAAAAAABBA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="TMS.TMS_DatabaseDataSet6TableAdapters.TableAdapterManager" Collapsed="true">
+    <Position X="3.25" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AQAAACgAAAJABAEBAAAAMAAgAAACgAAAAAQAAAAABAQ=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="TMS.TMS_DatabaseDataSetTableAdapters.MembersTableAdapter" Collapsed="true">
+    <Position X="3.25" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>EACAAGAAEAAAAAcAIAAAAAAAACAICAAAAAAAAAAABBA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="TMS.TMS_DatabaseDataSetTableAdapters.TableAdapterManager" Collapsed="true">
+    <Position X="6.75" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AQAAACAAAABABAEBAAAAMAAgAAACgAAAAAQAAAAABAQ=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="TMS.TMS_MineSiteDataSetTableAdapters.SiteTableAdapter" Collapsed="true">
+    <Position X="15.5" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>EASAAGAAEAAAAAcAIAAAAAAAACEICAAAAAAAAAAABBA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="TMS.TMS_MineSiteDataSetTableAdapters.TableAdapterManager" Collapsed="true">
+    <Position X="8.5" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AQAAAGABAABABAEBAAAAMAAgAAACgAAAAAQAAAAABAQ=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="TMS.TMS_PathElementsSetTableAdapters.MembersTableAdapter" Collapsed="true">
+    <Position X="5" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>EASAAGAAEAAAAAcAIAAAAAAAACEICAAAAAAAAAAABBA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="TMS.TMS_PathElementsSetTableAdapters.PathElementTableAdapter" Collapsed="true">
+    <Position X="5" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>EASAAGAAEAAAAAcAIAAAAAAAACEICAAAAAAAAAAABBA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="TMS.TMS_PathElementsSetTableAdapters.TableAdapterManager" Collapsed="true">
+    <Position X="15.5" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AQAAACgAACJABAEBAAAIMAAgAAACgAAAAAQAAAAABAQ=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="TMS.TMS_DatabaseDataSet5TableAdapters.RoutersTableAdapter" Collapsed="true">
+    <Position X="5" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>EACAAGAAEAAAAAcAIAAAAAAAACAICAAAAAAAAAAABBA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="TMS.TMS_DatabaseDataSet5TableAdapters.TableAdapterManager" Collapsed="true">
+    <Position X="10.25" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AQAAACAAAABABAEBAAAAMAAgAAACgAAAAAQAAAAABAQ=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="TMS.TMS_DatabaseDataSet1TableAdapters.RoutersTableAdapter" Collapsed="true">
+    <Position X="6.75" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>EASAAGAAEAAAAAcAIAAAAAAAACEICAAAAAAAAAAABBA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="TMS.TMS_DatabaseDataSet1TableAdapters.TableAdapterManager" Collapsed="true">
+    <Position X="12" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AUAAACAAAABABBEBAAAAMAAgAAACgAAAAAQAAAAABAQ=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="TMS.TMS_TWMinersDataSetTableAdapters.TWMinerProcedureTableAdapter" Collapsed="true">
+    <Position X="13.75" Y="6.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>EACAAGAAEAAAAAcAIAAAAAAAACAICAAAAAAAAAAABBA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="TMS.TMS_TWMinersDataSetTableAdapters.TableAdapterManager" Collapsed="true">
+    <Position X="1.5" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AQAAACAAAABABAEBAAAAMAAgAAACgAAAAAQAAAAABAQ=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Enum Name="TMS.REPORT_TYPES" Collapsed="true">
+    <Position X="1.5" Y="8.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAACAAAAAAAAAAAAAAAAAAAAQAAAQAAAAAAAA=</HashCode>
+      <FileName>Forms\ReportForm.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

@@ -48,7 +48,7 @@ namespace TMS
         EDMessagesForm _edMessageForm;
 
         /// <summary>
-        /// The info form that appears wen clicking on a router.
+        /// The info form that appears when clicking on a router.
         /// </summary>
         RouterMapForm routerMapForm;
 
@@ -98,7 +98,7 @@ namespace TMS
             // Set up events for the router updating
             picRouter.MouseDown += (sender, e) =>
             {
-                ShowMinerPosition(sender, e, router);
+                ShowMemberPosition(sender, e, router);
             };
 
             // Subscribe to router updates
@@ -120,6 +120,12 @@ namespace TMS
 
         }
 
+        /// <summary>
+        /// Create a member's path element in the database.
+        /// </summary>
+        /// <param name="member"></param>
+        /// <param name="router"></param>
+        /// <returns></returns>
         private bool CreatePathElement(Member member, Router router)
         {
             using (SqlConnection sqlCon = new SqlConnection(Properties.Settings.Default.TMS_DatabaseConnectionString))
@@ -343,6 +349,11 @@ namespace TMS
 
         }
 
+        /// <summary>
+        /// Updates the legend image of a router after it has been updated
+        /// </summary>
+        /// <param name="picRouter"></param>
+        /// <param name="router"></param>
         private void OnRouterUpdate(PictureBox picRouter, Router router)
         {
             picRouter.Location = new Point((int)(router.posX * MineSite.GetInstance().mapScale - picRouter.Width / 2), (int)(router.posY * MineSite.GetInstance().mapScale - picRouter.Width / 2));
@@ -377,6 +388,9 @@ namespace TMS
             }
         }
 
+        /// <summary>
+        /// Opens a form for testing input path messages
+        /// </summary>
         public void OpenTestForm()
         {
             if (_testForm == null || _testForm.Visible == false)
@@ -390,7 +404,7 @@ namespace TMS
         /// Processes a byte stream from the coordinator
         /// </summary>
         /// <param name="data">Data formatted so we have a member id and a router ID like MXXXXRXXXX</param>
-        public void PutDataFromCoordinator(byte[] data)
+        public void ReadDataFromCoordinator(byte[] data)
         {
             int memberNoL = (int)data[0];
             int routerNoL = (int)data[1];
@@ -414,7 +428,13 @@ namespace TMS
             }
         }
 
-        public void ShowMinerPosition(object sender, MouseEventArgs e, Router router)
+        /// <summary>
+        /// Opens a window over the router that was selected on the map.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        /// <param name="router"></param>
+        public void ShowMemberPosition(object sender, MouseEventArgs e, Router router)
         {
             if (routerMapForm == null)
             {

@@ -17,8 +17,8 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.TreeNode treeNode1 = new System.Windows.Forms.TreeNode("Mine Site Name");
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.TreeNode treeNode5 = new System.Windows.Forms.TreeNode("Mine Site Name");
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
             this.splitMain = new System.Windows.Forms.SplitContainer();
             this.lblActiveMiners = new System.Windows.Forms.Label();
@@ -264,10 +264,10 @@
             this.tvAllRouters.Location = new System.Drawing.Point(4, 5);
             this.tvAllRouters.Margin = new System.Windows.Forms.Padding(2);
             this.tvAllRouters.Name = "tvAllRouters";
-            treeNode1.Name = "MineSite";
-            treeNode1.Text = "Mine Site Name";
+            treeNode5.Name = "MineSite";
+            treeNode5.Text = "Mine Site Name";
             this.tvAllRouters.Nodes.AddRange(new System.Windows.Forms.TreeNode[] {
-            treeNode1});
+            treeNode5});
             this.tvAllRouters.Size = new System.Drawing.Size(224, 358);
             this.tvAllRouters.TabIndex = 0;
             this.tvAllRouters.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.tvAllRouters_AfterSelect);
@@ -286,8 +286,8 @@
             // 
             // dataRouters
             // 
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Segoe UI", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dataRouters.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle5.Font = new System.Drawing.Font("Segoe UI", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dataRouters.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle5;
             this.dataRouters.AutoGenerateColumns = false;
             this.dataRouters.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dataRouters.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
@@ -910,25 +910,27 @@
             this.pnlReportInput.Location = new System.Drawing.Point(295, 1);
             this.pnlReportInput.Margin = new System.Windows.Forms.Padding(2);
             this.pnlReportInput.Name = "pnlReportInput";
-            this.pnlReportInput.Size = new System.Drawing.Size(436, 51);
+            this.pnlReportInput.Size = new System.Drawing.Size(455, 51);
             this.pnlReportInput.TabIndex = 16;
             // 
             // lblRepTWM
             // 
             this.lblRepTWM.AutoSize = true;
-            this.lblRepTWM.Font = new System.Drawing.Font("Segoe UI", 6F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblRepTWM.Location = new System.Drawing.Point(131, 29);
+            this.lblRepTWM.Font = new System.Drawing.Font("Segoe UI", 6.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblRepTWM.Location = new System.Drawing.Point(120, 36);
             this.lblRepTWM.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.lblRepTWM.MaximumSize = new System.Drawing.Size(34, 0);
             this.lblRepTWM.Name = "lblRepTWM";
-            this.lblRepTWM.Size = new System.Drawing.Size(26, 22);
+            this.lblRepTWM.Size = new System.Drawing.Size(48, 12);
             this.lblRepTWM.TabIndex = 13;
             this.lblRepTWM.Text = "Miner Path";
             this.lblRepTWM.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             // 
             // btnRepTWM
             // 
+            this.btnRepTWM.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnRepTWM.BackgroundImage")));
+            this.btnRepTWM.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.btnRepTWM.FlatAppearance.BorderSize = 0;
+            this.btnRepTWM.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnRepTWM.Location = new System.Drawing.Point(126, 1);
             this.btnRepTWM.Margin = new System.Windows.Forms.Padding(2);
             this.btnRepTWM.Name = "btnRepTWM";
@@ -940,17 +942,20 @@
             // lblRepTag
             // 
             this.lblRepTag.AutoSize = true;
-            this.lblRepTag.Font = new System.Drawing.Font("Segoe UI", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblRepTag.Font = new System.Drawing.Font("Segoe UI", 6.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblRepTag.Location = new System.Drawing.Point(93, 36);
             this.lblRepTag.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblRepTag.Name = "lblRepTag";
-            this.lblRepTag.Size = new System.Drawing.Size(25, 13);
+            this.lblRepTag.Size = new System.Drawing.Size(20, 12);
             this.lblRepTag.TabIndex = 11;
             this.lblRepTag.Text = "Tag";
             // 
             // btnReptag
             // 
+            this.btnReptag.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnReptag.BackgroundImage")));
+            this.btnReptag.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.btnReptag.FlatAppearance.BorderSize = 0;
+            this.btnReptag.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnReptag.Location = new System.Drawing.Point(88, 1);
             this.btnReptag.Margin = new System.Windows.Forms.Padding(2);
             this.btnReptag.Name = "btnReptag";
@@ -972,7 +977,10 @@
             // 
             // btnRepMembers
             // 
+            this.btnRepMembers.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnRepMembers.BackgroundImage")));
+            this.btnRepMembers.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.btnRepMembers.FlatAppearance.BorderSize = 0;
+            this.btnRepMembers.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnRepMembers.Location = new System.Drawing.Point(50, 1);
             this.btnRepMembers.Margin = new System.Windows.Forms.Padding(2);
             this.btnRepMembers.Name = "btnRepMembers";
@@ -994,7 +1002,10 @@
             // 
             // btnRepRouter
             // 
+            this.btnRepRouter.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnRepRouter.BackgroundImage")));
+            this.btnRepRouter.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.btnRepRouter.FlatAppearance.BorderSize = 0;
+            this.btnRepRouter.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnRepRouter.Location = new System.Drawing.Point(10, 1);
             this.btnRepRouter.Margin = new System.Windows.Forms.Padding(2);
             this.btnRepRouter.Name = "btnRepRouter";

@@ -20,7 +20,7 @@ namespace TMS
         MainForm _mainForm;
 
         // Forms used for data entry
-        MinerAddEditForm _minerForm;
+        MemberAddEditForm _minerForm;
         MineSiteEditForm _mineSiteForm;
         RouterAddEditForm _routerForm;
         SensorAddEditForm _sensorForm;
@@ -45,7 +45,7 @@ namespace TMS
         /// <param name="member">The member whom to assign the shifts to.</param>
         /// <param name="shift">The three shifts to be assigned</param>
         /// <returns></returns>
-        public int AssignShift(Member member, Shift[] shift)
+        public bool AssignShift(Member member, Shift[] shift)
         {
             using (SqlConnection sqlCon = new SqlConnection(Properties.Settings.Default.TMS_DatabaseConnectionString))
             {
@@ -74,13 +74,13 @@ namespace TMS
                         int rows = oCmd[i].ExecuteNonQuery();
                     }
 
-                    return 0;
+                    return true;
                 }
                 catch (SqlException e)
                 {
                     MessageBox.Show(e.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
 
-                    return 1;
+                    return false;
                 }
             }
         }
@@ -144,11 +144,12 @@ namespace TMS
         }
 
         /// <summary>
-        /// To be called from the router form when it is closed.
+        /// To be called from the router form when it is closed. Resets the i case the user was selecting a router position.
         /// </summary>
         public void ClosedRouterForm()
         {
             _routerForm.Dispose();
+            SelectRouterPosClick(null, null);
         }
 
         /// <summary>
@@ -166,14 +167,6 @@ namespace TMS
         {
             _userAddForm.Dispose();
             _userEditForm.Show();
-        }
-
-        /// <summary>
-        /// TODO Create an admin user if there are none
-        /// </summary>
-        private void CreateAdmin()
-        {
-
         }
 
         /// <summary>
@@ -259,6 +252,10 @@ namespace TMS
 
         #region Password Hashing
 
+        /// <summary>
+        /// Creates a random salt for the database to increase passsword security.
+        /// </summary>
+        /// <returns></returns>
         private string GenerateSalt()
         {
             string salt = "";
@@ -277,7 +274,7 @@ namespace TMS
         }
 
         /// <summary>
-        /// 
+        /// Uses SHA 256 to has the password and return it in base 64
         /// </summary>
         /// <param name="salt"></param>
         /// <param name="password"></param>
@@ -473,6 +470,11 @@ namespace TMS
             }
         }
 
+        /// <summary>
+        /// Loads the image at the file path into the picture box.
+        /// </summary>
+        /// <param name="picMinePlan"></param>
+        /// <param name="filePath"></param>
         public void LoadMap(PictureBox picMinePlan, string filePath)
         {
             Stream imageStream = null;
@@ -512,7 +514,7 @@ namespace TMS
         #region Open Object Creation Forms
 
         /// <summary>
-        /// Open assign shift form
+        /// Opens the assign shift form to enter shift for a member
         /// </summary>
         public void OpenAssignShift(Member member)
         {
@@ -525,13 +527,13 @@ namespace TMS
         }
 
         /// <summary>
-        /// Open member form
+        /// Opens member form to create / edit / delete members
         /// </summary>
         public void OpenCreateMember()
         {
             if (_minerForm == null || _minerForm.Visible == false)
             {
-                _minerForm = new MinerAddEditForm(this);
+                _minerForm = new MemberAddEditForm(this);
                 if (!_minerForm.IsDisposed)
                 {
                     _minerForm.Show();
@@ -591,7 +593,7 @@ namespace TMS
         }
 
         /// <summary>
-        /// TODO Open a form to edit mine site info
+        /// Open a form to edit mine site info
         /// </summary>
         public void OpenMineSiteForm()
         {
@@ -603,7 +605,10 @@ namespace TMS
             }
         }
 
-        public void OpenRouters()
+        /// <summary>
+        /// Opens the form for adding / editing routers and adds it to the left pane of the main form.
+        /// </summary>
+        public void OpenRoutersForm()
         {
             if (_routerForm == null || _routerForm.Visible == false)
             {
@@ -613,6 +618,9 @@ namespace TMS
             }
         }
 
+        /// <summary>
+        /// Opens the form for adding / deleting sensors.
+        /// </summary>
         public void OpenSensors()
         {
             if (_sensorForm == null || _sensorForm.Visible == false)
@@ -626,7 +634,7 @@ namespace TMS
         /// <summary>
         /// Opens the form for creating / editing users
         /// </summary>
-        public void OpenUsers()
+        public void OpenUsersForm()
         {
             if (_userEditForm == null || _userEditForm.Visible == false)
             {
@@ -640,7 +648,7 @@ namespace TMS
         /// <summary>
         /// Creates a member object in the database and adds it to MineSite
         /// </summary>
-        public int MemberCreate(string memberNo, 
+        public bool MemberCreate(string memberNo, 
             string fName, string mName, string lName,
             string addr, string prov, string city, int pinNo, 
             string phoneNo, string mobileNo, bool isVehicle, 
@@ -688,18 +696,23 @@ namespace TMS
                     member.OnPathUpdated += _mainForm.LoadRoutersToTree;
                     _mainForm.LoadAllActiveMembers();
 
-                    return 0;
+                    return true;
                 }
                 catch (SqlException e)
                 {
                     MessageBox.Show(e.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
 
-                    return 1;
+                    return false;
                 }
 
             }
         }
 
+        /// <summary>
+        /// Deletes the member from the database
+        /// </summary>
+        /// <param name="member"></param>
+        /// <returns>Whether the function completed successfully</returns>
         public bool MemberDelete(Member member)
         {
             using (SqlConnection sqlCon = new SqlConnection(Properties.Settings.Default.TMS_DatabaseConnectionString))
@@ -732,7 +745,21 @@ namespace TMS
         /// <summary>
         /// Composes an update statement for Routers table
         /// </summary>
-        public int MemberUpdate(Member member, string memberNo,
+        /// <param name="member"></param>
+        /// <param name="memberNo"></param>
+        /// <param name="fName"></param>
+        /// <param name="mName"></param>
+        /// <param name="lName"></param>
+        /// <param name="addr"></param>
+        /// <param name="province"></param>
+        /// <param name="city"></param>
+        /// <param name="pinNo"></param>
+        /// <param name="phoneNo"></param>
+        /// <param name="mobileNo"></param>
+        /// <param name="isVehicle"></param>
+        /// <param name="tagId"></param>
+        /// <returns>Whether the function completed or not.</returns>
+        public bool MemberUpdate(Member member, string memberNo,
             string fName, string mName, string lName,
             string addr, string province, string city, int pinNo,
             string phoneNo, string mobileNo, bool isVehicle,
@@ -767,13 +794,13 @@ namespace TMS
                                     phoneNo, mobileNo, isVehicle,
                                     tagId);
 
-                    return 0;
+                    return true;
                 }
                 catch (SqlException e)
                 {
                     MessageBox.Show(e.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
 
-                    return 1;
+                    return false;
                 }
             }
         }
@@ -813,6 +840,10 @@ namespace TMS
             }
         }
 
+        /// <summary>
+        /// Updates the existing mine site in the database
+        /// </summary>
+        /// <returns></returns>
         public bool MineSiteUpdate()    
         {
             using (SqlConnection sqlCon = new SqlConnection(Properties.Settings.Default.TMS_DatabaseConnectionString))
@@ -873,9 +904,16 @@ namespace TMS
         }
 
         /// <summary>
-        /// 
+        /// Adds a new router to the database. Also add the router to the MineSite.
         /// </summary>
-        public int RouterCreate(string rId, string addr, string loc, int x, int y, bool isBlocked)
+        /// <param name="rId"></param>
+        /// <param name="addr"></param>
+        /// <param name="loc"></param>
+        /// <param name="x"></param>
+        /// <param name="y"></param>
+        /// <param name="isBlocked"></param>
+        /// <returns></returns>
+        public bool RouterCreate(string rId, string addr, string loc, int x, int y, bool isBlocked)
         {
             using (SqlConnection sqlCon = new SqlConnection(Properties.Settings.Default.TMS_DatabaseConnectionString))
             {
@@ -899,13 +937,13 @@ namespace TMS
 
                     _mainForm.AddNewCreatedRouter(router);
 
-                    return 0;
+                    return true;
                 }
                 catch (SqlException e)
                 {
                     MessageBox.Show("Error", e.Message, MessageBoxButtons.OK, MessageBoxIcon.Error);
 
-                    return 1;
+                    return false;
                 }
 
             }
@@ -949,7 +987,7 @@ namespace TMS
         /// <summary>
         /// Composes an update statement for Routers table
         /// </summary>
-        public int RouterUpdate(Router router, string rId, string addr, string loc, int x, int y, bool isBlocked)
+        public bool RouterUpdate(Router router, string rId, string addr, string loc, int x, int y, bool isBlocked)
         {
             using (SqlConnection sqlCon = new SqlConnection(Properties.Settings.Default.TMS_DatabaseConnectionString))
             {
@@ -969,17 +1007,22 @@ namespace TMS
                 {
                     int rows = oCmd.ExecuteNonQuery();
                     router.Update(rId, addr, loc, x, y, isBlocked);
-                    return 0;
+                    return true;
                 }
                 catch (SqlException e)
                 {
                     MessageBox.Show("Error", e.Message, MessageBoxButtons.OK, MessageBoxIcon.Error);
 
-                    return 1;
+                    return false;
                 }
             }
         }
 
+        /// <summary>
+        /// Creates a sensor in the database.
+        /// </summary>
+        /// <param name="sensorId"></param>
+        /// <returns></returns>
         public bool SensorCreate(string sensorId)
         {
             using (SqlConnection sqlCon = new SqlConnection(Properties.Settings.Default.TMS_DatabaseConnectionString))
@@ -1006,6 +1049,11 @@ namespace TMS
             return true;
         }
 
+        /// <summary>
+        /// Deletes a sensor from the database.
+        /// </summary>
+        /// <param name="sensorId"></param>
+        /// <returns></returns>
         public bool SensorDelete(string sensorId)
         {
             using (SqlConnection sqlCon = new SqlConnection(Properties.Settings.Default.TMS_DatabaseConnectionString))
@@ -1033,7 +1081,7 @@ namespace TMS
         }
 
         /// <summary>
-        /// 
+        /// Sets routers on screen to invisible so the user can point to a router position
         /// </summary>
         public void SetRouterPositionSetable()
         {
@@ -1108,13 +1156,16 @@ namespace TMS
         }
 
         /// <summary>
-        /// 
+        /// After a router position has been chosen on the mine plan picture
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
         public void SelectRouterPosClick(object sender, MouseEventArgs e)
         {
-            _routerForm.SetRouterPosFromMap((int)(e.X / MineSite.GetInstance().mapScale), (int)(e.Y / MineSite.GetInstance().mapScale));
+            if (e != null)
+            {
+                _routerForm.SetRouterPosFromMap((int)(e.X / MineSite.GetInstance().mapScale), (int)(e.Y / MineSite.GetInstance().mapScale));
+            }
 
             foreach (Control c in _picMinePlan.Controls)
             {
@@ -1126,7 +1177,7 @@ namespace TMS
         }
 
         /// <summary>
-        /// 
+        /// Creates a new user in the database
         /// </summary>
         /// <param name="username"></param>
         /// <param name="password"></param>
@@ -1167,7 +1218,7 @@ namespace TMS
         }
 
         /// <summary>
-        /// 
+        /// Updates the user's data in the database
         /// </summary>
         /// <param name="fName"></param>
         /// <param name="lName"></param>
@@ -1175,12 +1226,13 @@ namespace TMS
         {
             using (SqlConnection sqlCon = new SqlConnection(Properties.Settings.Default.TMS_DatabaseConnectionString))
             {
-                string cmdString = "UPDATE Users SET fName=@fName, lName=@lName";
+                string cmdString = "UPDATE Users SET fName=@fName, lName=@lName WHERE username=@username";
 
                 sqlCon.Open();
                 SqlCommand oCmd = new SqlCommand(cmdString, sqlCon);
                 oCmd.Parameters.AddWithValue("@fName", fName);
                 oCmd.Parameters.AddWithValue("@lName", lName);
+                oCmd.Parameters.AddWithValue("@username", User.GetInstance().username);
 
                 try
                 {
@@ -1199,6 +1251,11 @@ namespace TMS
             return true;
         }
 
+        /// <summary>
+        /// Hashes and updates the user's password in the database
+        /// </summary>
+        /// <param name="password"></param>
+        /// <returns></returns>
         public bool UserPasswordUpdate(string password)  
         {
             string salt = GenerateSalt();
@@ -1207,12 +1264,13 @@ namespace TMS
 
             using (SqlConnection sqlCon = new SqlConnection(Properties.Settings.Default.TMS_DatabaseConnectionString))
             {
-                string cmdString = "UPDATE Users SET password=@password, salt=@salt";
+                string cmdString = "UPDATE Users SET password=@password, salt=@salt WHERE username=@username";
 
                 sqlCon.Open();
                 SqlCommand oCmd = new SqlCommand(cmdString, sqlCon);
                 oCmd.Parameters.AddWithValue("@password", hashedPass);
                 oCmd.Parameters.AddWithValue("@salt", salt);
+                oCmd.Parameters.AddWithValue("@username", User.GetInstance().username);
 
                 try
                 {

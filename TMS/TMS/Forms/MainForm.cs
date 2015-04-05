@@ -196,7 +196,7 @@ namespace TMS
 
         private void btnRouters_Click(object sender, EventArgs e)
         {
-            _masterController.OpenRouters();
+            _masterController.OpenRoutersForm();
         }
 
         private void btnLoadMap_Click(object sender, EventArgs e)
@@ -216,7 +216,7 @@ namespace TMS
         /// <param name="e"></param>
         private void llblUsername_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            _masterController.OpenUsers();
+            _masterController.OpenUsersForm();
         }
 
         /// <summary>
@@ -235,7 +235,7 @@ namespace TMS
 
             if (router != null)
             {
-                _trackingController.ShowMinerPosition(sender, null, router);
+                _trackingController.ShowMemberPosition(sender, null, router);
             }
             else
             {
@@ -243,7 +243,7 @@ namespace TMS
 
                 if (router != null)
                 {
-                    _trackingController.ShowMinerPosition(sender, null, router);
+                    _trackingController.ShowMemberPosition(sender, null, router);
                 }
             }
         }

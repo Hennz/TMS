@@ -107,11 +107,11 @@
     <Compile Include="Forms\MessagesViewForm.Designer.cs">
       <DependentUpon>MessagesViewForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\MinerAddEditForm.cs">
+    <Compile Include="Forms\MemberAddEditForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\MinerAddEditForm.Designer.cs">
-      <DependentUpon>MinerAddEditForm.cs</DependentUpon>
+    <Compile Include="Forms\MemberAddEditForm.Designer.cs">
+      <DependentUpon>MemberAddEditForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\MineSiteEditForm.cs">
       <SubType>Form</SubType>
@@ -261,8 +261,8 @@
     <EmbeddedResource Include="Forms\MessagesViewForm.resx">
       <DependentUpon>MessagesViewForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\MinerAddEditForm.resx">
-      <DependentUpon>MinerAddEditForm.cs</DependentUpon>
+    <EmbeddedResource Include="Forms\MemberAddEditForm.resx">
+      <DependentUpon>MemberAddEditForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\MineSiteEditForm.resx">
       <DependentUpon>MineSiteEditForm.cs</DependentUpon>
@@ -311,6 +311,7 @@
     <EmbeddedResource Include="Forms\RouterMapForm.resx">
       <DependentUpon>RouterMapForm.cs</DependentUpon>
     </EmbeddedResource>
+    <None Include="TMS_ClassDiagram.cd" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>

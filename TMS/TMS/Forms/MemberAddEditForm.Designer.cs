@@ -1,6 +1,6 @@
 ﻿namespace TMS
 {
-    partial class MinerAddEditForm
+    partial class MemberAddEditForm
     {
         /// <summary>
         /// Required designer variable.
@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MinerAddEditForm));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MemberAddEditForm));
             this.lstMembers = new System.Windows.Forms.ListBox();
             this.lblTitle = new System.Windows.Forms.Label();
             this.lblFName = new System.Windows.Forms.Label();

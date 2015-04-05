@@ -70,12 +70,12 @@ namespace TMS
                 return;
             }
 
-            int errorCode = _controller.RouterCreate(   mtxtId.Text,
+            bool didComplete = _controller.RouterCreate(   mtxtId.Text,
                                                         txtAddr.Text, txtLocation.Text,
                                                         Int32.Parse(mtxtX.Text), Int32.Parse(mtxtY.Text),
                                                         chkBlocked.Checked);
 
-            if (errorCode == 0)
+            if (didComplete)
             {
                 ClearInputs();
                 lstRouters.Items.Clear();
@@ -91,12 +91,12 @@ namespace TMS
 
         private void UpdateRouter(object sender, EventArgs e)   
         {
-            int errorCode = _controller.RouterUpdate(   router,
+            bool didComplete = _controller.RouterUpdate(   router,
                                                         mtxtId.Text,
                                                         txtAddr.Text, txtLocation.Text,
                                                         Int32.Parse(mtxtX.Text), Int32.Parse(mtxtY.Text),
                                                         chkBlocked.Checked);
-            if (errorCode == 0)
+            if (didComplete)
             {
                 ClearInputs();
                 lstRouters.Items.Clear();
